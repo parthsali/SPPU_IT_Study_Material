@@ -82,4 +82,9 @@
 - [Unit Test-I](https://drive.google.com/file/d/1XaG7-lJrz-Hyk1zFAmRvhxmzWO1tQdkQ/view)
 - [Unit Test-II](https://drive.google.com/file/d/1LlKpbEuU54EjeUjFysjCgUB6n32Zm951/view)
 
+### *PYQs* 
+- [All Units](https://drive.google.com/file/d/1X_hBpYp0HTPuJUmKViYPbZ2oRbjGsAUr/view)
+
+<hr>
+
 <h3 align="center">All The Best!</h3>
