@@ -35,7 +35,7 @@
 - [Unit Test-II](https://drive.google.com/file/d/1X6a-JgyeDGi_lQg1Fa8Jx_s8ylpDD38H/view)
 
  
- [LDCO Book](https://drive.google.com/drive/u/0/folders/1VcTh3VkZHCdrdPfGZE6wyxVQGeFFGMp8)
+ ### LDCO Book - [Link](https://drive.google.com/drive/u/0/folders/1VcTh3VkZHCdrdPfGZE6wyxVQGeFFGMp8)
 
 <br>
 
@@ -53,7 +53,7 @@
 - [Unit Test-I](https://drive.google.com/file/d/1XPUr-4DPOS5Ho84IAh2HzNbxG-p9bZ32/view)
 - [Unit Test-II](https://drive.google.com/file/d/1pCxZjEjk9ffGN0nUW488U3FgufD-lNEw/view)
  
-### [DSA Book](https://drive.google.com/drive/u/0/folders/18-STDIEdTLTdvVM8bHJXOyEMEhb7KXev)
+### DSA Book - [Link](https://drive.google.com/drive/u/0/folders/18-STDIEdTLTdvVM8bHJXOyEMEhb7KXev)
 
 <hr>
 
@@ -72,7 +72,7 @@
 - [Unit Test-II](https://drive.google.com/file/d/1KXHxITFNx0ZY0CMzwWIJKKyHil5mCuz2/view)
 
  
-### [OOP Book](https://drive.google.com/drive/u/0/folders/1M4MrdmyVXE19NE46r1Au0zOQvCDo0CXv)
+### OOP Book - [Link](https://drive.google.com/drive/u/0/folders/1M4MrdmyVXE19NE46r1Au0zOQvCDo0CXv)
 
 <hr>
 
@@ -90,7 +90,7 @@
 - [Unit Test-I](https://drive.google.com/file/d/1XaG7-lJrz-Hyk1zFAmRvhxmzWO1tQdkQ/view)
 - [Unit Test-II](https://drive.google.com/file/d/1LlKpbEuU54EjeUjFysjCgUB6n32Zm951/view)
 
-### [BCN Book](https://drive.google.com/drive/u/0/folders/11LtjW4XrCak3DUAf0O0MhULvpQUmJGaT) 
+### BCN Book - [Link](https://drive.google.com/drive/u/0/folders/11LtjW4XrCak3DUAf0O0MhULvpQUmJGaT) 
 
 ### *PYQs* 
 - [All Units](https://drive.google.com/file/d/1X_hBpYp0HTPuJUmKViYPbZ2oRbjGsAUr/view)
