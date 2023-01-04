@@ -3,16 +3,16 @@
 ## DM
 
 ### Class Notes
-- [Unit-01](https://drive.google.com/drive/u/0/folders/1WD8k6K6aturCGE06THZa579SzNCfn3cd)
-- [Unit-02](https://drive.google.com/drive/u/0/folders/1WJ7OFRHzJTo5g1ykjHP8NW-8ceRcyC3W)
-- [Unit-03](https://drive.google.com/drive/u/0/folders/1qXoDUWcybiPlup3bz9v566mLLo1FPGxW)
-- [Unit-04](https://drive.google.com/drive/u/0/folders/1nIXdriDDBS0gYuaFPd5Z75jH4gPnAu-M)
-- [Unit-05](https://drive.google.com/drive/u/0/folders/1AIfqiF-Oe7VaPp-BfQToN6Pl6XeKe0i-)
-- [Unit-06](https://drive.google.com/drive/u/0/folders/1fZzc1av_AfdD_c97qKAMP9-DlnZALkvJ)
+- [Unit-01](https://drive.google.com/drive/u/0/folders/1WD8k6K6aturCGE06THZa579SzNCfn3cd){:target="_blank" rel="noopener"}
+- [Unit-02](https://drive.google.com/drive/u/0/folders/1WJ7OFRHzJTo5g1ykjHP8NW-8ceRcyC3W){:target="_blank" rel="noopener"}
+- [Unit-03](https://drive.google.com/drive/u/0/folders/1qXoDUWcybiPlup3bz9v566mLLo1FPGxW){:target="_blank" rel="noopener"}
+- [Unit-04](https://drive.google.com/drive/u/0/folders/1nIXdriDDBS0gYuaFPd5Z75jH4gPnAu-M){:target="_blank" rel="noopener"}
+- [Unit-05](https://drive.google.com/drive/u/0/folders/1AIfqiF-Oe7VaPp-BfQToN6Pl6XeKe0i-){:target="_blank" rel="noopener"}
+- [Unit-06](https://drive.google.com/drive/u/0/folders/1fZzc1av_AfdD_c97qKAMP9-DlnZALkvJ){:target="_blank" rel="noopener"}
 
 ### Question Bank
-- [Unit Test-I](https://drive.google.com/file/d/1NvtdVFdc2uXcHddEdw36OQC5Y4tgAIbU/view)
-- [Unit Test-II](https://drive.google.com/file/d/155PJCwDHdaRGoZlQnom0FgbFeWbtG2Z6/view)
+- [Unit Test-I](https://drive.google.com/file/d/1NvtdVFdc2uXcHddEdw36OQC5Y4tgAIbU/view){:target="_blank" rel="noopener"}
+- [Unit Test-II](https://drive.google.com/file/d/155PJCwDHdaRGoZlQnom0FgbFeWbtG2Z6/view){:target="_blank" rel="noopener"}
 
 <hr>
 
