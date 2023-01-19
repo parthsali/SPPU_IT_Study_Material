@@ -10,7 +10,7 @@
 | [DM](#discrete-mathematics-(dm)) |
 | [DM](#discrete-mathematics-(dm)) |
 
-## Discrete Mathematics (DM)
+### Discrete Mathematics (DM)
 
 ### *Class Notes*
 - [Unit-01](https://drive.google.com/drive/u/0/folders/1WD8k6K6aturCGE06THZa579SzNCfn3cd)
