@@ -5,6 +5,10 @@
 | **Subject** |
 | --- |
 | [DM](#discrete-mathematics-(dm)) | 
+| [LDCO](#Logic-Design-and-Computer-Organization-(LDCO)) |
+| [DM](#Discrete-Mathematics-(DM)) |
+| [DM](#discrete-mathematics-(dm)) |
+| [DM](#discrete-mathematics-(dm)) |
 
 ## Discrete Mathematics (DM)
 
