@@ -2,13 +2,7 @@
 
 ## Curriculum for Second Year of Information Technology (2019 Course) - [Click Here](https://drive.google.com/file/d/1t4_NaxDorLXJOF7V8tJcCkBBUlcWZ3bf/view)
 
-| **Subject** |
-| --- |
-| [DM](#discrete-mathematics-(dm)) | 
-| [LDCO](#Logic-Design-and-Computer-Organization-(LDCO)) |
-| [DM](#Discrete-Mathematics-(DM)) |
-| [DM](#discrete-mathematics-(dm)) |
-| [DM](#discrete-mathematics-(dm)) |
+
 
 ### Discrete Mathematics (DM)
 
