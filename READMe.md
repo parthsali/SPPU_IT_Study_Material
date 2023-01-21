@@ -6,7 +6,7 @@
 
 ## Discrete Mathematics (DM)
 
-###[DM Decode](https://drive.google.com/drive/u/0/folders/1P_P7Jqx6QR8DIDTX2gOQeiAikEcVJkYc)
+### [DM Decode](https://drive.google.com/drive/u/0/folders/1P_P7Jqx6QR8DIDTX2gOQeiAikEcVJkYc)
 
 ### *Class Notes*
 - [Unit-01](https://drive.google.com/drive/u/0/folders/1WD8k6K6aturCGE06THZa579SzNCfn3cd)
@@ -24,7 +24,7 @@
 
 ## Logic Design and Computer Organization (LDCO)
 
-###[LDCO Decode](https://drive.google.com/drive/u/0/folders/1qVlyFTVy5tjE-0dm5LOYD_nR7xq5a3Bu)
+### [LDCO Decode](https://drive.google.com/drive/u/0/folders/1qVlyFTVy5tjE-0dm5LOYD_nR7xq5a3Bu)
 
 ### *Class Notes*
 - [Unit-01](https://drive.google.com/drive/u/0/folders/13HFS-jvL6ssJjipdNwtZuT3qYBHILxm4)
@@ -48,7 +48,7 @@
 
 ## Data Structures and Algorithms  (DSA)
 
-###[DSA Decode](https://drive.google.com/drive/u/0/folders/1q9ZzSAF15qJmwCp6g9EQRnxs03IOdf7p)
+### [DSA Decode](https://drive.google.com/drive/u/0/folders/1q9ZzSAF15qJmwCp6g9EQRnxs03IOdf7p)
 
 ### *Class Notes*
 - [Unit-01](https://drive.google.com/drive/u/0/folders/1s9i5amuXPqUyPqiJeFS0Ljz5iNWphqGL)
@@ -90,7 +90,7 @@
 
 ## Basics of Computer Network  (BCN)
 
-###[BCN Decode](https://drive.google.com/drive/folders/1kvGzSoQ5y--4YkIBt7wUXCNnDZfAumat?usp=sharing)
+### [BCN Decode](https://drive.google.com/drive/folders/1kvGzSoQ5y--4YkIBt7wUXCNnDZfAumat?usp=sharing)
 
 ### *Class Notes*
 - [Unit-01](https://drive.google.com/drive/u/0/folders/1dwAufQoEgiEW6vbPcZoIWh7n4GCwEcMJ)
