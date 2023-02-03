@@ -1,8 +1,8 @@
 # SE IT Study Material
 
+> Click :star: if you like the repo. Pull Requests are highly appreciated.
+
 ## Curriculum for Second Year of Information Technology (2019 Course) - [Click Here](https://drive.google.com/file/d/1t4_NaxDorLXJOF7V8tJcCkBBUlcWZ3bf/view)
-
-
 
 ## Discrete Mathematics (DM)
 
@@ -112,4 +112,4 @@
 <hr>
 
 <h3 align="center">All The Best!</h3>
-> Click :star: if you like the repo. Pull Requests are highly appreciated.
+
