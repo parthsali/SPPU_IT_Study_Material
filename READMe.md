@@ -112,3 +112,4 @@
 <hr>
 
 <h3 align="center">All The Best!</h3>
+> Click :star: if you like the repo. Pull Requests are highly appreciated.
