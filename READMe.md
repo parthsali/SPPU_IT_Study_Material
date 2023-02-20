@@ -112,4 +112,5 @@
 <hr>
 
 <h3 align="center">All The Best!</h3>
+ ![visitors](https://visitor-badge.glitch.me/badge?page_id=parthsali.SE_IT_Study_Material&left_color=green&right_color=red)
 
