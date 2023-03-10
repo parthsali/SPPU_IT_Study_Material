@@ -2,6 +2,22 @@
 
 ## Curriculum for Second Year of Information Technology (2019 Course) - [Click Here](https://drive.google.com/file/d/1t4_NaxDorLXJOF7V8tJcCkBBUlcWZ3bf/view)
 
+|**Sr. No.**| **Subject**|
+| :---: | :---: |
+| **1** | **DM** |
+| **2** | **LDCO** |
+| **3** | **DSA** |
+| **4** | **OOP** |
+| **5** | **BCN** |
+
+
+|**Sr. No.**| **Subject**|
+| :---: | :---: |
+| **1** | **M-III** |
+| **2** | **PA** |
+| **3** | **DBMS** |
+| **4** | **CG** |
+| **5** | **SE** |
 
 
 ### Discrete Mathematics (DM)
@@ -13,7 +29,7 @@
 - [Unit-04](https://drive.google.com/drive/u/0/folders/1nIXdriDDBS0gYuaFPd5Z75jH4gPnAu-M)
 - [Unit-05](https://drive.google.com/drive/u/0/folders/1AIfqiF-Oe7VaPp-BfQToN6Pl6XeKe0i-)
 - [Unit-06](https://drive.google.com/drive/u/0/folders/1fZzc1av_AfdD_c97qKAMP9-DlnZALkvJ)
-- <a href='https://drive.google.com/drive/u/0/folders/1fZzc1av_AfdD_c97qKAMP9-DlnZALkvJ' target="_blank">Unit-06</a>
+
 
 ### *Question Bank*
 - [Unit Test-I](https://drive.google.com/file/d/1NvtdVFdc2uXcHddEdw36OQC5Y4tgAIbU/view)
