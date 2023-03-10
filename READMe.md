@@ -10,10 +10,10 @@
 |**Sr. No.**| **Subject**|
 | :---: | :---: |
 | **1** | **[DM](#DM)** |
-| **2** | **[LDCO](###Logic-Design-and-Computer-Organization-(LDCO))** |
-| **3** | **DSA** |
-| **4** | **OOP** |
-| **5** | **BCN** |
+| **2** | **[LDCO](#LDCO)** |
+| **3** | **[DSA](#DSA)** |
+| **4** | **[OOP](#OOP)** |
+| **5** | **[BCN](#BCN)** |
 
 
 <h3 id='DM'>Discrete Mathamatics (DM)</h3>
@@ -33,7 +33,7 @@
 
 <hr>
 
-## Logic Design and Computer Organization (LDCO)
+<h3 id='LDCO'>Logic Design and Computer Organization (LDCO)</h3>
 
 ### *Class Notes*
 - [Unit-01](https://drive.google.com/drive/u/0/folders/13HFS-jvL6ssJjipdNwtZuT3qYBHILxm4)
@@ -55,7 +55,7 @@
 
 <br>
 
-## Data Structures and Algorithms  (DSA)
+<h3 class='DSA'>Data Structures and Algorithms (DSA)</h3>
 
 ### *Class Notes*
 - [Unit-01](https://drive.google.com/drive/u/0/folders/1s9i5amuXPqUyPqiJeFS0Ljz5iNWphqGL)
@@ -73,7 +73,7 @@
 
 <hr>
 
-## Object Oriented Programming (OOP)
+<h3 class='OOP'>Object Oriented Programming (OOP)</h3>
 
 ### *Class Notes*
 - [Unit-01](https://drive.google.com/drive/u/0/folders/1u4Q3RMf4gCWnQl-F5qNrBZJu2M0dAsPr)
@@ -92,7 +92,7 @@
 
 <hr>
 
-## Basics of Computer Network  (BCN)
+<h3 class='BCN'>Basics of Computer Network (BCN)</h3>
 
 ### *Class Notes*
 - [Unit-01](https://drive.google.com/drive/u/0/folders/1dwAufQoEgiEW6vbPcZoIWh7n4GCwEcMJ)
