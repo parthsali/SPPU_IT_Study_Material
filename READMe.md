@@ -9,8 +9,8 @@
 
 |**Sr. No.**| **Subject**|
 | :---: | :---: |
-| **1** | **[DM](##Discrete-Mathamatics-(DM))** |
-| **2** | **[LDCO](##Logic-Design-and-Computer-Organization-(LDCO))** |
+| **1** | **[DM](#Discrete-Mathamatics-(DM))** |
+| **2** | **[LDCO](###Logic-Design-and-Computer-Organization-(LDCO))** |
 | **3** | **DSA** |
 | **4** | **OOP** |
 | **5** | **BCN** |
