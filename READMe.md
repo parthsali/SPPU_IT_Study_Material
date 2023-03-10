@@ -1,4 +1,4 @@
-# SE IT Study Material
+<h1 align="center">SE IT Study Material</h1>
 
 ## Curriculum for Second Year of Information Technology (2019 Course) - [Click Here](https://drive.google.com/file/d/1t4_NaxDorLXJOF7V8tJcCkBBUlcWZ3bf/view)
 
