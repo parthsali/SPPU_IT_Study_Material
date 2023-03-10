@@ -6,24 +6,14 @@
 ## Curriculum for Second Year of Information Technology (2019 Course) - [Click Here](https://drive.google.com/file/d/1t4_NaxDorLXJOF7V8tJcCkBBUlcWZ3bf/view)
 
 ## Semester-03
-<div align='center'>
+
 |**Sr. No.**| **Subject**|
 | :---: | :---: |
-| **1** | **DM** |
-| **2** | **LDCO** |
+| **1** | **[DM](##Discrete-Mathamatics-(DM))** |
+| **2** | **[LDCO](##Logic-Design-and-Computer-Organization-(LDCO))** |
 | **3** | **DSA** |
 | **4** | **OOP** |
 | **5** | **BCN** |
-</div>
- 
-## Semester-04 
-|**Sr. No.**| **Subject**|
-| :---: | :---: |
-| **1** | **M-III** |
-| **2** | **PA** |
-| **3** | **DBMS** |
-| **4** | **CG** |
-| **5** | **SE** |
 
 
 ### Discrete Mathematics (DM)
@@ -123,4 +113,12 @@
 
 <hr>
 
-<h3 align="center">All The Best!</h3>
+
+## Semester-04 
+|**Sr. No.**| **Subject**|
+| :---: | :---: |
+| **1** | **M-III** |
+| **2** | **PA** |
+| **3** | **DBMS** |
+| **4** | **CG** |
+| **5** | **SE** |
