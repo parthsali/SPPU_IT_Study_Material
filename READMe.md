@@ -55,7 +55,7 @@
 
 <br>
 
-<h3 class='DSA'>Data Structures and Algorithms (DSA)</h3>
+<h3 id='DSA'>Data Structures and Algorithms (DSA)</h3>
 
 ### *Class Notes*
 - [Unit-01](https://drive.google.com/drive/u/0/folders/1s9i5amuXPqUyPqiJeFS0Ljz5iNWphqGL)
@@ -73,7 +73,7 @@
 
 <hr>
 
-<h3 class='OOP'>Object Oriented Programming (OOP)</h3>
+<h3 id='OOP'>Object Oriented Programming (OOP)</h3>
 
 ### *Class Notes*
 - [Unit-01](https://drive.google.com/drive/u/0/folders/1u4Q3RMf4gCWnQl-F5qNrBZJu2M0dAsPr)
@@ -92,7 +92,7 @@
 
 <hr>
 
-<h3 class='BCN'>Basics of Computer Network (BCN)</h3>
+<h3 id='BCN'>Basics of Computer Network (BCN)</h3>
 
 ### *Class Notes*
 - [Unit-01](https://drive.google.com/drive/u/0/folders/1dwAufQoEgiEW6vbPcZoIWh7n4GCwEcMJ)
