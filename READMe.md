@@ -1,11 +1,11 @@
-<h1 align="center" font-size="30px">SE IT Study Material</h1>
+<h1 align="center">SE IT Study Material</h1>
 
 ## [Semester-03 Study Material](#Semester-03)
 ## [Semester-04 Study Material](#Semester-04)
 
 ## Curriculum for Second Year of Information Technology (2019 Course) - [Click Here](https://drive.google.com/file/d/1t4_NaxDorLXJOF7V8tJcCkBBUlcWZ3bf/view)
 
-<h2 align="center" id="Semester-03">Semester-03</h2>
+<h1 align="center" id="Semester-03">Semester-03</h1>
 
 |**Sr. No.**| **Subject**|
 | :---: | :---: |
@@ -114,7 +114,8 @@
 <hr>
 
 
-## Semester-04 
+<h1 align="center" id="Semester-04">Semester-04</h1>
+
 |**Sr. No.**| **Subject**|
 | :---: | :---: |
 | **1** | **M-III** |
@@ -122,3 +123,5 @@
 | **3** | **DBMS** |
 | **4** | **CG** |
 | **5** | **SE** |
+
+
