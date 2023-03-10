@@ -2,6 +2,11 @@
 
 ## Curriculum for Second Year of Information Technology (2019 Course) - [Click Here](https://drive.google.com/file/d/1t4_NaxDorLXJOF7V8tJcCkBBUlcWZ3bf/view)
 
+## [Sem-03 Study Material](#Semester-03)
+## [Sem-04 Study Material](#Semester-04)
+
+
+## Semester-03
 |**Sr. No.**| **Subject**|
 | :---: | :---: |
 | **1** | **DM** |
@@ -10,7 +15,7 @@
 | **4** | **OOP** |
 | **5** | **BCN** |
 
-
+## Semester-04 
 |**Sr. No.**| **Subject**|
 | :---: | :---: |
 | **1** | **M-III** |
