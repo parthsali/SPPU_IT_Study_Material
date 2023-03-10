@@ -13,6 +13,7 @@
 - [Unit-04](https://drive.google.com/drive/u/0/folders/1nIXdriDDBS0gYuaFPd5Z75jH4gPnAu-M)
 - [Unit-05](https://drive.google.com/drive/u/0/folders/1AIfqiF-Oe7VaPp-BfQToN6Pl6XeKe0i-)
 - [Unit-06](https://drive.google.com/drive/u/0/folders/1fZzc1av_AfdD_c97qKAMP9-DlnZALkvJ)
+- <a target="_blank" href='https://drive.google.com/drive/u/0/folders/1fZzc1av_AfdD_c97qKAMP9-DlnZALkvJ'>Unit-06</a>
 
 ### *Question Bank*
 - [Unit Test-I](https://drive.google.com/file/d/1NvtdVFdc2uXcHddEdw36OQC5Y4tgAIbU/view)
