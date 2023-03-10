@@ -1,4 +1,4 @@
-<h1 align="center">SE IT Study Material</h1>
+<h1 align="center" font-size=".fs-10">SE IT Study Material</h1>
 
 ## [Semester-03 Study Material](#Semester-03)
 ## [Semester-04 Study Material](#Semester-04)
