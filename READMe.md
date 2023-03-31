@@ -7,18 +7,9 @@
 
 <h1 align="center" id="Semester-03">Semester-03</h1>
 
- <table>
-  <tr>
-    <th> **Sr. No.** </th>
-    <th> **Subject** </th>
-  </tr>
-  <tr>
-    <td> **1** </td>
-    <td> **[DM](#DM)** </td>
-  </tr>
-</table> 
+ 
 
-|| **Subject**|
+| **Sr. No** | **Subject**|
 | :---: | :---: |
 | **1** | **[DM](#DM)** |
 | **2** | **[LDCO](#LDCO)** |
