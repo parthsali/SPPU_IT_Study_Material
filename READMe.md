@@ -131,15 +131,10 @@
 
 <h3 id='M-III'>Engineering Mathematics- III</h3>
 
-#### *Class Notes*
-- [Unit-01](https://drive.google.com/drive/u/0/folders/1dwAufQoEgiEW6vbPcZoIWh7n4GCwEcMJ)
-- [Unit-02](https://drive.google.com/drive/u/0/folders/1XbG6nPek0Ly3rxNoOoFgFKAMIqNlFXAv)
+#### [M-III Nirali](https://drive.google.com/drive/folders/10bpOKCqS7YwynS6IstSUnpcCiYlJ8qEs)
 
-#### *Question Bank*
-- [Unit Test-I](https://drive.google.com/file/d/1XaG7-lJrz-Hyk1zFAmRvhxmzWO1tQdkQ/view)
+#### [Question Bank](https://drive.google.com/drive/folders/10n-FKUPhhj2V5ly7NYkViPoNw3Qvxtz8)
 
-
-#### M-III Book - [Link](https://drive.google.com/drive/u/0/folders/11LtjW4XrCak3DUAf0O0MhULvpQUmJGaT)
 
 <hr>
 
@@ -150,9 +145,7 @@
 - [Unit-02](https://drive.google.com/drive/u/0/folders/1XbG6nPek0Ly3rxNoOoFgFKAMIqNlFXAv)
 
 
-#### *Question Bank*
-- [Unit Test-I](https://drive.google.com/file/d/1XaG7-lJrz-Hyk1zFAmRvhxmzWO1tQdkQ/view)
-
+#### [Question Bank](https://drive.google.com/drive/folders/1vjyOJBv35xI11nk06R-aV_ZdORthITUl)
 
 #### PA Book - [Link](https://drive.google.com/drive/u/0/folders/11LtjW4XrCak3DUAf0O0MhULvpQUmJGaT)
 
@@ -161,30 +154,26 @@
 <h3 id='DBMS'>Database Management System</h3>
 
 #### *Class Notes*
-- [Unit-01](https://drive.google.com/drive/u/0/folders/1dwAufQoEgiEW6vbPcZoIWh7n4GCwEcMJ)
-- [Unit-02](https://drive.google.com/drive/u/0/folders/1XbG6nPek0Ly3rxNoOoFgFKAMIqNlFXAv)
+- [Unit-01](https://drive.google.com/drive/folders/1uaDLUP3Y5YRyl83Q0xxvOZUEKZqt4pcy)
+- [Unit-02](https://drive.google.com/drive/folders/1uncMyYnTFIdtW28hyh4gVL8b-PyoLDZ-)
 
 
-#### *Question Bank*
-- [Unit Test-I](https://drive.google.com/file/d/1XaG7-lJrz-Hyk1zFAmRvhxmzWO1tQdkQ/view)
+#### [Question Bank](https://drive.google.com/drive/folders/1usjyIhUd0Y0TMtpbjgnLZZti-QEhANY0)
 
-
-#### DBMS Book - [Link](https://drive.google.com/drive/u/0/folders/11LtjW4XrCak3DUAf0O0MhULvpQUmJGaT)
+#### [DBMS-Decode](https://drive.google.com/drive/folders/10pOsykGQXRVea3OZSa9y7gfUKTn_s6an)
 
 <hr>
 
 <h3 id='CG'>Computer Graphics</h3>
 
 #### *Class Notes*
-- [Unit-01](https://drive.google.com/drive/u/0/folders/1dwAufQoEgiEW6vbPcZoIWh7n4GCwEcMJ)
-- [Unit-02](https://drive.google.com/drive/u/0/folders/1XbG6nPek0Ly3rxNoOoFgFKAMIqNlFXAv)
+- [Unit-01](https://drive.google.com/drive/folders/1-JOvaDusVRcktEwjWW3r6xHTIXd3kZn4)
+- [Unit-02](https://drive.google.com/drive/folders/1-tERe7xPpUOyuIRtTqF3dAdV-fKZ3x8B)
 
+#### [*Question Bank*](https://drive.google.com/drive/folders/11VsvTsqav4lu93tlToS44S6695eb4gTd)
 
-#### *Question Bank*
-- [Unit Test-I](https://drive.google.com/file/d/1XaG7-lJrz-Hyk1zFAmRvhxmzWO1tQdkQ/view)
-
-
-#### CG Book - [Link](https://drive.google.com/drive/u/0/folders/11LtjW4XrCak3DUAf0O0MhULvpQUmJGaT)
+#### [*CG-Decode*](https://drive.google.com/drive/folders/1101KzOUykKp5EjbHWT_Zio-sypFrSl6W)
+#### [*CG-TechKnowledge*](https://drive.google.com/drive/folders/115mXi0QD3ud8pywbfjh2aOgzJ86QNq3r)
 
 
 <hr>
@@ -192,13 +181,11 @@
 <h3 id='SE'>Software Engineering</h3>
 
 #### *Class Notes*
-- [Unit-01](https://drive.google.com/drive/u/0/folders/1dwAufQoEgiEW6vbPcZoIWh7n4GCwEcMJ)
-- [Unit-02](https://drive.google.com/drive/u/0/folders/1XbG6nPek0Ly3rxNoOoFgFKAMIqNlFXAv)
+- [Unit-01](https://drive.google.com/drive/folders/10WKPT3zZ7ASeGPukrwgnJW-IK8-a2uli)
+- [Unit-02](https://drive.google.com/drive/folders/10WfGHS17VqrRZcqfH7Ye736IjfgF3I5P)
 
 
-#### *Question Bank*
-- [Unit Test-I](https://drive.google.com/file/d/1XaG7-lJrz-Hyk1zFAmRvhxmzWO1tQdkQ/view)
+#### [Question Bank](https://drive.google.com/drive/folders/11IltV4UYh8txDy8f8VaDNghrnJPpRoDz)
 
-
-#### SE Book - [Link](https://drive.google.com/drive/u/0/folders/11LtjW4XrCak3DUAf0O0MhULvpQUmJGaT)
+#### [SE-Technical-Publication](https://drive.google.com/drive/folders/11G92Zi7UMDx-G2lLiD2ytFmXyhwoGqq4)
 
