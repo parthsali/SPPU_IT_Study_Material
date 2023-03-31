@@ -172,10 +172,10 @@
 - [Unit-01](https://drive.google.com/drive/folders/1-JOvaDusVRcktEwjWW3r6xHTIXd3kZn4)
 - [Unit-02](https://drive.google.com/drive/folders/1-tERe7xPpUOyuIRtTqF3dAdV-fKZ3x8B)
 
-#### [*Question Bank*](https://drive.google.com/drive/folders/11VsvTsqav4lu93tlToS44S6695eb4gTd)
+#### [Question Bank](https://drive.google.com/drive/folders/11VsvTsqav4lu93tlToS44S6695eb4gTd)
 
-#### [*CG-Decode*](https://drive.google.com/drive/folders/1101KzOUykKp5EjbHWT_Zio-sypFrSl6W)
-#### [*CG-TechKnowledge*](https://drive.google.com/file/d/118LYZeIYU4T7o2Yy2XGRgPz01qatBgbN/view?usp=sharing)
+#### [CG-Decode](https://drive.google.com/drive/folders/1101KzOUykKp5EjbHWT_Zio-sypFrSl6W)
+#### [CG-TechKnowledge](https://drive.google.com/file/d/118LYZeIYU4T7o2Yy2XGRgPz01qatBgbN/view?usp=sharing)
 
 
 <hr>
