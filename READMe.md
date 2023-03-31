@@ -7,6 +7,24 @@
 
 <h1 align="center" id="Semester-03">Semester-03</h1>
 
+ <table>
+  <tr>
+    <th>Company</th>
+    <th>Contact</th>
+    <th>Country</th>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr>
+</table> 
+
 |**Sr. No.**| **Subject**|
 | :---: | :---: |
 | **1** | **[DM](#DM)** |
