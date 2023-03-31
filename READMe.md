@@ -133,7 +133,7 @@
 
 <h3 id='M-III'>Engineering Mathematics- III</h3>
 
-#### [M-III Nirali](https://drive.google.com/drive/folders/10bpOKCqS7YwynS6IstSUnpcCiYlJ8qEs)
+#### [M-III Nirali](https://drive.google.com/file/d/10j1i8Wl1fMPnFEwOBpFYUk0abIc7vxen/view?usp=sharing)
 
 #### [Question Bank](https://drive.google.com/drive/folders/10n-FKUPhhj2V5ly7NYkViPoNw3Qvxtz8)
 
@@ -175,7 +175,7 @@
 #### [*Question Bank*](https://drive.google.com/drive/folders/11VsvTsqav4lu93tlToS44S6695eb4gTd)
 
 #### [*CG-Decode*](https://drive.google.com/drive/folders/1101KzOUykKp5EjbHWT_Zio-sypFrSl6W)
-#### [*CG-TechKnowledge*](https://drive.google.com/drive/folders/115mXi0QD3ud8pywbfjh2aOgzJ86QNq3r)
+#### [*CG-TechKnowledge*](https://drive.google.com/file/d/118LYZeIYU4T7o2Yy2XGRgPz01qatBgbN/view?usp=sharing)
 
 
 <hr>
@@ -189,5 +189,5 @@
 
 #### [Question Bank](https://drive.google.com/drive/folders/11IltV4UYh8txDy8f8VaDNghrnJPpRoDz)
 
-#### [SE-Technical-Publication](https://drive.google.com/drive/folders/11G92Zi7UMDx-G2lLiD2ytFmXyhwoGqq4)
+#### [SE-Technical-Publication](https://drive.google.com/file/d/11IO1Gq9Mt-hUy-qhaKWcnhDSDHqYJM_S/view?usp=sharing)
 
