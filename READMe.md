@@ -143,13 +143,10 @@
 <h3 id='PA'>Processor Architecture</h3>
 
 #### *Class Notes*
-- [Unit-01](https://drive.google.com/drive/u/0/folders/1dwAufQoEgiEW6vbPcZoIWh7n4GCwEcMJ)
-- [Unit-02](https://drive.google.com/drive/u/0/folders/1XbG6nPek0Ly3rxNoOoFgFKAMIqNlFXAv)
-
+- [Unit-01](https://drive.google.com/drive/folders/1nJ8iTFrhudQBTm9umHN9OwFHj9yV3TvH)
+- [Unit-02](https://drive.google.com/drive/folders/1Mw9dbC-EK_2DmOFuYtfbGPjHUS1b5DH9)
 
 #### [Question Bank](https://drive.google.com/drive/folders/1vjyOJBv35xI11nk06R-aV_ZdORthITUl)
-
-#### PA Book - [Link](https://drive.google.com/drive/u/0/folders/11LtjW4XrCak3DUAf0O0MhULvpQUmJGaT)
 
 <hr>
 
