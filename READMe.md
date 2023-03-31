@@ -9,23 +9,16 @@
 
  <table>
   <tr>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
+    <th> **Sr. No.** </th>
+    <th> **Subject** </th>
   </tr>
   <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
+    <td> **1** </td>
+    <td> **[DM](#DM)** </td>
   </tr>
 </table> 
 
-|**Sr. No.**| **Subject**|
+|| **Subject**|
 | :---: | :---: |
 | **1** | **[DM](#DM)** |
 | **2** | **[LDCO](#LDCO)** |
