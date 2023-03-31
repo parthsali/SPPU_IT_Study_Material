@@ -1,5 +1,7 @@
 <h1 align="center">SE IT Study Material</h1>
 
+> Click :star: if you like the repo. Pull Requests are highly appreciated.
+
 ## [Semester-03 Study Material](#Semester-03)
 ## [Semester-04 Study Material](#Semester-04)
 
