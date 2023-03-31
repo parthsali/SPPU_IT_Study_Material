@@ -124,6 +124,8 @@
 | **4** | **[CG](#CG)** |
 | **5** | **[SE](#SE)** |
 
+<hr>
+
 <h3 id='M-III'>Engineering Mathematics- III</h3>
 
 #### *Class Notes*
@@ -136,7 +138,7 @@
 
 #### M-III Book - [Link](https://drive.google.com/drive/u/0/folders/11LtjW4XrCak3DUAf0O0MhULvpQUmJGaT)
 
-<br>
+<hr>
 
 <h3 id='PA'>Processor Architecture</h3>
 
@@ -151,7 +153,7 @@
 
 #### PA Book - [Link](https://drive.google.com/drive/u/0/folders/11LtjW4XrCak3DUAf0O0MhULvpQUmJGaT)
 
-<br>
+<hr>
 
 <h3 id='DBMS'>Database Management System</h3>
 
@@ -166,7 +168,7 @@
 
 #### DBMS Book - [Link](https://drive.google.com/drive/u/0/folders/11LtjW4XrCak3DUAf0O0MhULvpQUmJGaT)
 
-<br>
+<hr>
 
 <h3 id='CG'>Computer Graphics</h3>
 
@@ -182,7 +184,7 @@
 #### CG Book - [Link](https://drive.google.com/drive/u/0/folders/11LtjW4XrCak3DUAf0O0MhULvpQUmJGaT)
 
 
-<br>
+<hr>
 
 <h3 id='SE'>Software Engineering</h3>
 
