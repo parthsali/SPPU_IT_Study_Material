@@ -150,6 +150,8 @@
 
 #### [Question Bank](https://drive.google.com/drive/folders/1vjyOJBv35xI11nk06R-aV_ZdORthITUl)
 
+#### [PA-Technical-Publication](https://drive.google.com/drive/folders/12ZMPbglaykY24UYCzKKs4oVJUBToaQEp)
+
 <hr>
 
 <h3 id='DBMS'>Database Management System</h3>
