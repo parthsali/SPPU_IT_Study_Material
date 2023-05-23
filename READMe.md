@@ -62,14 +62,6 @@
 
 <h3 id='DSA'>Data Structures and Algorithms (DSA)</h3>
 
-### *Class Notes*
-- [Unit-01](https://drive.google.com/drive/u/0/folders/1s9i5amuXPqUyPqiJeFS0Ljz5iNWphqGL)
-- [Unit-02](https://drive.google.com/drive/u/0/folders/1Y5qQUq5mh0wG2SWysbNgAEm5oFK14fI4)
-- [Unit-03](https://drive.google.com/drive/u/0/folders/195Ano5RdzNIesg9c_Ok0WjKvon-udH8O)
-- [Unit-04](https://drive.google.com/drive/u/0/folders/1qLUUmd8oTNcnM_qyCO8XNFjRdk1IU9ap)
-- [Unit-05](https://drive.google.com/drive/u/0/folders/17CX-79yJEKjQ5uPMaua5Vv-Y3JwbVPOF)
-- [Unit-06](https://drive.google.com/drive/u/0/folders/1Wt-jo5U9rK1jM3cictAh9aIurWoY6gxJ)
-
 ### *Question Bank*
 - [Unit Test-I](https://drive.google.com/file/d/1XPUr-4DPOS5Ho84IAh2HzNbxG-p9bZ32/view)
 - [Unit Test-II](https://drive.google.com/file/d/1pCxZjEjk9ffGN0nUW488U3FgufD-lNEw/view)
@@ -98,14 +90,6 @@
 <hr>
 
 <h3 id='BCN'>Basics of Computer Network (BCN)</h3>
-
-### *Class Notes*
-- [Unit-01](https://drive.google.com/drive/u/0/folders/1dwAufQoEgiEW6vbPcZoIWh7n4GCwEcMJ)
-- [Unit-02](https://drive.google.com/drive/u/0/folders/1XbG6nPek0Ly3rxNoOoFgFKAMIqNlFXAv)
-- [Unit-03](https://drive.google.com/drive/u/0/folders/1fJhArjC4IfLXY3ZoRh_syQS8uUr1gF_7)
-- [Unit-04](https://drive.google.com/drive/u/0/folders/1GSPwbdydokZQu0iBa3pz9tHSQ_D_sWYo)
-- [Unit-05](https://drive.google.com/drive/u/0/folders/1AftFbo3zzJgDrYwNyUkfGJUDEaD88H00)
-- [Unit-06](https://drive.google.com/drive/u/0/folders/1dQBPsUbRnff0cuh-7EjD_XcpGQSSAL9S)
 
 ### *Question Bank*
 - [Unit Test-I](https://drive.google.com/file/d/1XaG7-lJrz-Hyk1zFAmRvhxmzWO1tQdkQ/view)
