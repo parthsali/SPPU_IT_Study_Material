@@ -31,7 +31,7 @@
 - [Unit-06](https://drive.google.com/drive/u/0/folders/1fZzc1av_AfdD_c97qKAMP9-DlnZALkvJ)
 
 
-### Previous Year
+### Previous Year Papers
 - [Insem](https://drive.google.com/drive/folders/1Rm9cYC4-roXYqqkwtsd5Wqex2ToRlsm1)
 - [Endsem](https://drive.google.com/drive/folders/1RYEzA6mKz6YOOq8RkFwipzshv7DYr6JZ)
 
@@ -47,7 +47,7 @@
 - [Unit-05](https://drive.google.com/drive/u/0/folders/1WKF8jns5nveHqg7wZWpzQB13hmAaIYNB)
 - [Unit-06](https://drive.google.com/drive/u/0/folders/1l164gVN0lmcX-UqEevpZtzifuvxsCW51)
 
-### Previous Year
+### Previous Year Papers
 - [Insem](https://drive.google.com/drive/folders/1SLhTGCYbGvzsO3A90GgWzMaRkJuXLefb)
 - [Endsem](https://drive.google.com/drive/folders/1SNaEs9T1zjgGhOBDW1dNoiL_pnfQMvlg)
  
@@ -57,7 +57,7 @@
 
 <h3 id='DSA'>Data Structures and Algorithms (DSA)</h3>
 
-### Previous Year
+### Previous Year Papers
 - [Insem](https://drive.google.com/drive/folders/1RBmZDyUAA3-fFMxbSUkBFpVfmXLK4dPj)
 - [Endsem](https://drive.google.com/drive/folders/1REF6ByBsO7pq5BIyMlJF1S2vLWot3dUu)
  
@@ -75,7 +75,7 @@
 - [Unit-05](https://drive.google.com/drive/u/0/folders/1H3xFEYAm3sKkr55FZM_keFs9u7gho4X-)
 - [Unit-06](https://drive.google.com/drive/u/0/folders/1VbmhjSUBMNGg-evMX-zkbF9_r6h3PthV)
 
-### Previous Year
+### Previous Year Papers
 - [Insem](https://drive.google.com/drive/folders/1SRubRjnWKwWslHB0jlTSMDDx1uCpNIsi)
 - [Endsem](https://drive.google.com/drive/folders/1SWmCV88mdh3pKsq21fIqzxeKs7LqLyps)
 
@@ -88,7 +88,7 @@
 
 ### BCN Book - [Link](https://drive.google.com/drive/u/0/folders/11LtjW4XrCak3DUAf0O0MhULvpQUmJGaT) 
 
-### Previous Year
+### Previous Year Papers
 - [Insem](https://drive.google.com/drive/folders/1Qxvbf8fn7-ZB-F2mJOoOfZ3mMacE2rab)
 - [Endsem](https://drive.google.com/drive/folders/1Qylx00T9SVXEzzwxZQ5lSqFVlWyFLT3v)
 
@@ -116,7 +116,7 @@
 
 #### [M-III-Decode](https://drive.google.com/file/d/12WsRDLb9HF3dsTYISsrRYpS0cBJnzybP/view?usp=sharing)
 
-### Previous Year
+### Previous Year Papers
 - [Insem](https://drive.google.com/drive/folders/1Qa1B3d6RKiB1_K5UuK41Q5h0pvVmjJti)
 - [Endsem](https://drive.google.com/drive/folders/1QZHD4V2fP12qjOcfn6axHfNM28axBcg8)
 
@@ -131,7 +131,7 @@
 - [Unit-03](https://drive.google.com/drive/folders/1U_6HPZR2zCWBJPuFJ4ZACn6K1iGobz5r)
 - [Unit-04](https://drive.google.com/drive/folders/19WSfdXCWXrNEpflDQiQTbPjJGEi5ka05)
 
-### Previous Year
+### Previous Year Papers
 - [Insem](https://drive.google.com/drive/folders/1QlmhKVy39Tnloe-_fCc9GfsYNP6SOj-I)
 - [Endsem](https://drive.google.com/drive/folders/1QkKX5T_lGm5jVK4sVZb5UdBlU9SA7c_G)
 
@@ -149,7 +149,7 @@
 - [Unit-05](https://drive.google.com/drive/folders/1QXt7KTC8dkt4usZo_mcf0FJ82LQbBrzP)
 - [Unit-06](https://drive.google.com/drive/folders/1_Toe91zLpRV6Pmxo2L5NLfVSDeHpj-fK)
 
-### Previous Year
+### Previous Year Papers
 - [Insem](https://drive.google.com/drive/folders/1QNNkno8ZPY28Pt-ID8TxYzhjt1Oz3e_3)
 - [Endsem](https://drive.google.com/drive/folders/1QF301LEO-DkF6-jHWFSDMhyxhlUFDF5e)
 
@@ -163,7 +163,7 @@
 - [Unit-01](https://drive.google.com/drive/folders/1-JOvaDusVRcktEwjWW3r6xHTIXd3kZn4)
 - [Unit-02](https://drive.google.com/drive/folders/1-tERe7xPpUOyuIRtTqF3dAdV-fKZ3x8B)
 
-### Previous Year
+### Previous Year Papers
 - [Insem](https://drive.google.com/drive/folders/16i0nT7vTAFoWbQMn8a6Ame5R8QQ859Ve)
 - [Endsem](https://drive.google.com/drive/folders/1xQhZxGB9OzLWFGDJawa-vv2r47-QLh2y)
 
@@ -179,7 +179,8 @@
 - [Unit-01](https://drive.google.com/drive/folders/10WKPT3zZ7ASeGPukrwgnJW-IK8-a2uli)
 - [Unit-02](https://drive.google.com/drive/folders/10WfGHS17VqrRZcqfH7Ye736IjfgF3I5P)
 
-### Previous Year
+
+### Previous Year Papers
 - [Insem](https://drive.google.com/drive/folders/1VgWfptKJR1xETJfoKON8KbDJJgwPdkBk)
 - [Endsem](https://drive.google.com/drive/folders/1neuxTwhGNJMrgl7rDtUaVhSbyC48Okuv)
 
