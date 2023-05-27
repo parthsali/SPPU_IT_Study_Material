@@ -178,6 +178,10 @@
 #### *Class Notes*
 - [Unit-01](https://drive.google.com/drive/folders/10WKPT3zZ7ASeGPukrwgnJW-IK8-a2uli)
 - [Unit-02](https://drive.google.com/drive/folders/10WfGHS17VqrRZcqfH7Ye736IjfgF3I5P)
+- [Unit-03](https://drive.google.com/drive/folders/1NfB6nDxsAnnWMhy-BYfprl16MHpJ2Nhf)
+- [Unit-04](https://drive.google.com/drive/folders/1P1PMyYLMPtKTIbhJgcUTwhmCbWPlQD8a)
+- [Unit-05](https://drive.google.com/drive/folders/1P9DxZi7MTFSrWX-lJWvCVvvJQRbhu3oC)
+- [Unit-06](https://drive.google.com/drive/folders/1POhbMqSz4RHHTCSEnntuTrKjZSJI50xj)
 
 
 ### Previous Year Papers
