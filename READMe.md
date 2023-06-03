@@ -2,7 +2,7 @@
 
 > Click :star: if you like the repo. Pull Requests are highly appreciated.
 
-You can find the code for the practical exercises at the following location: [link to the code repository](https://github.com/parthsali/SPPU_SE_IT_Practicals).
+### You can find the code for the practical exercises at the following location: [link to the code repository](https://github.com/parthsali/SPPU_SE_IT_Practicals).
 
 ## [Semester-03 Study Material](#Semester-03)
 ## [Semester-04 Study Material](#Semester-04)
