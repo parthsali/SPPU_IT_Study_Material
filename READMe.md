@@ -2,6 +2,8 @@
 
 > Click :star: if you like the repo. Pull Requests are highly appreciated.
 
+## Join [Telegram Group](https://t.me/sppuinformationtechnology)
+
 ### You can find the code for the practicals at this location: [link to the code repository](https://github.com/parthsali/SPPU_SE_IT_Practicals).
 
 ## [Semester-03 Study Material](#Semester-03)
