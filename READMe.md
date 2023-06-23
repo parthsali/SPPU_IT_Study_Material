@@ -141,7 +141,8 @@
 - [Insem](https://drive.google.com/drive/folders/1QlmhKVy39Tnloe-_fCc9GfsYNP6SOj-I)
 - [Endsem](https://drive.google.com/drive/folders/1QkKX5T_lGm5jVK4sVZb5UdBlU9SA7c_G)
 
-#### [PA-Technical-Publication](https://drive.google.com/drive/folders/12ZMPbglaykY24UYCzKKs4oVJUBToaQEp)
+#### [PA-Decode](https://drive.google.com/drive/folders/12ZMPbglaykY24UYCzKKs4oVJUBToaQEp)
+#### [PA-Techknowledge](https://drive.google.com/drive/folders/1iGJ664d5VETMq7hWjLwVyXmLRcQcOsXi)
 
 <hr>
 
