@@ -200,7 +200,7 @@
 - [Endsem](https://drive.google.com/drive/folders/1neuxTwhGNJMrgl7rDtUaVhSbyC48Okuv)
 
 
-#### [SE-Decode](https://drive.google.com/drive/folders/1Ejh-NuL3K5w5Log38-DaESvW6_8g3Mik)
+#### [SE-Decode](https://drive.google.com/file/d/1kQ2lfR-6CjwCIpBtPlAG98udteor7WPl/view?usp=drive_link)
 #### [SE-Technical-Publication](https://drive.google.com/file/d/11IO1Gq9Mt-hUy-qhaKWcnhDSDHqYJM_S/view?usp=sharing)
 
 <p align='center'>Visitors Count <br><img align="center" alt="Repo Visitors" src="https://profile-counter.glitch.me/parthsali/count.svg"/></p>
