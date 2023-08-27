@@ -6,9 +6,9 @@
 
 ### You can find the code for the practicals at this location: [link to the code repository](https://github.com/parthsali/SPPU_IT_Practicals).
 
-## [Second Year Study Material]()
+## [Second Year Study Material](https://github.com/parthsali/SPPU_IT_Study_Material/blob/main/SE.md)
 
-## [Third Year Study Material]()
+## [Third Year Study Material](https://github.com/parthsali/SPPU_IT_Study_Material/blob/main/TE.md)
 
 <hr>
 
