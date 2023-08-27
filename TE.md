@@ -59,7 +59,7 @@
 
 <hr>
 
-<h3 id='HCI'>Theory of Computation</h3>
+<h3 id='TOC'>Theory of Computation</h3>
 
 <!-- #### _Class Notes_
 
@@ -81,7 +81,7 @@
 
 <hr>
 
-<h3 id='HCI'>Machine Learning</h3>
+<h3 id='ML'>Machine Learning</h3>
 
 <!-- #### _Class Notes_
 
