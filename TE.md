@@ -37,10 +37,11 @@
 
 <h3 id='HCI'>Human Computer Interaction</h3>
 
-<!-- #### _Class Notes_
+#### _Class Notes_
 
-- [Unit-01](https://drive.google.com/drive/folders/10RGFxDsu85yJybzjgMyh1z4AU8GuHmWF)
-- [Unit-02](https://drive.google.com/drive/folders/1eBuOZJF79RC4rjSF6zlPhJGahW1zc9OZ)
+- [Unit-01 & 02](https://drive.google.com/drive/folders/1WIqK1LR7BhUjEKMRZcOOufH8RK_ebEnm)
+
+<!-- - [Unit-02](https://drive.google.com/drive/folders/1eBuOZJF79RC4rjSF6zlPhJGahW1zc9OZ)
 - [Unit-03](https://drive.google.com/drive/folders/1JNdF1tQC05qDb3Lx_P89aM7CjMs1kzJm)
 - [Unit-04](https://drive.google.com/drive/folders/1fVG4VoliRXxNOrwOINvhbqQTYJOznkvk)
 - [Unit-05](https://drive.google.com/drive/folders/1yT0G_oziaPozZkDGEPbNn1LiQBgHISCq)
@@ -70,6 +71,10 @@
 - [Unit-05](https://drive.google.com/drive/folders/1yT0G_oziaPozZkDGEPbNn1LiQBgHISCq)
 - [Unit-06](https://drive.google.com/drive/folders/1HeFSYyGaeLBv5y2A-Co2ani5HZMTBshr) -->
 
+### _Class Notes_
+
+- [Unit-01 & 02](https://drive.google.com/drive/folders/1w_R0UJhwiYxFfE618BAnbx9ix7o4I7-A)
+
 ### Previous Year Papers
 
 - [Insem](https://drive.google.com/drive/folders/12gaRvwux43ImiX8OkgU0gu67p_yU_NA9)
@@ -83,10 +88,11 @@
 
 <h3 id='ML'>Machine Learning</h3>
 
-<!-- #### _Class Notes_
+#### _Class Notes_
 
-- [Unit-01](https://drive.google.com/drive/folders/10RGFxDsu85yJybzjgMyh1z4AU8GuHmWF)
-- [Unit-02](https://drive.google.com/drive/folders/1eBuOZJF79RC4rjSF6zlPhJGahW1zc9OZ)
+- [Unit-01 & 02](https://drive.google.com/drive/folders/1D4X7A6d5uR4vqqPRDOiHFeGodxYd583V)
+
+<!-- - [Unit-02](https://drive.google.com/drive/folders/1eBuOZJF79RC4rjSF6zlPhJGahW1zc9OZ)
 - [Unit-03](https://drive.google.com/drive/folders/1JNdF1tQC05qDb3Lx_P89aM7CjMs1kzJm)
 - [Unit-04](https://drive.google.com/drive/folders/1fVG4VoliRXxNOrwOINvhbqQTYJOznkvk)
 - [Unit-05](https://drive.google.com/drive/folders/1yT0G_oziaPozZkDGEPbNn1LiQBgHISCq)
@@ -98,5 +104,18 @@
 - [Endsem](https://drive.google.com/drive/folders/1YW1eMvtzQLo68j0re6H5HJJr0nuKCCCC)
 
 #### [ML-Decode](https://drive.google.com/drive/folders/1IfFWTzVsodsw17fmvn4Lzs5eRBC-bhBB)
+
+<hr>
+<h3 id='DAA'>Design and Analysis of Algorithm</h3>
+
+#### _Class Notes_
+
+- [Unit-01 & 02](https://drive.google.com/drive/folders/1n6DiVtVoWxYAwPgAo4CKtRGRfSQxLuqM)
+
+<!-- - [Unit-02](https://drive.google.com/drive/folders/1eBuOZJF79RC4rjSF6zlPhJGahW1zc9OZ)
+- [Unit-03](https://drive.google.com/drive/folders/1JNdF1tQC05qDb3Lx_P89aM7CjMs1kzJm)
+- [Unit-04](https://drive.google.com/drive/folders/1fVG4VoliRXxNOrwOINvhbqQTYJOznkvk)
+- [Unit-05](https://drive.google.com/drive/folders/1yT0G_oziaPozZkDGEPbNn1LiQBgHISCq)
+- [Unit-06](https://drive.google.com/drive/folders/1HeFSYyGaeLBv5y2A-Co2ani5HZMTBshr) -->
 
 <hr>
