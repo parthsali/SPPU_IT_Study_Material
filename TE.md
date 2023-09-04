@@ -33,6 +33,8 @@
 
 #### [OS-Decode](https://drive.google.com/drive/folders/1kz4_sKMtytRWWaEa3DwGrJsi4mWXZz5k)
 
+#### [OS-Technical](https://drive.google.com/file/d/1FXj2l-_5_WVDufNysY4qpmZPyI7qyBs_)
+
 <hr>
 
 <h3 id='HCI'>Human Computer Interaction</h3>
