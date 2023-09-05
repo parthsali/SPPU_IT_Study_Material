@@ -1,6 +1,6 @@
 <h1 id="teit" align="center">TE IT Study Material</h1>
 
-## Curriculum for Third Year of Information Technology (2019 Course) - [Click Here](https://drive.google.com/file/d/1JU0cGm9Ke110HEJLuaxi2hO1fmOEt47h/view)
+## Curriculum for Third Year of Information Technology (2019 Course) - [Click Here](https://drive.google.com/file/d/18N2TqFNEpuZjpM-ZJ8BbFOO50qqvxCkF/view)
 
 ## [Semester-05 Study Material](#Semester-05)
 
