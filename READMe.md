@@ -15,7 +15,7 @@
 Star History
 </h2>
 
-<img src="https://api.star-history.com/svg?repos=parthsali/SPPU_IT_Study_Material&type=Timeline)](https://star-history.com/#parthsali/SPPU_IT_Study_Material&Timeline"></img>
+<img align='center' src="https://api.star-history.com/svg?repos=parthsali/SPPU_IT_Study_Material&type=Timeline)](https://star-history.com/#parthsali/SPPU_IT_Study_Material&Timeline"></img>
 
 
 
