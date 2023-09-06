@@ -11,8 +11,9 @@
 ## [Third Year Study Material](https://github.com/parthsali/SPPU_IT_Study_Material/blob/main/TE.md)
 
 <hr>
-
-## Star History
+<h2 align='center'>  
+Star History
+</h2>
 
 [![Star History Chart](https://api.star-history.com/svg?repos=parthsali/SPPU_IT_Study_Material&type=Date)](https://star-history.com/#parthsali/SPPU_IT_Study_Material&Date)
 
