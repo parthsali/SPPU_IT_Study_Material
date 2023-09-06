@@ -51,8 +51,8 @@
 
 ### Previous Year Papers
 
-- [Insem](https://drive.google.com/drive/folders/12EVtlUCOijs-BPQAKEqGVTEaGYTZ5uGl)
-- [Endsem](https://drive.google.com/drive/folders/1v-bYVV4w9EftTbOdcxsolTp200FdZTcZ)
+- [Insem](https://drive.google.com/drive/folders/1rZ7GbB30wYNHTqT1SmmYON0VkwKtpxk0)
+- [Endsem](https://drive.google.com/drive/folders/1fqZAwadNlxBTbsmC5DulzNT3Muyzm1Ww)
 
 #### [HCI-Decode](https://drive.google.com/drive/folders/1HSKPQmwXpKIIZB5BykfmY7ZWQcoCRcDq)
 
