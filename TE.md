@@ -92,7 +92,8 @@
 
 #### _Class Notes_
 
-- [Unit-01 & 02](https://drive.google.com/drive/folders/1D4X7A6d5uR4vqqPRDOiHFeGodxYd583V)
+- [Unit-01](https://drive.google.com/drive/folders/1D4X7A6d5uR4vqqPRDOiHFeGodxYd583V)
+- [Unit-02](https://drive.google.com/drive/folders/1cDcL-X6erxqWJpVJ6NlZOuMSTwir0D6E)
 
 <!-- - [Unit-02](https://drive.google.com/drive/folders/1eBuOZJF79RC4rjSF6zlPhJGahW1zc9OZ)
 - [Unit-03](https://drive.google.com/drive/folders/1JNdF1tQC05qDb3Lx_P89aM7CjMs1kzJm)
@@ -106,6 +107,8 @@
 - [Endsem](https://drive.google.com/drive/folders/1YW1eMvtzQLo68j0re6H5HJJr0nuKCCCC)
 
 #### [ML-Decode](https://drive.google.com/drive/folders/1IfFWTzVsodsw17fmvn4Lzs5eRBC-bhBB)
+#### [ML-Technical](https://drive.google.com/file/d/1GXM-BiRMaxc6clBbb4daPrGnfKhFHCZl/view)
+
 
 <hr>
 <h3 id='DAA'>Design and Analysis of Algorithm</h3>
