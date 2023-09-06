@@ -12,4 +12,8 @@
 
 <hr>
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=parthsali/SPPU_IT_Study_Material&type=Date)](https://star-history.com/#parthsali/SPPU_IT_Study_Material&Date)
+
 <p align='center'>Visitors Count <br><img align="center" alt="Repo Visitors" src="https://profile-counter.glitch.me/parthsali/count.svg"/></p>
