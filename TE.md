@@ -82,6 +82,8 @@
 - [Insem](https://drive.google.com/drive/folders/12gaRvwux43ImiX8OkgU0gu67p_yU_NA9)
 - [Endsem](https://drive.google.com/drive/folders/12ixEjEIxVCjUb6s14K654rNRFF9nPDI3)
 
+#### [TOC-Decode](https://drive.google.com/drive/folders/1WtYoUhw5l3i0PFh_0ozHUoDXjRGoohg5)
+
 #### [TOC-Tech Max](https://drive.google.com/file/d/15l8WqE49ZYJp2WpsIZHoeCNkDE44QT3D/)
 
 #### [TOC-Technical Publications](https://drive.google.com/file/d/15TFeN859r_Bk02NicNettW3wQPTA8mYr/)
