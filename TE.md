@@ -125,6 +125,11 @@
 - [Unit-05](https://drive.google.com/drive/folders/1yT0G_oziaPozZkDGEPbNn1LiQBgHISCq)
 - [Unit-06](https://drive.google.com/drive/folders/1HeFSYyGaeLBv5y2A-Co2ani5HZMTBshr) -->
 
+### Previous Year Papers
+
+<!-- - [Insem](https://drive.google.com/drive/folders/1rZ7GbB30wYNHTqT1SmmYON0VkwKtpxk0) -->
+- [Endsem](https://drive.google.com/drive/folders/1EPW3IcQbTWg6VGxCFHL7pj_RpQywVKyU)
+
 <hr>
 
 <h3 id='ADBMS'>Advanced Database Management System</h3>
