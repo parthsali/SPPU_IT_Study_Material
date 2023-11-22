@@ -126,3 +126,15 @@
 - [Unit-06](https://drive.google.com/drive/folders/1HeFSYyGaeLBv5y2A-Co2ani5HZMTBshr) -->
 
 <hr>
+
+<h3 id='ADBMS'>Advanced Database Management System</h3>
+
+<!-- - [Unit-02](https://drive.google.com/drive/folders/1eBuOZJF79RC4rjSF6zlPhJGahW1zc9OZ)
+- [Unit-03](https://drive.google.com/drive/folders/1JNdF1tQC05qDb3Lx_P89aM7CjMs1kzJm)
+- [Unit-04](https://drive.google.com/drive/folders/1fVG4VoliRXxNOrwOINvhbqQTYJOznkvk)
+- [Unit-05](https://drive.google.com/drive/folders/1yT0G_oziaPozZkDGEPbNn1LiQBgHISCq)
+- [Unit-06](https://drive.google.com/drive/folders/1HeFSYyGaeLBv5y2A-Co2ani5HZMTBshr) -->
+
+#### [ADBMS-Techknowledge](https://drive.google.com/drive/folders/17vyvCZKV52B0V5EZA8laCuqelHLimUKi)
+
+<hr>
