@@ -135,6 +135,6 @@
 - [Unit-05](https://drive.google.com/drive/folders/1yT0G_oziaPozZkDGEPbNn1LiQBgHISCq)
 - [Unit-06](https://drive.google.com/drive/folders/1HeFSYyGaeLBv5y2A-Co2ani5HZMTBshr) -->
 
-#### [ADBMS-Techknowledge](https://drive.google.com/drive/folders/17vyvCZKV52B0V5EZA8laCuqelHLimUKi)
+#### [ADBMS-Techknowledge](https://drive.google.com/file/d/1RnqcN-q4zHICLz8jhLlCXjKZf5GkeqCY/view?usp=sharing)
 
 <hr>
