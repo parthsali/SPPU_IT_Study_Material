@@ -86,7 +86,7 @@
 - [Endsem](https://drive.google.com/drive/folders/1YW1eMvtzQLo68j0re6H5HJJr0nuKCCCC)
 
 #### [ML-Decode](https://drive.google.com/drive/folders/1IfFWTzVsodsw17fmvn4Lzs5eRBC-bhBB)
-#### [ML-Technical](https://drive.google.com/file/d/1GXM-BiRMaxc6clBbb4daPrGnfKhFHCZl/view)
+#### [ML-Technical-Unit-01:02](https://drive.google.com/file/d/11MSwcQJiHU8MAA-AO6wc55S3lp5A7Zoj/view)
 
 
 <hr>
