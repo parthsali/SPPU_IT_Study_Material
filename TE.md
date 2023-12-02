@@ -118,17 +118,18 @@
 #### _Class Notes_
 
 - [Unit-01 & 02](https://drive.google.com/drive/folders/1n6DiVtVoWxYAwPgAo4CKtRGRfSQxLuqM)
-
-<!-- - [Unit-02](https://drive.google.com/drive/folders/1eBuOZJF79RC4rjSF6zlPhJGahW1zc9OZ)
-- [Unit-03](https://drive.google.com/drive/folders/1JNdF1tQC05qDb3Lx_P89aM7CjMs1kzJm)
-- [Unit-04](https://drive.google.com/drive/folders/1fVG4VoliRXxNOrwOINvhbqQTYJOznkvk)
-- [Unit-05](https://drive.google.com/drive/folders/1yT0G_oziaPozZkDGEPbNn1LiQBgHISCq)
-- [Unit-06](https://drive.google.com/drive/folders/1HeFSYyGaeLBv5y2A-Co2ani5HZMTBshr) -->
+- [Unit-03](https://drive.google.com/drive/u/0/folders/1UncuNdfLv9jWwwNwPJULWIb994_kjECm)
+- [Unit-04](https://drive.google.com/drive/u/0/folders/1yRsAXjhmD4sOdb07AmPd4ezmdoQznuNz)
+- [Unit-05](https://drive.google.com/drive/u/0/folders/1y4F-C7g4x-IYx_R0G4iQK9u6yawcPJ4C)
+- [Unit-06](https://drive.google.com/drive/u/0/folders/1Gpzh5QvL8tJvwYxGQ06Fl3brXv7F3J-5)
 
 ### Previous Year Papers
 
 <!-- - [Insem](https://drive.google.com/drive/folders/1rZ7GbB30wYNHTqT1SmmYON0VkwKtpxk0) -->
 - [Endsem](https://drive.google.com/drive/folders/1EPW3IcQbTWg6VGxCFHL7pj_RpQywVKyU)
+
+
+#### [DAA-Technical](https://drive.google.com/file/d/1nBZDaAjhTcZy3O-1qLwU1rFjy5bJdWZG/view)
 
 <hr>
 
