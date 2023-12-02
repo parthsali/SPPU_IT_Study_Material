@@ -15,52 +15,7 @@
 |   **5**    |   **[DAA](#DAA)**   |
 |   **6**    | **[ADBMS](#ADBMS)** |
 
-<h3 id='OS'>Operating System</h3>
 
-#### _Class Notes_
-
-- [Unit-01](https://drive.google.com/drive/folders/10RGFxDsu85yJybzjgMyh1z4AU8GuHmWF)
-- [Unit-02](https://drive.google.com/drive/folders/1eBuOZJF79RC4rjSF6zlPhJGahW1zc9OZ)
-- [Unit-03](https://drive.google.com/drive/folders/1JNdF1tQC05qDb3Lx_P89aM7CjMs1kzJm)
-- [Unit-04](https://drive.google.com/drive/folders/1fVG4VoliRXxNOrwOINvhbqQTYJOznkvk)
-- [Unit-05](https://drive.google.com/drive/folders/1yT0G_oziaPozZkDGEPbNn1LiQBgHISCq)
-- [Unit-06](https://drive.google.com/drive/folders/1HeFSYyGaeLBv5y2A-Co2ani5HZMTBshr)
-
-### Previous Year Papers
-
-- [Insem](https://drive.google.com/drive/folders/12EVtlUCOijs-BPQAKEqGVTEaGYTZ5uGl)
-- [Endsem](https://drive.google.com/drive/folders/1v-bYVV4w9EftTbOdcxsolTp200FdZTcZ)
-
-#### [OS-Decode](https://drive.google.com/drive/folders/1kz4_sKMtytRWWaEa3DwGrJsi4mWXZz5k)
-
-#### [OS-Technical](https://drive.google.com/file/d/1FXj2l-_5_WVDufNysY4qpmZPyI7qyBs_)
-
-<hr>
-
-<h3 id='HCI'>Human Computer Interaction</h3>
-
-#### _Class Notes_
-
-- [Unit-01 & 02](https://drive.google.com/drive/folders/1WIqK1LR7BhUjEKMRZcOOufH8RK_ebEnm)
-
-<!-- - [Unit-02](https://drive.google.com/drive/folders/1eBuOZJF79RC4rjSF6zlPhJGahW1zc9OZ)
-- [Unit-03](https://drive.google.com/drive/folders/1JNdF1tQC05qDb3Lx_P89aM7CjMs1kzJm)
-- [Unit-04](https://drive.google.com/drive/folders/1fVG4VoliRXxNOrwOINvhbqQTYJOznkvk)
-- [Unit-05](https://drive.google.com/drive/folders/1yT0G_oziaPozZkDGEPbNn1LiQBgHISCq)
-- [Unit-06](https://drive.google.com/drive/folders/1HeFSYyGaeLBv5y2A-Co2ani5HZMTBshr) -->
-
-### Previous Year Papers
-
-- [Insem](https://drive.google.com/drive/folders/1rZ7GbB30wYNHTqT1SmmYON0VkwKtpxk0)
-- [Endsem](https://drive.google.com/drive/folders/1fqZAwadNlxBTbsmC5DulzNT3Muyzm1Ww)
-
-#### [HCI-Decode](https://drive.google.com/drive/folders/1HSKPQmwXpKIIZB5BykfmY7ZWQcoCRcDq)
-
-#### [HCI-Alan Dix](https://drive.google.com/file/d/13dDzbIXOFzGzvCevUsHoRToZclgyxHn9/)
-
-#### [HCI-Techknowledge](https://drive.google.com/file/d/13dDzbIXOFzGzvCevUsHoRToZclgyxHn9/)
-
-<hr>
 
 <h3 id='TOC'>Theory of Computation</h3>
 
@@ -90,6 +45,28 @@
 
 <hr>
 
+<h3 id='OS'>Operating System</h3>
+
+#### _Class Notes_
+
+- [Unit-01](https://drive.google.com/drive/folders/10RGFxDsu85yJybzjgMyh1z4AU8GuHmWF)
+- [Unit-02](https://drive.google.com/drive/folders/1eBuOZJF79RC4rjSF6zlPhJGahW1zc9OZ)
+- [Unit-03](https://drive.google.com/drive/folders/1JNdF1tQC05qDb3Lx_P89aM7CjMs1kzJm)
+- [Unit-04](https://drive.google.com/drive/folders/1fVG4VoliRXxNOrwOINvhbqQTYJOznkvk)
+- [Unit-05](https://drive.google.com/drive/folders/1yT0G_oziaPozZkDGEPbNn1LiQBgHISCq)
+- [Unit-06](https://drive.google.com/drive/folders/1HeFSYyGaeLBv5y2A-Co2ani5HZMTBshr)
+
+### Previous Year Papers
+
+- [Insem](https://drive.google.com/drive/folders/12EVtlUCOijs-BPQAKEqGVTEaGYTZ5uGl)
+- [Endsem](https://drive.google.com/drive/folders/1v-bYVV4w9EftTbOdcxsolTp200FdZTcZ)
+
+#### [OS-Decode](https://drive.google.com/drive/folders/1kz4_sKMtytRWWaEa3DwGrJsi4mWXZz5k)
+
+#### [OS-Technical](https://drive.google.com/file/d/1FXj2l-_5_WVDufNysY4qpmZPyI7qyBs_)
+
+<hr>
+
 <h3 id='ML'>Machine Learning</h3>
 
 #### _Class Notes_
@@ -113,6 +90,32 @@
 
 
 <hr>
+
+<h3 id='HCI'>Human Computer Interaction</h3>
+
+#### _Class Notes_
+
+- [Unit-01 & 02](https://drive.google.com/drive/folders/1WIqK1LR7BhUjEKMRZcOOufH8RK_ebEnm)
+
+<!-- - [Unit-02](https://drive.google.com/drive/folders/1eBuOZJF79RC4rjSF6zlPhJGahW1zc9OZ)
+- [Unit-03](https://drive.google.com/drive/folders/1JNdF1tQC05qDb3Lx_P89aM7CjMs1kzJm)
+- [Unit-04](https://drive.google.com/drive/folders/1fVG4VoliRXxNOrwOINvhbqQTYJOznkvk)
+- [Unit-05](https://drive.google.com/drive/folders/1yT0G_oziaPozZkDGEPbNn1LiQBgHISCq)
+- [Unit-06](https://drive.google.com/drive/folders/1HeFSYyGaeLBv5y2A-Co2ani5HZMTBshr) -->
+
+### Previous Year Papers
+
+- [Insem](https://drive.google.com/drive/folders/1rZ7GbB30wYNHTqT1SmmYON0VkwKtpxk0)
+- [Endsem](https://drive.google.com/drive/folders/1fqZAwadNlxBTbsmC5DulzNT3Muyzm1Ww)
+
+#### [HCI-Decode](https://drive.google.com/drive/folders/1HSKPQmwXpKIIZB5BykfmY7ZWQcoCRcDq)
+
+#### [HCI-Alan Dix](https://drive.google.com/file/d/13dDzbIXOFzGzvCevUsHoRToZclgyxHn9/)
+
+#### [HCI-Techknowledge](https://drive.google.com/file/d/13dDzbIXOFzGzvCevUsHoRToZclgyxHn9/)
+
+<hr>
+
 <h3 id='DAA'>Design and Analysis of Algorithm</h3>
 
 #### _Class Notes_
