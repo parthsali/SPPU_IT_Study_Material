@@ -112,8 +112,6 @@
 
 #### [HCI-Alan Dix](https://drive.google.com/file/d/13dDzbIXOFzGzvCevUsHoRToZclgyxHn9/)
 
-#### [HCI-Techknowledge](https://drive.google.com/file/d/13dDzbIXOFzGzvCevUsHoRToZclgyxHn9/)
-
 <hr>
 
 <h3 id='DAA'>Design and Analysis of Algorithm</h3>
