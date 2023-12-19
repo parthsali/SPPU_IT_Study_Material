@@ -2,6 +2,8 @@
 
 <p><img src="./meme.svg"></img></p>
 
+<p><img src="./meme.png"></img></p>
+
 > Click :star: if you like the repo. Pull Requests are highly appreciated.
 
 ## Join [Telegram Group](https://t.me/sppuinformationtechnology)
