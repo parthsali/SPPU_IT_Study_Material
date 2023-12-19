@@ -1,8 +1,6 @@
 <h1 align="center">SPPU IT Study Material</h1>
 
-<p><img src="./meme.svg"></img></p>
-
-<p><img src="./meme.png"></img></p>
+<p align='center'><img src="./meme.png"></img></p>
 
 > Click :star: if you like the repo. Pull Requests are highly appreciated.
 
