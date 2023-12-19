@@ -1,7 +1,7 @@
 <h1 align="center">SPPU IT Study Material</h1>
 
- <img src="meme.svg" align='center'></img>
- 
+[meme.svg](https://github.com/parthsali/SPPU_IT_Study_Material/blob/main/meme.svg)
+
 > Click :star: if you like the repo. Pull Requests are highly appreciated.
 
 ## Join [Telegram Group](https://t.me/sppuinformationtechnology)
