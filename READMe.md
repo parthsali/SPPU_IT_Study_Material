@@ -1,6 +1,6 @@
 <h1 align="center">SPPU IT Study Material</h1>
 
-[meme.svg](https://github.com/parthsali/SPPU_IT_Study_Material/blob/main/meme.svg)
+<p><img src="https://github.com/parthsali/SPPU_IT_Study_Material/blob/main/meme.svg"></img></p>
 
 > Click :star: if you like the repo. Pull Requests are highly appreciated.
 
