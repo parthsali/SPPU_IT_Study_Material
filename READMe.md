@@ -1,6 +1,6 @@
 <h1 align="center">SPPU IT Study Material</h1>
 
-![Meme Image]("./meme.png")
+![Meme Image](meme.png)
 > Click :star: if you like the repo. Pull Requests are highly appreciated.
 
 ## Join [Telegram Group](https://t.me/sppuinformationtechnology)
