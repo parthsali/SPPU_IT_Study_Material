@@ -1,5 +1,7 @@
 <h1 align="center">SE IT Study Material</h1>
 
+<p align='center'><img src="./meme2.png"></img></p>
+
 ## Curriculum for Second Year of Information Technology (2019 Course) - [Click Here](https://drive.google.com/file/d/1t4_NaxDorLXJOF7V8tJcCkBBUlcWZ3bf/view)
 
 ## [Semester-03 Study Material](#Semester-03)
