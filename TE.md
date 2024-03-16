@@ -200,6 +200,8 @@
 
 #### [DSBDA-Techknowledge](https://drive.google.com/drive/folders/1g_lAFo0AGLcu7QaC1yiDszE3RSoQLuis)
 
+<hr>
+
 <h3 id='WAD'>Web Application Development</h3>
 
 <!-- #### _Class Notes_
@@ -218,6 +220,8 @@
 - [Endsem](https://drive.google.com/drive/folders/1ze31FLG9oklv_egXJZZwaPt1eAA3MrXS)
 
 #### [WAD-TechNeo-Publication](https://drive.google.com/drive/folders/1_fROHsalTKeQggmKRGDvpt7Oql85zbU-)
+
+<hr>
 
 <h3 id='CC'>Cloud Computing</h3>
 
