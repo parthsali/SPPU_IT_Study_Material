@@ -1,8 +1,8 @@
 <h1 align="center">SPPU IT Study Material</h1>
 
-<p align='center'><img width="50%" src="./meme.png"></img></p>
-
 > Click :star: if you like the repo. Pull Requests are highly appreciated.
+
+### Hey guys, I really hope this repository is super helpful for you! If you're interested in exploring web development and new technologies, make sure to follow my page - [DeveloperFR](https://www.instagram.com/developerforreal/). Your support is greatly appreciated! 😊
 
 ## Join [Telegram Group](https://t.me/sppuinformationtechnology)
 
