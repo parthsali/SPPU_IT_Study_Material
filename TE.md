@@ -5,6 +5,7 @@
 ## Curriculum for Third Year of Information Technology (2019 Course) - [Click Here](https://drive.google.com/file/d/18N2TqFNEpuZjpM-ZJ8BbFOO50qqvxCkF/view)
 
 ## [Semester-05 Study Material](#Semester-05)
+## [Semester-06 Study Material](#Semester-06)
 
 <h1 id="Semester-05" align="center">Semester-05</h1>
 
@@ -147,3 +148,90 @@
 #### [ADBMS-Techknowledge](https://drive.google.com/file/d/1RnqcN-q4zHICLz8jhLlCXjKZf5GkeqCY/view?usp=sharing)
 
 <hr>
+
+## [Semester-06 Study Material](#Semester-06)
+
+<h1 id="Semester-06" align="center">Semester-06</h1>
+
+| **Sr. No** |     **Subject**     |
+| :--------: | :-----------------: |
+|   **1**    |   **[CNS](#CNS)**   |
+|   **2**    |    **[DSBDA](#DSBDA)**    |
+|   **3**    |    **[WAD](#WAD)**    |
+|   **4**    |   **[CC](#CC)**   |
+
+<h3 id='CNS'>Computer Network and Security</h3>
+
+<!-- #### _Class Notes_
+
+- [Unit-01](https://drive.google.com/drive/folders/10RGFxDsu85yJybzjgMyh1z4AU8GuHmWF)
+- [Unit-02](https://drive.google.com/drive/folders/1eBuOZJF79RC4rjSF6zlPhJGahW1zc9OZ)
+- [Unit-03](https://drive.google.com/drive/folders/1JNdF1tQC05qDb3Lx_P89aM7CjMs1kzJm)
+- [Unit-04](https://drive.google.com/drive/folders/1fVG4VoliRXxNOrwOINvhbqQTYJOznkvk)
+- [Unit-05](https://drive.google.com/drive/folders/1yT0G_oziaPozZkDGEPbNn1LiQBgHISCq)
+- [Unit-06](https://drive.google.com/drive/folders/1HeFSYyGaeLBv5y2A-Co2ani5HZMTBshr) -->
+
+
+### Previous Year Papers
+
+- [Insem](https://drive.google.com/drive/folders/1WKt4PvEf13Zu4aXbzDU40QZtKzTyE-BG)
+- [Endsem](https://drive.google.com/drive/folders/1lPUM4KWflE7AlZccw-AV6O9SJP6lswsK)
+
+#### [CNS-Technical-Publications](https://drive.google.com/drive/folders/12m2u0Q2Oe1v115qIQYPEyDuc3Wbhs85l)
+
+<hr>
+
+<h3 id='DSBDA'>Data Science and Big Data Analytics</h3>
+
+<!-- #### _Class Notes_
+
+- [Unit-01](https://drive.google.com/drive/folders/10RGFxDsu85yJybzjgMyh1z4AU8GuHmWF)
+- [Unit-02](https://drive.google.com/drive/folders/1eBuOZJF79RC4rjSF6zlPhJGahW1zc9OZ)
+- [Unit-03](https://drive.google.com/drive/folders/1JNdF1tQC05qDb3Lx_P89aM7CjMs1kzJm)
+- [Unit-04](https://drive.google.com/drive/folders/1fVG4VoliRXxNOrwOINvhbqQTYJOznkvk)
+- [Unit-05](https://drive.google.com/drive/folders/1yT0G_oziaPozZkDGEPbNn1LiQBgHISCq)
+- [Unit-06](https://drive.google.com/drive/folders/1HeFSYyGaeLBv5y2A-Co2ani5HZMTBshr) -->
+
+
+### Previous Year Papers
+
+- [Insem](https://drive.google.com/drive/folders/1Z9LB4pZq013j5opGFMs5nhi9WPDP98K5)
+- [Endsem](https://drive.google.com/drive/folders/1YrEP2lVnQOoXXdwSIYEcMDvck5kw04PV)
+
+#### [DSBDA-Techknowledge](https://drive.google.com/drive/folders/1g_lAFo0AGLcu7QaC1yiDszE3RSoQLuis)
+
+<h3 id='WAD'>Web Application Development</h3>
+
+<!-- #### _Class Notes_
+
+- [Unit-01](https://drive.google.com/drive/folders/10RGFxDsu85yJybzjgMyh1z4AU8GuHmWF)
+- [Unit-02](https://drive.google.com/drive/folders/1eBuOZJF79RC4rjSF6zlPhJGahW1zc9OZ)
+- [Unit-03](https://drive.google.com/drive/folders/1JNdF1tQC05qDb3Lx_P89aM7CjMs1kzJm)
+- [Unit-04](https://drive.google.com/drive/folders/1fVG4VoliRXxNOrwOINvhbqQTYJOznkvk)
+- [Unit-05](https://drive.google.com/drive/folders/1yT0G_oziaPozZkDGEPbNn1LiQBgHISCq)
+- [Unit-06](https://drive.google.com/drive/folders/1HeFSYyGaeLBv5y2A-Co2ani5HZMTBshr) -->
+
+
+### Previous Year Papers
+
+- [Insem](https://drive.google.com/drive/folders/1tYZ7cUc6KOckNSPXJv80zAAuf8qV3YE3)
+- [Endsem](https://drive.google.com/drive/folders/1ze31FLG9oklv_egXJZZwaPt1eAA3MrXS)
+
+#### [WAD-TechNeo-Publication](https://drive.google.com/drive/folders/1_fROHsalTKeQggmKRGDvpt7Oql85zbU-)
+
+<h3 id='CC'>Cloud Computing</h3>
+
+<!-- #### _Class Notes_
+
+- [Unit-01](https://drive.google.com/drive/folders/10RGFxDsu85yJybzjgMyh1z4AU8GuHmWF)
+- [Unit-02](https://drive.google.com/drive/folders/1eBuOZJF79RC4rjSF6zlPhJGahW1zc9OZ)
+- [Unit-03](https://drive.google.com/drive/folders/1JNdF1tQC05qDb3Lx_P89aM7CjMs1kzJm)
+- [Unit-04](https://drive.google.com/drive/folders/1fVG4VoliRXxNOrwOINvhbqQTYJOznkvk)
+- [Unit-05](https://drive.google.com/drive/folders/1yT0G_oziaPozZkDGEPbNn1LiQBgHISCq)
+- [Unit-06](https://drive.google.com/drive/folders/1HeFSYyGaeLBv5y2A-Co2ani5HZMTBshr) -->
+
+
+### Previous Year Papers
+
+- [Insem](https://drive.google.com/drive/folders/16Ic8ScNdkW0QhEOltqkJir7P57RSVkhs)
+- [Endsem](https://drive.google.com/drive/folders/1dgiG0w5Piy9jKR_DBF5sPI5sjpc5RQw5)
