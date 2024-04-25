@@ -1,6 +1,6 @@
 <h1 id="teit" align="center">TE IT Study Material</h1>
 
-<p align='center'><img width="50%" src="./meme2.png"></img></p>
+<p align='center'><img width="50%" src="https://i.postimg.cc/j2ftr5Gm/meme2-1.png"></img></p>
 
 ## Curriculum for Third Year of Information Technology (2019 Course) - [Click Here](https://drive.google.com/file/d/18N2TqFNEpuZjpM-ZJ8BbFOO50qqvxCkF/view)
 
