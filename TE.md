@@ -177,6 +177,8 @@
 - [Insem](https://drive.google.com/drive/folders/1WKt4PvEf13Zu4aXbzDU40QZtKzTyE-BG)
 - [Endsem](https://drive.google.com/drive/folders/1lPUM4KWflE7AlZccw-AV6O9SJP6lswsK)
 
+#### [CNS-Decode](https://drive.google.com/drive/folders/1JbAvABGTURWLnSmAw03PhdkhuBCpt388)
+
 #### [CNS-Technical-Publications](https://drive.google.com/drive/folders/12m2u0Q2Oe1v115qIQYPEyDuc3Wbhs85l)
 
 <hr>
@@ -198,6 +200,8 @@
 - [Insem](https://drive.google.com/drive/folders/1Z9LB4pZq013j5opGFMs5nhi9WPDP98K5)
 - [Endsem](https://drive.google.com/drive/folders/1YrEP2lVnQOoXXdwSIYEcMDvck5kw04PV)
 
+#### [DSBDA-Decode](https://drive.google.com/drive/folders/16Bz9zW0VAdd8jJUmsfF4vlqO22b3bukQ)
+
 #### [DSBDA-Techknowledge](https://drive.google.com/drive/folders/1g_lAFo0AGLcu7QaC1yiDszE3RSoQLuis)
 
 <hr>
@@ -218,6 +222,8 @@
 
 - [Insem](https://drive.google.com/drive/folders/1tYZ7cUc6KOckNSPXJv80zAAuf8qV3YE3)
 - [Endsem](https://drive.google.com/drive/folders/1ze31FLG9oklv_egXJZZwaPt1eAA3MrXS)
+
+#### [WAD-Decode](https://drive.google.com/drive/folders/1cfkVfY9H4AWQ2QMqeUbdZZVCckOyRwrQ)
 
 #### [WAD-TechNeo-Publication](https://drive.google.com/drive/folders/1_fROHsalTKeQggmKRGDvpt7Oql85zbU-)
 
