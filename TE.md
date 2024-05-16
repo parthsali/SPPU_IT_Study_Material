@@ -1,5 +1,9 @@
 <h1 id="teit" align="center">TE IT Study Material</h1>
 
+## Note: All the study material can now be accessed directly from our [SPPU IT Study Hub](https://studyhub.parthsali.tech). Your feedback and contributions are highly appreciated!
+
+<br>
+
 <p align='center'><img width="50%" src="https://i.postimg.cc/j2ftr5Gm/meme2-1.png"></img></p>
 
 ## Curriculum for Third Year of Information Technology (2019 Course) - [Click Here](https://drive.google.com/file/d/18N2TqFNEpuZjpM-ZJ8BbFOO50qqvxCkF/view)
