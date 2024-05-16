@@ -6,12 +6,7 @@
 
 > Click :star: if you like the repo. Pull Requests are highly appreciated.
 
-### Hey guys, I really hope this repository is super helpful for you! If you're interested in exploring web development and new technologies, make sure to follow my page - [DeveloperFR](https://www.instagram.com/developerforreal/). Your support is greatly appreciated! 😊
-
-## Join [Telegram Group](https://t.me/sppuinformationtechnology)
-
-### You can find the code for the practicals at this location: [link to the code repository](https://github.com/parthsali/SPPU_IT_Practicals).
-
+<p align='center'>**Note:** All the study material can now be accessed directly from our [SPPU IT Study Hub](https://studyhub.parthsali.tech). Your feedback and contributions are highly appreciated!</p>
 
 
 ## [Second Year Study Material](https://github.com/parthsali/SPPU_IT_Study_Material/blob/main/SE.md)
