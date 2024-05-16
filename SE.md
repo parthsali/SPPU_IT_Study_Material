@@ -1,6 +1,6 @@
 <h1 align="center">SE IT Study Material</h1>
 
-<br>
+
 
 ## Note: All the study material can now be accessed directly from our [SPPU IT Study Hub](https://studyhub.parthsali.tech). Your feedback and contributions are highly appreciated!
 
