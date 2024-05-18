@@ -6,7 +6,7 @@
 
 > Click :star: if you like the repo. Pull Requests are highly appreciated.
 
-## Note: All the study material can now be accessed directly from our [SPPU IT Study Hub](https://studyhub.parthsali.tech). Your feedback and contributions are highly appreciated!
+$${\color{green}Note\space :\space All\space the\space study\space material\space can\space now\space be\space accessed\space directly\space from\space our\space SPPU\space IT\space Study\space Hub.\space \space Your\space feedback\space and\space contributions\space are\space highly\space appreciated!} $$
 
 
 ## [Second Year Study Material](https://studyhub.parthsali.tech/docs/category/semester-04)
