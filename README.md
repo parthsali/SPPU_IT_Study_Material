@@ -9,9 +9,9 @@
 ## Note: All the study material can now be accessed directly from our [SPPU IT Study Hub](https://studyhub.parthsali.tech). Your feedback and contributions are highly appreciated!
 
 
-## [Second Year Study Material](https://github.com/parthsali/SPPU_IT_Study_Material/blob/main/SE.md)
+## [Second Year Study Material](https://studyhub.parthsali.tech/docs/category/semester-04)
 
-## [Third Year Study Material](https://github.com/parthsali/SPPU_IT_Study_Material/blob/main/TE.md)
+## [Third Year Study Material](https://studyhub.parthsali.tech/docs/category/semester-06)
 
 <hr>
 
