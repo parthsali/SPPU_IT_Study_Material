@@ -2,6 +2,12 @@
 
 $${\color{green}Note\space :\space All\space the\space study\space material\space can\space now\space be\space accessed\space directly\space from\space our\space SPPU\space IT\space Study\space Hub.} $$
 
+<p align='center'>
+  <a href="https://studyhub.parthsali.tech">
+    SPPU IT Study Hub
+  </a>
+</p>
+
 <br>
 
 <p align='center'><img width="50%" src="https://i.postimg.cc/j2ftr5Gm/meme2-1.png"></img></p>
