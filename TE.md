@@ -256,4 +256,4 @@ $${\color{green}Note\space :\space All\space the\space study\space material\spac
 - [Insem](https://drive.google.com/drive/folders/16Ic8ScNdkW0QhEOltqkJir7P57RSVkhs)
 - [Endsem](https://drive.google.com/drive/folders/1dgiG0w5Piy9jKR_DBF5sPI5sjpc5RQw5)
 
-#### [CC-Decode](https://drive.google.com/drive/folders/1KTYD81MENt302FTKL8Ew5Tqk9IsSMTLh)
+#### [CC-Technical-Publications](https://drive.google.com/drive/folders/1B4dljK5WYMyvKb1KgThXXuy-OTdVSS9l)
