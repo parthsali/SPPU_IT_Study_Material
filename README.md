@@ -9,7 +9,7 @@ $${\color{green}Note\space :\space All\space the\space study\space material\spac
 </p>
 
 <hr>
-<p align='center'><img width="50%" src="https://i.postimg.cc/VvJPW6f5/meme-1.png"></img></p>
+<p align='center'><img width="50%" src="https://www.parthsali.tech/assets/meme.png"></img></p>
 <hr>
 
 > Click :star: if you like the repo. Pull Requests are highly appreciated.
