@@ -3,7 +3,7 @@
 $${\color{green}Note\space :\space All\space the\space study\space material\space can\space now\space be\space accessed\space directly\space from\space our\space SPPU\space IT\space Study\space Hub.} $$
 
 <p align='center'>
-  <a href="https://studyhub.parthsali.tech">
+  <a href="https://sppustudyhub.vercel.app/">
     SPPU IT Study Hub
   </a>
 </p>
