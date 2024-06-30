@@ -17,9 +17,9 @@ $${\color{green}Note\space :\space All\space the\space study\space material\spac
 
 
 
-## [Second Year Study Material](https://sppustudyhub.vercel.app/docs/category/semester-03)
+## [Second Year Study Material](https://sppustudyhub.vercel.app)
 
-## [Third Year Study Material](https://sppustudyhub.vercel.app/docs/category/semester-05)
+## [Third Year Study Material](https://sppustudyhub.vercel.app)
 
 <hr>
 
