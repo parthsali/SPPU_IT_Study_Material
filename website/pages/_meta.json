@@ -1,0 +1,13 @@
+{
+  "index": "Introduction",
+  "about": {
+    "title": "About",
+    "type": "page"
+  },
+  "contact": {
+    "title": "Contact",
+    "type": "page"
+  },
+  "study-material": "Study Material",
+  "practicals": "Practicals"
+}

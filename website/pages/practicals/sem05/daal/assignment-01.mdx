@@ -1,0 +1,261 @@
+# Assignment-01
+
+## Title
+
+Implementation of Fractional and 0/1 Knapsack Problems using Greedy and Dynamic Programming Approaches
+
+## Theory
+
+The knapsack problem is a well-known optimization problem that comes in two main variants: the fractional knapsack problem and the 0/1 knapsack problem.
+
+- **Fractional Knapsack Problem**: In this variant, we can break items into smaller fractions and take any fraction of an item. The goal is to maximize the total profit without exceeding the given weight capacity. This problem can be solved efficiently using a greedy algorithm, which sorts items based on their profit-to-weight ratio and selects the items with the highest ratio first.
+
+- **0/1 Knapsack Problem**: In this variant, we cannot break items; we either take the whole item or leave it. This problem can be solved using dynamic programming, which builds a table to store the maximum profit for every possible weight limit from 0 to the given capacity.
+
+## Code Implementation
+
+### Fractional Knapsack Using Greedy Algorithm
+
+```cpp
+#include <bits/stdc++.h>
+#include <iomanip>
+using namespace std;
+
+void printTable(vector<vector<float>> items, bool isResult)
+{
+    const int cellWidth = 10;
+    cout << setw(cellWidth) << left << "Profit     |";
+    cout << setw(cellWidth) << left << "Weight     |";
+    if (isResult)
+        cout << setw(cellWidth) << left << "Fraction    |";
+    else
+        cout << setw(cellWidth) << left << "P/W        |";
+    cout << endl;
+
+    for (int i = 0; i < 3; ++i)
+        cout << "+----------+";
+
+    cout << endl;
+    for (int i = 0; i < items.size(); i++)
+    {
+        cout << setfill(' ') << setw(cellWidth) << left << items[i][1] << " |";
+        cout << setw(cellWidth) << left << items[i][2] << " |";
+        cout << setw(cellWidth) << left << items[i][0] << " |";
+        cout << endl;
+    }
+    cout << endl;
+}
+
+void takeInput(vector<vector<float>> &items, int &n, float &maxWeight)
+{
+    cout << "Enter number of items: ";
+    cin >> n;
+
+    for (int i = 0; i < n; i++)
+    {
+        float profit, weight, pw;
+        cout << "Enter profit for item " << i + 1 << ": ";
+        cin >> profit;
+        cout << "Enter weight for item " << i + 1 << ": ";
+        cin >> weight;
+        cout << endl;
+        pw = profit / weight;
+
+        vector<float> item;
+        item.push_back(pw);
+        item.push_back(profit);
+        item.push_back(weight);
+
+        items.push_back(item);
+    }
+
+    cout << "Enter maximum weight allowed: ";
+    cin >> maxWeight;
+    cout << endl;
+}
+
+int main()
+{
+    vector<vector<float>> items;
+    int n;
+    float maxWeight;
+    takeInput(items, n, maxWeight);
+
+    cout << "Entered Elements are: " << endl;
+    printTable(items, false);
+
+    sort(items.begin(), items.end(), greater<vector<float>>());
+
+    vector<vector<float>> result = items;
+    float profit = 0;
+
+    for (int i = 0; i < n; i++)
+    {
+        if (items[i][2] <= maxWeight)
+        {
+            maxWeight -= items[i][2];
+            profit += items[i][1];
+            result[i][0] = 1;
+        }
+        else
+        {
+            profit += items[i][1] * (maxWeight / items[i][2]);
+            result[i][0] = (maxWeight / items[i][2]);
+            break;
+        }
+    }
+
+    cout << "Final Result: " << endl;
+    printTable(result, true);
+    cout << "Final Profit: " << profit << endl;
+
+    return 0;
+}
+```
+
+### 0/1 Knapsack Using Dynamic Programming
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int knapSack(int W, vector<int> wt, vector<int> val, int n)
+{
+    vector<vector<int>> K(n + 1, vector<int>(W + 1));
+
+    for (int i = 0; i <= n; i++)
+    {
+        for (int w = 0; w <= W; w++)
+        {
+            if (i == 0 || w == 0)
+                K[i][w] = 0;
+            else if (wt[i - 1] <= w)
+                K[i][w] = max(val[i - 1] + K[i - 1][w - wt[i - 1]], K[i - 1][w]);
+            else
+                K[i][w] = K[i - 1][w];
+        }
+    }
+
+    return K[n][W];
+}
+
+int main()
+{
+    int n, W;
+    cout << "Enter the number of items: ";
+    cin >> n;
+    vector<int> val(n), wt(n);
+    for (int i = 0; i < n; i++)
+    {
+        cout << "Enter value for item " << i + 1 << ": ";
+        cin >> val[i];
+        cout << "Enter weight for item " << i + 1 << ": ";
+        cin >> wt[i];
+    }
+    cout << "Enter the maximum weight capacity: ";
+    cin >> W;
+
+    cout << "Maximum profit: " << knapSack(W, wt, val, n) << endl;
+
+    return 0;
+}
+```
+
+## Setup and Run
+
+### Fractional Knapsack Using Greedy Algorithm
+
+1. Save the code in a file named `fractional_knapsack.cpp`.
+2. Open a terminal and navigate to the directory containing the file.
+3. Compile the code using the following command:
+   ```sh
+   g++ -o fractional_knapsack fractional_knapsack.cpp
+   ```
+4. Run the executable:
+   ```sh
+   ./fractional_knapsack
+   ```
+
+### 0/1 Knapsack Using Dynamic Programming
+
+1. Save the code in a file named `zero_one_knapsack.cpp`.
+2. Open a terminal and navigate to the directory containing the file.
+3. Compile the code using the following command:
+   ```sh
+   g++ -o zero_one_knapsack zero_one_knapsack.cpp
+   ```
+4. Run the executable:
+   ```sh
+   ./zero_one_knapsack
+   ```
+
+## Example
+
+### Fractional Knapsack
+
+Input:
+
+```
+Enter number of items: 3
+Enter profit for item 1: 60
+Enter weight for item 1: 10
+Enter profit for item 2: 100
+Enter weight for item 2: 20
+Enter profit for item 3: 120
+Enter weight for item 3: 30
+Enter maximum weight allowed: 50
+```
+
+Output:
+
+```
+Entered Elements are:
+Profit     |Weight     |P/W        |
++----------+----------+----------+
+60         |10         |6         |
+100        |20         |5         |
+120        |30         |4         |
+
+Final Result:
+Profit     |Weight     |Fraction   |
++----------+----------+----------+
+60         |10         |1         |
+100        |20         |1         |
+120        |30         |0.666667  |
+
+Final Profit: 240
+```
+
+### 0/1 Knapsack
+
+Input:
+
+```
+Enter the number of items: 3
+Enter value for item 1: 60
+Enter weight for item 1: 10
+Enter value for item 2: 100
+Enter weight for item 2: 20
+Enter value for item 3: 120
+Enter weight for item 3: 30
+Enter the maximum weight capacity: 50
+```
+
+Output:
+
+```
+Maximum profit: 220
+```
+
+## Explanation
+
+The example demonstrates the difference between the fractional knapsack and 0/1 knapsack problems:
+
+- The fractional knapsack problem allows taking fractions of items to maximize profit, resulting in a higher profit (240) compared to the 0/1 knapsack problem (220).
+- The 0/1 knapsack problem uses dynamic programming to ensure the optimal solution by considering all combinations of items, whereas the greedy algorithm used in the fractional knapsack does not guarantee the optimal solution for the 0/1 knapsack problem.
+
+---
+
+## Contact
+
+For any questions or clarifications, please contact Parth Sali at parthsali04@gmail.com.

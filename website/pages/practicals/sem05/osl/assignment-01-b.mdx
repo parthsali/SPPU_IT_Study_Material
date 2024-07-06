@@ -1,0 +1,214 @@
+# Assignment-01-B
+
+## Title
+
+Address Book Management System
+
+## Theory
+
+An Address Book Management System is a program designed to store, retrieve, and manage contact information. This includes functionalities like creating an address book, viewing existing records, inserting new records, deleting records, searching for specific records, and updating existing records. This script is implemented in Bash, a Unix shell and command language, to demonstrate basic file operations and user interaction through command-line interface.
+
+## Code Implementation
+
+### `main.sh` Script
+
+```bash
+#!/bin/bash
+
+# Function to check if the address book file exists
+fileExists(){
+    if [ ! -e Address_Book.txt ]; then
+        return 1
+    fi
+}
+
+# Function to create the address book file
+createAddressBook(){
+    if [ ! -e Address_Book.txt ]; then
+        touch Address_Book.txt
+    fi
+    echo "| Name | Email | Phone Number | Address |" > Address_Book.txt
+}
+
+# Function to view the address book
+viewAddressBook(){
+    if [ ! -e Address_Book.txt ]; then
+        echo "Address Book is Not Created. First Create Address Book"
+        return
+    fi
+
+    if [ -s Address_Book.txt ]; then
+        cat Address_Book.txt
+    else
+        echo "Address Book is Empty"
+    fi
+}
+
+# Function to insert a record into the address book
+insertRecord(){
+    if [ ! -e Address_Book.txt ]; then
+        echo "Address Book is Not Created. First Create Address Book"
+        return
+    fi
+
+    read -p "Enter Name: " name
+    read -p "Enter Email: " email
+    read -p "Enter Phone Number: " phone
+    read -p "Enter Address: " address
+
+    echo "| $name | $email | $phone | $address |" >> Address_Book.txt
+}
+
+# Function to delete a record from the address book
+deleteRecord(){
+    if [ ! -e Address_Book.txt ]; then
+        echo "Address Book is Not Created. First Create Address Book"
+        return
+    fi
+
+    read -p "Enter Name: " name
+    if [ -z "$(grep -i $name Address_Book.txt)" ]; then
+        echo "Record Not Found"
+    else
+        sed -i "/$name/d" Address_Book.txt
+    fi
+}
+
+# Function to search for a record in the address book
+searchRecord(){
+    if [ ! -e Address_Book.txt ]; then
+        echo "Address Book is Not Created. First Create Address Book"
+        return
+    fi
+
+    read -p "Enter Name: " name
+    if [ -z "$(grep -i $name Address_Book.txt)" ]; then
+        echo "Record Not Found"
+    else
+        grep -i $name Address_Book.txt
+    fi
+}
+
+# Function to update a record in the address book
+updateRecord(){
+    if [ ! -e Address_Book.txt ]; then
+        echo "Address Book is Not Created. First Create Address Book"
+        return
+    fi
+
+    read -p "Enter Name: " name
+
+    if [ -z "$(grep -i $name Address_Book.txt)" ]; then
+        echo "Record Not Found"
+        return
+    fi
+
+    sed -i "/$name/d" Address_Book.txt
+    read -p "Enter Email: " email
+    read -p "Enter Phone Number: " phone
+    read -p "Enter Address: " address
+    echo "| $name | $email | $phone | $address |" >> Address_Book.txt
+}
+
+# Main function to display the menu and handle user input
+main(){
+    while true; do
+        echo -e "\nWelcome to Address Book\n"
+        echo "1. Create Address Book"
+        echo "2. View Address Book"
+        echo "3. Insert Record"
+        echo "4. Delete Record"
+        echo "5. Search Record"
+        echo "6. Update Record"
+        echo -e "7. Exit\n"
+
+        read -p "Enter Choice: " choice
+
+        case $choice in
+            1)
+            createAddressBook
+            ;;
+            2)
+            viewAddressBook
+            ;;
+            3)
+            insertRecord
+            ;;
+            4)
+            deleteRecord
+            ;;
+            5)
+            searchRecord
+            ;;
+            6)
+            updateRecord
+            ;;
+            7)
+            exit
+            ;;
+            *)
+            echo "Invalid Choice"
+            ;;
+        esac
+    done
+}
+
+# Run the main function
+main
+```
+
+## Setup and Run
+
+### Step 1: Save the Script
+
+Save the script as `main.sh`.
+
+### Step 2: Make the Script Executable
+
+Before running the script, you need to make it executable. Open your terminal and run:
+
+```sh
+chmod +x main.sh
+```
+
+### Step 3: Run the Script
+
+Now you can run the script by executing:
+
+```sh
+./main.sh
+```
+
+## Example Usage
+
+After running the script, you will see the menu options:
+
+```
+Welcome to Address Book
+
+1. Create Address Book
+2. View Address Book
+3. Insert Record
+4. Delete Record
+5. Search Record
+6. Update Record
+7. Exit
+
+Enter Choice:
+```
+
+- **Create Address Book**: Choose option 1 to create the address book.
+- **View Address Book**: Choose option 2 to view the contents of the address book.
+- **Insert Record**: Choose option 3 to add a new record to the address book.
+- **Delete Record**: Choose option 4 to delete a record from the address book.
+- **Search Record**: Choose option 5 to search for a specific record by name.
+- **Update Record**: Choose option 6 to update a record in the address book.
+- **Exit**: Choose option 7 to exit the program.
+
+The script allows for basic address book operations, storing data in a text file called `Address_Book.txt`. This solution can be further extended with more features and improved error handling as needed.
+
+---
+
+## Contact
+
+For any questions or clarifications, please contact Parth Sali at parthsali04@gmail.com.

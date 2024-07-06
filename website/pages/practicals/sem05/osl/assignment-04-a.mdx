@@ -1,0 +1,124 @@
+# Assignment-04-A
+
+## Title
+
+Thread synchronization using counting semaphores. Application to demonstrate: producer-consumer problem with counting semaphores and mutex.
+
+## Theory
+
+Counting semaphores are a synchronization primitive used to control access to a resource that has multiple instances available. In the context of the producer-consumer problem, counting semaphores can be employed to ensure that the producer does not produce more items than the available space in the buffer, and the consumer does not consume items from an empty buffer.
+
+## Code Implementation
+
+### `producer_consumer.c`
+
+```c
+#include <stdio.h>
+#include <pthread.h>
+#include <semaphore.h>
+#include <unistd.h>
+
+#define BUFFER_SIZE 5
+#define PRODUCER_THREADS 3
+#define CONSUMER_THREADS 2
+#define MAX_ITEMS 10
+
+sem_t empty, full;
+pthread_mutex_t mutex;
+int buffer[BUFFER_SIZE];
+int in = 0, out = 0, item = 0;
+
+void *producer(void *arg) {
+    int id = *((int *) arg);
+    while (1) {
+        sleep(rand() % 3);  // Simulate production time
+        sem_wait(&empty);
+        pthread_mutex_lock(&mutex);
+        buffer[in] = item++;
+        printf("Producer %d produced item %d\n", id, buffer[in]);
+        in = (in + 1) % BUFFER_SIZE;
+        pthread_mutex_unlock(&mutex);
+        sem_post(&full);
+    }
+    pthread_exit(NULL);
+}
+
+void *consumer(void *arg) {
+    int id = *((int *) arg);
+    while (1) {
+        sleep(rand() % 3);  // Simulate consumption time
+        sem_wait(&full);
+        pthread_mutex_lock(&mutex);
+        int consumed_item = buffer[out];
+        printf("Consumer %d consumed item %d\n", id, consumed_item);
+        out = (out + 1) % BUFFER_SIZE;
+        pthread_mutex_unlock(&mutex);
+        sem_post(&empty);
+    }
+    pthread_exit(NULL);
+}
+
+int main() {
+    pthread_t producer_threads[PRODUCER_THREADS], consumer_threads[CONSUMER_THREADS];
+    int producer_ids[PRODUCER_THREADS], consumer_ids[CONSUMER_THREADS];
+
+    // Initialize semaphores and mutex
+    sem_init(&empty, 0, BUFFER_SIZE);
+    sem_init(&full, 0, 0);
+    pthread_mutex_init(&mutex, NULL);
+
+    // Create producer threads
+    for (int i = 0; i < PRODUCER_THREADS; i++) {
+        producer_ids[i] = i + 1;
+        pthread_create(&producer_threads[i], NULL, producer, &producer_ids[i]);
+    }
+
+    // Create consumer threads
+    for (int i = 0; i < CONSUMER_THREADS; i++) {
+        consumer_ids[i] = i + 1;
+        pthread_create(&consumer_threads[i], NULL, consumer, &consumer_ids[i]);
+    }
+
+    // Join threads
+    for (int i = 0; i < PRODUCER_THREADS; i++) {
+        pthread_join(producer_threads[i], NULL);
+    }
+    for (int i = 0; i < CONSUMER_THREADS; i++) {
+        pthread_join(consumer_threads[i], NULL);
+    }
+
+    // Destroy semaphores and mutex
+    sem_destroy(&empty);
+    sem_destroy(&full);
+    pthread_mutex_destroy(&mutex);
+
+    return 0;
+}
+```
+
+## Setup and Run
+
+1. Save the code as `producer_consumer.c`.
+2. Compile the program using any C compiler (e.g., gcc).
+3. Run the compiled executable file.
+4. Observe the producer and consumer threads producing and consuming items respectively.
+
+## Example
+
+```
+gcc -o producer_consumer producer_consumer.c -lpthread
+./producer_consumer
+```
+
+## Explanation
+
+- The program creates multiple producer and consumer threads that produce and consume items respectively from a shared buffer.
+- Counting semaphores (`empty` and `full`) are used to control the number of empty and full slots in the buffer, ensuring that producers do not produce more items than available space and consumers do not consume items from an empty buffer.
+- A mutex (`mutex`) is employed to protect critical sections of code where multiple threads may access shared variables concurrently, preventing race conditions.
+- Each producer thread produces items with random time intervals, and each consumer thread consumes items with random time intervals, demonstrating the synchronization of multiple threads using counting semaphores and mutex.
+
+---
+
+## Contact
+
+For any questions or clarifications, please contact Parth Sali at parthsali04@gmail.com.

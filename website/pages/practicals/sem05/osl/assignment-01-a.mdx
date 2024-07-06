@@ -1,0 +1,181 @@
+# Assignment-01-A
+
+## 1. **echo**
+
+The `echo` command is used to display a line of text or a variable value.
+
+```sh
+echo "Hello, World!"
+```
+
+## 2. **ls**
+
+The `ls` command lists directory contents.
+
+```sh
+ls
+ls -l  # long listing format
+ls -a  # all files including hidden files
+```
+
+## 3. **read**
+
+The `read` command is used to read input from the user.
+
+```sh
+echo "Enter your name: "
+read name
+echo "Hello, $name!"
+```
+
+## 4. **cat**
+
+The `cat` command concatenates and displays file content.
+
+```sh
+cat filename.txt
+cat file1.txt file2.txt > combined.txt
+```
+
+## 5. **touch**
+
+The `touch` command is used to create an empty file or update the timestamp of an existing file.
+
+```sh
+touch newfile.txt
+```
+
+## 6. **test**
+
+The `test` command checks file types and compares values.
+
+```sh
+test -f filename.txt && echo "File exists."
+```
+
+## 7. **Loops**
+
+### For Loop
+
+```sh
+for i in 1 2 3 4 5
+do
+  echo "Number: $i"
+done
+```
+
+### While Loop
+
+```sh
+counter=1
+while [ $counter -le 5 ]
+do
+  echo "Counter: $counter"
+  ((counter++))
+done
+```
+
+## 8. **Arithmetic Comparison**
+
+```sh
+a=5
+b=10
+if [ $a -lt $b ]
+then
+  echo "$a is less than $b"
+fi
+```
+
+## 9. **Conditional Loops**
+
+### If-Else
+
+```sh
+if [ $a -lt $b ]
+then
+  echo "$a is less than $b"
+else
+  echo "$a is not less than $b"
+fi
+```
+
+### Case Statement
+
+```sh
+echo "Enter a number between 1 and 3:"
+read num
+case $num in
+  1) echo "You entered one.";;
+  2) echo "You entered two.";;
+  3) echo "You entered three.";;
+  *) echo "Invalid number.";;
+esac
+```
+
+## 10. **grep**
+
+The `grep` command searches for patterns in files.
+
+```sh
+grep "pattern" file.txt
+grep -i "pattern" file.txt  # case insensitive
+```
+
+## 11. **sed**
+
+The `sed` command is a stream editor used for basic text transformations.
+
+```sh
+sed 's/old/new/' file.txt  # replace first occurrence of 'old' with 'new'
+sed 's/old/new/g' file.txt  # replace all occurrences of 'old' with 'new'
+```
+
+## Practical Examples
+
+```sh
+# Create files
+touch file1.txt file2.txt
+
+# List files in long format
+ls -l
+
+# Read user input
+echo "Enter your favorite color: "
+read color
+echo "Your favorite color is $color."
+
+# Concatenate file contents
+echo "Hello" > file1.txt
+echo "World" > file2.txt
+cat file1.txt file2.txt > combined.txt
+cat combined.txt
+
+# Conditional and Arithmetic Comparison
+a=3
+b=7
+if [ $a -lt $b ]
+then
+  echo "$a is less than $b"
+fi
+
+# Loop through numbers
+for i in {1..5}
+do
+  echo "Number: $i"
+done
+
+# Search pattern in a file
+echo "apple" > fruits.txt
+echo "banana" >> fruits.txt
+grep "apple" fruits.txt
+
+# Substitute text in a file
+echo "The sky is blue." > sentence.txt
+sed 's/blue/clear/' sentence.txt
+```
+
+---
+
+## Contact
+
+For any questions or clarifications, please contact Parth Sali at parthsali04@gmail.com.
