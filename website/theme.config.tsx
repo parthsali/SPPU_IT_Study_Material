@@ -22,7 +22,7 @@ const config: DocsThemeConfig = {
     link: "https://github.com/parthsali/SPPU_IT_Study_Material",
   },
   docsRepositoryBase:
-    "https://github.com/parthsali/SPPU_IT_Study_Hub/tree/main",
+    "https://github.com/parthsali/SPPU_IT_Study_Hub/tree/main/website",
   footer: {
     component: Footer,
   },
