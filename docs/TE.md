@@ -1,7 +1,5 @@
 <h1 id="teit" align="center">TE IT Study Material</h1>
 
-$${\color{green}Note\space :\space All\space the\space study\space material\space can\space now\space be\space accessed\space directly\space from\space our\space SPPU\space IT\space Study\space Hub.} $$
-
 <p align='center'>
   <a href="https://sppustudyhub.vercel.app/">
     SPPU IT Study Hub
@@ -15,6 +13,7 @@ $${\color{green}Note\space :\space All\space the\space study\space material\spac
 ## Curriculum for Third Year of Information Technology (2019 Course) - [Click Here](https://drive.google.com/file/d/18N2TqFNEpuZjpM-ZJ8BbFOO50qqvxCkF/view)
 
 ## [Semester-05 Study Material](#Semester-05)
+
 ## [Semester-06 Study Material](#Semester-06)
 
 <h1 id="Semester-05" align="center">Semester-05</h1>
@@ -27,8 +26,6 @@ $${\color{green}Note\space :\space All\space the\space study\space material\spac
 |   **4**    |   **[HCI](#HCI)**   |
 |   **5**    |   **[DAA](#DAA)**   |
 |   **6**    | **[ADBMS](#ADBMS)** |
-
-
 
 <h3 id='TOC'>Theory of Computation</h3>
 
@@ -99,8 +96,8 @@ $${\color{green}Note\space :\space All\space the\space study\space material\spac
 - [Endsem](https://drive.google.com/drive/folders/1YW1eMvtzQLo68j0re6H5HJJr0nuKCCCC)
 
 #### [ML-Decode](https://drive.google.com/drive/folders/1IfFWTzVsodsw17fmvn4Lzs5eRBC-bhBB)
-#### [ML-Technical-Unit-01:02](https://drive.google.com/file/d/11MSwcQJiHU8MAA-AO6wc55S3lp5A7Zoj/view)
 
+#### [ML-Technical-Unit-01:02](https://drive.google.com/file/d/11MSwcQJiHU8MAA-AO6wc55S3lp5A7Zoj/view)
 
 <hr>
 
@@ -140,8 +137,8 @@ $${\color{green}Note\space :\space All\space the\space study\space material\spac
 ### Previous Year Papers
 
 <!-- - [Insem](https://drive.google.com/drive/folders/1rZ7GbB30wYNHTqT1SmmYON0VkwKtpxk0) -->
-- [Endsem](https://drive.google.com/drive/folders/1EPW3IcQbTWg6VGxCFHL7pj_RpQywVKyU)
 
+- [Endsem](https://drive.google.com/drive/folders/1EPW3IcQbTWg6VGxCFHL7pj_RpQywVKyU)
 
 #### [DAA-Technical](https://drive.google.com/file/d/1nBZDaAjhTcZy3O-1qLwU1rFjy5bJdWZG/view)
 
@@ -166,9 +163,9 @@ $${\color{green}Note\space :\space All\space the\space study\space material\spac
 | **Sr. No** |     **Subject**     |
 | :--------: | :-----------------: |
 |   **1**    |   **[CNS](#CNS)**   |
-|   **2**    |    **[DSBDA](#DSBDA)**    |
-|   **3**    |    **[WAD](#WAD)**    |
-|   **4**    |   **[CC](#CC)**   |
+|   **2**    | **[DSBDA](#DSBDA)** |
+|   **3**    |   **[WAD](#WAD)**   |
+|   **4**    |    **[CC](#CC)**    |
 
 <h3 id='CNS'>Computer Network and Security</h3>
 
@@ -180,7 +177,6 @@ $${\color{green}Note\space :\space All\space the\space study\space material\spac
 - [Unit-04](https://drive.google.com/drive/folders/1fVG4VoliRXxNOrwOINvhbqQTYJOznkvk)
 - [Unit-05](https://drive.google.com/drive/folders/1yT0G_oziaPozZkDGEPbNn1LiQBgHISCq)
 - [Unit-06](https://drive.google.com/drive/folders/1HeFSYyGaeLBv5y2A-Co2ani5HZMTBshr) -->
-
 
 ### Previous Year Papers
 
@@ -204,7 +200,6 @@ $${\color{green}Note\space :\space All\space the\space study\space material\spac
 - [Unit-05](https://drive.google.com/drive/folders/1yT0G_oziaPozZkDGEPbNn1LiQBgHISCq)
 - [Unit-06](https://drive.google.com/drive/folders/1HeFSYyGaeLBv5y2A-Co2ani5HZMTBshr) -->
 
-
 ### Previous Year Papers
 
 - [Insem](https://drive.google.com/drive/folders/1Z9LB4pZq013j5opGFMs5nhi9WPDP98K5)
@@ -227,7 +222,6 @@ $${\color{green}Note\space :\space All\space the\space study\space material\spac
 - [Unit-05](https://drive.google.com/drive/folders/1yT0G_oziaPozZkDGEPbNn1LiQBgHISCq)
 - [Unit-06](https://drive.google.com/drive/folders/1HeFSYyGaeLBv5y2A-Co2ani5HZMTBshr) -->
 
-
 ### Previous Year Papers
 
 - [Insem](https://drive.google.com/drive/folders/1tYZ7cUc6KOckNSPXJv80zAAuf8qV3YE3)
@@ -249,7 +243,6 @@ $${\color{green}Note\space :\space All\space the\space study\space material\spac
 - [Unit-04](https://drive.google.com/drive/folders/1fVG4VoliRXxNOrwOINvhbqQTYJOznkvk)
 - [Unit-05](https://drive.google.com/drive/folders/1yT0G_oziaPozZkDGEPbNn1LiQBgHISCq)
 - [Unit-06](https://drive.google.com/drive/folders/1HeFSYyGaeLBv5y2A-Co2ani5HZMTBshr) -->
-
 
 ### Previous Year Papers
 
