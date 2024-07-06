@@ -7,7 +7,7 @@
 </p>
 
 <hr>
-<p align='center'><img width="50%" src="https://www.parthsali.tech/assets/meme.png"></img></p>
+<p align='center'><img width="50%" src="https://www.parthsali.tech/meme.png"></img></p>
 <hr>
 
 > Click :star: if you like the repo. Pull Requests are highly appreciated.
