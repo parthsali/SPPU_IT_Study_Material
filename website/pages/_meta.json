@@ -9,5 +9,13 @@
     "type": "page"
   },
   "study-material": "Study Material",
-  "practicals": "Practicals"
+  "practicals": "Practicals",
+  "faq": "FAQs",
+  "support": {
+    "title": "Support",
+    "type": "page"
+  },
+  "disclaimer": "Disclaimer",
+  "privacy-policy": "Privacy Policy",
+  "terms": "Terms of Service"
 }
