@@ -8,13 +8,13 @@
     "title": "Contact",
     "type": "page"
   },
-  "study-material": "Study Material",
-  "practicals": "Practicals",
-  "faq": "FAQs",
   "support": {
     "title": "Support",
     "type": "page"
   },
+  "study-material": "Study Material",
+  "practicals": "Practicals",
+  "faq": "FAQs",
   "disclaimer": "Disclaimer",
   "privacy-policy": "Privacy Policy",
   "terms": "Terms of Service"
