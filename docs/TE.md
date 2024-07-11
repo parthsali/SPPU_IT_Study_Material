@@ -8,7 +8,7 @@
 
 <br>
 
-<p align='center'><img width="50%" src="https://www.parthsali.tech/meme1.png"></img></p>
+<p align='center'><img width="50%" src="https://www.parthsali.me/meme1.png"></img></p>
 
 ## Curriculum for Third Year of Information Technology (2019 Course) - [Click Here](https://drive.google.com/file/d/18N2TqFNEpuZjpM-ZJ8BbFOO50qqvxCkF/view)
 
