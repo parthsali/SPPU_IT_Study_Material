@@ -4,6 +4,8 @@
   <a href="https://sppustudyhub.vercel.app/">
     SPPU IT Study Hub
   </a>
+
+  **Join our Telegram group [here!](https://t.me/sppuinformationtechnology)**
 </p>
 
 <br>
