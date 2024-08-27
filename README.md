@@ -6,6 +6,9 @@
   </a>
 </p>
 
+
+**Join our Telegram group [here!](https://t.me/sppuinformationtechnology)**
+
 <hr>
 <p align='center'><img width="50%" src="https://www.parthsali.me/meme.png"></img></p>
 <hr>
