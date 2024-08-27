@@ -5,7 +5,6 @@
     SPPU IT Study Hub
   </a>
 
-  <p>Join our Telegram group [here!](https://t.me/sppuinformationtechnology)</p>
 </p>
 
 <br>
