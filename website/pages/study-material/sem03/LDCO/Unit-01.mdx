@@ -1,0 +1,160 @@
+# Unit 1: Introduction to Digital Electronics
+
+## Table of Contents
+
+1. [Digital Logic Families](#digital-logic-families)
+   - Digital IC Characteristics
+   - TTL (Transistor-Transistor Logic)
+   - CMOS (Complementary Metal-Oxide Semiconductor)
+   - Comparison of TTL & CMOS
+2. [Signed Binary Number Representation and Arithmetic](#signed-binary-number-representation-and-arithmetic)
+   - Sign Magnitude
+   - 1’s Complement
+   - 2’s Complement
+   - Unsigned Binary Arithmetic (Addition, Subtraction, Multiplication, Division)
+   - Subtraction using 2’s Complement
+   - IEEE Standard 754 Floating Point Representation
+3. [Codes](#codes)
+   - Binary, BCD, Octal, Hexadecimal
+   - Excess-3 Code, Gray Code
+4. [Logic Minimization](#logic-minimization)
+   - Logic Functions: Statement, Truth Table, SOP, POS
+   - K-Map Simplification (up to 4 variables)
+
+---
+
+## Digital Logic Families
+
+Digital electronics deals with systems that process discrete signals, often represented as binary numbers (0s and 1s). To implement these systems, we use various **digital logic families**, which describe the underlying technology of logic gates and ICs (Integrated Circuits).
+
+### 1.1 Digital IC Characteristics
+
+- **Speed:** The time a logic gate takes to switch from one state to another (usually measured in nanoseconds).
+- **Power Consumption:** The amount of power consumed during operation (important for battery-powered devices).
+- **Fan-in and Fan-out:** Fan-in is the number of inputs a gate can handle, while fan-out is the number of gates that can be driven by the output of a gate.
+- **Noise Margin:** The tolerance of a logic circuit to noise before it misinterprets signals.
+
+### 1.2 TTL (Transistor-Transistor Logic)
+
+**TTL** is a type of digital logic family based on bipolar junction transistors. TTL logic gates are widely used due to their relatively fast speed and robust nature.
+
+- **Standard TTL Characteristics:**
+  - Fast switching speed (typically 10-30 ns).
+  - Moderate power consumption (about 10 mW per gate).
+  - Reliable and low-cost.
+- **Operation of TTL NAND Gate:**
+  The **NAND gate** in TTL logic uses multiple transistors in a layered configuration. When both inputs are HIGH (logic 1), the transistors conduct, and the output is LOW (logic 0). In any other input combination, the output is HIGH.
+
+### 1.3 CMOS (Complementary Metal-Oxide Semiconductor)
+
+**CMOS** logic gates are built using both p-type and n-type MOSFETs. This allows CMOS technology to have very low power consumption when the gates are not switching.
+
+- **Standard CMOS Characteristics:**
+  - Very low power consumption (less than 1 mW per gate).
+  - Slower speed than TTL but scalable with modern technologies.
+  - Higher input impedance, which reduces power consumption.
+- **Operation of CMOS NAND Gate:**
+  The **CMOS NAND gate** operates by switching p-channel and n-channel MOSFETs. When both inputs are HIGH, the p-channel transistors turn off and the output becomes LOW. For any other input combination, the output remains HIGH.
+
+### 1.4 Comparison of TTL & CMOS
+
+| Feature           | TTL                 | CMOS                                             |
+| ----------------- | ------------------- | ------------------------------------------------ |
+| Power Consumption | Higher              | Lower                                            |
+| Speed             | Moderate (10-30 ns) | Slower (older CMOS) but scalable with technology |
+| Noise Immunity    | Lower               | Higher                                           |
+| Cost              | Low                 | Moderate                                         |
+
+---
+
+## Signed Binary Number Representation and Arithmetic
+
+Binary number systems are at the heart of digital electronics. There are several ways to represent signed numbers in binary:
+
+### 2.1 Sign Magnitude
+
+In this method, the **most significant bit (MSB)** represents the sign (0 for positive, 1 for negative), while the remaining bits represent the magnitude.
+
+- **Example:**
+  - `+5` in 4-bit binary: `0101`
+  - `-5` in 4-bit binary: `1101`
+
+### 2.2 1’s Complement
+
+In 1’s complement, negative numbers are represented by flipping all the bits of the corresponding positive number.
+
+- **Example:**
+  - `+5` in 4-bit binary: `0101`
+  - `-5` in 1’s complement: `1010`
+
+### 2.3 2’s Complement
+
+In 2’s complement, negative numbers are represented by adding 1 to the 1’s complement representation of the number.
+
+- **Example:**
+  - `+5` in 4-bit binary: `0101`
+  - `-5` in 2’s complement: `1011`
+
+### 2.4 Unsigned Binary Arithmetic
+
+- **Addition:** Binary addition follows the same rules as decimal addition, with the possibility of carry-over.
+  - **Example:** `1011 + 1101 = 11000` (carry occurs)
+- **Subtraction using 2’s Complement:** Instead of directly subtracting, we add the 2’s complement of the number to be subtracted.
+
+  - **Example:**
+    - `5 - 3` in binary: `0101 + 1101 (2’s complement of 3)` = `0010`
+
+- **Multiplication and Division:** Binary multiplication and division follow the same logic as decimal systems but with powers of 2.
+
+### 2.5 IEEE 754 Floating Point Representation
+
+The **IEEE 754 Standard** is used for representing real numbers in computers, with fields for the sign, exponent, and fraction.
+
+- **Example:**
+  - `5.75` in IEEE 754 single-precision floating point would be `0 10000001 01110000000000000000000`.
+
+---
+
+## Codes
+
+Different **codes** are used to represent data in digital electronics. Some common types are:
+
+### 3.1 Binary, BCD, Octal, Hexadecimal
+
+- **Binary:** The fundamental code (base-2) with values `0` and `1`.
+- **BCD (Binary-Coded Decimal):** Represents each decimal digit in binary (e.g., `45` in BCD is `0100 0101`).
+- **Octal:** Base-8 system (digits 0-7).
+- **Hexadecimal:** Base-16 system (digits 0-9 and A-F).
+
+### 3.2 Excess-3 and Gray Code
+
+- **Excess-3 Code:** A binary code used for decimal digits, where each digit is represented by its corresponding 4-bit binary value, increased by 3.
+  - **Example:** `5` in excess-3 is `1000` (because `5 + 3 = 8`).
+- **Gray Code:** A binary code where two successive values differ in only one bit.
+  - **Example:** `Binary: 000, Gray Code: 000`; `Binary: 001, Gray Code: 001`
+
+---
+
+## Logic Minimization
+
+**Logic minimization** is the process of reducing the complexity of logic functions, making them more efficient to implement.
+
+### 4.1 Logic Functions
+
+- **Logic Statement:** Describes the output as a function of the input variables.
+- **Truth Table:** Lists all possible inputs and their corresponding outputs.
+- **SOP (Sum of Products):** A form of representing logic where the function is the sum of product terms (AND terms).
+- **POS (Product of Sums):** A form where the function is the product of sum terms (OR terms).
+
+### 4.2 K-Map Simplification (up to 4 variables)
+
+**Karnaugh Maps (K-Maps)** are used to simplify Boolean functions. They help in identifying and eliminating redundant logic terms.
+
+- **Example:**
+  - Given a truth table with 4 variables, the K-Map helps reduce it to its simplest form, reducing circuit complexity.
+
+---
+
+### Conclusion
+
+This unit covers the basics of **digital electronics**, including logic families (TTL, CMOS), binary arithmetic, common codes, and logic minimization techniques. Mastering these concepts is essential for understanding the fundamentals of digital systems and logic design.

@@ -1,0 +1,126 @@
+# Unit 2: Combinational Logic Design
+
+## Table of Contents
+
+1. [Design using SSI Chips](#design-using-ssi-chips)
+   - Code Converters
+   - Half-Adder and Full-Adder
+   - Half-Subtractor and Full-Subtractor
+   - n-bit Binary Adder
+2. [Introduction to MSI Chips](#introduction-to-msi-chips)
+   - Multiplexer (IC 74153)
+   - Demultiplexer (IC 74138)
+   - Decoder (IC 74238)
+   - Encoder (IC 74147)
+   - Binary Adder (IC 7483)
+3. [Design using MSI Chips](#design-using-msi-chips)
+   - BCD Adder & Subtractor (IC 7483)
+   - Implementation of Logic Functions (IC 74153 & IC 74138)
+
+---
+
+## Design Using SSI Chips
+
+**SSI (Small Scale Integration)** chips are digital integrated circuits that contain simple logic gates and can perform basic functions. When designing combinational logic circuits, these SSI chips can be used to build more complex systems like adders, subtractors, and code converters.
+
+### 1.1 Code Converters
+
+A **code converter** is a circuit that converts one binary code to another. For example, converting a **binary code** to a **BCD (Binary-Coded Decimal)** format or **Gray code**. These circuits are important in digital systems for encoding data efficiently.
+
+### 1.2 Half-Adder and Full-Adder
+
+- **Half-Adder:**  
+  A half-adder adds two single-bit binary numbers and produces a sum and a carry. The half-adder uses two logic gates: an XOR gate for the sum and an AND gate for the carry.
+
+  - **Sum = A ⊕ B**
+  - **Carry = A ∧ B**
+
+  Example: Adding `1` and `1` will result in a sum of `0` and a carry of `1`.
+
+- **Full-Adder:**  
+  A full-adder adds three binary numbers: two input bits and a carry from the previous digit. It also produces a sum and carry output. The full-adder is typically used to add multi-bit numbers.
+
+  - **Sum = A ⊕ B ⊕ Cin**
+  - **Carry = (A ∧ B) ∨ (Cin ∧ (A ⊕ B))**
+
+  Example: Adding `1 + 1 + 1` will give a sum of `1` and a carry of `1`.
+
+### 1.3 Half-Subtractor and Full-Subtractor
+
+- **Half-Subtractor:**  
+  A half-subtractor subtracts one binary number from another and produces a **difference** and a **borrow** output. The logic uses an XOR gate for the difference and an AND-NOT (A ∧ B') gate for the borrow.
+
+  - **Difference = A ⊕ B**
+  - **Borrow = A' ∧ B**
+
+- **Full-Subtractor:**  
+  A full-subtractor subtracts three inputs: two binary numbers and a borrow from the previous digit. It gives both a difference and a borrow output.
+
+  - **Difference = A ⊕ B ⊕ Bin**
+  - **Borrow = (A' ∧ B) ∨ (Bin ∧ (A ⊕ B))**
+
+### 1.4 n-bit Binary Adder
+
+An **n-bit binary adder** adds two binary numbers of n-bits. It’s constructed by connecting multiple full-adders in a chain where the carry output of one full-adder becomes the carry input for the next one. The most common example is a **4-bit binary adder** that adds two 4-bit binary numbers and outputs a 4-bit sum and a carry.
+
+---
+
+## Introduction to MSI Chips
+
+**MSI (Medium Scale Integration)** chips contain more complex logic circuits than SSI chips. They can perform multiple functions, such as multiplexing, decoding, and encoding, in one integrated circuit.
+
+### 2.1 Multiplexer (IC 74153)
+
+A **multiplexer (MUX)** is a combinational circuit that selects one of many input signals and forwards it to a single output. The selection is controlled by the select lines. The **IC 74153** is a 4-to-1 multiplexer, meaning it can select one out of four input signals based on two select lines.
+
+- **Function:** When select lines are set, only one of the input signals is passed to the output.
+
+### 2.2 Demultiplexer (IC 74138)
+
+A **demultiplexer (DEMUX)** is the opposite of a multiplexer. It takes one input signal and channels it to one of many outputs based on the select lines. The **IC 74138** is a 1-to-8 demultiplexer, which directs a single input to one of eight outputs.
+
+- **Function:** It can distribute data from one source to multiple devices.
+
+### 2.3 Decoder (IC 74238)
+
+A **decoder** is a circuit that takes a binary input and activates one specific output line. The **IC 74238** is a 3-to-8 line decoder, which means it takes a 3-bit input and activates one of eight outputs.
+
+- **Function:** Used in address decoding or selecting memory locations.
+
+### 2.4 Encoder (IC 74147)
+
+An **encoder** is the reverse of a decoder. It takes multiple input lines and converts them into a binary representation. The **IC 74147** is a 10-to-4 priority encoder, which means it converts 10 input lines to a 4-bit binary output based on priority.
+
+- **Function:** It helps in reducing the number of input lines.
+
+### 2.5 Binary Adder (IC 7483)
+
+The **IC 7483** is a **4-bit binary adder** that adds two 4-bit binary numbers and outputs a 4-bit sum and a carry. It is commonly used in circuits requiring arithmetic operations.
+
+- **Function:** Adds two binary numbers and outputs the sum and carry.
+
+---
+
+## Design Using MSI Chips
+
+MSI chips make designing more complex circuits easier. By combining these chips, you can perform tasks like BCD addition or logic function implementation.
+
+### 3.1 BCD Adder & Subtractor Using IC 7483
+
+A **BCD adder** adds two Binary-Coded Decimal numbers. The **IC 7483** can be used to add two 4-bit BCD numbers and handle carries. For subtraction, the 10's complement method is used.
+
+- **Example:** Adding `9 (1001)` and `6 (0110)` results in `15 (10101)`, but since BCD only allows digits 0-9, the result is adjusted to `5 (0101)` with a carry of `1`.
+
+### 3.2 Implementation of Logic Functions Using IC 74153 & IC 74138
+
+The **IC 74153 multiplexer** and **IC 74138 demultiplexer** can be used to implement logic functions.
+
+- **Using IC 74153 (MUX):** A logic function can be implemented by treating the inputs as select lines and setting the appropriate logic levels for the inputs.
+  - Example: To implement the function F(A, B) = A + B, connect the inputs and select lines appropriately to output the desired function.
+- **Using IC 74138 (DEMUX):** The demultiplexer can be used to route input data to different output lines, depending on the select lines, effectively implementing logic functions.
+
+---
+
+### Conclusion
+
+This unit introduces the design of combinational logic circuits using **SSI chips** like adders and subtractors and **MSI chips** like multiplexers, decoders, and encoders. Understanding how these chips work individually and in combination helps in creating efficient digital systems.
