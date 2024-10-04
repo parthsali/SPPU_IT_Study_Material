@@ -12,15 +12,8 @@ const config: DocsThemeConfig = {
         flexDirection: "row",
       }}
     >
-      <img
-        src="/logo.png"
-        alt="SPPU IT Study Hub logo"
-        width="30"
-        height="30"
-      />
-      <span style={{ marginLeft: "10px", fontSize: "20px" }}>
-        SPPU IT Study Hub
-      </span>
+      <img src="/logo.png" alt="LearnVerse Logo" width="30" height="30" />
+      <span style={{ marginLeft: "10px", fontSize: "20px" }}>LearnVerse</span>
     </div>
   ),
   project: {
