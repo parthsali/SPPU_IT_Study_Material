@@ -1,0 +1,259 @@
+# Unit 2: Classes, Objects, and Methods
+
+In this unit, we will delve deep into the fundamental concepts of classes, objects, and methods in Object-Oriented Programming (OOP). These concepts are crucial for creating structured and reusable code that is easy to maintain and understand. As we progress, we’ll explore visibility modifiers, encapsulation, memory management, method overloading, and other related topics. By the end of this unit, you will have a strong understanding of how to effectively utilize these OOP principles in Java.
+
+## 1. Creating a Class
+
+A class is a blueprint for creating objects, encapsulating data for the object and methods to manipulate that data. A class defines the properties (often referred to as data members or fields) and behaviors (methods or functions) that the objects created from the class will have.
+
+### Example:
+
+```java
+public class Car {
+    // Data members
+    String color;
+    String model;
+
+    // Constructor to initialize object
+    public Car(String color, String model) {
+        this.color = color;
+        this.model = model;
+    }
+}
+```
+
+In the above example, the `Car` class has two data members: `color` and `model`. The class also includes a constructor, which is a special method used to initialize new objects of the class. The `this` keyword is used to distinguish between the class’s data members and the parameters passed to the constructor.
+
+### Key Concepts:
+
+- **Constructor**: A method called when an object is instantiated. It usually initializes the object’s properties.
+- **Data Members**: Variables that hold the state of an object.
+
+## 2. Visibility/Access Modifiers
+
+Access modifiers control the visibility of class members (data and methods) to other classes. Understanding access modifiers is crucial for implementing encapsulation and protecting the integrity of your class’s data. The main access modifiers in Java are:
+
+- **public**: Members are accessible from any other class.
+- **private**: Members are accessible only within the defined class.
+- **protected**: Members are accessible within the same package and subclasses.
+- **default** (no modifier): Members are accessible only within the same package.
+
+### Example:
+
+```java
+public class Person {
+    private String name;  // Only accessible within this class
+    public int age;       // Accessible from anywhere
+
+    // Method to set name
+    public void setName(String name) {
+        this.name = name; // Using 'this' to refer to the current object
+    }
+
+    // Method to get name
+    public String getName() {
+        return name;
+    }
+}
+```
+
+In this `Person` class example, the `name` variable is marked as `private`, which means it cannot be accessed directly from outside the class. Instead, we provide public methods, `setName` and `getName`, to manipulate and access the `name` property. This approach adheres to the principle of encapsulation.
+
+## 3. Encapsulation
+
+Encapsulation is a core principle of OOP that involves bundling the data (attributes) and methods that operate on that data into a single unit, or class. It restricts direct access to some of the object's components, which helps prevent unintended interference and misuse.
+
+### Example:
+
+```java
+public class BankAccount {
+    private double balance; // Encapsulated data
+
+    public BankAccount(double initialBalance) {
+        balance = initialBalance;
+    }
+
+    public void deposit(double amount) {
+        balance += amount; // Modifying the balance through a method
+    }
+
+    public double getBalance() {
+        return balance; // Accessing the balance through a method
+    }
+}
+```
+
+In this example, the `balance` data member is encapsulated within the `BankAccount` class. Users can only modify the balance through the `deposit` method and can only view the balance through the `getBalance` method. This prevents external classes from directly manipulating the balance, ensuring that all modifications are intentional and controlled.
+
+## 4. Methods
+
+Methods are functions defined within a class that describe the behaviors of the objects created from the class. They can perform actions, compute values, and provide functionalities relevant to the class.
+
+### Adding a Method to Class
+
+You can add methods to perform actions related to the class.
+
+### Example:
+
+```java
+public class Calculator {
+    public int add(int a, int b) {
+        return a + b;  // Returning a value
+    }
+}
+```
+
+### Adding a Method That Takes Parameters
+
+Methods can take parameters to perform operations on provided values.
+
+### Example:
+
+```java
+public class Rectangle {
+    public int area(int length, int width) {
+        return length * width;  // Returning the area
+    }
+}
+```
+
+### The ‘this’ Keyword
+
+The `this` keyword refers to the current object and is used to distinguish between class attributes and parameters when they have the same name.
+
+### Example:
+
+```java
+public class Box {
+    private int height;
+
+    public Box(int height) {
+        this.height = height; // 'this' differentiates between the parameter and the field
+    }
+}
+```
+
+In this example, `this.height` refers to the instance variable `height`, while `height` refers to the constructor parameter. Using `this` clarifies the intent and maintains consistency.
+
+### Method Overloading
+
+Method overloading allows multiple methods in the same class to have the same name but different parameters. This is useful for defining methods that perform similar functions but operate on different types or numbers of inputs.
+
+### Example:
+
+```java
+public class Display {
+    public void show(int num) {
+        System.out.println("Number: " + num);
+    }
+
+    public void show(String text) {
+        System.out.println("Text: " + text);
+    }
+}
+```
+
+Here, the `show` method is overloaded with two different signatures: one takes an `int`, and the other takes a `String`. The correct method is called based on the argument types passed during invocation.
+
+## 5. Object Creation
+
+Objects are instances of classes, created using the `new` keyword. When an object is created, memory is allocated for its properties.
+
+### Example:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Car myCar = new Car("Red", "Toyota");  // Creating an object of Car
+    }
+}
+```
+
+In the above code, `myCar` is an object of the `Car` class, initialized with the color "Red" and model "Toyota." Each object can hold its own state independent of other objects created from the same class.
+
+## 6. Using Object as Parameters
+
+In Java, methods can take objects as parameters, enabling complex data manipulation and interactions between objects.
+
+### Example:
+
+```java
+public class Driver {
+    public void drive(Car car) {
+        System.out.println("Driving a " + car.color + " " + car.model);
+    }
+}
+```
+
+In this example, the `drive` method in the `Driver` class takes a `Car` object as a parameter and uses its properties to perform an action. This is a common practice in OOP, allowing for flexible method designs that can operate on various object types.
+
+## 7. Returning Object
+
+Methods can also return objects, allowing for dynamic object creation and manipulation.
+
+### Example:
+
+```java
+public class CarFactory {
+    public Car createCar(String color, String model) {
+        return new Car(color, model); // Returning a Car object
+    }
+}
+```
+
+In this `CarFactory` class, the `createCar` method instantiates and returns a new `Car` object based on the provided parameters. This method could be used to generate various car objects dynamically based on different inputs.
+
+## 8. Array of Objects
+
+Java allows the creation of arrays to store multiple instances of a class, enabling easier management of collections of objects.
+
+### Example:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Car[] cars = new Car[3]; // Array of Car objects
+        cars[0] = new Car("Red", "Toyota");
+        cars[1] = new Car("Blue", "Honda");
+        cars[2] = new Car("Green", "Ford");
+
+        for (Car car : cars) {
+            System.out.println(car.color + " " + car.model);
+        }
+    }
+}
+```
+
+In this example, an array of `Car` objects is created, and three instances are added to the array. A `for-each` loop iterates through the array to display the properties of each `Car` object.
+
+## 9. Memory Allocation: ‘new’
+
+In Java, the `new` keyword is used to allocate memory for an object. This process involves invoking the constructor of the class to initialize the object’s data members.
+
+### Example:
+
+```java
+Car myCar = new Car("Black", "Tesla"); // Memory allocated for the Car object
+```
+
+When the above code executes, memory is allocated for a new `Car` object, and the constructor initializes its properties with the provided values.
+
+## 10. Memory Recovery: ‘delete’
+
+Unlike C or C++, Java does not require the `delete` keyword for memory management. Instead, Java has a garbage collector that automatically handles memory recovery for objects that are no longer in use. However, developers can set object references to `null` to make them eligible for garbage collection.
+
+### Example:
+
+```java
+myCar = null; // Now the object can be garbage collected
+```
+
+In this case, setting `myCar` to `null` indicates that the reference to the `Car` object is no longer needed, allowing the garbage collector to reclaim the memory associated with that object if
+
+no other references exist.
+
+## Conclusion
+
+Understanding classes, objects, and methods is essential for effective programming in Java and other OOP languages. By leveraging these concepts, developers can create structured, maintainable, and reusable code. Through encapsulation, visibility modifiers, and method overloading, you can design robust classes that encapsulate functionality and manage state effectively.
+
+As you continue your journey in programming, practice these principles in various projects to solidify your understanding and enhance your coding skills. OOP provides powerful tools for software design and development, enabling you to create applications that are modular, scalable, and easy to maintain.

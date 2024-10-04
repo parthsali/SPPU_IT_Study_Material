@@ -1,0 +1,331 @@
+# Unit 4: Inheritance and Polymorphism
+
+In this unit, we will delve into the concepts of **inheritance** and **polymorphism** in Object-Oriented Programming (OOP). These two principles are foundational for developing flexible, efficient, and reusable code, allowing developers to build upon existing code and extend functionality without starting from scratch.
+
+## 1. Inheritance
+
+### Introduction
+
+**Inheritance** is a key mechanism in OOP that allows a new class, known as a subclass or derived class, to inherit properties and methods from an existing class, referred to as a superclass or base class. This establishes a natural hierarchy among classes and promotes code reusability, making it easier to maintain and extend code.
+
+### The Need for Inheritance
+
+Inheritance is crucial for several reasons:
+
+- **Code Reusability**: It allows developers to reuse existing code, minimizing redundancy and effort.
+- **Logical Hierarchy**: It facilitates the organization of classes in a hierarchical manner, enhancing code readability and maintainability.
+- **Extensibility**: Developers can add new features or functionalities to existing classes without modifying the original code, which helps in preserving the integrity of the software.
+
+### Types of Inheritance
+
+Java supports various types of inheritance:
+
+1. **Single Inheritance**: A subclass inherits from one superclass.
+
+   - **Example**: `class Dog extends Animal`
+
+   ```java
+   class Animal {
+       void eat() {
+           System.out.println("Animal eats");
+       }
+   }
+
+   class Dog extends Animal {
+       void bark() {
+           System.out.println("Dog barks");
+       }
+   }
+   ```
+
+2. **Multilevel Inheritance**: A subclass inherits from a superclass, which in turn inherits from another superclass.
+
+   - **Example**: `class Puppy extends Dog`
+
+   ```java
+   class Animal {
+       void eat() {
+           System.out.println("Animal eats");
+       }
+   }
+
+   class Dog extends Animal {
+       void bark() {
+           System.out.println("Dog barks");
+       }
+   }
+
+   class Puppy extends Dog {
+       void weep() {
+           System.out.println("Puppy weeps");
+       }
+   }
+   ```
+
+3. **Hierarchical Inheritance**: Multiple subclasses inherit from a single superclass.
+
+   - **Example**: `class Cat extends Animal` and `class Dog extends Animal`
+
+   ```java
+   class Animal {
+       void eat() {
+           System.out.println("Animal eats");
+       }
+   }
+
+   class Dog extends Animal {
+       void bark() {
+           System.out.println("Dog barks");
+       }
+   }
+
+   class Cat extends Animal {
+       void meow() {
+           System.out.println("Cat meows");
+       }
+   }
+   ```
+
+4. **Multiple Inheritance**: A class inherits from multiple classes (not directly supported in Java, but can be achieved using interfaces).
+
+5. **Hybrid Inheritance**: A combination of two or more types of inheritance.
+
+### Benefits of Inheritance
+
+- **Reduced Code Duplication**: Common functionalities can be defined in a superclass, making them available to all subclasses.
+- **Improved Maintenance**: Changes made in the superclass automatically propagate to subclasses, making maintenance easier.
+- **Polymorphism**: Inheritance supports polymorphism, enabling method overriding in subclasses, which allows for more dynamic and flexible code.
+
+### Costs of Inheritance
+
+Despite its advantages, inheritance can introduce complexity:
+
+- **Tight Coupling**: Subclasses are tightly coupled to their superclasses, making modifications in the superclass potentially disruptive to subclasses.
+- **Increased Complexity**: Deep inheritance hierarchies can complicate the understanding and maintenance of code, making it harder to follow the flow of execution.
+
+### Constructors in Derived Classes
+
+When a subclass is created, its constructor automatically calls the constructor of its superclass to ensure that the superclass is properly initialized before the subclass is initialized.
+
+#### Example:
+
+```java
+class Animal {
+    Animal() {
+        System.out.println("Animal created");
+    }
+}
+
+class Dog extends Animal {
+    Dog() {
+        System.out.println("Dog created");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog myDog = new Dog(); // Output: Animal created, Dog created
+    }
+}
+```
+
+### Method Overriding
+
+**Method overriding** is a powerful feature that allows a subclass to provide a specific implementation of a method that is already defined in its superclass. This is a key aspect of polymorphism.
+
+#### Example:
+
+```java
+class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Bark");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Meow");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal myDog = new Dog();
+        Animal myCat = new Cat();
+        myDog.sound(); // Output: Bark
+        myCat.sound(); // Output: Meow
+    }
+}
+```
+
+### Abstract Classes and Interfaces
+
+**Abstract Classes**: An abstract class cannot be instantiated and may contain abstract methods (methods without a body) that must be implemented by subclasses.
+
+#### Example:
+
+```java
+abstract class Shape {
+    abstract void draw(); // Abstract method
+}
+
+class Circle extends Shape {
+    void draw() {
+        System.out.println("Drawing a circle");
+    }
+}
+
+class Square extends Shape {
+    void draw() {
+        System.out.println("Drawing a square");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Shape myCircle = new Circle();
+        Shape mySquare = new Square();
+        myCircle.draw(); // Output: Drawing a circle
+        mySquare.draw(); // Output: Drawing a square
+    }
+}
+```
+
+**Interfaces**: An interface is a reference type in Java that can contain only constants, method signatures, default methods, static methods, and nested types. A class implements an interface, providing the body for the methods defined in the interface.
+
+#### Example:
+
+```java
+interface Drawable {
+    void draw(); // Method signature
+}
+
+class Rectangle implements Drawable {
+    public void draw() {
+        System.out.println("Drawing a rectangle");
+    }
+}
+
+class Triangle implements Drawable {
+    public void draw() {
+        System.out.println("Drawing a triangle");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Drawable myRectangle = new Rectangle();
+        Drawable myTriangle = new Triangle();
+        myRectangle.draw(); // Output: Drawing a rectangle
+        myTriangle.draw(); // Output: Drawing a triangle
+    }
+}
+```
+
+## 2. Polymorphism and Software Reuse
+
+### Introduction
+
+**Polymorphism** is a core concept in OOP that allows objects of different classes to be treated as objects of a common superclass. This capability enables a single interface to represent different underlying forms (data types), enhancing flexibility in programming.
+
+### Types of Polymorphism
+
+1. **Compile-Time Polymorphism** (Static Binding): Achieved through method overloading and operator overloading. The method to be executed is determined at compile time.
+
+   #### Example:
+
+   ```java
+   class MathUtils {
+       int add(int a, int b) {
+           return a + b;
+       }
+
+       double add(double a, double b) {
+           return a + b;
+       }
+   }
+
+   public class Main {
+       public static void main(String[] args) {
+           MathUtils math = new MathUtils();
+           System.out.println(math.add(5, 10)); // Output: 15
+           System.out.println(math.add(5.5, 4.5)); // Output: 10.0
+       }
+   }
+   ```
+
+2. **Run-Time Polymorphism** (Dynamic Binding): Achieved through method overriding. The method to be executed is determined at runtime based on the object type.
+
+   #### Example:
+
+   ```java
+   class Animal {
+       void sound() {
+           System.out.println("Animal makes a sound");
+       }
+   }
+
+   class Cat extends Animal {
+       void sound() {
+           System.out.println("Meow");
+       }
+   }
+
+   class Dog extends Animal {
+       void sound() {
+           System.out.println("Bark");
+       }
+   }
+
+   public class Main {
+       public static void main(String[] args) {
+           Animal myAnimal1 = new Cat();
+           Animal myAnimal2 = new Dog();
+           myAnimal1.sound(); // Output: Meow
+           myAnimal2.sound(); // Output: Bark
+       }
+   }
+   ```
+
+### Mechanisms for Software Reuse
+
+Inheritance and polymorphism serve as powerful mechanisms for software reuse. By creating a base class with common functionality, developers can extend and customize behavior in derived classes without rewriting code, fostering a more efficient development process.
+
+### Efficiency and Polymorphism
+
+Polymorphism enhances code efficiency by allowing flexible and reusable code structures. It enables developers to write more generic code that can work with objects of different classes, reducing the need for multiple method implementations.
+
+For example, you can create a method that accepts a collection of `Drawable` objects and calls their `draw` methods without needing to know the exact types of the objects in the collection.
+
+#### Example:
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+class Main {
+    public static void main(String[] args) {
+        List<Drawable> shapes = new ArrayList<>();
+        shapes.add(new Circle());
+        shapes.add(new Rectangle());
+
+        for (Drawable shape : shapes) {
+            shape.draw(); // Calls the draw method for each shape
+        }
+    }
+}
+```
+
+## Conclusion
+
+Inheritance and polymorphism are fundamental concepts in Object-Oriented Programming that promote code reusability, flexibility, and maintainability. Understanding these concepts enables developers to create more efficient and organized code
+
+, facilitating the development of complex software systems while minimizing redundancy and enhancing readability.

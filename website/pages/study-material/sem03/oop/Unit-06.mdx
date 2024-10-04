@@ -1,0 +1,412 @@
+# Unit 6: File Handling and Design Patterns
+
+## File Handling in Java
+
+File handling in Java is crucial for managing and manipulating data stored on disk. This includes reading from and writing to files, allowing developers to persist data beyond the runtime of an application. Let's explore the fundamental concepts, classes, and exceptions related to file handling in Java.
+
+### 1. Introduction to File Handling
+
+File handling involves the operations performed on files, such as creating, reading, writing, and deleting files. Java provides a robust set of classes for handling file operations, allowing developers to work with various file types easily. Java’s built-in file handling mechanism is part of the `java.io` package.
+
+### 2. Concepts of Stream
+
+In Java, a stream is a sequence of data. It acts as a bridge between the data source and the destination, allowing for input and output operations. Streams can be classified into two categories: byte streams and character streams.
+
+- **Byte Streams**: These streams handle raw binary data, making them suitable for handling images, audio files, and any binary data.
+- **Character Streams**: These streams handle characters and are ideal for reading and writing text files.
+
+### 3. Stream Classes
+
+Java provides various classes for stream operations. The most commonly used stream classes include:
+
+- **InputStream**: The superclass for all classes that read byte streams.
+- **OutputStream**: The superclass for all classes that write byte streams.
+- **Reader**: The superclass for all classes that read character streams.
+- **Writer**: The superclass for all classes that write character streams.
+
+#### Example of Byte Stream Classes
+
+1. **FileInputStream**: Used to read bytes from a file.
+
+   ```java
+   import java.io.FileInputStream;
+   import java.io.IOException;
+
+   public class ByteStreamExample {
+       public static void main(String[] args) {
+           try (FileInputStream fis = new FileInputStream("example.txt")) {
+               int data;
+               while ((data = fis.read()) != -1) {
+                   System.out.print((char) data);
+               }
+           } catch (IOException e) {
+               e.printStackTrace();
+           }
+       }
+   }
+   ```
+
+2. **FileOutputStream**: Used to write bytes to a file.
+
+   ```java
+   import java.io.FileOutputStream;
+   import java.io.IOException;
+
+   public class ByteOutputExample {
+       public static void main(String[] args) {
+           try (FileOutputStream fos = new FileOutputStream("output.txt")) {
+               String content = "Hello, World!";
+               fos.write(content.getBytes());
+           } catch (IOException e) {
+               e.printStackTrace();
+           }
+       }
+   }
+   ```
+
+#### Example of Character Stream Classes
+
+1. **FileReader**: Used to read characters from a file.
+
+   ```java
+   import java.io.FileReader;
+   import java.io.IOException;
+
+   public class CharStreamExample {
+       public static void main(String[] args) {
+           try (FileReader fr = new FileReader("example.txt")) {
+               int data;
+               while ((data = fr.read()) != -1) {
+                   System.out.print((char) data);
+               }
+           } catch (IOException e) {
+               e.printStackTrace();
+           }
+       }
+   }
+   ```
+
+2. **FileWriter**: Used to write characters to a file.
+
+   ```java
+   import java.io.FileWriter;
+   import java.io.IOException;
+
+   public class CharOutputExample {
+       public static void main(String[] args) {
+           try (FileWriter fw = new FileWriter("output.txt")) {
+               fw.write("Hello, World!");
+           } catch (IOException e) {
+               e.printStackTrace();
+           }
+       }
+   }
+   ```
+
+### 4. Using Stream
+
+To effectively work with streams, you must understand how to read from and write to files using both byte and character streams. The choice of stream depends on the type of data being handled.
+
+#### Reading and Writing Character Data
+
+To read and write character data, use `FileReader` and `FileWriter`. This allows handling text data more efficiently.
+
+#### Reading and Writing Byte Data
+
+To read and write byte data, use `FileInputStream` and `FileOutputStream`. These are useful for binary files like images and videos.
+
+### 5. Other Useful I/O Classes
+
+Java offers various classes that facilitate file handling:
+
+- **BufferedInputStream** and **BufferedOutputStream**: These classes provide buffering for input and output streams, improving performance by reducing the number of I/O operations.
+
+- **BufferedReader** and **BufferedWriter**: These classes allow reading and writing text data more efficiently.
+
+#### Example of Using Buffered Streams
+
+```java
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class BufferedStreamExample {
+    public static void main(String[] args) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("bufferedOutput.txt"))) {
+            writer.write("Buffered Writer Example");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try (BufferedReader reader = new BufferedReader(new FileReader("bufferedOutput.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### 6. Using the File Class
+
+The `File` class in Java is used to create, delete, and manipulate files and directories. It provides methods to check file properties, such as whether the file exists, its length, and its last modified date.
+
+#### Example of Using the File Class
+
+```java
+import java.io.File;
+import java.io.IOException;
+
+public class FileExample {
+    public static void main(String[] args) {
+        File file = new File("test.txt");
+        try {
+            if (file.createNewFile()) {
+                System.out.println("File created: " + file.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (file.delete()) {
+            System.out.println("File deleted: " + file.getName());
+        } else {
+            System.out.println("Failed to delete the file.");
+        }
+    }
+}
+```
+
+### 7. Input/Output Exceptions
+
+When working with file handling, various exceptions may occur, mainly `IOException`. It is essential to handle these exceptions to prevent the program from crashing and provide informative feedback to users.
+
+#### Example of Handling Exceptions
+
+```java
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+public class ExceptionHandlingExample {
+    public static void main(String[] args) {
+        try (FileInputStream fis = new FileInputStream("nonExistentFile.txt")) {
+            // Attempt to read the file
+            int data;
+            while ((data = fis.read()) != -1) {
+                System.out.print((char) data);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found: " + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("An I/O error occurred: " + e.getMessage());
+        }
+    }
+}
+```
+
+### 8. Creation of Files
+
+To create files in Java, you can use the `createNewFile()` method from the `File` class. This method returns true if the file was created successfully; otherwise, it returns false.
+
+### 9. Reading/Writing Character and Bytes
+
+As shown in previous examples, reading and writing operations can be done using character and byte stream classes, allowing efficient handling of text and binary data.
+
+### 10. Handling Primitive Data Types
+
+Java provides specific classes to read and write primitive data types. The `DataInputStream` and `DataOutputStream` classes facilitate reading and writing Java's primitive data types.
+
+#### Example of Handling Primitive Data Types
+
+```java
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class PrimitiveDataExample {
+    public static void main(String[] args) {
+        try (DataOutputStream dos = new DataOutputStream(new FileOutputStream("data.dat"))) {
+            dos.writeInt(100);
+            dos.writeDouble(50.5);
+            dos.writeBoolean(true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try (DataInputStream dis = new DataInputStream(new FileInputStream("data.dat"))) {
+            System.out.println(dis.readInt());
+            System.out.println(dis.readDouble());
+            System.out.println(dis.readBoolean());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### 11. Concatenating and Buffering Files
+
+To concatenate files in Java, you can read from multiple files and write their content to a new file. Buffered streams enhance performance during file operations.
+
+### 12. Random Access Files
+
+The `RandomAccessFile` class allows you to read from and write to a file at random access points, meaning you can seek to any position in the file and read or write data.
+
+#### Example of Using Random Access Files
+
+```java
+import java.io.RandomAccessFile;
+import java.io.IOException;
+
+public class RandomAccessFileExample {
+    public static void main(String[] args) {
+        try (RandomAccessFile raf = new RandomAccessFile("randomAccessFile.txt", "rw")) {
+            raf.writeUTF("Hello");
+            raf.seek(0); // Move to the beginning
+            System.out.println(raf.readUTF());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+## Design Patterns in
+
+Java
+
+Design patterns are reusable solutions to common problems in software design. They provide a way to structure code in a way that makes it more maintainable and scalable.
+
+### 1. Introduction to Design Patterns
+
+Design patterns are categorized into three main types:
+
+- **Creational Patterns**: Concerned with the way of creating objects.
+- **Structural Patterns**: Deal with object composition and relationships.
+- **Behavioral Patterns**: Focus on communication between objects.
+
+### 2. Types of Design Patterns
+
+#### Adapter Pattern
+
+The Adapter Pattern allows incompatible interfaces to work together. It acts as a bridge between two incompatible interfaces.
+
+**Example**: Suppose you have a legacy system with an interface that needs to be adapted for a new system.
+
+```java
+interface OldSystem {
+    void oldMethod();
+}
+
+class LegacyClass implements OldSystem {
+    public void oldMethod() {
+        System.out.println("Executing old method");
+    }
+}
+
+interface NewSystem {
+    void newMethod();
+}
+
+class Adapter implements NewSystem {
+    private OldSystem oldSystem;
+
+    public Adapter(OldSystem oldSystem) {
+        this.oldSystem = oldSystem;
+    }
+
+    public void newMethod() {
+        oldSystem.oldMethod();
+    }
+}
+
+public class AdapterPatternExample {
+    public static void main(String[] args) {
+        OldSystem oldSystem = new LegacyClass();
+        NewSystem adapter = new Adapter(oldSystem);
+        adapter.newMethod();
+    }
+}
+```
+
+#### Singleton Pattern
+
+The Singleton Pattern ensures that a class has only one instance and provides a global point of access to it.
+
+**Example**: A configuration manager that should have only one instance throughout the application.
+
+```java
+class Singleton {
+    private static Singleton instance;
+
+    private Singleton() {}
+
+    public static Singleton getInstance() {
+        if (instance == null) {
+            instance = new Singleton();
+        }
+        return instance;
+    }
+}
+
+public class SingletonPatternExample {
+    public static void main(String[] args) {
+        Singleton singleton1 = Singleton.getInstance();
+        Singleton singleton2 = Singleton.getInstance();
+
+        System.out.println(singleton1 == singleton2); // true
+    }
+}
+```
+
+#### Iterator Pattern
+
+The Iterator Pattern provides a way to access elements of a collection without exposing the underlying representation.
+
+**Example**: Implementing an iterator for a custom collection class.
+
+```java
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+class CustomCollection implements Iterable<String> {
+    private List<String> items = new ArrayList<>();
+
+    public void add(String item) {
+        items.add(item);
+    }
+
+    @Override
+    public Iterator<String> iterator() {
+        return items.iterator();
+    }
+}
+
+public class IteratorPatternExample {
+    public static void main(String[] args) {
+        CustomCollection collection = new CustomCollection();
+        collection.add("Item 1");
+        collection.add("Item 2");
+        collection.add("Item 3");
+
+        for (String item : collection) {
+            System.out.println(item);
+        }
+    }
+}
+```
+
+## Conclusion
+
+File handling and design patterns are essential components of Java programming. Understanding how to effectively manage files and apply design patterns can greatly improve code quality and maintainability. With Java’s rich set of classes and robust design patterns, developers can create efficient, scalable, and maintainable applications. By mastering these concepts, you will be well-equipped to tackle various programming challenges in Java.

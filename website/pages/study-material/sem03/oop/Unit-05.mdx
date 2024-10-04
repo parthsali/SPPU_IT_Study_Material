@@ -1,0 +1,373 @@
+# Unit 5: Exception Handling and Generic Programming
+
+In this unit, we will delve into two critical aspects of programming: **exception handling** and **generic programming**. Exception handling is essential for managing errors and ensuring that programs can respond gracefully to unexpected situations. Generic programming, on the other hand, allows for the creation of flexible and reusable code components. Together, these concepts enhance the robustness and maintainability of software applications.
+
+## Exception Handling
+
+### 1.1 Understanding Errors
+
+In programming, **errors** are issues that arise during the execution of a program, leading to unexpected behavior or crashes. Errors can be broadly categorized into three types:
+
+- **Syntax Errors**: These occur when the code violates the grammatical rules of the programming language. For example, missing semicolons, unmatched parentheses, or incorrect keywords will lead to syntax errors, which are typically caught at compile time.
+
+  **Example**:
+
+  ```java
+  public class SyntaxErrorExample {
+      public static void main(String[] args) {
+          System.out.println("Hello World" // Missing closing parenthesis
+      }
+  }
+  ```
+
+- **Runtime Errors**: These errors occur during the execution of a program and can be caused by various factors, such as invalid user input, division by zero, or accessing an array out of bounds. Runtime errors can lead to program crashes if not handled properly.
+
+  **Example**:
+
+  ```java
+  public class RuntimeErrorExample {
+      public static void main(String[] args) {
+          int[] numbers = {1, 2, 3};
+          System.out.println(numbers[5]); // This will throw ArrayIndexOutOfBoundsException
+      }
+  }
+  ```
+
+- **Logical Errors**: These are mistakes in the program's logic that produce incorrect results. Logical errors do not cause the program to crash, but they lead to unintended behavior, making them harder to detect and fix.
+
+  **Example**:
+
+  ```java
+  public class LogicalErrorExample {
+      public static void main(String[] args) {
+          int a = 10;
+          int b = 20;
+          int sum = a - b; // This should be a + b
+          System.out.println("Sum: " + sum); // Output will be incorrect
+      }
+  }
+  ```
+
+### 1.2 Understanding Exceptions
+
+An **exception** is a specific type of runtime error that disrupts the normal flow of a program's execution. Exceptions can be categorized into two main types:
+
+- **Checked Exceptions**: These are exceptions that must be either caught or declared in the method signature. They are checked at compile time. Examples include `IOException`, `SQLException`, and `ClassNotFoundException`. The compiler forces the programmer to handle these exceptions to ensure that the program behaves predictably.
+
+  **Example**:
+
+  ```java
+  import java.io.FileReader;
+  import java.io.IOException;
+
+  public class CheckedExceptionExample {
+      public static void main(String[] args) {
+          try {
+              FileReader reader = new FileReader("nonexistentfile.txt"); // This will throw IOException
+          } catch (IOException e) {
+              System.out.println("Error: " + e.getMessage());
+          }
+      }
+  }
+  ```
+
+- **Unchecked Exceptions**: These exceptions do not need to be explicitly handled or declared. They are derived from the `RuntimeException` class and are checked at runtime. Examples include `NullPointerException`, `ArrayIndexOutOfBoundsException`, and `ArithmeticException`. Unchecked exceptions indicate programming errors and are often due to bugs that should be fixed rather than caught.
+
+  **Example**:
+
+  ```java
+  public class UncheckedExceptionExample {
+      public static void main(String[] args) {
+          String str = null;
+          System.out.println(str.length()); // This will throw NullPointerException
+      }
+  }
+  ```
+
+### 1.3 Exception Handling Fundamentals
+
+Exception handling in Java is accomplished using a combination of `try`, `catch`, and `finally` blocks. The fundamental structure of exception handling is as follows:
+
+- **Try Block**: This block contains the code that may throw an exception. If an exception occurs, control is transferred to the corresponding catch block.
+
+- **Catch Block**: This block handles the exception. You can have multiple catch blocks to handle different types of exceptions.
+
+- **Finally Block**: This block is optional and contains code that will always execute, regardless of whether an exception was thrown or caught. It is typically used for cleanup operations, such as closing files or releasing resources.
+
+**Example**:
+
+```java
+public class ExceptionHandlingExample {
+    public static void main(String[] args) {
+        try {
+            int[] numbers = {1, 2, 3};
+            System.out.println(numbers[3]); // This will throw ArrayIndexOutOfBoundsException
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Error: Array index is out of bounds.");
+        } finally {
+            System.out.println("This block always executes.");
+        }
+    }
+}
+```
+
+### 1.4 Uncaught Exceptions
+
+An **uncaught exception** is an exception that is not handled by any catch block. If an exception is uncaught, it propagates up the call stack, and if it reaches the main method without being handled, the program terminates, and an error message is displayed. This can lead to a poor user experience if not managed correctly.
+
+**Example**:
+
+```java
+public class UncaughtExceptionExample {
+    public static void main(String[] args) {
+        int[] arr = new int[3];
+        System.out.println(arr[5]); // Uncaught exception will cause program to terminate
+    }
+}
+```
+
+### 1.5 Using Try and Catch
+
+The `try` and `catch` blocks are used to handle exceptions gracefully. Here’s a simple example:
+
+```java
+public class ExceptionExample {
+    public static void main(String[] args) {
+        try {
+            int result = 10 / 0; // This will throw an ArithmeticException
+        } catch (ArithmeticException e) {
+            System.out.println("Error: Division by zero is not allowed.");
+        }
+    }
+}
+```
+
+### 1.6 Multiple Catch Clauses
+
+You can have multiple catch clauses to handle different types of exceptions that may arise from the same try block. Each catch block must handle a different exception type.
+
+```java
+public class MultipleCatchExample {
+    public static void main(String[] args) {
+        try {
+            String str = null;
+            System.out.println(str.length()); // This will throw a NullPointerException
+            int result = 10 / 0; // This will throw an ArithmeticException
+        } catch (NullPointerException e) {
+            System.out.println("Error: Null pointer exception occurred.");
+        } catch (ArithmeticException e) {
+            System.out.println("Error: Division by zero.");
+        }
+    }
+}
+```
+
+### 1.7 Nested Try Statements
+
+You can nest try statements within each other to handle exceptions at different levels of the program. This allows for more granular control over exception handling.
+
+```java
+public class NestedTryExample {
+    public static void main(String[] args) {
+        try {
+            try {
+                int[] arr = new int[5];
+                arr[10] = 1; // This will throw an ArrayIndexOutOfBoundsException
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Inner catch: Array index is out of bounds.");
+            }
+        } catch (Exception e) {
+            System.out.println("Outer catch: An exception occurred.");
+        }
+    }
+}
+```
+
+### 1.8 User-Defined Exceptions Using Throw
+
+In Java, you can create your own exceptions by extending the `Exception` class. This allows you to define custom error conditions specific to your application.
+
+```java
+class CustomException extends Exception {
+    public CustomException(String message) {
+        super(message);
+    }
+}
+
+public class UserDefinedExceptionExample {
+    public static void main(String[] args) {
+        try {
+            throw new CustomException("This is a custom exception.");
+        } catch (CustomException e) {
+            System.out.println("Caught: " + e.getMessage());
+        }
+    }
+}
+```
+
+### 1.9 Best Practices for Exception Handling
+
+When working with exceptions, it's essential to follow best practices to ensure your code remains clean and maintainable:
+
+- **Use Specific Exceptions**: Catch specific exceptions rather than using a general `Exception` class. This improves code readability and helps to identify problems more easily.
+
+- **Avoid Silent Failures**: Don’t catch exceptions without handling them properly. Logging exceptions or providing meaningful feedback helps in diagnosing issues.
+
+- **Clean Up Resources**: Always clean up resources, such as file handles or database connections, in the `finally` block or using try-with-resources.
+
+- **Document Exception Handling**: Use comments to explain why certain exceptions are caught and how they are handled. This helps others understand your code's intent.
+
+## Generic Programming
+
+### 2.1 What Are Generics?
+
+**Generics** are a feature in Java that allows you to define classes, interfaces, and methods with a placeholder for types. This enables you to create reusable code components that can operate on different data types while providing compile-time type safety.
+
+Generics reduce the need for type casting and can prevent `ClassCastException` at runtime by ensuring type safety during compile time.
+
+**Example**:
+
+```java
+import java.util.ArrayList;
+
+public class GenericExample {
+    public static void main(String[] args) {
+        ArrayList<String> stringList = new ArrayList<>();
+        stringList.add("Hello");
+        stringList.add("World");
+
+        // No need for casting
+        for (String str : stringList) {
+            System.out.println(str);
+        }
+    }
+}
+```
+
+### 2.2 Language-Specific Collection Interfaces
+
+Java provides several
+
+collection interfaces in the `java.util` package that use generics. Some commonly used collection interfaces include:
+
+- **List**: An ordered collection (also known as a sequence) that allows duplicate elements. Implemented by classes like `ArrayList`, `LinkedList`, and `Vector`.
+
+- **Set**: A collection that does not allow duplicate elements. Implemented by classes like `HashSet`, `LinkedHashSet`, and `TreeSet`.
+
+- **Map**: A collection that maps keys to values. Keys must be unique, and each key maps to exactly one value. Implemented by classes like `HashMap`, `TreeMap`, and `LinkedHashMap`.
+
+### 2.3 Generics in Java
+
+In Java, you can define a generic class, method, or interface. Below are examples of each:
+
+#### Generic Class
+
+```java
+public class GenericClass<T> {
+    private T data;
+
+    public GenericClass(T data) {
+        this.data = data;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public static void main(String[] args) {
+        GenericClass<String> stringObj = new GenericClass<>("Hello");
+        System.out.println(stringObj.getData());
+
+        GenericClass<Integer> intObj = new GenericClass<>(100);
+        System.out.println(intObj.getData());
+    }
+}
+```
+
+#### Generic Method
+
+```java
+public class GenericMethodExample {
+    public static <T> void printArray(T[] array) {
+        for (T element : array) {
+            System.out.println(element);
+        }
+    }
+
+    public static void main(String[] args) {
+        Integer[] intArray = {1, 2, 3, 4, 5};
+        String[] strArray = {"A", "B", "C"};
+
+        printArray(intArray);
+        printArray(strArray);
+    }
+}
+```
+
+### 2.4 Bounded Type Parameters
+
+You can restrict the types that can be used as type parameters by using bounded type parameters. This allows you to specify constraints on the generic type.
+
+```java
+public class BoundedTypeExample<T extends Number> {
+    private T number;
+
+    public BoundedTypeExample(T number) {
+        this.number = number;
+    }
+
+    public double getDoubleValue() {
+        return number.doubleValue();
+    }
+
+    public static void main(String[] args) {
+        BoundedTypeExample<Integer> intObj = new BoundedTypeExample<>(10);
+        System.out.println(intObj.getDoubleValue());
+
+        BoundedTypeExample<Double> doubleObj = new BoundedTypeExample<>(5.5);
+        System.out.println(doubleObj.getDoubleValue());
+    }
+}
+```
+
+### 2.5 Wildcards in Generics
+
+Wildcards are used to specify an unknown type. They are represented by a question mark (`?`). Wildcards can be used to create flexible and reusable code.
+
+#### Upper Bounded Wildcards
+
+```java
+public static void printNumbers(List<? extends Number> list) {
+    for (Number num : list) {
+        System.out.println(num);
+    }
+}
+```
+
+#### Lower Bounded Wildcards
+
+```java
+public static void addNumbers(List<? super Integer> list) {
+    list.add(10); // Can add Integer and its subtypes
+}
+```
+
+### 2.6 Generic Interfaces
+
+You can also define interfaces with generics, allowing for more flexible code that can work with different types.
+
+```java
+interface GenericInterface<T> {
+    void doSomething(T data);
+}
+
+class GenericImplementation implements GenericInterface<String> {
+    public void doSomething(String data) {
+        System.out.println("Data: " + data);
+    }
+}
+```
+
+## Conclusion
+
+In this unit, we explored the fundamentals of exception handling and generic programming. Exception handling is vital for managing errors gracefully, while generics provide a way to create flexible and reusable code components. Mastering these concepts will enhance your programming skills and improve the quality of your applications.
