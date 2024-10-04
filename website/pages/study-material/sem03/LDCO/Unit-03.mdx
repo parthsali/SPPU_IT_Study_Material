@@ -1,0 +1,144 @@
+# Unit 3: Sequential Logic Design
+
+## Table of Contents
+
+1. [Introduction to Sequential Circuits](#introduction-to-sequential-circuits)
+   - Combinational vs. Sequential Circuits
+   - Memory Elements: Latch and Flip-Flop
+2. [Flip-Flops](#flip-flops)
+   - SR, JK, D, T Flip-Flops: Logic Diagram, Truth Table, and Excitation Table
+   - Flip-Flop Conversion
+   - Asynchronous vs. Synchronous Flip-Flops
+   - Preset and Clear, Master-Slave Configuration
+   - Study of Flip-Flop ICs (7474, 7476)
+3. [Applications of Flip-Flops](#applications-of-flip-flops)
+   - Counters: Asynchronous, Synchronous, and Modulo-n Counters
+   - Modulus-n Counter IC (7490) and Applications
+   - Registers: SISO, SIPO, PISO, and PIPO Types and Applications
+
+---
+
+## 1. Introduction to Sequential Circuits
+
+Sequential circuits form the foundation of digital systems by incorporating memory elements that allow them to store data and create outputs that depend not only on current inputs but also on past states.
+
+### 1.1 Combinational vs. Sequential Circuits
+
+- **Combinational Circuits**: In combinational circuits, the output is solely determined by the current inputs. They do not have any memory elements. Examples include adders, multiplexers, and decoders.
+- **Sequential Circuits**: In contrast, sequential circuits depend on both current inputs and previous outputs or states. This is achieved through memory elements that retain information, enabling the circuit to produce outputs based on input history.
+
+Sequential circuits introduce the concept of **state**, which is crucial in applications like counters, registers, and control units of computers.
+
+### 1.2 Memory Elements: Latch and Flip-Flop
+
+Sequential circuits rely on memory elements to store data, and the most basic forms of memory elements are **latches** and **flip-flops**.
+
+- **Latch**: A latch is a basic storage device that holds the value of a bit until it is changed by the input. Latches are level-triggered, meaning they respond to changes in inputs as long as the control signal is active.
+- **Flip-Flop**: A flip-flop is an edge-triggered memory device, meaning it changes its state only at the rising or falling edge of a clock signal. This makes flip-flops more stable and reliable for synchronous circuits.
+
+---
+
+## 2. Flip-Flops
+
+Flip-flops are essential building blocks in sequential circuits, used to store and control data. There are various types of flip-flops, each with unique characteristics, but they all follow a similar basic structure.
+
+### 2.1 SR, JK, D, T Flip-Flops: Logic Diagram, Truth Table, and Excitation Table
+
+#### SR Flip-Flop (Set-Reset)
+
+- **Logic Diagram**: Consists of two NOR or NAND gates with feedback loops.
+- **Truth Table**: The SR flip-flop has two inputs (Set and Reset) and two outputs (Q and Q'). Setting S=1 and R=0 sets Q=1 (Set state). Setting S=0 and R=1 resets Q=0. If both S=0 and R=0, the previous state is retained. The S=1, R=1 state is undefined.
+
+| S   | R   | Q (Next) |
+| --- | --- | -------- |
+| 0   | 0   | Q        |
+| 0   | 1   | 0        |
+| 1   | 0   | 1        |
+| 1   | 1   | Invalid  |
+
+#### JK Flip-Flop
+
+- **Logic Diagram**: Similar to SR but includes feedback mechanisms to eliminate the undefined state.
+- **Truth Table**: The JK flip-flop resolves the indeterminate condition in the SR flip-flop by toggling the output when both inputs are high.
+
+| J   | K   | Q (Next)    |
+| --- | --- | ----------- |
+| 0   | 0   | Q           |
+| 0   | 1   | 0           |
+| 1   | 0   | 1           |
+| 1   | 1   | Q' (Toggle) |
+
+#### D Flip-Flop
+
+- **Logic Diagram**: Derived from the SR flip-flop, with the inputs modified to eliminate the indeterminate state.
+- **Truth Table**: The D flip-flop has a single input (D), and its output (Q) follows D. The D input is latched at the clock edge.
+
+| D   | Q (Next) |
+| --- | -------- |
+| 0   | 0        |
+| 1   | 1        |
+
+#### T Flip-Flop
+
+- **Logic Diagram**: A simplified JK flip-flop, where J and K are tied together.
+- **Truth Table**: The T flip-flop toggles the output on each clock cycle if T=1. If T=0, the output remains unchanged.
+
+| T   | Q (Next)    |
+| --- | ----------- |
+| 0   | Q           |
+| 1   | Q' (Toggle) |
+
+### 2.2 Flip-Flop Conversion
+
+Flip-flops can be converted from one type to another by altering the input logic. For example:
+
+- **D Flip-Flop from JK**: By tying the J and K inputs together and using appropriate gating logic.
+- **T Flip-Flop from JK**: By using logic to control the inputs of the JK flip-flop.
+
+### 2.3 Asynchronous vs. Synchronous Flip-Flops
+
+- **Asynchronous** flip-flops do not rely on a clock signal and respond immediately to input changes.
+- **Synchronous** flip-flops, on the other hand, respond only at clock edges, ensuring that all flip-flops in the system change state simultaneously, making the system more predictable.
+
+### 2.4 Preset and Clear, Master-Slave Configuration
+
+- **Preset and Clear**: These are additional inputs to flip-flops, allowing them to be set or reset asynchronously.
+- **Master-Slave Configuration**: Used in JK flip-flops to eliminate race conditions by using two flip-flops connected in series. The master flip-flop is triggered by the clock’s positive edge, while the slave flip-flop is triggered by the negative edge.
+
+### 2.5 Study of Flip-Flop ICs (7474, 7476)
+
+- **7474**: A dual D-type flip-flop with preset and clear inputs.
+- **7476**: A JK-type flip-flop with additional features such as preset and clear.
+
+---
+
+## 3. Applications of Flip-Flops
+
+Flip-flops serve as the foundation for various applications in digital electronics, most notably in **counters** and **registers**.
+
+### 3.1 Counters: Asynchronous, Synchronous, and Modulo-n Counters
+
+- **Asynchronous Counters (Ripple Counters)**: In asynchronous counters, the output of one flip-flop drives the clock input of the next, leading to potential timing delays as changes ripple through the circuit.
+- **Synchronous Counters**: In synchronous counters, all flip-flops are triggered simultaneously by the same clock signal, eliminating the timing issues found in asynchronous counters.
+- **Modulo-n Counters**: These counters reset after counting to a specific number, "n." For example, a Mod-10 counter resets after reaching 10.
+
+### 3.2 Modulus-n Counter IC (7490) and Applications
+
+- **7490 IC**: This is a 4-bit binary counter IC that can be configured to create modulo-n counters. It can be used to implement counters in various applications such as clocks, frequency dividers, and digital event counters.
+
+### 3.3 Registers: SISO, SIPO, PISO, and PIPO Types and Applications
+
+- **SISO (Serial In, Serial Out)**: Data is input serially and shifted out serially, one bit at a time.
+- **SIPO (Serial In, Parallel Out)**: Data is input serially but outputted in parallel. It is useful for converting serial data to parallel form.
+- **PISO (Parallel In, Serial Out)**: Data is input in parallel and shifted out serially, useful for transmitting data over a single line.
+- **PIPO (Parallel In, Parallel Out)**: Data is input and output in parallel, allowing for fast data transfer in parallel systems.
+
+### Applications of Registers:
+
+- **Shift Registers**: Registers are often used in shift registers, which are fundamental in data processing, communication, and signal generation applications. Shift registers find use in serial-to-parallel conversion, delay generation, and data storage.
+
+---
+
+### Conclusion
+
+Understanding sequential circuits and the role of flip-flops is essential in digital system design. Flip-flops, which store binary data, form the basis for counters, registers, and various memory devices. By mastering the characteristics, types, and applications of flip-flops, digital engineers can design complex systems like microprocessors, memory units, and digital control systems. Sequential logic design plays a critical role in synchronizing and managing data flows, which are fundamental in the operation of modern digital systems.

@@ -1,0 +1,153 @@
+# Unit 6: Memory & Input/Output Systems
+
+## Table of Contents
+
+1. [Memory Systems](#memory-systems)
+   - Characteristics of Memory Systems
+   - Memory Hierarchy
+   - Signals to Connect Memory to Processor
+   - Memory Read & Write Cycle
+   - Characteristics of Semiconductor Memory (SRAM, DRAM, ROM)
+   - Cache Memory
+     - Principle of Locality
+     - Organization and Mapping Functions
+     - Write Policies
+     - Replacement Policies
+     - Multilevel Caches
+     - Cache Coherence
+2. [Input/Output (I/O) Systems](#input-output-io-systems)
+   - I/O Module
+   - Programmed I/O
+   - Interrupt-Driven I/O
+   - Direct Memory Access (DMA)
+
+---
+
+## 1. Memory Systems
+
+### Characteristics of Memory Systems
+
+Memory systems are essential for storing and retrieving data during processing. Key characteristics of memory include:
+
+- **Capacity**: The total amount of data that can be stored.
+- **Access Time**: The time taken to read/write data to/from memory.
+- **Bandwidth**: The rate at which data is transferred to/from memory.
+- **Volatility**: Whether or not the data is retained when power is removed.
+- **Cost**: Memory technologies vary in terms of cost per bit.
+
+### Memory Hierarchy
+
+Memory systems are typically organized in a **hierarchy** to balance speed, capacity, and cost:
+
+1. **Registers** (Fastest, Smallest)
+2. **Cache Memory**
+3. **Main Memory (RAM)**
+4. **Secondary Storage** (Hard Drives, SSDs)
+5. **Tertiary Storage** (Archival systems like tapes)
+
+The higher levels in the hierarchy are faster but more expensive and have smaller capacity. Lower levels are slower but cheaper with larger capacities.
+
+### Signals to Connect Memory to Processor
+
+The communication between the processor and memory involves several signals, including:
+
+- **Address Lines**: Used to specify the memory location being accessed.
+- **Data Lines**: Carry the data being read from or written to memory.
+- **Control Lines**: Manage the direction of data flow (e.g., read/write signals).
+
+### Memory Read & Write Cycle
+
+- **Memory Read Cycle**: The processor provides the memory address via address lines, and the memory sends the requested data to the processor over data lines.
+- **Memory Write Cycle**: The processor sends the data and memory address, and the memory stores the data at the specified address.
+
+### Characteristics of Semiconductor Memory
+
+1. **SRAM (Static RAM)**:
+
+   - **Characteristics**: Fast, volatile, expensive, low density.
+   - **Use**: Cache memory.
+   - **Data Storage**: Stores data as long as power is supplied without the need for refresh cycles.
+
+2. **DRAM (Dynamic RAM)**:
+
+   - **Characteristics**: Slower than SRAM, volatile, less expensive, high density.
+   - **Use**: Main memory (RAM).
+   - **Data Storage**: Requires periodic refreshing to retain data.
+
+3. **ROM (Read-Only Memory)**:
+   - **Characteristics**: Non-volatile, retains data even without power.
+   - **Use**: Firmware and permanent storage.
+   - **Types**: PROM (Programmable ROM), EPROM (Erasable PROM), EEPROM (Electrically Erasable PROM).
+
+### Cache Memory
+
+#### Principle of Locality
+
+Cache memory relies on the **principle of locality**, which states that:
+
+- **Temporal Locality**: Recently accessed data is likely to be accessed again soon.
+- **Spatial Locality**: Data near recently accessed memory addresses is likely to be accessed soon.
+
+#### Organization and Mapping Functions
+
+Cache memory is organized into blocks that map to main memory locations. There are different mapping techniques:
+
+1. **Direct Mapping**: Each block in memory maps to exactly one cache line.
+2. **Fully Associative Mapping**: Any block in memory can be loaded into any cache line.
+3. **Set-Associative Mapping**: Combines direct and fully associative mapping. Blocks are mapped into a set, and any block in that set can occupy any line in the set.
+
+#### Write Policies
+
+- **Write-Through**: Data is written to both cache and main memory simultaneously.
+- **Write-Back**: Data is written to the cache first, and main memory is updated only when the cache line is replaced.
+
+#### Replacement Policies
+
+When the cache is full, a replacement policy determines which cache block to evict. Common policies include:
+
+- **LRU (Least Recently Used)**: Evicts the block that hasn't been used for the longest time.
+- **FIFO (First-In-First-Out)**: Evicts the oldest block.
+- **Random Replacement**: Randomly selects a block for eviction.
+
+#### Multilevel Caches
+
+To further improve performance, modern systems often use multiple levels of cache (L1, L2, L3). Each level is progressively larger and slower, with the CPU accessing the L1 cache first and then moving down the hierarchy if necessary.
+
+#### Cache Coherence
+
+In **multiprocessor systems**, multiple caches can store copies of the same memory locations, leading to inconsistencies. **Cache coherence protocols** (e.g., MESI) are used to maintain consistency across caches.
+
+---
+
+## 2. Input/Output (I/O) Systems
+
+### I/O Module
+
+The **I/O module** acts as an interface between the CPU and peripherals (such as keyboards, disks, and printers). Its main responsibilities include:
+
+- **Data Communication**: Facilitates data exchange between the CPU and peripherals.
+- **Device Control**: Sends control signals to devices and monitors their status.
+- **Data Buffering**: Buffers data between fast processors and slower peripherals.
+- **Error Detection**: Identifies and reports I/O errors.
+
+### Programmed I/O
+
+In **programmed I/O**, the CPU directly manages data transfers between the I/O module and memory by polling the device's status. The CPU repeatedly checks whether the device is ready for data transfer, leading to inefficient CPU usage.
+
+### Interrupt-Driven I/O
+
+In **interrupt-driven I/O**, the I/O module notifies the CPU via an interrupt when the device is ready for data transfer. This reduces the CPU's need to continuously poll the device, allowing it to perform other tasks while waiting for I/O.
+
+- **ISR (Interrupt Service Routine)**: A specialized routine that handles the I/O interrupt.
+
+### Direct Memory Access (DMA)
+
+**DMA** is a technique where the I/O module directly accesses memory without involving the CPU for each data transfer. This increases data transfer speed and reduces CPU overhead.
+
+- **How it Works**: The CPU sets up the DMA controller by specifying the source, destination, and amount of data to transfer. The DMA controller takes over the data transfer process and signals the CPU when the transfer is complete.
+
+---
+
+### Conclusion
+
+Understanding the **memory and I/O systems** of a computer is crucial for optimizing performance. Memory hierarchy, cache mechanisms, and the various I/O techniques (programmed I/O, interrupt-driven I/O, DMA) contribute significantly to efficient data processing and communication between the CPU and peripherals.
