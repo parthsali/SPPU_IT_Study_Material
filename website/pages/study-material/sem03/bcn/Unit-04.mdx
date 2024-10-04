@@ -1,0 +1,169 @@
+# Unit 4: Network Layer: Services and Addressing
+
+## Table of Contents
+
+1. [Network Layer Services](#network-layer-services)
+2. [IPv4 Addresses](#ipv4-addresses)
+   - Static and Dynamic Configuration
+   - Classful and Classless Addressing
+   - Special Addresses
+   - NAT (Network Address Translation)
+   - Subnetting
+   - Supernetting
+3. [Delivery and Forwarding of IP Packets](#delivery-and-forwarding-of-ip-packets)
+4. [Structure of a Router](#structure-of-a-router)
+5. [IPv4 Datagrams](#ipv4-datagrams)
+   - Fragmentation
+   - Options
+   - Checksum
+6. [IPv6 Addressing](#ipv6-addressing)
+   - Notations
+   - Address Space
+   - Packet Format
+7. [Transition from IPv4 to IPv6](#transition-from-ipv4-to-ipv6)
+
+---
+
+## Network Layer Services
+
+The **Network Layer** is responsible for routing and forwarding packets from one device to another over a network. It provides essential services such as:
+
+- **Addressing**: The network layer assigns addresses to devices so they can be uniquely identified.
+- **Routing**: It determines the best path for data to travel from the source to the destination.
+- **Forwarding**: After determining the path, the network layer forwards the packets to the next hop towards their destination.
+- **Fragmentation and Reassembly**: It handles breaking large packets into smaller fragments if the packet size exceeds the transmission medium's capacity, and then reassembling them at the destination.
+- **Error Handling**: The network layer provides mechanisms for error detection and correction to ensure the integrity of transmitted data.
+
+The two key network layer protocols are **IPv4** (Internet Protocol version 4) and **IPv6** (Internet Protocol version 6), with IPv4 being the most widely used, and IPv6 emerging as its successor to solve the issue of address exhaustion.
+
+---
+
+## IPv4 Addresses
+
+IPv4 addresses are 32-bit binary numbers used to identify devices on a network. They are commonly written in **dotted decimal notation**, where the 32 bits are divided into four 8-bit octets, separated by dots. Each octet is expressed as a decimal number (0–255).
+
+### Static and Dynamic Configuration
+
+- **Static Addressing**: In static configuration, a device is manually assigned an IP address, which remains fixed. This method is often used for servers or devices that need a constant IP address.
+- **Dynamic Addressing**: In dynamic configuration, an IP address is assigned to a device automatically using protocols like **DHCP (Dynamic Host Configuration Protocol)**. This allows for more efficient use of IP addresses, especially in networks where devices frequently connect and disconnect.
+
+### Classful and Classless Addressing
+
+- **Classful Addressing**: IPv4 originally used classful addressing, dividing the IP address space into five classes (A, B, C, D, E) based on the number of bits allocated to the network and host portions of the address. For example, Class A addresses allocate 8 bits for the network and 24 bits for hosts, while Class C addresses use 24 bits for the network and 8 for hosts.
+
+  **Classful Address Breakdown**:
+
+  - **Class A**: Supports large networks with millions of devices (IP range: 0.0.0.0 – 127.255.255.255).
+  - **Class B**: Supports medium-sized networks (IP range: 128.0.0.0 – 191.255.255.255).
+  - **Class C**: Supports small networks (IP range: 192.0.0.0 – 223.255.255.255).
+
+- **Classless Addressing (CIDR)**: Classless Inter-Domain Routing (CIDR) replaced classful addressing to make more efficient use of the IP address space. In classless addressing, IP addresses are assigned using variable-length subnet masks (VLSM) rather than fixed classes, allowing for more flexible address allocation.
+
+#### Example:
+
+An address written as `192.168.1.0/24` specifies that the first 24 bits are used for the network portion, and the remaining 8 bits are used for hosts.
+
+### Special Addresses
+
+- **Loopback Address**: The loopback address `127.0.0.1` is used by a device to refer to itself. It is mainly used for testing and troubleshooting purposes.
+- **Broadcast Address**: The address `255.255.255.255` is a special broadcast address that sends data to all devices on a local network.
+- **Private IP Addresses**: These addresses (e.g., `192.168.x.x`, `10.x.x.x`, `172.16.x.x`) are reserved for use within private networks and are not routable on the public internet.
+
+### NAT (Network Address Translation)
+
+**NAT (Network Address Translation)** is a technique used to allow multiple devices on a local network to share a single public IP address. NAT translates private IP addresses used within a local network into a public IP address before packets are forwarded to the internet.
+
+#### Advantages of NAT:
+
+- Conserves public IPv4 addresses by allowing multiple devices to use one public IP.
+- Provides an additional layer of security by hiding internal IP addresses from external networks.
+
+### Subnetting
+
+**Subnetting** is the process of dividing a larger network into smaller subnetworks or subnets. This is achieved by borrowing bits from the host portion of the IP address to create additional network segments. Subnetting improves network efficiency by reducing broadcast traffic and allows for better organization of large networks.
+
+#### Example:
+
+A network with the address `192.168.1.0/24` can be subnetted into two smaller networks: `192.168.1.0/25` and `192.168.1.128/25`.
+
+### Supernetting
+
+**Supernetting** is the opposite of subnetting, where multiple smaller networks are combined into a larger one by reducing the number of network bits. It is used in route aggregation to reduce the size of routing tables and improve routing efficiency.
+
+#### Example:
+
+Two networks `192.168.1.0/24` and `192.168.2.0/24` can be combined into a single supernet `192.168.0.0/16`.
+
+---
+
+## Delivery and Forwarding of IP Packets
+
+The network layer is responsible for **delivering** packets from the source to the destination. There are two types of delivery:
+
+1. **Direct Delivery**: When the source and destination are on the same network, packets are delivered directly.
+
+2. **Indirect Delivery**: When the source and destination are on different networks, packets must be forwarded through one or more routers.
+
+**Forwarding** is the process of determining the next hop for a packet to reach its destination. Routers use a **routing table** to make forwarding decisions based on the destination IP address.
+
+---
+
+## Structure of a Router
+
+A **router** is a networking device that forwards data between different networks. The structure of a router includes:
+
+1. **Input Ports**: Where incoming packets are received from the network.
+2. **Routing Processor**: Contains the routing table and performs routing and forwarding functions.
+3. **Switching Fabric**: Responsible for transferring packets from input ports to output ports.
+4. **Output Ports**: Where outgoing packets are transmitted to the next network or device.
+
+Routers make forwarding decisions based on the destination IP address and use protocols like OSPF, RIP, and BGP to update their routing tables dynamically.
+
+---
+
+## IPv4 Datagrams
+
+An **IPv4 Datagram** is the basic unit of data transmission in an IPv4 network. It consists of two parts: the **header** and the **payload**.
+
+### Fragmentation
+
+IPv4 datagrams may need to be **fragmented** if they exceed the maximum transmission unit (MTU) of the network. Fragmentation occurs at the sender and is reassembled at the destination.
+
+### Options
+
+IPv4 datagrams support optional fields that can provide additional functionality, such as timestamping and security. These fields are not commonly used in most applications but can be specified in the header.
+
+### Checksum
+
+The **checksum** in an IPv4 datagram is used to detect errors in the header. Routers compute and verify the checksum each time a packet is forwarded to ensure that no corruption has occurred during transmission.
+
+---
+
+## IPv6 Addressing
+
+IPv6 is the successor to IPv4, developed to solve the problem of IPv4 address exhaustion. IPv6 addresses are 128 bits long, significantly increasing the number of available addresses.
+
+### Notations
+
+IPv6 addresses are written in hexadecimal notation and separated by colons (e.g., `2001:0db8:85a3:0000:0000:8a2e:0370:7334`). Leading zeros in each group can be omitted, and consecutive sections of zeroes can be replaced with a double colon (`::`).
+
+### Address Space
+
+IPv6 provides a vastly larger address space than IPv4, supporting approximately 340 undecillion (3.4 × 10^38) addresses.
+
+### Packet Format
+
+The IPv6 packet format is simpler than IPv4, with a fixed-length header that minimizes processing overhead at routers. The header includes essential fields like the source address, destination address, and payload length but omits fields like checksums and fragmentation.
+
+---
+
+## Transition from IPv4 to IPv6
+
+The transition from IPv4 to IPv6 is a gradual process, and several techniques are used to ensure compatibility:
+
+- **Dual Stack**: Devices run both IPv4 and IPv6 simultaneously, allowing them to communicate using either protocol.
+- **Tunneling**: IPv6 packets are encapsulated
+
+within IPv4 packets to allow them to travel across IPv4 networks.
+
+- **NAT64**: This method allows IPv6-only devices to communicate with IPv4-only devices by translating IPv6 addresses to IPv4 and vice versa.

@@ -1,0 +1,180 @@
+# Unit 5: Network Layer: Routing Protocols
+
+## Table of Contents
+
+1. [Routing and Metrics](#routing-and-metrics)
+   - Static vs Dynamic Routing Tables
+   - Routing Metrics
+2. [Routing Protocols](#routing-protocols)
+   - Unicast Routing Protocols
+   - Optimality Principle
+   - Intra-domain and Inter-domain Routing
+   - Shortest Path Routing
+   - Flooding
+   - Distance Vector Routing
+   - Link State Routing
+   - Path Vector Routing
+3. [Interior Gateway Routing Protocols](#interior-gateway-routing-protocols)
+   - OSPF (Open Shortest Path First)
+   - EIGRP (Enhanced Interior Gateway Routing Protocol)
+   - RIP (Routing Information Protocol)
+4. [Exterior Gateway Routing Protocol](#exterior-gateway-routing-protocol)
+   - BGP (Border Gateway Protocol)
+
+---
+
+## Routing and Metrics
+
+**Routing** is the process of determining the best path for data to travel from a source to a destination across a network. Routers use algorithms and protocols to make decisions about the most efficient routes for forwarding packets.
+
+### Static vs Dynamic Routing Tables
+
+- **Static Routing**: In static routing, network administrators manually configure the routes in a router's routing table. Static routes do not change unless manually updated. They are typically used in small or stable networks where routes rarely change.
+
+  - **Advantages**: Simple to configure, predictable, and does not require much overhead.
+  - **Disadvantages**: Lacks adaptability, cannot automatically reroute traffic in the event of a link failure, and requires manual updates.
+
+- **Dynamic Routing**: In dynamic routing, routers automatically adjust routes based on the network's current conditions using routing protocols. Dynamic routing protocols exchange information between routers to adapt to changes such as link failures, congestion, or new devices.
+  - **Advantages**: Adaptive, scalable, and reduces the need for manual configuration.
+  - **Disadvantages**: Requires more processing power and bandwidth due to constant route updates.
+
+### Routing Metrics
+
+A **routing metric** is a value used by routing protocols to determine the best path to a destination. Different metrics evaluate paths based on various factors:
+
+- **Hop Count**: The number of routers a packet must pass through to reach its destination.
+- **Bandwidth**: The maximum throughput of a path, favoring paths with higher bandwidth.
+- **Delay**: The time it takes for a packet to travel from source to destination.
+- **Load**: The current traffic on a path, with less congested paths being preferred.
+- **Reliability**: The likelihood that a link will fail, favoring more reliable paths.
+- **Cost**: A value assigned by the network administrator based on preference for certain routes.
+
+---
+
+## Routing Protocols
+
+### Unicast Routing Protocols
+
+**Unicast Routing** is the process of routing packets from a single source to a single destination. Several routing protocols are used to facilitate unicast routing across networks.
+
+### Optimality Principle
+
+The **Optimality Principle** states that if a router R is on the optimal path from router A to router B, then the optimal path from R to B also falls along the same path. This principle is foundational in determining the most efficient routes in routing protocols.
+
+### Intra-domain and Inter-domain Routing
+
+- **Intra-domain Routing**: Routing within a single administrative domain, such as an organization or a local network. Protocols used for intra-domain routing typically prioritize efficiency and performance.
+  - Examples: OSPF, EIGRP, RIP.
+- **Inter-domain Routing**: Routing between multiple administrative domains, typically used by large networks or ISPs (Internet Service Providers) to exchange routing information. Inter-domain routing is more complex due to differing policies between networks.
+  - Example: BGP.
+
+### Shortest Path Routing
+
+**Shortest Path Routing** is an algorithm that calculates the shortest path between the source and destination using various metrics (e.g., hop count, delay). The **Dijkstra Algorithm** is commonly used for shortest path calculations in many routing protocols like OSPF.
+
+### Flooding
+
+**Flooding** is a routing technique where every incoming packet is sent out on every outgoing link, except the one it arrived on. Flooding ensures that the packet reaches all nodes but can result in excessive duplication of packets. To mitigate this, time-to-live (TTL) values or sequence numbers are used to limit the lifespan or avoid redundancy.
+
+### Distance Vector Routing
+
+**Distance Vector Routing** is a type of routing protocol where each router maintains a table of the best known distances (or metrics) to all possible destinations. Routers share their tables with their neighbors at regular intervals, and routes are updated based on the new information received.
+
+- **Bellman-Ford Algorithm** is used to calculate the best route.
+- Example protocols: RIP, EIGRP.
+
+#### Advantages:
+
+- Simple to implement.
+- Routers only need to know about their immediate neighbors.
+
+#### Disadvantages:
+
+- Convergence time can be slow, especially in large networks.
+- Susceptible to routing loops and issues like the **count-to-infinity** problem.
+
+### Link State Routing
+
+**Link State Routing** protocols require routers to have a complete map of the network topology. Each router floods the network with information about its direct links to its neighbors, and routers then use algorithms to calculate the shortest path to each destination.
+
+- Example protocols: OSPF, IS-IS.
+
+#### Advantages:
+
+- Faster convergence and more accurate information than distance vector routing.
+- No routing loops.
+
+#### Disadvantages:
+
+- Requires more memory and processing power.
+- More complex to configure and manage.
+
+### Path Vector Routing
+
+**Path Vector Routing** is a type of routing protocol used in large networks where routing decisions are made based on the path a packet takes, rather than individual hops or distances. Each router maintains a table of the paths packets take to reach their destination. It is mainly used for inter-domain routing.
+
+- Example protocol: BGP.
+
+#### Advantages:
+
+- Prevents routing loops by keeping track of the full path a packet has taken.
+- Suitable for complex routing policies.
+
+---
+
+## Interior Gateway Routing Protocols
+
+**Interior Gateway Protocols (IGPs)** are used for routing within a single domain or organization. The most widely used IGPs are **OSPF**, **EIGRP**, and **RIP**.
+
+### OSPF (Open Shortest Path First)
+
+**OSPF** is a link-state routing protocol used for intra-domain routing. It uses the **Dijkstra algorithm** to calculate the shortest path for data packets. OSPF divides a large network into areas, reducing the complexity of routing decisions and preventing too much network information from being exchanged.
+
+#### Key Features:
+
+- Supports variable-length subnet masks (VLSM) and classless inter-domain routing (CIDR).
+- Supports authentication for routing updates.
+- Fast convergence due to link-state information.
+- Hierarchical design with areas to optimize performance.
+
+### EIGRP (Enhanced Interior Gateway Routing Protocol)
+
+**EIGRP** is a hybrid routing protocol developed by Cisco, combining elements of both distance vector and link state routing. It uses **Diffusing Update Algorithm (DUAL)** to determine the best path to a destination and supports both IPv4 and IPv6.
+
+#### Key Features:
+
+- Fast convergence and minimal bandwidth usage.
+- Supports unequal-cost load balancing.
+- Less susceptible to routing loops than distance vector protocols.
+
+### RIP (Routing Information Protocol)
+
+**RIP** is a distance-vector routing protocol that uses hop count as its metric. It is one of the oldest routing protocols and is simple to implement, but it is limited to small networks due to its maximum hop count of 15.
+
+#### Key Features:
+
+- Easy to configure.
+- Uses **split horizon** and **poison reverse** to prevent routing loops.
+- Slow convergence time and limited scalability due to hop count restrictions.
+
+---
+
+## Exterior Gateway Routing Protocol
+
+**Exterior Gateway Protocols (EGPs)** are used to route between different administrative domains, such as ISPs or large organizations. The primary EGP used today is **BGP (Border Gateway Protocol)**.
+
+### BGP (Border Gateway Protocol)
+
+**BGP** is the standard protocol used for inter-domain routing, facilitating the exchange of routing information between different autonomous systems (AS). BGP is a path-vector protocol, meaning it makes routing decisions based on the path taken rather than just hop count or other metrics.
+
+#### Key Features:
+
+- Can handle large amounts of routing data.
+- Supports routing policies and network administration rules.
+- Prevents routing loops using the AS path information.
+- Is the backbone of the internet, connecting multiple ISPs and large networks.
+
+#### Types of BGP:
+
+- **Internal BGP (iBGP)**: Used for routing within a single AS.
+- **External BGP (eBGP)**: Used for routing between different ASs.

@@ -1,0 +1,184 @@
+# Unit 6: Transport Layer: Services and Protocols
+
+## Table of Contents
+
+1. [Introduction to Transport Layer Services](#introduction-to-transport-layer-services)
+   - Duties of the Transport Layer
+2. [TCP (Transmission Control Protocol)](#tcp-transmission-control-protocol)
+   - Characteristics of TCP (COTS)
+   - TCP Header Format
+   - TCP Services
+   - TCP Segments
+   - TCP Connection Establishment
+   - Flow Control in TCP
+   - Congestion Control in TCP
+   - Congestion Control Algorithms
+     - Leaky Bucket Algorithm
+     - Token Bucket Algorithm
+     - Quality of Service (QoS)
+   - Timers in TCP
+3. [UDP (User Datagram Protocol)](#udp-user-datagram-protocol)
+   - Characteristics of UDP (CLTS)
+   - UDP Header Format
+   - UDP Datagram
+   - UDP Services
+   - UDP Applications
+4. [Sockets](#sockets)
+   - Socket Primitives
+   - TCP & UDP Sockets
+
+---
+
+## Introduction to Transport Layer Services
+
+The **Transport Layer** is the fourth layer in the OSI (Open Systems Interconnection) model, responsible for end-to-end communication, data transfer, and ensuring reliable and efficient data transmission between applications across the network. It serves as an intermediary between the application layer and the lower layers, facilitating communication while abstracting the underlying network complexities.
+
+### Duties of the Transport Layer
+
+1. **Segmentation and Reassembly**: The transport layer divides large data messages into smaller segments that can be transmitted over the network and then reassembles them at the destination.
+2. **Connection Establishment and Termination**: It establishes, maintains, and terminates connections between hosts before data transfer.
+3. **Flow Control**: Ensures that the sender does not overwhelm the receiver by sending data at a rate faster than the receiver can handle.
+4. **Error Detection and Correction**: Implements mechanisms to detect and, in some cases, correct errors that occur during transmission.
+5. **Congestion Control**: Helps prevent network congestion by controlling the rate at which data is sent over the network.
+6. **Multiplexing/Demultiplexing**: Allows multiple applications to use the same network connection by adding headers that identify the intended recipient.
+
+---
+
+## TCP (Transmission Control Protocol)
+
+**TCP** is a reliable, connection-oriented transport layer protocol that provides error detection, flow control, and congestion control. It ensures that data is delivered accurately and in the correct order.
+
+### Characteristics of TCP (COTS)
+
+- **Connection-Oriented Transport Service (COTS)**: TCP establishes a connection between the sender and receiver before transmitting data. This connection remains in place until the communication is complete.
+- **Reliability**: TCP ensures reliable delivery of data by detecting errors and retransmitting lost or corrupted segments.
+- **Flow Control**: Prevents the sender from overwhelming the receiver with too much data at once.
+- **Congestion Control**: Manages the flow of data to prevent network congestion.
+
+### TCP Header Format
+
+The **TCP Header** contains essential information for ensuring the reliable delivery of data. Key fields in the TCP header include:
+
+- **Source and Destination Port**: Identify the sending and receiving applications.
+- **Sequence Number**: Ensures the correct ordering of packets.
+- **Acknowledgment Number**: Confirms the receipt of data.
+- **Flags**: Control bits such as SYN, ACK, FIN, and RST are used for connection establishment and termination.
+- **Window Size**: Used for flow control.
+- **Checksum**: Error-checking mechanism to ensure data integrity.
+
+### TCP Services
+
+TCP provides several services, including:
+
+- **Reliable Data Transfer**: Ensures that all data is delivered accurately.
+- **Error Detection and Correction**: Uses checksums and acknowledgments to detect and correct errors.
+- **Flow Control**: Uses a sliding window mechanism to control the rate of data transmission.
+- **Congestion Control**: Prevents network overload by adjusting the data transmission rate.
+
+### TCP Segments
+
+TCP breaks down the data into **segments** before transmission. Each segment includes the TCP header and the payload (data). The TCP segment format allows for reliable communication by including sequence numbers, acknowledgment numbers, and other control information.
+
+### TCP Connection Establishment
+
+TCP uses a **three-way handshake** to establish a connection between the sender and receiver:
+
+1. The sender sends a **SYN** packet to initiate the connection.
+2. The receiver replies with a **SYN-ACK** packet to acknowledge the request.
+3. The sender responds with an **ACK** packet to confirm the connection.
+
+### Flow Control in TCP
+
+TCP implements flow control using a **sliding window** protocol. The window size defines how much data the sender can transmit before needing an acknowledgment. This prevents the sender from overwhelming the receiver with too much data at once.
+
+### Congestion Control in TCP
+
+Congestion control ensures that TCP does not overwhelm the network by sending too much data too quickly. It adjusts the sending rate based on the perceived congestion in the network.
+
+### Congestion Control Algorithms
+
+TCP uses several algorithms to control congestion in the network:
+
+#### Leaky Bucket Algorithm
+
+The **Leaky Bucket Algorithm** controls data transmission rates by enforcing a constant output rate, regardless of the burstiness of incoming traffic. Data packets are stored in a buffer and sent at a fixed rate, ensuring smooth traffic flow and preventing congestion.
+
+#### Token Bucket Algorithm
+
+The **Token Bucket Algorithm** allows for bursty traffic by permitting data to be sent as long as tokens are available. Tokens are generated at a constant rate, and each data packet consumes a token, allowing for more flexible traffic patterns.
+
+#### Quality of Service (QoS)
+
+**QoS** refers to the ability to provide different priority levels to different types of traffic (e.g., video streaming vs file downloads). QoS mechanisms ensure that critical applications receive the necessary bandwidth and low latency, even during congestion.
+
+### Timers in TCP
+
+TCP uses several types of **timers** to manage its operations:
+
+- **Retransmission Timer**: Determines how long TCP should wait for an acknowledgment before retransmitting a segment.
+- **Persistence Timer**: Prevents deadlock situations by ensuring that TCP does not wait indefinitely for a window update.
+- **Keepalive Timer**: Detects idle connections and ensures that they remain active.
+- **Time-Wait Timer**: Keeps a connection in the **TIME-WAIT** state after it has been closed, allowing late-arriving packets to be handled.
+
+---
+
+## UDP (User Datagram Protocol)
+
+**UDP** is a simple, connectionless transport layer protocol that offers minimal services compared to TCP. It is primarily used in applications where low latency is more critical than reliability.
+
+### Characteristics of UDP (CLTS)
+
+- **Connectionless Transport Service (CLTS)**: UDP does not establish a connection before sending data, making it faster and more efficient for certain applications.
+- **Unreliable**: UDP does not guarantee the delivery, order, or integrity of data. It simply sends packets, known as datagrams, without waiting for acknowledgments.
+- **No Flow Control or Congestion Control**: UDP sends data as fast as the application can deliver it, without any built-in mechanisms for controlling the rate.
+
+### UDP Header Format
+
+The **UDP Header** is much simpler than the TCP header. It contains:
+
+- **Source and Destination Port**: Identify the sending and receiving applications.
+- **Length**: Specifies the total length of the UDP packet.
+- **Checksum**: Provides error detection, although it is optional.
+
+### UDP Datagram
+
+A **UDP Datagram** consists of the header and the data payload. Since there is no segmentation, datagrams must be small enough to fit within the network's maximum transmission unit (MTU).
+
+### UDP Services
+
+UDP provides limited services compared to TCP:
+
+- **Low Overhead**: UDP has minimal header information, reducing processing time and transmission overhead.
+- **Fast Transmission**: Ideal for real-time applications that require low latency.
+- **No Connection Setup**: Data is sent immediately without establishing a connection.
+
+### UDP Applications
+
+UDP is used in applications where speed is more important than reliability, such as:
+
+- **DNS (Domain Name System)**: Quick lookups without requiring reliable transmission.
+- **VoIP (Voice over IP)**: Real-time voice communication where slight packet loss is acceptable.
+- **Streaming Media**: Video or audio streaming where minor data loss can be tolerated to maintain smooth playback.
+
+---
+
+## Sockets
+
+**Sockets** provide the interface between the transport layer (TCP/UDP) and the application layer. A socket represents one endpoint of a communication link between two applications.
+
+### Socket Primitives
+
+Socket primitives are the basic operations provided by the socket API, which allow applications to perform communication tasks. Some common primitives include:
+
+- **Socket Creation**: `socket()` creates a new socket.
+- **Bind**: `bind()` assigns a specific address and port number to the socket.
+- **Listen**: `listen()` marks a socket as passive, ready to accept incoming connections (TCP only).
+- **Connect**: `connect()` establishes a connection to a remote socket.
+- **Send**: `send()` transmits data through the socket.
+- **Receive**: `recv()` receives data from the socket.
+- **Close**: `close()` closes the socket, terminating the communication.
+
+### TCP & UDP Sockets
+
+- **TCP Sockets**: Used for connection-oriented communication. Applications using TCP sockets must establish a connection using the three-way handshake before sending data.
+- **UDP Sockets**: Used for connectionless communication. Data is sent immediately without establishing a connection, making UDP sockets faster but less reliable.

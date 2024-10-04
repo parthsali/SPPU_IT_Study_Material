@@ -1,0 +1,152 @@
+# Unit 2: Error Detection, Correction, and Data Link Control
+
+## Table of Contents
+
+1. [Introduction to the Data Link Layer](#introduction-to-the-data-link-layer)
+   - Data Link Layer Services
+   - Introduction to Error Detection and Correction
+2. [Error Detection and Correction](#error-detection-and-correction)
+   - Hamming Code and Hamming Distance
+   - Parity Check Code
+3. [Cyclic Codes](#cyclic-codes)
+   - Cyclic Redundancy Check (CRC)
+   - Advantages of Cyclic Codes
+   - Other Cyclic Codes (e.g., Checksum)
+4. [Framing](#framing)
+   - Fixed-size Framing
+   - Variable-size Framing
+5. [Flow Control](#flow-control)
+   - Flow Control Protocols
+   - Noiseless Channels: Simplest Protocol, Stop-and-Wait Protocol
+   - Noisy Channels: Stop-and-Wait ARQ, Go-back-N ARQ, Selective Repeat ARQ
+6. [Piggybacking](#piggybacking)
+
+---
+
+## Introduction to the Data Link Layer
+
+The **Data Link Layer** is the second layer of the OSI model, sitting between the physical layer and the network layer. Its primary responsibility is ensuring reliable data transfer between two directly connected devices. It provides services to the network layer by offering mechanisms for error detection, correction, and efficient data framing.
+
+### Data Link Layer Services
+
+The services provided by the Data Link Layer are crucial for maintaining the integrity and efficiency of data transmission over physical links. These services include:
+
+1. **Framing:** The division of data into manageable units, each frame containing a set of bits with header, payload, and footer.
+2. **Error Control:** Mechanisms to detect and correct errors during transmission.
+3. **Flow Control:** Ensures the sending device doesn’t overwhelm the receiver by sending data too quickly.
+4. **Access Control:** Determines which device can access the shared medium at a given time.
+
+### Introduction to Error Detection and Correction
+
+Errors can occur during data transmission due to noise, signal degradation, or interference. These errors manifest as corrupted bits, leading to the wrong interpretation of the transmitted data. To address this, the Data Link Layer uses **error detection and correction** techniques.
+
+- **Error Detection**: Identifies the presence of errors in transmitted data.
+- **Error Correction**: Not only detects errors but also reconstructs the original, error-free data.
+
+## Error Detection and Correction
+
+### Hamming Code and Hamming Distance
+
+One popular method for error detection and correction is the **Hamming Code**, which can detect up to two simultaneous bit errors and correct single-bit errors. This code uses redundant bits placed at specific positions to verify the integrity of the data.
+
+- **Hamming Distance**: The minimum number of bit changes required to convert one valid codeword into another. For error detection and correction, the Hamming Distance determines how many errors can be detected or corrected.
+
+#### Example:
+
+Consider a 7-bit Hamming code with 4 data bits and 3 parity bits (total 7 bits). If the Hamming Distance is 3, the code can detect up to two errors and correct one.
+
+### Parity Check Code
+
+**Parity checking** is one of the simplest error detection methods. In this technique, an extra bit (the parity bit) is added to the data. The value of the parity bit is chosen so that the total number of 1s in the data, including the parity bit, is either even (even parity) or odd (odd parity).
+
+#### Example:
+
+If the original data is `1010` and even parity is used, the parity bit is `0`, making the final data `10100`. If the received data has a different parity, an error is detected.
+
+However, parity checks can only detect errors and cannot correct them.
+
+---
+
+## Cyclic Codes
+
+### Cyclic Redundancy Check (CRC)
+
+The **Cyclic Redundancy Check (CRC)** is a more robust error detection method, commonly used in network communications. CRC treats data as a large binary number and divides it by a predetermined polynomial. The remainder of this division (the CRC value) is appended to the data.
+
+#### Example:
+
+If the data to be transmitted is `11010011101100` and the chosen polynomial is `1011`, the sender calculates the remainder (CRC) and appends it to the data before transmission. The receiver performs the same division, and if the remainder differs, an error has occurred.
+
+### Advantages of Cyclic Codes
+
+1. **Higher Error Detection Rate**: Cyclic codes can detect burst errors, which affect multiple consecutive bits.
+2. **Simple Implementation**: The process of calculating CRC can be efficiently implemented using hardware.
+
+### Other Cyclic Codes: Checksum
+
+The **Checksum** method is another error detection technique used in networking (e.g., IP, TCP/UDP). It involves summing all the data segments and appending the result (after some modifications like one's complement) to the end of the data.
+
+- **One’s Complement**: In this method, the data segments are treated as binary numbers and summed. If there is a carry, it is added to the least significant bit. The one’s complement of the sum is transmitted as the checksum.
+
+#### Example:
+
+If two data segments are `1101` and `1011`, their sum is `11000`. The checksum will be the one’s complement of `1000`, which is `0111`. The receiver calculates the sum of all segments, including the checksum, and checks if the result is all `1s`. If not, an error has occurred.
+
+---
+
+## Framing
+
+Framing is the method used to encapsulate data into discrete units, or frames, to ensure proper data transmission.
+
+### Fixed-size Framing
+
+In **fixed-size framing**, all frames are of the same size. This approach simplifies synchronization between the sender and the receiver.
+
+#### Example:
+
+In the ATM (Asynchronous Transfer Mode) network, cells are transmitted in a fixed size of 53 bytes.
+
+### Variable-size Framing
+
+In **variable-size framing**, the frame size can vary depending on the data being sent. To mark the boundaries of each frame, special characters or bit patterns are used, such as start and end flags.
+
+#### Example:
+
+In HDLC (High-Level Data Link Control), each frame is delimited by flag sequences to indicate the beginning and end.
+
+---
+
+## Flow Control
+
+Flow control ensures that the sender does not overwhelm the receiver with data, especially when the receiver has a slower processing rate. There are several **flow control protocols** used in the Data Link Layer.
+
+### Noiseless Channels: Simplest Protocol and Stop-and-Wait Protocol
+
+In a noiseless channel, there is no interference or error during transmission.
+
+- **Simplest Protocol**: In this protocol, the sender sends data and immediately waits for the receiver's acknowledgment before sending the next frame. This is straightforward but inefficient when there’s a significant delay between the sender and receiver.
+- **Stop-and-Wait Protocol**: The **Stop-and-Wait Protocol** enhances efficiency slightly by allowing the sender to keep sending data until the receiver sends an acknowledgment. However, it still introduces delays because the sender must stop and wait for each acknowledgment.
+
+### Noisy Channels: Stop-and-Wait ARQ, Go-back-N ARQ, Selective Repeat ARQ
+
+In noisy channels, errors are more common, so more advanced protocols are needed.
+
+- **Stop-and-Wait ARQ (Automatic Repeat Request)**: In the Stop-and-Wait ARQ, if the sender does not receive an acknowledgment within a certain timeframe, it resends the frame. This protocol helps detect and recover from lost or damaged frames.
+- **Go-back-N ARQ**: The **Go-back-N ARQ** allows the sender to send multiple frames before needing an acknowledgment, but if any frame is lost or damaged, all subsequent frames must be retransmitted. This increases throughput but can be wasteful if errors occur frequently.
+- **Selective Repeat ARQ**: The **Selective Repeat ARQ** protocol only retransmits the frames that were lost or damaged, making it more efficient than Go-back-N ARQ in error-prone environments.
+
+---
+
+## Piggybacking
+
+**Piggybacking** is an optimization technique used in bidirectional communication. Instead of sending a separate acknowledgment frame after receiving data, the acknowledgment is “piggybacked” onto the next data frame being sent in the opposite direction.
+
+#### Example:
+
+In a two-way communication scenario, if Host A sends data to Host B and Host B also has data to send, it can include its acknowledgment for Host A’s data in the data frame it sends, reducing the number of frames and improving efficiency.
+
+---
+
+### Conclusion
+
+The Data Link Layer is fundamental in ensuring that data is transmitted reliably between two devices. Its mechanisms for error detection (e.g., Hamming Code, CRC) and correction, flow control protocols (e.g., Stop-and-Wait, Go-back-N ARQ), and framing techniques help maintain the integrity and efficiency of data transmission. Understanding these methods is essential for optimizing network communication and ensuring data reliability even in the presence of noise and interference.
