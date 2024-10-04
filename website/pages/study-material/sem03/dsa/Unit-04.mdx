@@ -1,0 +1,280 @@
+# Unit 4: Trees
+
+### 1. Introduction to Trees
+
+A tree is a hierarchical data structure consisting of nodes, where each node has a value and a list of references to other nodes (its children). Trees are used to represent data with a hierarchical relationship, such as file systems, organizational structures, and more.
+
+#### Terminology
+
+- **Node**: The fundamental part of a tree, containing data and links to its child nodes.
+- **Root**: The topmost node of the tree. It is the only node without a parent.
+- **Leaf**: A node that does not have any children.
+- **Height**: The length of the longest path from the root to a leaf. The height of a tree with a single node is 0.
+- **Depth**: The length of the path from the root to a specific node.
+
+### 2. Binary Trees
+
+A binary tree is a special type of tree where each node has at most two children, referred to as the left child and the right child.
+
+#### Types of Binary Trees
+
+- **Full Binary Tree**: Every node other than the leaves has two children.
+- **Complete Binary Tree**: All levels are fully filled except possibly for the last level, which is filled from left to right.
+- **Perfect Binary Tree**: All internal nodes have two children, and all leaf nodes are at the same level.
+- **Skewed Binary Tree**: All nodes have either only left or only right children.
+
+### 3. Expression Trees
+
+An expression tree is a binary tree used to represent expressions. Each internal node corresponds to an operator, and each leaf node corresponds to an operand.
+
+**Example of an Expression Tree**:
+For the expression `(A + B) * C`, the corresponding expression tree would look like this:
+
+```
+        *
+       / \
+      +   C
+     / \
+    A   B
+```
+
+### 4. Binary Tree as an ADT
+
+Binary trees can be implemented as an Abstract Data Type (ADT), providing a set of operations to interact with the tree.
+
+#### Basic Operations
+
+- **Insertion**: Adding a new node to the tree.
+- **Searching**: Finding a node in the tree.
+- **Deletion**: Removing a node from the tree.
+- **Traversal**: Visiting all nodes in a specific order (in-order, pre-order, post-order).
+
+#### C++ Implementation of Binary Tree
+
+Here's a basic implementation of a binary tree in C++:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* left;
+    Node* right;
+};
+
+class BinaryTree {
+private:
+    Node* root;
+
+    Node* insert(Node* node, int data) {
+        if (!node) {
+            Node* newNode = new Node();
+            newNode->data = data;
+            newNode->left = newNode->right = nullptr;
+            return newNode;
+        }
+        if (data < node->data) {
+            node->left = insert(node->left, data);
+        } else {
+            node->right = insert(node->right, data);
+        }
+        return node;
+    }
+
+    void inOrder(Node* node) {
+        if (node) {
+            inOrder(node->left);
+            cout << node->data << " ";
+            inOrder(node->right);
+        }
+    }
+
+public:
+    BinaryTree() : root(nullptr) {}
+
+    void insert(int data) {
+        root = insert(root, data);
+    }
+
+    void inOrder() {
+        inOrder(root);
+        cout << endl;
+    }
+};
+```
+
+### 5. Binary Search Tree (BST)
+
+A binary search tree (BST) is a special kind of binary tree where the left child of a node contains only nodes with values less than the node’s value, and the right child contains only nodes with values greater than the node’s value.
+
+#### Operations in a BST
+
+- **Insertion**: Adding an element while maintaining the BST property.
+- **Searching**: Finding an element based on its value.
+- **Deletion**: Removing an element and restructuring the tree to maintain the BST property.
+- **Level-wise Display**: Displaying all nodes at each level.
+
+#### C++ Implementation of a Binary Search Tree
+
+Here’s a simple implementation of a binary search tree:
+
+```cpp
+class BinarySearchTree {
+private:
+    Node* root;
+
+    Node* insert(Node* node, int data) {
+        if (!node) {
+            Node* newNode = new Node();
+            newNode->data = data;
+            newNode->left = newNode->right = nullptr;
+            return newNode;
+        }
+        if (data < node->data) {
+            node->left = insert(node->left, data);
+        } else {
+            node->right = insert(node->right, data);
+        }
+        return node;
+    }
+
+    Node* search(Node* node, int data) {
+        if (!node || node->data == data) return node;
+        if (data < node->data) return search(node->left, data);
+        return search(node->right, data);
+    }
+
+    Node* deleteNode(Node* node, int data) {
+        if (!node) return node;
+        if (data < node->data) {
+            node->left = deleteNode(node->left, data);
+        } else if (data > node->data) {
+            node->right = deleteNode(node->right, data);
+        } else {
+            // Node with only one child or no child
+            if (!node->left) return node->right;
+            else if (!node->right) return node->left;
+
+            // Node with two children
+            Node* temp = node->right;
+            while (temp && temp->left) temp = temp->left;
+            node->data = temp->data;
+            node->right = deleteNode(node->right, temp->data);
+        }
+        return node;
+    }
+
+    void levelOrder(Node* node) {
+        if (!node) return;
+        queue<Node*> q;
+        q.push(node);
+        while (!q.empty()) {
+            Node* temp = q.front();
+            q.pop();
+            cout << temp->data << " ";
+            if (temp->left) q.push(temp->left);
+            if (temp->right) q.push(temp->right);
+        }
+        cout << endl;
+    }
+
+public:
+    BinarySearchTree() : root(nullptr) {}
+
+    void insert(int data) {
+        root = insert(root, data);
+    }
+
+    Node* search(int data) {
+        return search(root, data);
+    }
+
+    void deleteNode(int data) {
+        root = deleteNode(root, data);
+    }
+
+    void levelOrder() {
+        levelOrder(root);
+    }
+};
+```
+
+### 6. Tree Traversals
+
+Tree traversal refers to the process of visiting each node in a tree exactly once. The most common methods for traversing a binary tree include:
+
+- **In-order Traversal**: Left, Root, Right
+- **Pre-order Traversal**: Root, Left, Right
+- **Post-order Traversal**: Left, Right, Root
+
+#### Recursive and Non-Recursive Algorithms
+
+##### Recursive In-order Traversal:
+
+```cpp
+void inOrder(Node* node) {
+    if (node) {
+        inOrder(node->left);
+        cout << node->data << " ";
+        inOrder(node->right);
+    }
+}
+```
+
+##### Non-Recursive Pre-order Traversal:
+
+```cpp
+void preOrderIterative(Node* root) {
+    stack<Node*> s;
+    s.push(root);
+    while (!s.empty()) {
+        Node* temp = s.top();
+        cout << temp->data << " ";
+        s.pop();
+        if (temp->right) s.push(temp->right);
+        if (temp->left) s.push(temp->left);
+    }
+}
+```
+
+### 7. Threaded Binary Tree
+
+A threaded binary tree is a binary tree in which the null pointers are made to point to the in-order predecessor and successor of the node, making in-order traversal faster without the use of a stack or recursion.
+
+#### Types of Threaded Binary Trees
+
+- **In-order Threaded Binary Tree**: Null pointers point to the in-order predecessor and successor.
+- **Pre-order Threaded Binary Tree**: Null pointers point to the pre-order predecessor and successor.
+
+#### Traversals
+
+In-order threaded binary trees can be traversed using the pointers instead of the conventional traversal methods.
+
+**In-order Traversal of a Threaded Binary Tree**:
+
+```cpp
+void inOrderThreaded(Node* root) {
+    Node* curr = root;
+    while (curr) {
+        while (curr->left) {
+            curr = curr->left;
+        }
+        cout << curr->data << " ";
+        curr = curr->right; // Move to successor
+    }
+}
+```
+
+### 8. Applications of Trees
+
+Trees are versatile data structures used in various applications, including:
+
+- **Hierarchical Data Representation**: File systems, organizational structures, etc.
+- **Database Indexing**: B-trees and B+ trees are used in databases for indexing.
+- **Network Routing Algorithms**: Trees can represent the paths between nodes in networks.
+- **XML Parsing**: Trees can represent the hierarchical structure of XML documents.
+
+### Conclusion
+
+Trees are fundamental data structures that allow efficient data organization and retrieval. Understanding trees, especially binary trees and their variants, is crucial for various applications in computer science. Through the concepts of binary search trees, traversals, and threaded trees, programmers can handle complex data management tasks efficiently.

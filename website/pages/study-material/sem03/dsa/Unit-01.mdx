@@ -1,0 +1,310 @@
+# Unit 1: Introduction to Data Structures
+
+### Introduction to Data Structures
+
+Data structures are essential for organizing and managing data efficiently. They allow us to perform various operations like insertion, deletion, and searching with optimal time and space complexity. In this unit, we will explore the concepts of data, data objects, and the various types of data structures.
+
+#### Key Concepts
+
+- **Data**: Data is any information that can be processed by a computer. It can take various forms, such as numbers, text, images, etc. Understanding how data can be structured is critical for effective algorithm implementation.
+
+- **Data Object**: A data object is an instance of a data structure. It holds specific data, which can be manipulated through defined operations.
+
+- **Data Structure**: A data structure is a way of organizing and storing data so that it can be accessed and modified efficiently. Examples include arrays, linked lists, stacks, queues, trees, and graphs.
+
+### Types of Data Structures
+
+Data structures can be classified based on various criteria:
+
+1. **Primitive vs. Non-Primitive**:
+
+   - **Primitive Data Structures**: These are the basic data types provided by programming languages, such as integers, floats, characters, and booleans.
+   - **Non-Primitive Data Structures**: These are more complex data structures built using primitive data types. Examples include arrays, structures, and classes.
+
+2. **Linear vs. Non-Linear**:
+
+   - **Linear Data Structures**: In linear data structures, elements are arranged sequentially. Examples include arrays, linked lists, stacks, and queues.
+   - **Non-Linear Data Structures**: In non-linear data structures, elements are not arranged sequentially. Examples include trees and graphs.
+
+3. **Static vs. Dynamic**:
+
+   - **Static Data Structures**: These have a fixed size, meaning their size cannot change during runtime. An example is an array.
+   - **Dynamic Data Structures**: These can grow and shrink in size during runtime. Linked lists are a common example.
+
+4. **Persistent vs. Ephemeral**:
+   - **Persistent Data Structures**: These preserve the previous version of the data when modified.
+   - **Ephemeral Data Structures**: These do not preserve past versions. Once modified, the previous state cannot be retrieved.
+
+### Abstract Data Types (ADT)
+
+An Abstract Data Type (ADT) is a model for a certain class of data structures that have similar behavior. An ADT defines the type of data and the operations that can be performed on it, without specifying how these operations will be implemented. Common examples of ADTs include stacks, queues, lists, and dictionaries.
+
+### Analysis of Algorithms
+
+Understanding the efficiency of algorithms is vital in computer science. Analyzing algorithms helps evaluate their performance, which leads to better decision-making when choosing the right algorithm for a specific problem.
+
+#### Frequency Count
+
+Frequency count is a method to determine how many times a specific operation is executed within an algorithm. This count provides insight into the algorithm's efficiency and is often the first step in analyzing its performance.
+
+#### Time Complexity
+
+Time complexity measures the time an algorithm takes to complete as a function of the length of the input. It is expressed using Big O notation, which provides an upper bound on the time required. Common time complexities include:
+
+- **O(1)**: Constant time
+- **O(n)**: Linear time
+- **O(n^2)**: Quadratic time
+- **O(log n)**: Logarithmic time
+
+#### Space Complexity
+
+Space complexity refers to the amount of memory an algorithm requires relative to the input size. It is also expressed using Big O notation. Efficient algorithms use less memory, which is especially important in resource-constrained environments.
+
+### Notations
+
+1. **Big O Notation (O)**: This notation provides an upper bound on the time or space complexity of an algorithm, describing its worst-case scenario.
+
+2. **Big Omega Notation (Ω)**: This notation provides a lower bound, representing the best-case scenario of the algorithm's performance.
+
+3. **Theta Notation (Θ)**: This notation indicates a tight bound, meaning the algorithm's performance will be within both the upper and lower bounds.
+
+### Sequential Organization
+
+Sequential organization refers to the storage of data elements in a contiguous block of memory. The two main types of sequential organization are:
+
+#### Single-Dimensional Arrays
+
+Single-dimensional arrays are linear collections of data elements that can be accessed using a single index. Each element is stored in contiguous memory locations, allowing efficient access.
+
+**C++ Code Example:**
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    const int SIZE = 5;
+    int arr[SIZE] = {10, 20, 30, 40, 50};
+
+    cout << "Array Elements: " << endl;
+    for (int i = 0; i < SIZE; i++) {
+        cout << "Element at index " << i << ": " << arr[i] << endl;
+    }
+
+    return 0;
+}
+```
+
+#### Multidimensional Arrays
+
+Multidimensional arrays are arrays with two or more dimensions, such as 2D arrays (matrices). They can be visualized as tables or grids and are accessed using multiple indices.
+
+**C++ Code Example:**
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    const int ROWS = 3;
+    const int COLS = 3;
+    int matrix[ROWS][COLS] = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+
+    cout << "Matrix Elements: " << endl;
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLS; j++) {
+            cout << matrix[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
+```
+
+### Linked Organization
+
+Linked organization is a way to store data elements using pointers that connect each element to the next. This approach provides flexibility in memory allocation and makes it easy to insert or delete elements.
+
+#### Types of Linked Lists
+
+1. **Singly Linked List**: Each node contains data and a pointer to the next node. This structure allows traversal in one direction.
+
+**C++ Code Example for Singly Linked List:**
+
+```cpp
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+class SinglyLinkedList {
+public:
+    Node* head;
+
+    SinglyLinkedList() {
+        head = nullptr;
+    }
+
+    void insert(int value) {
+        Node* newNode = new Node();
+        newNode->data = value;
+        newNode->next = head;
+        head = newNode;
+    }
+
+    void display() {
+        Node* current = head;
+        while (current != nullptr) {
+            cout << current->data << " ";
+            current = current->next;
+        }
+        cout << endl;
+    }
+};
+
+int main() {
+    SinglyLinkedList list;
+    list.insert(10);
+    list.insert(20);
+    list.insert(30);
+
+    cout << "Singly Linked List: ";
+    list.display();
+
+    return 0;
+}
+```
+
+2. **Doubly Linked List**: Each node contains data, a pointer to the next node, and a pointer to the previous node. This allows traversal in both directions.
+
+**C++ Code Example for Doubly Linked List:**
+
+```cpp
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+    Node* prev;
+};
+
+class DoublyLinkedList {
+public:
+    Node* head;
+
+    DoublyLinkedList() {
+        head = nullptr;
+    }
+
+    void insert(int value) {
+        Node* newNode = new Node();
+        newNode->data = value;
+        newNode->next = head;
+        newNode->prev = nullptr;
+
+        if (head != nullptr) {
+            head->prev = newNode;
+        }
+        head = newNode;
+    }
+
+    void display() {
+        Node* current = head;
+        while (current != nullptr) {
+            cout << current->data << " ";
+            current = current->next;
+        }
+        cout << endl;
+    }
+};
+
+int main() {
+    DoublyLinkedList list;
+    list.insert(10);
+    list.insert(20);
+    list.insert(30);
+
+    cout << "Doubly Linked List: ";
+    list.display();
+
+    return 0;
+}
+```
+
+3. **Circular Linked List**: Similar to a singly linked list, but the last node points back to the first node, creating a circular structure.
+
+**C++ Code Example for Circular Linked List:**
+
+```cpp
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+class CircularLinkedList {
+public:
+    Node* head;
+
+    CircularLinkedList() {
+        head = nullptr;
+    }
+
+    void insert(int value) {
+        Node* newNode = new Node();
+        newNode->data = value;
+
+        if (head == nullptr) {
+            head = newNode;
+            newNode->next = head;  // Point to itself
+        } else {
+            Node* temp = head;
+            while (temp->next != head) {
+                temp = temp->next;
+            }
+            temp->next = newNode;
+            newNode->next = head;
+        }
+    }
+
+    void display() {
+        if (head == nullptr) return;
+
+        Node* current = head;
+        do
+
+ {
+            cout << current->data << " ";
+            current = current->next;
+        } while (current != head);
+        cout << endl;
+    }
+};
+
+int main() {
+    CircularLinkedList list;
+    list.insert(10);
+    list.insert(20);
+    list.insert(30);
+
+    cout << "Circular Linked List: ";
+    list.display();
+
+    return 0;
+}
+```
+
+### Conclusion
+
+In this unit, we introduced the basic concepts of data structures, including their types, analysis, and examples. Understanding these foundational elements is crucial for working effectively with algorithms and data manipulation. As we move forward, we will delve deeper into specific data structures and their applications.

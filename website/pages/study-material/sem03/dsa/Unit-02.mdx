@@ -1,0 +1,409 @@
+# Unit 2: Searching and Sorting
+
+## Searching and Sorting
+
+Searching and sorting are fundamental operations in computer science and programming. They enable efficient data retrieval and organization, which is crucial for various applications ranging from databases to web development.
+
+### Need for Searching and Sorting
+
+1. **Efficiency**: Efficient searching and sorting algorithms improve the performance of applications by reducing the time taken to find or organize data.
+
+2. **Data Management**: With the exponential growth of data, effective searching and sorting techniques help manage and retrieve data quickly.
+
+3. **Algorithm Optimization**: Understanding and implementing efficient searching and sorting algorithms can lead to optimized algorithms, making them suitable for large datasets.
+
+### Internal and External Sorting
+
+- **Internal Sorting**: This occurs when the data to be sorted fits into the main memory. Examples include sorting algorithms like Quick Sort, Merge Sort, and Insertion Sort, which are typically faster as they have direct access to the data.
+
+- **External Sorting**: This is used when the data being sorted does not fit into the main memory, requiring external storage (like hard drives). It often involves dividing the data into smaller chunks, sorting each chunk, and then merging them. An example is the External Merge Sort.
+
+### Sort Stability
+
+Sort stability refers to the property of a sorting algorithm that preserves the relative order of records with equal keys. A stable sort will maintain the order of equal elements in the input. For instance, if two records with the same key appear in a specific order, they will remain in that order after sorting.
+
+## Searching Methods
+
+### Linear Search
+
+Linear search is a simple algorithm that checks each element in a list sequentially until the desired element is found or the list ends.
+
+**C++ Implementation of Linear Search**:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int linearSearch(int arr[], int size, int target) {
+    for (int i = 0; i < size; i++) {
+        if (arr[i] == target) {
+            return i; // Return index if found
+        }
+    }
+    return -1; // Return -1 if not found
+}
+
+int main() {
+    int arr[] = {5, 3, 7, 2, 8};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int target = 7;
+
+    int result = linearSearch(arr, size, target);
+    if (result != -1) {
+        cout << "Element found at index: " << result << endl;
+    } else {
+        cout << "Element not found." << endl;
+    }
+    return 0;
+}
+```
+
+### Binary Search
+
+Binary search is a more efficient algorithm that requires the array to be sorted. It works by dividing the search interval in half repeatedly until the target value is found or the interval is empty.
+
+**C++ Implementation of Binary Search**:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int binarySearch(int arr[], int size, int target) {
+    int left = 0, right = size - 1;
+
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+
+        if (arr[mid] == target) {
+            return mid; // Return index if found
+        }
+        if (arr[mid] < target) {
+            left = mid + 1; // Search in the right half
+        } else {
+            right = mid - 1; // Search in the left half
+        }
+    }
+    return -1; // Return -1 if not found
+}
+
+int main() {
+    int arr[] = {2, 3, 5, 7, 8};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int target = 5;
+
+    int result = binarySearch(arr, size, target);
+    if (result != -1) {
+        cout << "Element found at index: " << result << endl;
+    } else {
+        cout << "Element not found." << endl;
+    }
+    return 0;
+}
+```
+
+### Fibonacci Series
+
+The Fibonacci series is a sequence where each number is the sum of the two preceding ones, usually starting with 0 and 1. It can be generated using both iterative and recursive methods.
+
+**C++ Implementation of Fibonacci Series**:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+void fibonacci(int n) {
+    int a = 0, b = 1, c;
+
+    if (n == 0) return;
+
+    cout << a << " "; // First Fibonacci number
+    if (n == 1) return;
+
+    cout << b << " "; // Second Fibonacci number
+    for (int i = 2; i < n; i++) {
+        c = a + b; // Next Fibonacci number
+        cout << c << " ";
+        a = b; // Update for next iteration
+        b = c;
+    }
+}
+
+int main() {
+    int n = 10; // Number of terms
+    cout << "Fibonacci Series: ";
+    fibonacci(n);
+    cout << endl;
+    return 0;
+}
+```
+
+## Sorting Methods
+
+Sorting algorithms are techniques used to arrange the elements of a list or array in a particular order, typically in ascending or descending order.
+
+### Bubble Sort
+
+Bubble sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. This process repeats until no swaps are needed.
+
+**C++ Implementation of Bubble Sort**:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+void bubbleSort(int arr[], int size) {
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = 0; j < size - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                swap(arr[j], arr[j + 1]); // Swap if the element found is greater
+            }
+        }
+    }
+}
+
+int main() {
+    int arr[] = {64, 34, 25, 12, 22};
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    bubbleSort(arr, size);
+    cout << "Sorted array: ";
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    return 0;
+}
+```
+
+### Insertion Sort
+
+Insertion sort builds a sorted array one element at a time by repeatedly picking the next element and inserting it into the correct position.
+
+**C++ Implementation of Insertion Sort**:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+void insertionSort(int arr[], int size) {
+    for (int i = 1; i < size; i++) {
+        int key = arr[i];
+        int j = i - 1;
+
+        // Move elements of arr[0..i-1], that are greater than key,
+        // to one position ahead of their current position
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+    }
+}
+
+int main() {
+    int arr[] = {12, 11, 13, 5, 6};
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    insertionSort(arr, size);
+    cout << "Sorted array: ";
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    return 0;
+}
+```
+
+### Quick Sort
+
+Quick sort is a highly efficient sorting algorithm that uses a divide-and-conquer strategy. It selects a 'pivot' element and partitions the other elements into two sub-arrays, according to whether they are less than or greater than the pivot.
+
+**C++ Implementation of Quick Sort**:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int partition(int arr[], int low, int high) {
+    int pivot = arr[high]; // pivot
+    int i = (low - 1); // Index of smaller element
+
+    for (int j = low; j <= high - 1; j++) {
+        // If current element is smaller than the pivot
+        if (arr[j] < pivot) {
+            i++; // increment index of smaller element
+            swap(arr[i], arr[j]);
+        }
+    }
+    swap(arr[i + 1], arr[high]);
+    return (i + 1);
+}
+
+void quickSort(int arr[], int low, int high) {
+    if (low < high) {
+        int pi = partition(arr, low, high);
+
+        // Recursively sort elements before partition and after partition
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+
+int main() {
+    int arr[] = {10, 7, 8, 9, 1, 5};
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    quickSort(arr, 0, size - 1);
+    cout << "Sorted array: ";
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    return 0;
+}
+```
+
+### Merge Sort
+
+Merge sort is another efficient, stable, and comparison-based sorting algorithm. It divides the input array into two halves, sorts each half, and then merges the sorted halves.
+
+**C++ Implementation of Merge Sort**:
+
+```
+
+cpp
+#include <iostream>
+using namespace std;
+
+void merge(int arr[], int left, int mid, int right) {
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+
+    int L[n1], R[n2];
+
+    for (int i = 0; i < n1; i++)
+        L[i] = arr[left + i];
+    for (int j = 0; j < n2; j++)
+        R[j] = arr[mid + 1 + j];
+
+    int i = 0, j = 0, k = left;
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        } else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+void mergeSort(int arr[], int left, int right) {
+    if (left < right) {
+        int mid = left + (right - left) / 2;
+
+        mergeSort(arr, left, mid);
+        mergeSort(arr, mid + 1, right);
+        merge(arr, left, mid, right);
+    }
+}
+
+int main() {
+    int arr[] = {12, 11, 13, 5, 6, 7};
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    mergeSort(arr, 0, size - 1);
+    cout << "Sorted array: ";
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    return 0;
+}
+```
+
+### Shell Sort
+
+Shell sort is an optimization of insertion sort that allows the exchange of items that are far apart. It starts by sorting elements that are a certain distance apart, then progressively reducing the distance between elements to be compared.
+
+**C++ Implementation of Shell Sort**:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+void shellSort(int arr[], int size) {
+    for (int gap = size / 2; gap > 0; gap /= 2) {
+        for (int i = gap; i < size; i++) {
+            int temp = arr[i];
+            int j;
+            for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) {
+                arr[j] = arr[j - gap];
+            }
+            arr[j] = temp;
+        }
+    }
+}
+
+int main() {
+    int arr[] = {12, 34, 54, 2, 3};
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    shellSort(arr, size);
+    cout << "Sorted array: ";
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    return 0;
+}
+```
+
+## Comparison of Sorting Methods
+
+| Sorting Method | Time Complexity (Best) | Time Complexity (Average) | Time Complexity (Worst) | Space Complexity | Stable |
+| -------------- | ---------------------- | ------------------------- | ----------------------- | ---------------- | ------ |
+| Bubble Sort    | O(n)                   | O(n^2)                    | O(n^2)                  | O(1)             | Yes    |
+| Insertion Sort | O(n)                   | O(n^2)                    | O(n^2)                  | O(1)             | Yes    |
+| Quick Sort     | O(n log n)             | O(n log n)                | O(n^2)                  | O(log n)         | No     |
+| Merge Sort     | O(n log n)             | O(n log n)                | O(n log n)              | O(n)             | Yes    |
+| Shell Sort     | O(n log n)             | O(n log n)                | O(n^2)                  | O(1)             | No     |
+
+## Analysis of Algorithms
+
+### Insertion Sort
+
+- **Best Case**: O(n) - When the array is already sorted.
+- **Worst Case**: O(n^2) - When the array is sorted in reverse order.
+- **Average Case**: O(n^2) - On average, half of the elements need to be compared and moved.
+
+### Quick Sort
+
+- **Best Case**: O(n log n) - When the pivot divides the array into two equal halves.
+- **Worst Case**: O(n^2) - When the pivot is always the smallest or largest element (e.g., already sorted array).
+- **Average Case**: O(n log n) - Typically, the pivot will split the array into smaller sections.
+
+### Binary Search
+
+- **Best Case**: O(1) - When the middle element is the target.
+- **Worst Case**: O(log n) - When the search space is halved with each iteration.
+- **Average Case**: O(log n) - Similarly, since the search space reduces consistently.
+
+### Hashing
+
+- **Best Case**: O(1) - When no collisions occur, and the desired element is directly accessed.
+- **Worst Case**: O(n) - When all keys hash to the same index (worst-case scenario).
+- **Average Case**: O(1) - Under average conditions with a good hash function and proper load factors.

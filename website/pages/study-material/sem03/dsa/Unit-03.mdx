@@ -1,0 +1,280 @@
+# Unit 3: Stack and Queue
+
+### Stack
+
+#### 1. Concept of Stack
+
+- **Definition**: A stack is a linear data structure that follows the Last In First Out (LIFO) principle, where the last element added to the stack is the first one to be removed.
+- **Operations**:
+  - **Push**: Add an element to the top of the stack.
+  - **Pop**: Remove the top element from the stack.
+  - **Peek/Top**: Retrieve the top element without removing it.
+  - **isEmpty**: Check if the stack is empty.
+
+#### 2. Implicit and Explicit Stack
+
+- **Implicit Stack**: Uses the call stack of the program to manage function calls and local variables. For example, recursion utilizes the call stack implicitly.
+- **Explicit Stack**: Managed by the programmer using a data structure explicitly defined in the program (e.g., an array or linked list).
+
+#### 3. Stack as an ADT (Abstract Data Type)
+
+- **Sequential Organization**: Implemented using arrays.
+
+  - **Pros**: Easy to implement, memory-efficient for small stacks.
+  - **Cons**: Fixed size, leads to stack overflow if limit is exceeded.
+
+  **Example Implementation in C++**:
+
+  ```cpp
+  class Stack {
+      int top;
+      int maxSize;
+      int* stackArray;
+
+  public:
+      Stack(int size) {
+          maxSize = size;
+          stackArray = new int[maxSize];
+          top = -1;
+      }
+
+      void push(int value) {
+          if (top < maxSize - 1) {
+              stackArray[++top] = value;
+          }
+      }
+
+      int pop() {
+          if (top >= 0) {
+              return stackArray[top--];
+          }
+          return -1; // Indicates stack underflow
+      }
+  };
+  ```
+
+- **Linked Organization**: Implemented using linked lists.
+
+  - **Pros**: Dynamic size, no overflow unless memory is exhausted.
+  - **Cons**: Extra memory for pointers.
+
+  **Example Implementation in C++**:
+
+  ```cpp
+  struct Node {
+      int data;
+      Node* next;
+  };
+
+  class LinkedStack {
+      Node* top;
+
+  public:
+      LinkedStack() : top(nullptr) {}
+
+      void push(int value) {
+          Node* newNode = new Node{value, top};
+          top = newNode;
+      }
+
+      int pop() {
+          if (top) {
+              int value = top->data;
+              Node* temp = top;
+              top = top->next;
+              delete temp;
+              return value;
+          }
+          return -1; // Indicates stack underflow
+      }
+  };
+  ```
+
+#### 4. Applications of Stack
+
+- **Recursion**: Uses the call stack to keep track of function calls and local variables.
+- **Converting Expressions**:
+
+  - **Infix to Postfix**: Use the Shunting Yard algorithm.
+  - **Infix to Prefix**: Reverse the infix expression, convert it to postfix, then reverse the postfix expression.
+
+  **Example (Infix to Postfix)**:
+
+  ```cpp
+  // Pseudo code for infix to postfix conversion
+  void infixToPostfix(string exp) {
+      Stack stack;
+      // Implementation logic
+  }
+  ```
+
+- **Evaluating Postfix**: Use a stack to evaluate the expression by pushing operands and applying operators.
+
+  **Example Evaluation**:
+
+  ```cpp
+  // Pseudo code to evaluate postfix expression
+  int evaluatePostfix(string exp) {
+      Stack stack;
+      // Implementation logic
+  }
+  ```
+
+---
+
+### Queue
+
+#### 1. Concept of Queue
+
+- **Definition**: A queue is a linear data structure that follows the First In First Out (FIFO) principle, where the first element added is the first one to be removed.
+- **Operations**:
+  - **Enqueue**: Add an element to the rear of the queue.
+  - **Dequeue**: Remove an element from the front of the queue.
+  - **Front/Peek**: Retrieve the front element without removing it.
+  - **isEmpty**: Check if the queue is empty.
+
+#### 2. Queue as an ADT (Abstract Data Type)
+
+- **Array Implementation**: Using a fixed-size array to manage elements.
+
+  - **Pros**: Easy to implement, efficient for small queues.
+  - **Cons**: Fixed size, leads to overflow if limit is exceeded.
+
+  **Example Implementation in C++**:
+
+  ```cpp
+  class Queue {
+      int front, rear, maxSize;
+      int* queueArray;
+
+  public:
+      Queue(int size) {
+          maxSize = size;
+          queueArray = new int[maxSize];
+          front = rear = -1;
+      }
+
+      void enqueue(int value) {
+          if (rear < maxSize - 1) {
+              queueArray[++rear] = value;
+              if (front == -1) front = 0;
+          }
+      }
+
+      int dequeue() {
+          if (front <= rear) {
+              return queueArray[front++];
+          }
+          return -1; // Indicates queue underflow
+      }
+  };
+  ```
+
+- **Linked Implementation**: Using linked lists to manage elements dynamically.
+
+  - **Pros**: Dynamic size, no overflow unless memory is exhausted.
+  - **Cons**: Extra memory for pointers.
+
+  **Example Implementation in C++**:
+
+  ```cpp
+  struct Node {
+      int data;
+      Node* next;
+  };
+
+  class LinkedQueue {
+      Node *front, *rear;
+
+  public:
+      LinkedQueue() : front(nullptr), rear(nullptr) {}
+
+      void enqueue(int value) {
+          Node* newNode = new Node{value, nullptr};
+          if (!rear) {
+              front = rear = newNode;
+              return;
+          }
+          rear->next = newNode;
+          rear = newNode;
+      }
+
+      int dequeue() {
+          if (!front) return -1; // Indicates queue underflow
+          int value = front->data;
+          Node* temp = front;
+          front = front->next;
+          if (!front) rear = nullptr; // Reset rear if queue is empty
+          delete temp;
+          return value;
+      }
+  };
+  ```
+
+#### 3. Concept of Circular Queue
+
+- A circular queue connects the end of the queue back to the front, allowing for efficient use of space. This avoids the problem of linear queues where space may be wasted.
+
+**Example Implementation**:
+
+```cpp
+class CircularQueue {
+    int front, rear, maxSize;
+    int* queueArray;
+
+public:
+    CircularQueue(int size) {
+        maxSize = size;
+        queueArray = new int[maxSize];
+        front = rear = -1;
+    }
+
+    void enqueue(int value) {
+        if ((rear + 1) % maxSize == front) {
+            // Queue is full
+            return;
+        }
+        if (front == -1) front = 0; // Queue was empty
+        rear = (rear + 1) % maxSize;
+        queueArray[rear] = value;
+    }
+
+    int dequeue() {
+        if (front == -1) return -1; // Queue is empty
+        int value = queueArray[front];
+        if (front == rear) {
+            front = rear = -1; // Queue is empty after dequeue
+        } else {
+            front = (front + 1) % maxSize;
+        }
+        return value;
+    }
+};
+```
+
+#### 4. Double Ended Queue (Deque)
+
+- A double-ended queue (deque) allows insertion and deletion from both ends, offering more flexibility than a standard queue.
+
+**Example Operations**:
+
+- **insertFront**: Adds an element at the front.
+- **insertRear**: Adds an element at the rear.
+- **deleteFront**: Removes an element from the front.
+- **deleteRear**: Removes an element from the rear.
+
+---
+
+### Applications of Queue
+
+- **Scheduling**: Managing tasks in operating systems (e.g., printer queues, CPU scheduling).
+- **Breadth-First Search (BFS)**: Graph traversal uses queues for level-order traversal.
+- **Buffer Management**: Queues can be used in scenarios like IO Buffers and data handling in networks.
+
+### Priority Queue
+
+- A priority queue is an abstract data type similar to a regular queue but where each element has a priority. Elements with higher priority are dequeued before elements with lower priority.
+
+**Implementation Concepts**:
+
+- Can be implemented using heaps (binary heap), arrays, or linked lists.

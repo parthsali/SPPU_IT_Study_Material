@@ -1,0 +1,586 @@
+# Unit 5: Graph and Symbol Table
+
+### 1. Introduction to Graphs
+
+A graph is a mathematical structure used to represent relationships between pairs of objects. It consists of a set of vertices (or nodes) connected by edges. Graphs are widely used in various fields, including computer science, biology, social sciences, and network analysis.
+
+#### Terminology
+
+- **Vertex (Node)**: A fundamental part of a graph that represents an entity.
+- **Edge**: A connection between two vertices. It can be directed or undirected.
+- **Degree**: The number of edges connected to a vertex. In directed graphs, we have in-degree and out-degree.
+- **Path**: A sequence of edges that connect a series of vertices.
+- **Cycle**: A path that starts and ends at the same vertex without traversing any edge more than once.
+- **Connected Graph**: A graph in which there is a path between any pair of vertices.
+- **Weighted Graph**: A graph where edges have associated weights or costs.
+
+### 2. Graph as an Abstract Data Type (ADT)
+
+Graphs can be defined as an abstract data type (ADT) with a set of operations to manipulate and analyze them. Key operations include:
+
+- **Add Vertex**: Add a vertex to the graph.
+- **Add Edge**: Add an edge between two vertices.
+- **Remove Vertex**: Remove a vertex and its associated edges.
+- **Remove Edge**: Remove an edge between two vertices.
+- **Traversal**: Explore the graph using various algorithms.
+
+### 3. Representation of Graphs
+
+Graphs can be represented in various ways, with the two most common being the adjacency matrix and the adjacency list.
+
+#### 3.1 Adjacency Matrix
+
+An adjacency matrix is a two-dimensional array where the cell at row `i` and column `j` indicates the presence (or absence) of an edge between vertices `i` and `j`. For weighted graphs, the matrix contains weights instead of boolean values.
+
+**Advantages**:
+
+- Simple to implement.
+- O(1) time complexity for edge existence checks.
+
+**Disadvantages**:
+
+- Space-consuming for sparse graphs (O(V^2), where V is the number of vertices).
+- Inefficient for edge enumeration.
+
+##### C++ Implementation
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Graph {
+private:
+    vector<vector<int>> adjMatrix;
+    int numVertices;
+
+public:
+    Graph(int vertices) {
+        numVertices = vertices;
+        adjMatrix.resize(vertices, vector<int>(vertices, 0));
+    }
+
+    void addEdge(int src, int dest, int weight) {
+        adjMatrix[src][dest] = weight;
+        adjMatrix[dest][src] = weight; // For undirected graph
+    }
+
+    void display() {
+        for (int i = 0; i < numVertices; i++) {
+            for (int j = 0; j < numVertices; j++) {
+                cout << adjMatrix[i][j] << " ";
+            }
+            cout << endl;
+        }
+    }
+};
+```
+
+#### 3.2 Adjacency List
+
+An adjacency list represents a graph as an array of lists. The index of the array represents a vertex, and each element in the list represents the vertices connected by an edge.
+
+**Advantages**:
+
+- More space-efficient for sparse graphs (O(V + E), where E is the number of edges).
+- Efficient for edge enumeration.
+
+**Disadvantages**:
+
+- O(V) time complexity for edge existence checks.
+
+##### C++ Implementation
+
+```cpp
+#include <iostream>
+#include <list>
+#include <vector>
+using namespace std;
+
+class Graph {
+private:
+    vector<list<pair<int, int>>> adjList; // Pair for weighted graph
+    int numVertices;
+
+public:
+    Graph(int vertices) {
+        numVertices = vertices;
+        adjList.resize(vertices);
+    }
+
+    void addEdge(int src, int dest, int weight) {
+        adjList[src].push_back(make_pair(dest, weight));
+        adjList[dest].push_back(make_pair(src, weight)); // For undirected graph
+    }
+
+    void display() {
+        for (int i = 0; i < numVertices; i++) {
+            cout << "Vertex " << i << ": ";
+            for (auto& edge : adjList[i]) {
+                cout << " -> " << edge.first << "(" << edge.second << ") ";
+            }
+            cout << endl;
+        }
+    }
+};
+```
+
+### 4. Graph Traversal Algorithms
+
+Graph traversal involves visiting all the vertices in a graph. The two primary methods for traversing graphs are **Breadth-First Search (BFS)** and **Depth-First Search (DFS)**.
+
+#### 4.1 Breadth-First Search (BFS)
+
+BFS explores the neighbor vertices at the present depth before moving on to vertices at the next depth level. It uses a queue to keep track of the vertices to be visited.
+
+##### C++ Implementation of BFS
+
+```cpp
+#include <iostream>
+#include <list>
+#include <vector>
+#include <queue>
+using namespace std;
+
+class Graph {
+private:
+    vector<list<int>> adjList;
+    int numVertices;
+
+public:
+    Graph(int vertices) {
+        numVertices = vertices;
+        adjList.resize(vertices);
+    }
+
+    void addEdge(int src, int dest) {
+        adjList[src].push_back(dest);
+        adjList[dest].push_back(src); // For undirected graph
+    }
+
+    void BFS(int startVertex) {
+        vector<bool> visited(numVertices, false);
+        queue<int> q;
+
+        visited[startVertex] = true;
+        q.push(startVertex);
+
+        while (!q.empty()) {
+            int vertex = q.front();
+            q.pop();
+            cout << vertex << " ";
+
+            for (auto& adj : adjList[vertex]) {
+                if (!visited[adj]) {
+                    visited[adj] = true;
+                    q.push(adj);
+                }
+            }
+        }
+        cout << endl;
+    }
+};
+```
+
+#### 4.2 Depth-First Search (DFS)
+
+DFS explores as far as possible along each branch before backtracking. It uses a stack (either explicitly or implicitly via recursion) to keep track of the vertices to be visited.
+
+##### C++ Implementation of DFS
+
+```cpp
+class Graph {
+private:
+    vector<list<int>> adjList;
+    int numVertices;
+
+public:
+    Graph(int vertices) {
+        numVertices = vertices;
+        adjList.resize(vertices);
+    }
+
+    void addEdge(int src, int dest) {
+        adjList[src].push_back(dest);
+        adjList[dest].push_back(src); // For undirected graph
+    }
+
+    void DFSUtil(int vertex, vector<bool>& visited) {
+        visited[vertex] = true;
+        cout << vertex << " ";
+
+        for (auto& adj : adjList[vertex]) {
+            if (!visited[adj]) {
+                DFSUtil(adj, visited);
+            }
+        }
+    }
+
+    void DFS(int startVertex) {
+        vector<bool> visited(numVertices, false);
+        DFSUtil(startVertex, visited);
+        cout << endl;
+    }
+};
+```
+
+### 5. Minimum Spanning Tree Algorithms
+
+A minimum spanning tree (MST) is a subset of edges in a connected, weighted graph that connects all the vertices together without any cycles and with the minimum possible total edge weight.
+
+#### 5.1 Prim’s Algorithm
+
+Prim's algorithm builds the MST by adding edges one at a time, always choosing the smallest edge that connects a vertex in the MST to a vertex outside the MST.
+
+##### C++ Implementation of Prim’s Algorithm
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <climits>
+using namespace std;
+
+class Graph {
+private:
+    int numVertices;
+    vector<vector<int>> adjMatrix;
+
+public:
+    Graph(int vertices) {
+        numVertices = vertices;
+        adjMatrix.resize(vertices, vector<int>(vertices, INT_MAX));
+        for (int i = 0; i < vertices; i++) {
+            adjMatrix[i][i] = 0; // Distance to itself is 0
+        }
+    }
+
+    void addEdge(int src, int dest, int weight) {
+        adjMatrix[src][dest] = weight;
+        adjMatrix[dest][src] = weight; // For undirected graph
+    }
+
+    void Prim() {
+        vector<int> parent(numVertices, -1);
+        vector<int> key(numVertices, INT_MAX);
+        vector<bool> inMST(numVertices, false);
+
+        key[0] = 0; // Start from the first vertex
+        parent[0] = -1;
+
+        for (int count = 0; count < numVertices - 1; count++) {
+            int u = minKey(key, inMST);
+            inMST[u] = true;
+
+            for (int v = 0; v < numVertices; v++) {
+                if (adjMatrix[u][v] && !inMST[v] && adjMatrix[u][v] < key[v]) {
+                    parent[v] = u;
+                    key[v] = adjMatrix[u][v];
+                }
+            }
+        }
+
+        // Display the MST
+        for (int i = 1; i < numVertices; i++) {
+            cout << parent[i] << " - " << i << " : " << adjMatrix[i][parent[i]] << endl;
+        }
+    }
+
+    int minKey(vector<int>& key, vector<bool>& inMST) {
+        int min = INT_MAX, min_index;
+        for (int v = 0; v < numVertices; v++) {
+            if (!inMST[v] &&
+
+ key[v] < min) {
+                min = key[v];
+                min_index = v;
+            }
+        }
+        return min_index;
+    }
+};
+```
+
+#### 5.2 Kruskal’s Algorithm
+
+Kruskal's algorithm finds the MST by sorting all the edges in non-decreasing order of their weights and adding them one by one to the MST, ensuring that no cycles are formed.
+
+##### C++ Implementation of Kruskal’s Algorithm
+
+```cpp
+class Graph {
+private:
+    int numVertices;
+    vector<pair<int, pair<int, int>>> edges; // {weight, {src, dest}}
+
+    int findSet(int parent[], int i) {
+        if (parent[i] == -1)
+            return i;
+        return findSet(parent, parent[i]);
+    }
+
+    void unionSet(int parent[], int x, int y) {
+        int xset = findSet(parent, x);
+        int yset = findSet(parent, y);
+        parent[xset] = yset;
+    }
+
+public:
+    Graph(int vertices) {
+        numVertices = vertices;
+    }
+
+    void addEdge(int src, int dest, int weight) {
+        edges.push_back({weight, {src, dest}});
+    }
+
+    void Kruskal() {
+        sort(edges.begin(), edges.end());
+
+        int *parent = new int[numVertices];
+        for (int i = 0; i < numVertices; i++)
+            parent[i] = -1;
+
+        vector<pair<int, pair<int, int>>> mst;
+
+        for (auto& edge : edges) {
+            int weight = edge.first;
+            int u = edge.second.first;
+            int v = edge.second.second;
+
+            int set_u = findSet(parent, u);
+            int set_v = findSet(parent, v);
+
+            if (set_u != set_v) {
+                mst.push_back(edge);
+                unionSet(parent, set_u, set_v);
+            }
+        }
+
+        // Display the MST
+        for (auto& edge : mst) {
+            cout << edge.second.first << " - " << edge.second.second << " : " << edge.first << endl;
+        }
+        delete[] parent;
+    }
+};
+```
+
+### 6. Shortest Path Algorithm
+
+Finding the shortest path from a source vertex to all other vertices in a weighted graph can be efficiently achieved using Dijkstra's algorithm.
+
+#### 6.1 Dijkstra's Algorithm
+
+Dijkstra's algorithm maintains a set of vertices whose shortest distance from the source is known and repeatedly selects the vertex with the minimum distance to update its neighbors.
+
+##### C++ Implementation of Dijkstra’s Algorithm
+
+```cpp
+class Graph {
+private:
+    int numVertices;
+    vector<vector<pair<int, int>>> adjList; // {weight, dest}
+
+public:
+    Graph(int vertices) {
+        numVertices = vertices;
+        adjList.resize(vertices);
+    }
+
+    void addEdge(int src, int dest, int weight) {
+        adjList[src].push_back(make_pair(weight, dest));
+        adjList[dest].push_back(make_pair(weight, src)); // For undirected graph
+    }
+
+    void Dijkstra(int startVertex) {
+        vector<int> dist(numVertices, INT_MAX);
+        vector<bool> visited(numVertices, false);
+
+        dist[startVertex] = 0;
+
+        for (int count = 0; count < numVertices - 1; count++) {
+            int u = minDistance(dist, visited);
+            visited[u] = true;
+
+            for (auto& edge : adjList[u]) {
+                int weight = edge.first;
+                int v = edge.second;
+
+                if (!visited[v] && dist[u] + weight < dist[v]) {
+                    dist[v] = dist[u] + weight;
+                }
+            }
+        }
+
+        // Print the shortest distances
+        for (int i = 0; i < numVertices; i++) {
+            cout << "Distance from source to " << i << " is " << dist[i] << endl;
+        }
+    }
+
+    int minDistance(vector<int>& dist, vector<bool>& visited) {
+        int min = INT_MAX, min_index;
+        for (int v = 0; v < numVertices; v++) {
+            if (!visited[v] && dist[v] < min) {
+                min = dist[v];
+                min_index = v;
+            }
+        }
+        return min_index;
+    }
+};
+```
+
+### 7. Topological Sorting
+
+Topological sorting of a directed acyclic graph (DAG) is a linear ordering of vertices such that for every directed edge `u -> v`, vertex `u` comes before vertex `v` in the ordering. This is often used in scheduling tasks.
+
+#### C++ Implementation of Topological Sorting
+
+```cpp
+class Graph {
+private:
+    int numVertices;
+    vector<list<int>> adjList;
+
+public:
+    Graph(int vertices) {
+        numVertices = vertices;
+        adjList.resize(vertices);
+    }
+
+    void addEdge(int src, int dest) {
+        adjList[src].push_back(dest);
+    }
+
+    void topologicalSortUtil(int v, vector<bool>& visited, stack<int>& Stack) {
+        visited[v] = true;
+
+        for (auto& adj : adjList[v]) {
+            if (!visited[adj]) {
+                topologicalSortUtil(adj, visited, Stack);
+            }
+        }
+        Stack.push(v);
+    }
+
+    void topologicalSort() {
+        stack<int> Stack;
+        vector<bool> visited(numVertices, false);
+
+        for (int i = 0; i < numVertices; i++) {
+            if (!visited[i]) {
+                topologicalSortUtil(i, visited, Stack);
+            }
+        }
+
+        while (!Stack.empty()) {
+            cout << Stack.top() << " ";
+            Stack.pop();
+        }
+        cout << endl;
+    }
+};
+```
+
+### 8. Symbol Tables
+
+A symbol table is a data structure used to store information about identifiers in a program. It is crucial for tasks such as variable scoping, function definitions, and symbol resolution in programming languages.
+
+#### 8.1 Notion of Symbol Table
+
+Symbol tables can be implemented using various data structures, such as arrays, linked lists, hash tables, or binary search trees. They allow efficient lookup, insertion, and deletion operations.
+
+#### 8.2 Optimal Binary Search Trees (OBST)
+
+An OBST is a binary search tree optimized for a given set of search probabilities. The goal is to minimize the expected search cost.
+
+#### 8.3 AVL Trees
+
+An AVL tree is a self-balancing binary search tree where the difference in heights between left and right subtrees is at most one. This property ensures O(log n) time complexity for search, insertion, and deletion operations.
+
+### 9. Heaps
+
+A heap is a special tree-based data structure that satisfies the heap property. There are two types of heaps: min-heaps and max-heaps.
+
+#### 9.1 Heap Data Structure
+
+In a min-heap, the key of a parent node is less than or equal to the keys of its children. In a max-heap, the key of a parent node is greater than or equal to the keys of its children. Heaps are commonly used in priority queues.
+
+#### 9.2 Min and Max Heap
+
+- **Min-Heap**: The minimum element is at the root, and each parent node is less than its children.
+- **Max-Heap**: The maximum element is at the root, and each parent node is greater than its children.
+
+#### 9.3 Heap Sort
+
+Heap sort is a comparison-based sorting algorithm that uses the heap data structure. The algorithm consists of two main phases:
+
+1. Build a max-heap from the input data.
+2. Swap the root of the max-heap with the last element and reduce the heap size, then heapify the root.
+
+##### C++ Implementation of Heap Sort
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class HeapSort {
+private:
+    void heapify(vector<int>& arr, int n, int i) {
+        int largest = i;
+        int left = 2 * i + 1;
+        int right = 2 * i + 2;
+
+        if (left < n && arr[left] > arr[largest])
+            largest = left;
+
+        if (right < n && arr[right] > arr[largest])
+            largest = right;
+
+        if (largest != i) {
+            swap(arr[i], arr[largest]);
+            heapify(arr, n, largest);
+        }
+    }
+
+public:
+    void sort(vector<int>& arr) {
+        int n = arr.size();
+
+        for (int i = n / 2 - 1; i >= 0; i--)
+            heapify(arr, n, i);
+
+        for (int i = n - 1; i >= 0; i--) {
+            swap(arr[0], arr[i]);
+            heapify(arr, i, 0);
+        }
+    }
+};
+
+int main() {
+    vector<int> arr = {12, 11, 13, 5, 6, 7};
+    HeapSort hs;
+    hs.sort(arr);
+
+    cout << "Sorted array: ";
+    for (int i : arr) {
+        cout << i << " ";
+    }
+    cout << endl;
+    return 0;
+}
+```
+
+### 10. Applications of Heaps
+
+Heaps are widely used in various applications, including:
+
+- **Priority Queues**: Where elements are processed based on their priority.
+- **Heap Sort**: An efficient sorting algorithm.
+- **Graph Algorithms**: Dijkstra's algorithm and Prim's algorithm utilize heaps for efficiency.
+
+### Conclusion
+
+Graphs and symbol tables are fundamental data structures in computer science. Understanding their properties and algorithms enhances problem-solving skills in various domains, such as network analysis, optimization, and software development. Heaps, as versatile data structures, find applications in sorting and priority-based problems. Mastery of these concepts is essential for aspiring computer scientists and software developers.
