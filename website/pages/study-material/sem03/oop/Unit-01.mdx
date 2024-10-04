@@ -1,0 +1,279 @@
+# Unit 1: Foundations of Object-Oriented Programming
+
+### 1. Introduction to OOP
+
+Object-Oriented Programming (OOP) is a programming paradigm that allows us to model real-world entities using classes and objects. It promotes modularity, reusability, and maintainability of code. Before understanding OOP, it’s essential to look at how software development has evolved over time.
+
+### 2. Software Evolution
+
+As software systems grew larger and more complex, traditional approaches like **procedural programming** and **modular programming** began to face limitations. The evolution of software development paradigms can be classified into four major categories:
+
+1. **Procedural Programming**: Focuses on functions or procedures that operate on data.
+2. **Modular Programming**: Divides a program into independent, reusable modules.
+3. **Object-Oriented Programming (OOP)**: Models real-world entities using objects, promoting abstraction, encapsulation, inheritance, and polymorphism.
+4. **Generic Programming**: Uses templates or generic types, allowing code to operate on different data types without being rewritten for each one.
+
+### 3. Procedural vs. Object-Oriented Programming
+
+#### 3.1 Procedural Programming
+
+Procedural programming relies on a sequence of procedures or functions to operate on data. The emphasis is on how to perform tasks, and data is often passed between functions. This method works well for small programs but can become challenging to maintain as complexity increases.
+
+For example:
+
+```java
+// Procedural Programming Example in Java
+
+public class ProceduralExample {
+    public static void main(String[] args) {
+        int a = 10, b = 20;
+        int result = add(a, b);
+        System.out.println("Sum: " + result);
+    }
+
+    static int add(int x, int y) {
+        return x + y;
+    }
+}
+```
+
+#### 3.2 Limitations of Procedural Programming
+
+1. **Global Data Sharing**: Data is shared across functions, leading to tight coupling and making code difficult to maintain.
+2. **No Real-World Representation**: Procedural programming doesn’t model real-world entities effectively.
+3. **Poor Reusability**: Functions are often tied to specific data types and contexts, limiting code reuse.
+4. **Difficult to Scale**: As the size of a program grows, managing and modifying procedural code becomes cumbersome.
+
+### 4. Need for Object-Oriented Programming
+
+To overcome the limitations of procedural programming, **Object-Oriented Programming (OOP)** was introduced. It helps in structuring software by modeling real-world objects. OOP allows better organization, reusability, and maintenance of code. In OOP, data and functions that operate on the data are bundled together into objects.
+
+For example, instead of having global variables and functions, we can bundle related data and methods into an object like this:
+
+```java
+// Simple Object-Oriented Example in Java
+
+class Calculator {
+    // Data members
+    int a, b;
+
+    // Constructor to initialize
+    Calculator(int x, int y) {
+        a = x;
+        b = y;
+    }
+
+    // Method to add
+    int add() {
+        return a + b;
+    }
+}
+
+public class OOPExample {
+    public static void main(String[] args) {
+        Calculator calc = new Calculator(10, 20);
+        System.out.println("Sum: " + calc.add());
+    }
+}
+```
+
+### 5. Fundamentals of Object-Oriented Programming
+
+OOP is based on several key concepts: **objects**, **classes**, **data encapsulation**, **inheritance**, **polymorphism**, and **message passing**.
+
+#### 5.1 Objects
+
+An **object** is an instance of a class. It represents a real-world entity and contains data (attributes) and methods (behavior).
+
+For example, in a real-world scenario, a **Car** could be an object with attributes like `color`, `model`, and `speed` and behaviors like `start()`, `stop()`, and `accelerate()`.
+
+```java
+class Car {
+    String model;
+    int speed;
+
+    // Constructor
+    Car(String model, int speed) {
+        this.model = model;
+        this.speed = speed;
+    }
+
+    // Method to display car details
+    void display() {
+        System.out.println("Model: " + model + ", Speed: " + speed);
+    }
+}
+
+public class CarExample {
+    public static void main(String[] args) {
+        Car car1 = new Car("Toyota", 180);
+        car1.display();
+    }
+}
+```
+
+#### 5.2 Classes
+
+A **class** is a blueprint for creating objects. It defines the properties (data members) and methods that objects of that class will have.
+
+```java
+class Person {
+    String name;
+    int age;
+
+    // Constructor
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Method to introduce a person
+    void introduce() {
+        System.out.println("Hello, my name is " + name + " and I am " + age + " years old.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person person1 = new Person("John", 25);
+        person1.introduce();
+    }
+}
+```
+
+#### 5.3 Data Encapsulation
+
+**Encapsulation** is the bundling of data and methods that operate on the data into a single unit (class). It also involves restricting access to certain parts of an object, which is achieved through **access modifiers** like `private`, `protected`, and `public`.
+
+```java
+class BankAccount {
+    private double balance;  // private data member
+
+    // Constructor
+    BankAccount(double initialBalance) {
+        this.balance = initialBalance;
+    }
+
+    // Public method to access balance
+    public double getBalance() {
+        return balance;
+    }
+}
+
+public class EncapsulationExample {
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount(500.0);
+        System.out.println("Balance: $" + account.getBalance());
+    }
+}
+```
+
+#### 5.4 Inheritance
+
+**Inheritance** allows a new class to inherit properties and methods from an existing class. It promotes code reuse and establishes a natural hierarchy between classes.
+
+```java
+// Base class (parent)
+class Animal {
+    void sound() {
+        System.out.println("Animal makes sound");
+    }
+}
+
+// Derived class (child)
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class InheritanceExample {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.sound();  // Calls the overridden method in Dog class
+    }
+}
+```
+
+#### 5.5 Polymorphism
+
+**Polymorphism** allows methods to take on many forms. It is achieved via **method overloading** and **method overriding**.
+
+- **Method Overloading**: Same method name with different parameters.
+- **Method Overriding**: Child class provides a specific implementation of a method already defined in the parent class.
+
+```java
+// Polymorphism through method overloading
+class MathOperation {
+    // Overloaded add method
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    double add(double a, double b) {
+        return a + b;
+    }
+}
+
+public class PolymorphismExample {
+    public static void main(String[] args) {
+        MathOperation math = new MathOperation();
+        System.out.println("Sum (int): " + math.add(5, 10));
+        System.out.println("Sum (double): " + math.add(5.5, 10.5));
+    }
+}
+```
+
+#### 5.6 Static and Dynamic Binding
+
+- **Static Binding** (early binding): Occurs during compile-time. For example, method overloading is a case of static binding.
+- **Dynamic Binding** (late binding): Occurs during run-time. Method overriding is an example of dynamic binding, where the call to a method is resolved at runtime.
+
+```java
+// Dynamic Binding Example
+class Parent {
+    void display() {
+        System.out.println("Display from Parent");
+    }
+}
+
+class Child extends Parent {
+    @Override
+    void display() {
+        System.out.println("Display from Child");
+    }
+}
+
+public class BindingExample {
+    public static void main(String[] args) {
+        Parent obj = new Child();  // Dynamic binding
+        obj.display();  // Will call Child's display method
+    }
+}
+```
+
+#### 5.7 Message Passing
+
+In OOP, **message passing** refers to the process of sending a message (calling a method) to an object, asking it to perform some action. This interaction is essential in the way objects communicate and cooperate within a system.
+
+For example:
+
+```java
+class Printer {
+    void print(String message) {
+        System.out.println(message);
+    }
+}
+
+public class MessagePassingExample {
+    public static void main(String[] args) {
+        Printer printer = new Printer();
+        printer.print("Hello, OOP!");  // Message passing
+    }
+}
+```
+
+### 6. Conclusion
+
+Object-Oriented Programming (OOP) provides a structured and modular approach to software development. With concepts like **encapsulation**, **inheritance**, **polymorphism**, and **message passing**, OOP makes it easier to model complex systems, enhance code reusability, and maintain large-scale applications. By understanding and applying these fundamental principles, developers can create flexible, efficient, and scalable programs that mirror the real-world scenarios they aim to solve.
