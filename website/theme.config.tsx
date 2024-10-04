@@ -26,7 +26,6 @@ const config: DocsThemeConfig = {
   },
   head: (
     <>
-      <html lang="en" /> {/* Adding lang attribute for SEO */}
       <meta title="LearnVerse" />
       <meta
         name="description"
