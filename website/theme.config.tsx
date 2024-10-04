@@ -12,7 +12,12 @@ const config: DocsThemeConfig = {
         flexDirection: "row",
       }}
     >
-      <img src="/logo.png" alt="logo" width="30" height="30" />
+      <img
+        src="/logo.png"
+        alt="SPPU IT Study Hub logo"
+        width="30"
+        height="30"
+      />
       <span style={{ marginLeft: "10px", fontSize: "20px" }}>
         SPPU IT Study Hub
       </span>
@@ -28,17 +33,26 @@ const config: DocsThemeConfig = {
   },
   head: (
     <>
-      <meta title="SPPU IT Study Hub" />
+      <html lang="en" /> {/* Adding lang attribute for SEO */}
+      <meta title="LearnVerse" />
       <meta
         name="description"
-        content="SPPU IT Study Hub is a collection of study material for SPPU IT students."
+        content="LearvVerse offers comprehensive study materials for Savitribai Phule Pune University IT students, helping them excel in their studies."
       />
+      <meta
+        name="keywords"
+        content="LearnVerse, SPPU, IT Study Hub, study materials, SPPU IT, educational resources"
+      />
+      <meta name="author" content="Parth Sali" />
       <link rel="icon" href="./logo.png" />
+      <link rel="canonical" href="https://learnverse.live" />
+      <meta property="og:title" content="LearnVerse" />
+      {/* Add your actual website URL */}
     </>
   ),
   useNextSeoProps() {
     return {
-      titleTemplate: "%s – SPPU IT Study Hub",
+      titleTemplate: "%s – LearnVerse",
     };
   },
   sidebar: {
