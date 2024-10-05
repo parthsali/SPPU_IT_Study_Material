@@ -1,0 +1,246 @@
+# Unit 3: Introduction to SQL - PL/SQL
+
+## Table of Contents
+
+1. [Introduction to SQL](#introduction-to-sql)
+   - Characteristics and Advantages of SQL
+   - SQL Data Types
+   - Literals in SQL
+   - DDL (Data Definition Language)
+   - DML (Data Manipulation Language)
+   - SQL Operators
+2. [Tables and Views](#tables-and-views)
+   - Creating, Modifying, Deleting Tables
+   - Creating, Dropping, Updating Views
+   - Indexes and Nulls
+3. [SQL DML Queries](#sql-dml-queries)
+   - SELECT Query and Clauses
+   - Set Operations
+   - Tuple Variables and Set Comparison
+   - Ordering of Tuples
+   - Aggregate Functions
+   - Nested Queries
+   - Database Modification (Insert, Update, Delete Queries)
+4. [Stored Procedures and Triggers](#stored-procedures-and-triggers)
+5. [Programmatic SQL](#programmatic-sql)
+   - Embedded SQL
+   - Dynamic SQL
+   - ODBC (Open Database Connectivity)
+
+---
+
+## Introduction to SQL
+
+### Characteristics and Advantages of SQL
+
+**SQL (Structured Query Language)** is the standard language used to interact with relational databases. It allows for the creation, manipulation, and retrieval of data. Key characteristics include:
+
+- **Declarative**: SQL allows users to specify what they want to retrieve without defining how the query is executed.
+- **Portable**: SQL is widely supported by most relational database systems.
+- **Comprehensive**: It provides commands for defining, manipulating, and querying data.
+
+**Advantages of SQL**:
+
+- Easy to learn and use.
+- Facilitates complex queries using joins and nested queries.
+- Provides control over data access and security through views and permissions.
+- Ensures data integrity via constraints like primary key and foreign key.
+
+### SQL Data Types
+
+SQL offers a variety of data types to define the attributes in a table. Common data types include:
+
+- **Numeric Types**: INT, FLOAT, DECIMAL
+- **Character Types**: CHAR, VARCHAR
+- **Date/Time Types**: DATE, TIME, DATETIME, TIMESTAMP
+- **Binary Types**: BINARY, VARBINARY
+
+### Literals in SQL
+
+Literals represent constant values in SQL queries. They can be:
+
+- **String Literals**: Represented using single quotes (e.g., `'John'`).
+- **Numeric Literals**: Direct numeric values (e.g., `123`, `3.14`).
+- **Date Literals**: Represented using date formats (e.g., `'2023-10-04'`).
+
+### DDL (Data Definition Language)
+
+DDL includes commands for defining the database schema:
+
+- **CREATE**: To create tables, views, and other database objects.
+- **ALTER**: To modify existing database structures.
+- **DROP**: To delete database objects.
+
+### DML (Data Manipulation Language)
+
+DML is used for manipulating data within tables:
+
+- **INSERT**: To insert data into a table.
+- **UPDATE**: To modify existing data.
+- **DELETE**: To remove data from a table.
+- **SELECT**: To query and retrieve data from the database.
+
+### SQL Operators
+
+SQL includes various operators to perform operations on data:
+
+- **Arithmetic Operators**: `+`, `-`, `*`, `/`
+- **Comparison Operators**: `=`, `<`, `>`, `<=`, `>=`, `<>` (not equal)
+- **Logical Operators**: `AND`, `OR`, `NOT`
+
+---
+
+## Tables and Views
+
+### Creating, Modifying, Deleting Tables
+
+- **CREATE TABLE**: Defines a new table in the database.
+  ```sql
+  CREATE TABLE Students (
+      StudentID INT PRIMARY KEY,
+      Name VARCHAR(100),
+      Age INT
+  );
+  ```
+- **ALTER TABLE**: Adds or modifies columns in a table.
+  ```sql
+  ALTER TABLE Students ADD Address VARCHAR(255);
+  ```
+- **DROP TABLE**: Deletes a table from the database.
+  ```sql
+  DROP TABLE Students;
+  ```
+
+### Views: Creating, Dropping, Updation using Views
+
+- **CREATE VIEW**: Defines a virtual table based on a query.
+  ```sql
+  CREATE VIEW StudentView AS
+  SELECT Name, Age FROM Students WHERE Age > 18;
+  ```
+- **DROP VIEW**: Removes a view.
+  ```sql
+  DROP VIEW StudentView;
+  ```
+- **Updating Data through Views**: If a view is updatable, you can update data through it, provided it refers to a single table and follows certain rules.
+
+### Indexes and Nulls
+
+- **Indexes**: Speed up data retrieval by creating a reference to key columns.
+  ```sql
+  CREATE INDEX idx_name ON Students(Name);
+  ```
+- **Nulls**: Represents missing or undefined values in a table.
+
+---
+
+## SQL DML Queries
+
+### SELECT Query and Clauses
+
+The `SELECT` statement is used to query data from one or more tables.
+
+- **Basic Syntax**:
+  ```sql
+  SELECT Name, Age FROM Students;
+  ```
+- **Clauses**:
+  - `WHERE`: Filters rows based on a condition.
+  - `GROUP BY`: Groups rows sharing a property for aggregation.
+  - `HAVING`: Filters groups based on aggregate conditions.
+  - `ORDER BY`: Orders the results.
+
+### Set Operations
+
+SQL supports **Set Operations** to combine results from multiple queries:
+
+- **UNION**: Combines the results of two queries, eliminating duplicates.
+- **UNION ALL**: Combines the results without removing duplicates.
+- **INTERSECT**: Returns common rows from both queries.
+- **EXCEPT**: Returns rows from the first query that are not in the second.
+
+### Tuple Variables and Set Comparison
+
+- **Tuple Variables**: Used in nested queries to refer to rows.
+- **Set Comparison**: Operators like `IN`, `ANY`, `ALL` compare sets of values in a subquery.
+
+### Ordering of Tuples
+
+- **ORDER BY** clause sorts the result set based on one or more columns.
+  ```sql
+  SELECT Name FROM Students ORDER BY Age DESC;
+  ```
+
+### Aggregate Functions
+
+SQL supports functions that perform calculations on a set of rows:
+
+- **COUNT()**: Returns the number of rows.
+- **SUM()**: Returns the sum of a numeric column.
+- **AVG()**: Returns the average value.
+- **MIN()**: Returns the minimum value.
+- **MAX()**: Returns the maximum value.
+
+### Nested Queries
+
+A **Nested Query** (subquery) is a query within another query.
+
+```sql
+SELECT Name FROM Students WHERE Age > (SELECT AVG(Age) FROM Students);
+```
+
+### Database Modification using SQL Insert, Update, Delete Queries
+
+- **INSERT**: Adds new records to a table.
+  ```sql
+  INSERT INTO Students (StudentID, Name, Age) VALUES (101, 'John', 22);
+  ```
+- **UPDATE**: Modifies existing records.
+  ```sql
+  UPDATE Students SET Age = 23 WHERE StudentID = 101;
+  ```
+- **DELETE**: Removes records from a table.
+  ```sql
+  DELETE FROM Students WHERE Age < 18;
+  ```
+
+---
+
+## Stored Procedures and Triggers
+
+- **Stored Procedure**: A precompiled set of SQL statements that can be executed as a single unit.
+  ```sql
+  CREATE PROCEDURE IncreaseAge()
+  BEGIN
+      UPDATE Students SET Age = Age + 1;
+  END;
+  ```
+- **Trigger**: A set of SQL commands automatically executed in response to certain events (e.g., INSERT, UPDATE).
+  ```sql
+  CREATE TRIGGER BeforeInsertStudent
+  BEFORE INSERT ON Students
+  FOR EACH ROW
+  BEGIN
+      SET NEW.Age = IFNULL(NEW.Age, 18);
+  END;
+  ```
+
+---
+
+## Programmatic SQL
+
+### Embedded SQL
+
+**Embedded SQL** refers to SQL statements embedded within a host language such as C, Java, or Python.
+
+### Dynamic SQL
+
+**Dynamic SQL** allows SQL queries to be built and executed at runtime, rather than hardcoded in the program.
+
+### ODBC (Open Database Connectivity)
+
+**ODBC** is an API that allows a program to connect to a variety of database management systems (DBMS) using a common interface, facilitating cross-platform database access.
+
+---
+
+This concludes the key topics for **Unit III: Introduction to SQL - PL/SQL**.

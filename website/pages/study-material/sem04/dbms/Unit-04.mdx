@@ -1,0 +1,141 @@
+# Unit 4: Database Design & Query Processing
+
+## Table of Contents
+
+1. [Relational Database Design](#relational-database-design)
+   - Purpose of Normalization
+   - Data Redundancy and Update Anomalies
+   - Functional Dependencies
+2. [The Process of Normalization](#the-process-of-normalization)
+   - First Normal Form (1NF)
+   - Second Normal Form (2NF)
+   - Third Normal Form (3NF)
+   - Boyce-Codd Normal Form (BCNF)
+3. [Introduction to Query Processing](#introduction-to-query-processing)
+   - Overview of Query Processing
+   - Measures of Query Cost
+   - Selection and Join Operations
+   - Evaluation of Expressions
+4. [Introduction to Query Optimization](#introduction-to-query-optimization)
+   - Estimation of Query Costs
+   - Transformation of Relational Expressions
+
+---
+
+## Relational Database Design
+
+### Purpose of Normalization
+
+Normalization is a process used in database design to:
+
+- Minimize data redundancy.
+- Avoid update anomalies such as **insertion**, **deletion**, and **modification anomalies**.
+- Organize data efficiently, ensuring that data is stored only once, reducing duplication.
+
+The goal is to split data into smaller tables that are logically related to reduce redundancy and ensure data integrity.
+
+### Data Redundancy and Update Anomalies
+
+- **Data Redundancy**: Occurs when the same piece of data is stored in multiple places. This can lead to inconsistencies when the data is updated.
+- **Update Anomalies**:
+  - **Insertion Anomaly**: Inability to add data to the database due to missing other required data.
+  - **Deletion Anomaly**: Unintended loss of data when trying to remove other data.
+  - **Modification Anomaly**: Inconsistencies that arise when data is updated in multiple places.
+
+### Functional Dependencies
+
+A **functional dependency (FD)** occurs when one attribute uniquely determines another attribute in a relation:
+
+- Denoted as `A → B`, meaning attribute `A` determines attribute `B`.
+- Helps identify redundancy and dependencies that can be eliminated through normalization.
+
+---
+
+## The Process of Normalization
+
+### First Normal Form (1NF)
+
+- A relation is in 1NF if it contains only **atomic** (indivisible) values, meaning each column contains unique values and there are no repeating groups or arrays.
+- **Example**: A table with repeating fields (like multiple phone numbers in one column) would not be in 1NF.
+
+### Second Normal Form (2NF)
+
+- A relation is in 2NF if:
+  - It is in 1NF.
+  - Every non-prime attribute is fully dependent on the **whole** primary key.
+- Partial dependencies (where an attribute is dependent on a part of a composite key) must be eliminated.
+
+### Third Normal Form (3NF)
+
+- A relation is in 3NF if:
+  - It is in 2NF.
+  - There are no **transitive dependencies** (i.e., non-key attributes should not depend on other non-key attributes).
+- **Example**: If a table has a non-key attribute `A` that determines another non-key attribute `B`, this violates 3NF and should be separated into another table.
+
+### Boyce-Codd Normal Form (BCNF)
+
+- A stricter version of 3NF.
+- A relation is in BCNF if:
+  - For every functional dependency `A → B`, `A` must be a superkey.
+- BCNF addresses certain situations where 3NF does not completely eliminate redundancy.
+
+---
+
+## Introduction to Query Processing
+
+### Overview of Query Processing
+
+Query processing involves:
+
+- Translating high-level SQL queries into low-level operations that the database can execute.
+- Optimizing the query for efficient retrieval and manipulation of data.
+
+The steps in query processing include:
+
+1. Parsing the query.
+2. Translating it into a **query execution plan**.
+3. Optimizing the plan.
+4. Executing the plan to retrieve results.
+
+### Measures of Query Cost
+
+The **cost of a query** is typically measured in terms of:
+
+- **I/O operations**: The number of disk accesses required.
+- **CPU usage**: The processing time for evaluating operations.
+- **Memory usage**: The amount of memory used during query execution.
+
+The goal is to minimize these costs to ensure efficient query execution.
+
+### Selection and Join Operations
+
+- **Selection Operation**: Filters rows based on a specified condition (e.g., `SELECT * FROM Employees WHERE Age > 30;`).
+- **Join Operation**: Combines rows from two or more tables based on a related column (e.g., `JOIN`, `NATURAL JOIN`, `INNER JOIN`, `LEFT JOIN`).
+
+These operations are fundamental to retrieving and combining data from different tables efficiently.
+
+### Evaluation of Expressions
+
+- **Relational Expressions**: SQL queries are internally translated into relational algebra expressions.
+- The **evaluation** of these expressions involves choosing the best algorithms for selection, join, and other operations (e.g., hash joins, merge joins).
+
+---
+
+## Introduction to Query Optimization
+
+### Estimation of Query Costs
+
+Query optimizers estimate the **cost** of different query execution plans using:
+
+- **Statistical data**: Such as the number of rows in a table, the number of distinct values in a column, and the availability of indexes.
+- **Cost models**: Based on the number of disk accesses, memory usage, and CPU time for different query operations.
+
+### Transformation of Relational Expressions
+
+- Query optimization involves **transforming relational expressions** into equivalent but more efficient forms.
+- Techniques used include:
+  - **Reordering operations** (e.g., pushing selections down the query tree).
+  - **Using indexes** to speed up access.
+  - **Replacing subqueries** with more efficient joins or set operations.
+
+Optimizers often consider different ways to execute a query and choose the plan that minimizes the estimated cost.

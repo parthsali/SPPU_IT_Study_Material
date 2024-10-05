@@ -1,0 +1,127 @@
+# Unit 1: Introduction to DBMS
+
+## Table of Contents
+
+1. [Introduction to DBMS](#introduction-to-dbms)
+   - Definition and Purpose of a DBMS
+   - Characteristics of DBMS
+   - Advantages of DBMS over Traditional File Systems
+2. [Database Architecture](#database-architecture)
+   - Levels of Database Architecture
+     - Internal Level (Physical)
+     - Conceptual Level (Logical)
+     - External Level (View)
+   - Data Independence (Logical and Physical)
+3. [Data Models](#data-models)
+   - Hierarchical Model
+   - Network Model
+   - Relational Model
+   - Object-Oriented Model
+4. [Database Languages](#database-languages)
+   - Data Definition Language (DDL)
+   - Data Manipulation Language (DML)
+   - Data Control Language (DCL)
+   - Transaction Control Language (TCL)
+5. [Database Users and Roles](#database-users-and-roles)
+   - Types of Database Users
+   - Database Administrators (DBAs)
+   - Database Designers and Developers
+6. [Data Models and Schemas](#data-models-and-schemas)
+   - Schema and Instance
+   - Schema Diagram
+   - Metadata and Data Dictionary
+7. [Entity-Relationship (ER) Model](#entity-relationship-er-model)
+   - Entities, Attributes, and Relationships
+   - ER Diagrams and Notations
+   - Keys in ER Model
+     - Primary Key
+     - Foreign Key
+8. [Functional Dependencies](#functional-dependencies)
+   - Definition of Functional Dependencies
+   - Normalization Process
+   - First, Second, and Third Normal Forms
+9. [Relational Algebra](#relational-algebra)
+   - Basic Operators: Select, Project, Union, Intersection, Difference, and Cartesian Product
+   - Join Operations
+
+---
+
+## Introduction to DBMS
+
+A **Database Management System (DBMS)** is a software system that enables the creation, management, and manipulation of databases. It ensures efficient storage, retrieval, and updating of data while providing security and integrity. DBMS facilitates interactions between applications and databases, abstracting the complexities of physical data storage.
+
+### Characteristics of DBMS
+
+- **Data Abstraction**: DBMS provides different levels of abstraction to manage data efficiently.
+- **Data Integrity**: Ensures accuracy and consistency of data.
+- **Data Security**: Manages access control to protect sensitive data.
+- **Concurrency Control**: Handles multiple user interactions simultaneously.
+- **Backup and Recovery**: Ensures data is safe and recoverable in case of system failure.
+
+---
+
+## Database Architecture
+
+### Levels of Database Architecture
+
+1. **Internal Level**: The physical storage of data on hardware.
+2. **Conceptual Level**: The logical structure of the entire database.
+3. **External Level**: The view of the data presented to users.
+
+### Data Independence
+
+- **Logical Independence**: Changes in the logical schema do not affect external views.
+- **Physical Independence**: Changes in the physical storage do not affect the logical schema.
+
+---
+
+## Data Models
+
+Data models define how data is structured and manipulated.
+
+- **Hierarchical Model**: Organizes data in a tree-like structure.
+- **Network Model**: Allows more complex relationships with graph structures.
+- **Relational Model**: Represents data as tables (relations).
+- **Object-Oriented Model**: Integrates object-oriented programming with databases.
+
+---
+
+## Database Languages
+
+1. **Data Definition Language (DDL)**: Used to define and modify database schema (e.g., CREATE, ALTER, DROP).
+2. **Data Manipulation Language (DML)**: Facilitates data retrieval and modification (e.g., SELECT, INSERT, UPDATE, DELETE).
+3. **Data Control Language (DCL)**: Manages access control (e.g., GRANT, REVOKE).
+4. **Transaction Control Language (TCL)**: Manages transactions (e.g., COMMIT, ROLLBACK).
+
+---
+
+## Database Users and Roles
+
+### Types of Database Users
+
+- **End Users**: Interact with databases using applications.
+- **Developers**: Create applications that interact with databases.
+- **DBAs**: Manage the entire database system.
+
+---
+
+## Data Models and Schemas
+
+- **Schema**: The structure that defines the organization of data.
+- **Instance**: The actual data stored in a database at any given time.
+- **Metadata**: Data about data, typically stored in a **data dictionary**.
+
+---
+
+## Entity-Relationship (ER) Model
+
+The **ER Model** is used for designing databases by representing entities and their relationships.
+
+- **Entities**: Real-world objects (e.g., Person, Product).
+- **Attributes**: Properties of entities (e.g., Name, Price).
+- **Relationships**: Associations between entities (e.g., Employee works for Department).
+
+### Keys in ER Model
+
+- **Primary Key**: A unique identifier for each entity.
+- **Foreign Key**: A key that links two tables by referencing the primary key of another table.

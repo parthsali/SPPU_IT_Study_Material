@@ -1,0 +1,143 @@
+# Unit 5: Transaction & Concurrency Control
+
+## Table of Contents
+
+1. [Transaction Management](#transaction-management)
+   - Basic Concept of a Transaction
+   - Properties of Transactions (ACID)
+   - Database Architecture
+   - Concept of Schedule
+   - Serial Schedule
+2. [Serializability](#serializability)
+   - Conflict Serializability
+   - View Serializability
+   - Cascaded Aborts
+   - Recoverable and Non-recoverable Schedules
+3. [Concurrency Control](#concurrency-control)
+   - Need for Concurrency Control
+   - Locking Methods
+   - Deadlocks
+   - Time-Stamping Methods
+   - Optimistic Techniques
+   - Multi-Version Concurrency Control (MVCC)
+4. [Crash Recovery Methods](#crash-recovery-methods)
+   - Shadow Paging
+   - Log-based Recovery: Deferred and Immediate
+   - Checkpoints
+
+---
+
+## Transaction Management
+
+### Basic Concept of a Transaction
+
+A **transaction** is a unit of work that includes one or more database operations, such as reading or writing data. It represents a sequence of operations that should be treated as a single logical unit of work. If any part of the transaction fails, the entire transaction should fail.
+
+Examples of transactions include:
+
+- Transferring money between bank accounts.
+- Updating an inventory after a sale.
+
+### Properties of Transactions (ACID)
+
+Transactions must adhere to the following properties, commonly referred to as **ACID**:
+
+1. **Atomicity**: Ensures that a transaction is treated as a single unit. All operations either complete successfully or fail together.
+2. **Consistency**: Ensures that a transaction brings the database from one valid state to another, maintaining database integrity.
+3. **Isolation**: Ensures that transactions are executed independently and transparently without interference from other transactions.
+4. **Durability**: Ensures that once a transaction is committed, its results are permanent, even in the event of a system crash.
+
+### Database Architecture
+
+The architecture for transaction management includes:
+
+- **Transaction manager**: Manages transaction execution.
+- **Scheduler**: Ensures that transactions are properly ordered.
+- **Concurrency control manager**: Handles concurrent transactions.
+- **Recovery manager**: Ensures the system can recover from failures.
+
+### Concept of Schedule
+
+A **schedule** is a sequence of operations from a set of transactions. It describes how operations are interleaved in time. The goal of scheduling is to ensure that transactions maintain **consistency**.
+
+### Serial Schedule
+
+A **serial schedule** is a schedule in which transactions are executed one after the other, with no interleaving. This ensures the correctness of transactions but may not always be efficient in terms of performance.
+
+---
+
+## Serializability
+
+### Conflict Serializability
+
+A schedule is **conflict serializable** if it can be transformed into a **serial schedule** by swapping non-conflicting operations. Operations are in conflict if they involve the same data item, and at least one of them is a write operation.
+
+### View Serializability
+
+A schedule is **view serializable** if the order of reads and writes in the schedule produces the same final outcome as some serial schedule, even if operations cannot be swapped as in conflict serializability.
+
+### Cascaded Aborts
+
+In some schedules, the failure of one transaction can lead to the rollback of other dependent transactions. These are called **cascaded aborts**, and they can be avoided by ensuring that transactions only read committed data.
+
+### Recoverable and Non-recoverable Schedules
+
+- **Recoverable schedules**: Ensure that transactions are only allowed to commit if all transactions whose data they depend on have committed.
+- **Non-recoverable schedules**: Do not provide this guarantee, leading to potential data inconsistencies in the case of a failure.
+
+---
+
+## Concurrency Control
+
+### Need for Concurrency Control
+
+Concurrency control is essential to ensure the consistency and isolation of transactions when multiple transactions are executed simultaneously. Without it, problems such as **lost updates**, **dirty reads**, and **uncommitted data dependencies** can arise.
+
+### Locking Methods
+
+**Locks** are used to control access to database resources during transaction execution. Types of locks include:
+
+- **Exclusive locks (X-lock)**: Prevents any other transaction from accessing the locked resource.
+- **Shared locks (S-lock)**: Allows multiple transactions to read a resource but prevents writes.
+
+### Deadlocks
+
+**Deadlocks** occur when two or more transactions are waiting for resources that each other holds, creating a cycle of dependency. Techniques to handle deadlocks include:
+
+- **Deadlock prevention**: Ensure transactions do not enter into deadlock-prone situations.
+- **Deadlock detection**: Periodically check for deadlock situations and resolve them by rolling back one or more transactions.
+
+### Time-Stamping Methods
+
+In **time-stamping concurrency control**, each transaction is assigned a unique timestamp. Transactions are then ordered based on their timestamps to ensure consistency. Older transactions get priority in accessing data over newer ones.
+
+### Optimistic Techniques
+
+**Optimistic concurrency control** assumes that conflicts between transactions are rare and does not require locking. Instead, it validates transactions at commit time to ensure consistency, rolling back if conflicts are detected.
+
+### Multi-Version Concurrency Control (MVCC)
+
+**MVCC** allows multiple versions of a data item to exist simultaneously, allowing transactions to read data without being blocked by writes. Each transaction sees a consistent snapshot of the data as it was at the start of the transaction.
+
+---
+
+## Crash Recovery Methods
+
+### Shadow Paging
+
+**Shadow paging** is a recovery method that maintains two versions of the database:
+
+- **Shadow page**: The original page before any changes are made.
+- **Current page**: The modified page during the transaction.
+  In the event of a crash, the system can revert to the shadow page to recover.
+
+### Log-based Recovery: Deferred and Immediate
+
+**Log-based recovery** uses a log to record all database operations. Two techniques are:
+
+1. **Deferred Logging**: All updates are recorded in the log, but actual updates to the database are delayed until the transaction commits.
+2. **Immediate Logging**: Updates are written to the log and database immediately, but the database is rolled back in case of failure.
+
+### Checkpoints
+
+A **checkpoint** is a point at which all changes made by transactions are saved to the database and logged. In the event of a crash, the system can restart from the checkpoint, reducing the amount of work needed for recovery.

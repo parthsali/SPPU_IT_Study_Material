@@ -1,0 +1,120 @@
+# Unit 2: Relational Model
+
+## Table of Contents
+
+1. [ER and EER Diagrams](#er-and-eer-diagrams)
+   - Components of the ER Model
+   - Conventions in ER Diagrams
+   - Converting ER Diagrams into Tables
+2. [Relational Model](#relational-model)
+   - Basic Concepts of the Relational Model
+   - Attributes and Domains
+   - Codd’s Rules
+3. [Relational Integrity](#relational-integrity)
+   - Nulls in Relational Databases
+   - Entity Integrity
+   - Referential Integrity
+   - Enterprise Constraints
+4. [Views and Schema Diagram](#views-and-schema-diagram)
+
+---
+
+## ER and EER Diagrams
+
+The **Entity-Relationship (ER) Model** is a conceptual framework used to represent data and its relationships in a database. The **Enhanced Entity-Relationship (EER) Model** is an extension of the ER Model that includes additional concepts like specialization, generalization, and categorization.
+
+### Components of the ER Model
+
+1. **Entities**: Objects or things in the real world with an independent existence (e.g., Customer, Product).
+2. **Attributes**: Properties or characteristics of an entity (e.g., Customer Name, Product Price).
+3. **Relationships**: Associations between two or more entities (e.g., a Customer "purchases" a Product).
+4. **Primary Key**: A unique attribute that identifies an entity.
+5. **Cardinality**: Defines the number of occurrences of one entity that can be associated with another (e.g., one-to-many, many-to-many).
+
+### Conventions in ER Diagrams
+
+- **Entities** are represented as rectangles.
+- **Attributes** are represented as ovals connected to their respective entities.
+- **Relationships** are represented as diamonds.
+- **Primary Keys** are underlined in the attribute list.
+- **Cardinality and Participation** are shown using lines and symbols near relationships.
+
+### Converting ER Diagrams into Tables
+
+To implement an ER diagram in a relational database, the following steps are taken:
+
+1. **Entities** become tables.
+2. **Attributes** become columns within the table.
+3. **Primary keys** are set to ensure uniqueness.
+4. **Relationships** are translated into foreign keys, connecting related tables.
+
+---
+
+## Relational Model
+
+The **Relational Model** is the most widely used model for database management systems. It represents data in the form of relations (tables) and is based on set theory and first-order logic.
+
+### Basic Concepts of the Relational Model
+
+1. **Relation**: A table with rows and columns. Each table represents an entity or a relationship.
+2. **Tuple**: A row in the table, representing a single record.
+3. **Attribute**: A column in the table, representing a property of the entity.
+4. **Primary Key**: An attribute (or set of attributes) that uniquely identifies each tuple.
+5. **Foreign Key**: An attribute in one relation that links to the primary key in another relation.
+
+### Attributes and Domains
+
+- **Attribute**: A characteristic or property of a relation (column).
+- **Domain**: The set of allowable values for an attribute (e.g., integer, string, date).
+
+### Codd’s Rules
+
+Dr. E.F. Codd defined a set of 12 rules to determine if a database system is truly relational:
+
+1. **Rule 0**: The system must qualify as a relational database management system.
+2. **Rule 1**: Data must be represented as relations (tables).
+3. **Rule 2**: The system should use relational operators for manipulation (insert, delete, update).
+4. **Rule 3**: Systematic treatment of null values.
+5. **Rule 4**: Database description should be represented at the logical level.
+6. **Rule 5**: Comprehensive data sublanguage.
+7. **Rule 6**: View updating capability.
+8. **Rule 7**: High-level insert, update, and delete.
+9. **Rule 8**: Physical data independence.
+10. **Rule 9**: Logical data independence.
+11. **Rule 10**: Integrity independence.
+12. **Rule 11**: Distribution independence.
+13. **Rule 12**: Non-subversion rule.
+
+---
+
+## Relational Integrity
+
+**Relational Integrity** refers to the correctness and consistency of the data stored in a relational database.
+
+### Nulls in Relational Databases
+
+**Null values** represent missing or unknown data in a database. They are used to indicate the absence of a value.
+
+### Entity Integrity
+
+**Entity Integrity** ensures that no primary key attribute contains null values, ensuring that each entity is uniquely identifiable.
+
+### Referential Integrity
+
+**Referential Integrity** ensures that foreign key values in a table always refer to valid primary keys in another table, maintaining the logical relationships between tables.
+
+### Enterprise Constraints
+
+**Enterprise Constraints** are additional rules defined by the organization to enforce specific business requirements. These constraints can be more complex than entity and referential integrity.
+
+---
+
+## Views and Schema Diagram
+
+### Views
+
+A **View** is a virtual table created by a query that presents a subset of data from one or more tables. It does not store data itself but dynamically retrieves it from the underlying tables.
+
+### Schema Diagram
+
+A **Schema Diagram** visually represents the structure of a database, including tables, columns, relationships (foreign keys), and constraints. It provides an overview of how data is organized and interconnected within the database.
