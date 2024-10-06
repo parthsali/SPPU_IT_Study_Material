@@ -1,0 +1,171 @@
+# Unit 2: PIC I/O Ports and Timers
+
+## Table of Contents:
+
+1. [Introduction to PIC I/O Ports](#introduction-to-pic-io-ports)
+   - I/O Port Structure
+   - I/O Port Programming
+   - I/O Bit Manipulation Programming
+2. [Timers and Counters in PIC Microcontrollers](#timers-and-counters-in-pic-microcontrollers)
+   - Registers Used for Timer/Counter Operation
+   - Delay Calculations
+   - Programming of Timers Using Embedded C
+
+---
+
+## Introduction to PIC I/O Ports
+
+PIC microcontrollers have versatile Input/Output (I/O) ports that allow them to interact with external devices such as sensors, switches, LEDs, and motors. Understanding the I/O port structure and how to manipulate these ports is crucial for designing embedded systems. This section delves into the structure of I/O ports, how they are programmed, and how to manipulate individual bits of an I/O port using Embedded C.
+
+### I/O Port Structure
+
+The **I/O port structure** in PIC microcontrollers is relatively straightforward but highly efficient. Each I/O port is made up of several **pins** (typically 8 pins per port), which can be configured individually as either input or output. The number of I/O ports varies depending on the specific PIC microcontroller model.
+
+For example, the **PIC18F452** has five I/O ports: **PORTA**, **PORTB**, **PORTC**, **PORTD**, and **PORTE**. Each port consists of 8 pins (except PORTE, which has 3 pins in some models).
+
+- **PORTA (RA0 - RA7)**: General-purpose I/O, also shares analog input functionality.
+- **PORTB (RB0 - RB7)**: General-purpose I/O, RB0 has an additional interrupt function.
+- **PORTC (RC0 - RC7)**: General-purpose I/O, includes UART, SPI, and I2C communication pins.
+- **PORTD (RD0 - RD7)**: General-purpose I/O, often used for external memory interfacing.
+- **PORTE (RE0 - RE2)**: General-purpose I/O, also has analog input capabilities.
+
+#### Data Direction Registers
+
+Each I/O port is controlled by two primary registers:
+
+1. **TRIS Register** (Tri-state register): This register configures the direction of the pins on the port.
+
+   - If a bit in the TRIS register is set to **1**, the corresponding pin is configured as an **input**.
+   - If a bit in the TRIS register is set to **0**, the corresponding pin is configured as an **output**.
+
+   Example:
+
+   - `TRISA = 0xFF;` // All pins of PORTA set as input.
+   - `TRISB = 0x00;` // All pins of PORTB set as output.
+
+2. **PORT Register**: This register holds the actual values on the I/O pins. When reading from the port, the microcontroller reads the state of the pins. When writing to the port, the microcontroller sets the state of the output pins.
+
+   - For output pins: Writing to the PORT register affects the output voltage (high or low) on the respective pin.
+   - For input pins: Reading from the PORT register retrieves the logic level present on the input pin.
+
+   Example:
+
+   - `PORTA = 0x55;` // Output binary value 01010101 to PORTA.
+   - `x = PORTB;` // Read the value from PORTB.
+
+### I/O Port Programming
+
+I/O port programming involves configuring the **TRIS** register to set the direction (input/output) and manipulating the **PORT** register to read or write data to the port.
+
+#### Example: Basic I/O Port Programming
+
+```c
+#include <xc.h> // Header file for PIC18 microcontroller
+
+void main(void) {
+    // Set PORTB as output and PORTA as input
+    TRISB = 0x00;  // All pins of PORTB are set as output
+    TRISA = 0xFF;  // All pins of PORTA are set as input
+
+    while(1) {
+        if(PORTA & 0x01) {  // Check if RA0 is high (button press)
+            PORTB = 0xFF;   // Turn on all LEDs connected to PORTB
+        } else {
+            PORTB = 0x00;   // Turn off all LEDs connected to PORTB
+        }
+    }
+}
+```
+
+In this example, the program reads the state of the first pin of **PORTA** (RA0). If the pin is high, all the LEDs connected to **PORTB** are turned on. Otherwise, they remain off.
+
+### I/O Bit Manipulation Programming
+
+In embedded systems, sometimes it is necessary to manipulate individual bits of an I/O port rather than working with the entire port at once. This process is known as **bit manipulation**.
+
+#### Example: Bit Manipulation
+
+```c
+PORTB |= (1 << 2);  // Set RB2 high (1)
+PORTB &= ~(1 << 2); // Set RB2 low (0)
+```
+
+In this example:
+
+- `PORTB |= (1 << 2);` sets the third bit (RB2) of **PORTB** to high.
+- `PORTB &= ~(1 << 2);` clears the third bit (RB2) of **PORTB** to low.
+
+---
+
+## Timers and Counters in PIC Microcontrollers
+
+Timers and counters are critical features of microcontrollers. They allow for the measurement of time intervals, generation of time delays, and event counting. In PIC microcontrollers, timers/counters can be configured to operate either as **timers** (counting clock cycles) or **counters** (counting external events).
+
+### Registers Used for Timer/Counter Operation
+
+Each timer in a PIC microcontroller is controlled by several registers. In the case of the **PIC18F** series, there are multiple timers (e.g., Timer0, Timer1, Timer2, etc.), and each of them has dedicated control registers.
+
+1. **TMRx**: This is the main timer register that holds the current value of the timer.
+2. **TCON**: The timer control register is used to configure the timer's mode of operation (e.g., start/stop, enable/disable interrupts).
+3. **PRx**: This is the period register, which determines the timer overflow interval.
+
+#### Example: Timer0 Control Register (T0CON)
+
+For **Timer0**, the **T0CON** register is used to configure the operation of the timer.
+
+| Bit | Name   | Description                                    |
+| --- | ------ | ---------------------------------------------- |
+| 7   | TMR0ON | Timer0 ON/OFF                                  |
+| 6   | T08BIT | Timer0 8-bit/16-bit mode select                |
+| 5   | T0CS   | Timer0 Clock Source select (Internal/External) |
+| 4   | T0SE   | Timer0 Source Edge select (Rising/Falling)     |
+| 3   | PSA    | Prescaler Assignment (Enabled/Disabled)        |
+| 2:0 | T0PS   | Prescaler value selection                      |
+
+- **TMR0ON**: Enables/disables the Timer0.
+- **T08BIT**: Selects between 8-bit and 16-bit mode for the timer.
+- **T0CS**: Selects the clock source (internal or external).
+- **PSA**: Determines whether a prescaler is used for the timer.
+
+### Delay Calculations
+
+When using a timer to generate a delay, you must calculate the appropriate initial value for the timer register, based on the desired delay, the clock frequency, and the prescaler value.
+
+### Programming of Timers Using Embedded C
+
+The following example demonstrates how to configure and use **Timer0** to generate a delay using **Embedded C**.
+
+```c
+#include <xc.h>
+
+ // Header file for PIC18 microcontroller
+
+void delay_ms(unsigned int ms) {
+    for(unsigned int i = 0; i < ms; i++) {
+        T0CON = 0x07;  // Set Timer0 with 1:256 prescaler
+        TMR0 = 240;    // Load TMR0 register
+        T0CONbits.TMR0ON = 1; // Start Timer0
+
+        while(INTCONbits.TMR0IF == 0); // Wait for the overflow flag
+        INTCONbits.TMR0IF = 0; // Clear overflow flag
+        T0CONbits.TMR0ON = 0;  // Stop Timer0
+    }
+}
+
+void main(void) {
+    TRISB = 0x00; // Configure PORTB as output
+
+    while(1) {
+        PORTB = 0xFF; // Turn on all LEDs
+        delay_ms(1000); // Delay of 1 second
+        PORTB = 0x00; // Turn off all LEDs
+        delay_ms(1000); // Delay of 1 second
+    }
+}
+```
+
+In this example:
+
+- Timer0 is configured with a 1:256 prescaler.
+- The timer is loaded with the initial value of 240 to generate a 1 ms delay.
+- A loop toggles all pins on **PORTB** on and off with a 1-second delay.

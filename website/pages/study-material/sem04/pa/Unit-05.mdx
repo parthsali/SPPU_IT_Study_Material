@@ -1,0 +1,256 @@
+# Unit 5: PIC Interfacing - III
+
+## 1. Interfacing ADC (0808) with PIC
+
+### Overview of ADC
+
+Analog-to-Digital Converters (ADCs) are essential components in embedded systems, allowing for the conversion of analog signals (such as temperature, light, or sound) into digital values that microcontrollers can process. The ADC0808 is a popular 8-bit ADC with an integrated 8-channel multiplexer, which enables it to handle multiple input signals.
+
+### Pin Configuration of ADC0808
+
+The ADC0808 features several pins essential for its operation:
+
+- **Vref**: Reference voltage for the ADC.
+- **Vcc**: Supply voltage (typically +5V).
+- **AGND**: Analog ground.
+- **D0 to D7**: Digital output pins (8-bit output).
+- **IN0 to IN7**: Analog input channels.
+- **ALE**: Address latch enable for selecting the input channel.
+- **START**: Start conversion signal.
+- **EOC**: End of conversion signal.
+- **CS**: Chip select.
+
+### Circuit Connections
+
+1. Connect the ADC0808 Vcc and GND pins to the power supply.
+2. Connect the analog inputs (IN0 to IN7) to the sensors or sources of analog signals.
+3. Connect the digital output pins (D0 to D7) to the corresponding GPIO pins on the PIC.
+4. Connect the ALE, START, and CS pins to the PIC to control the ADC operation.
+
+### Example Application: Temperature Sensor
+
+To demonstrate ADC interfacing, we will use a thermistor as a temperature sensor connected to the ADC0808.
+
+### Example Code
+
+```c
+#include <xc.h>
+
+#define _XTAL_FREQ 20000000  // 20MHz crystal frequency
+#define ADC_CHANNEL 0        // ADC channel to read
+
+void adc_init() {
+    TRISD = 0x00;           // Configure PORTD as output for ADC data
+    TRISB = 0x01;           // Configure RB0 as input for EOC
+    // Additional configurations as required
+}
+
+unsigned char adc_read(unsigned char channel) {
+    PORTBbits.RB0 = 0;      // Set EOC low
+    PORTC = channel;        // Select channel
+    PORTBbits.RB1 = 1;      // Set ALE high to latch channel
+    __delay_us(10);
+    PORTBbits.RB1 = 0;      // Set ALE low
+    PORTBbits.RB2 = 1;      // Start conversion
+    __delay_us(10);
+    PORTBbits.RB2 = 0;      // Reset START pin
+    while (!PORTBbits.RB0); // Wait for conversion to complete
+    return PORTD;           // Return ADC result
+}
+
+void main() {
+    unsigned char adc_value;
+    adc_init();
+    while (1) {
+        adc_value = adc_read(ADC_CHANNEL); // Read temperature value
+        // Process the adc_value as needed
+        __delay_ms(1000);
+    }
+}
+```
+
+---
+
+## 2. Temperature Sensor Interfacing using ADC and I2C with PIC
+
+### Overview of Temperature Sensors
+
+Temperature sensors, such as the LM35, provide analog voltage output proportional to the temperature. Interfacing temperature sensors with PIC microcontrollers often involves using ADC to convert the analog signal into digital form. Alternatively, digital temperature sensors like the DS18B20 use the I2C protocol for communication.
+
+### Circuit Connections
+
+1. **For LM35 with ADC**:
+
+   - Connect the LM35 output to one of the ADC0808 input channels.
+   - Follow the ADC0808 connections as previously mentioned.
+
+2. **For DS18B20 using I2C**:
+   - Connect the DS18B20's Vcc and GND pins to the power supply.
+   - Connect the data pin to a GPIO pin on the PIC configured for I2C communication.
+
+### Example Code for LM35
+
+```c
+unsigned char read_temperature() {
+    unsigned char adc_value = adc_read(ADC_CHANNEL); // Read from LM35
+    float temperature = adc_value * (5.0 / 255.0) * 100; // Convert ADC value to Celsius
+    return temperature;
+}
+```
+
+### Example Code for DS18B20
+
+```c
+#include <xc.h>
+#include "i2c.h" // Include the I2C library
+
+void ds18b20_init() {
+    // Initialization code for DS18B20
+}
+
+float ds18b20_read_temp() {
+    unsigned char data[2];
+    i2c_start();
+    i2c_write(0x48); // DS18B20 address
+    i2c_write(0x00); // Command to read temperature
+    i2c_start();
+    i2c_write(0x49); // Read command
+    data[0] = i2c_read_ack();
+    data[1] = i2c_read_nack();
+    i2c_stop();
+
+    return (data[0] + (data[1] >> 4)) * 0.0625; // Convert to Celsius
+}
+
+void main() {
+    float temperature;
+    ds18b20_init();
+    while (1) {
+        temperature = ds18b20_read_temp();
+        // Process the temperature value
+        __delay_ms(1000);
+    }
+}
+```
+
+---
+
+## 3. Interfacing RTC (DS1306) Using I2C with PIC
+
+### Overview of RTC
+
+Real-Time Clocks (RTCs) like the DS1306 are essential for keeping track of time in embedded systems. They maintain accurate time and can operate on a small battery, ensuring timekeeping even when the main power is off.
+
+### Pin Configuration of DS1306
+
+- **Vcc**: Supply voltage (typically +5V).
+- **GND**: Ground connection.
+- **SDA**: Serial data line for I2C communication.
+- **SCL**: Serial clock line for I2C communication.
+
+### Circuit Connections
+
+1. Connect Vcc and GND pins to the power supply.
+2. Connect the SDA and SCL pins to the respective I2C GPIO pins on the PIC.
+3. Include pull-up resistors (typically 4.7kΩ) on the SDA and SCL lines.
+
+### Example Code
+
+```c
+#include <xc.h>
+#include "i2c.h" // Include I2C library
+
+void ds1306_set_time(unsigned char hour, unsigned char minute, unsigned char second) {
+    i2c_start();
+    i2c_write(0xD0); // DS1306 address for write
+    i2c_write(0x00); // Address to set time
+    i2c_write(second); // Set seconds
+    i2c_write(minute); // Set minutes
+    i2c_write(hour); // Set hours
+    i2c_stop();
+}
+
+void ds1306_get_time(unsigned char *hour, unsigned char *minute, unsigned char *second) {
+    unsigned char data[3];
+    i2c_start();
+    i2c_write(0xD0); // DS1306 address for write
+    i2c_write(0x00); // Address to read time
+    i2c_start();
+    i2c_write(0xD1); // DS1306 address for read
+    data[0] = i2c_read_ack(); // Read seconds
+    data[1] = i2c_read_ack(); // Read minutes
+    data[2] = i2c_read_nack(); // Read hours
+    i2c_stop();
+
+    *second = data[0];
+    *minute = data[1];
+    *hour = data[2];
+}
+
+void main() {
+    unsigned char hour, minute, second;
+    ds1306_set_time(12, 30, 45); // Set time to 12:30:45
+    while (1) {
+        ds1306_get_time(&hour, &minute, &second);
+        // Process the retrieved time values
+        __delay_ms(1000);
+    }
+}
+```
+
+---
+
+## 4. Interfacing EEPROM Using SPI with PIC
+
+### Overview of EEPROM
+
+Electrically Erasable Programmable Read-Only Memory (EEPROM) is non-volatile memory that retains data even when power is removed. It is used for storing configuration settings and other critical information in embedded systems.
+
+### Pin Configuration of 93C56 EEPROM
+
+- **Vcc**: Supply voltage (typically +5V).
+- **GND**: Ground connection.
+- **SCK**: Serial clock for SPI communication.
+- **SDA**: Serial data line for SPI communication.
+- **CS**: Chip select to enable the EEPROM.
+
+### Circuit Connections
+
+1. Connect Vcc and GND pins to the power supply.
+2. Connect the SCK, SDA, and CS pins to the respective SPI GPIO pins on the PIC.
+3. Include pull-up resistors on the SDA line.
+
+### Example Code
+
+```c
+#include <xc.h>
+#include "spi.h" // Include SPI library
+
+void eeprom_write(unsigned char address, unsigned char data) {
+    CS = 0;             // Enable EEPROM
+    spi_write(0x02);   // Write command
+    spi_write(address); // Address to write
+    spi_write(data);   // Data to write
+    CS = 1;             // Disable EEPROM
+}
+
+unsigned char eeprom_read(unsigned char address) {
+    unsigned char data;
+    CS = 0;             // Enable EEPROM
+    spi_write(0x03);   // Read command
+    spi_write(address); // Address to read
+
+
+    data = spi_read();  // Read data
+    CS = 1;             // Disable EEPROM
+    return data;
+}
+
+void main() {
+    unsigned char data;
+    eeprom_write(0x00, 0xAB); // Write data to EEPROM
+    data = eeprom_read(0x00);  // Read data from EEPROM
+    // Process the data as needed
+    __delay_ms(1000);
+}
+```

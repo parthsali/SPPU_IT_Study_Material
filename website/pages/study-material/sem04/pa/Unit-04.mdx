@@ -1,0 +1,290 @@
+# Unit 4: PIC Interfacing - II
+
+## Table of Contents:
+
+1. [CCP Modes](#ccp-modes)
+   - Capture Mode
+   - Compare Mode
+   - PWM (Pulse Width Modulation) Mode
+2. [DC Motor Speed Control Using CCP](#dc-motor-speed-control-using-ccp)
+3. [Stepper Motor Interfacing with PIC](#stepper-motor-interfacing-with-pic)
+4. [Serial Communication Protocols](#serial-communication-protocols)
+   - RS232
+   - I2C
+   - SPI
+   - UART
+5. [Serial Communication Programming using Embedded C](#serial-communication-programming-using-embedded-c)
+
+---
+
+## CCP Modes
+
+**CCP** stands for Capture/Compare/PWM, and it is one of the core features of PIC microcontrollers used to measure time events, compare signals, and generate pulse-width modulation (PWM) signals. PIC microcontrollers include dedicated CCP modules that enable various time-based and control functions.
+
+### Capture Mode
+
+The **Capture mode** is used to capture the value of a timer at the exact moment an external event occurs. The CCP module waits for a trigger (an edge on a specific pin) and captures the current timer value at that instant. This allows us to measure external events such as the time between two pulses or the frequency of a signal.
+
+Key Features:
+
+- Can detect rising, falling, or both edges of an incoming signal.
+- The captured value can be stored in the CCP register and then processed by the microcontroller.
+
+#### Example Code (Capture Mode):
+
+```c
+#include <xc.h>
+
+void capture_init() {
+    TRISCbits.TRISC2 = 1;  // Set CCP1 pin as input
+    CCP1CON = 0x05;        // Configure CCP1 module in Capture mode (rising edge)
+    T1CON = 0x01;          // Timer1 ON with prescaler 1:1
+}
+
+void main() {
+    capture_init();
+    while (1) {
+        if (PIR1bits.CCP1IF) {  // Check if Capture has occurred
+            unsigned int captured_value = (CCPR1H << 8) + CCPR1L; // Get captured value
+            PIR1bits.CCP1IF = 0; // Clear the interrupt flag
+        }
+    }
+}
+```
+
+### Compare Mode
+
+In **Compare mode**, the CCP module compares the value of a timer with a preset value and triggers an event when the two values match. This can be used to trigger an action, like toggling a pin or generating a pulse when the timer reaches the desired count.
+
+Key Features:
+
+- Can generate an interrupt when the timer value matches the comparison value.
+- Useful for creating precise time delays.
+
+#### Example Code (Compare Mode):
+
+```c
+#include <xc.h>
+
+void compare_init() {
+    CCP1CON = 0x0B;       // Compare mode: Toggle output on match
+    T1CON = 0x01;         // Timer1 ON with prescaler 1:1
+    CCPR1 = 5000;         // Set the compare value
+}
+
+void main() {
+    compare_init();
+    while (1) {
+        // Wait for compare event (handled by hardware)
+    }
+}
+```
+
+### PWM Mode
+
+**Pulse Width Modulation (PWM)** is a technique used to control the power delivered to a load by varying the width of the pulse while keeping the frequency constant. PWM is widely used in controlling motor speeds, LED brightness, and other power control applications.
+
+Key Features:
+
+- Duty cycle determines how much time the signal stays HIGH in one cycle.
+- Frequency of PWM remains constant, while the duty cycle varies.
+
+#### Example Code (PWM Mode):
+
+```c
+#include <xc.h>
+
+void pwm_init() {
+    PR2 = 255;            // Set PWM period
+    CCPR1L = 128;         // Set initial duty cycle
+    CCP1CON = 0x0C;       // Configure CCP1 module in PWM mode
+    T2CON = 0x04;         // Timer2 ON with prescaler 1:1
+}
+
+void main() {
+    pwm_init();
+    while (1) {
+        // Adjust the PWM duty cycle as needed
+    }
+}
+```
+
+---
+
+## DC Motor Speed Control Using CCP
+
+Using the PWM mode of the CCP module, we can control the speed of a **DC motor**. By varying the duty cycle of the PWM signal, the effective voltage applied to the motor changes, thus controlling its speed.
+
+### How PWM Controls Motor Speed:
+
+- **Low Duty Cycle**: Less power is delivered to the motor, making it run slower.
+- **High Duty Cycle**: More power is delivered to the motor, making it run faster.
+
+#### Example Code (DC Motor Speed Control):
+
+```c
+#include <xc.h>
+
+void pwm_init() {
+    PR2 = 255;            // Set PWM period
+    CCPR1L = 128;         // Set initial duty cycle (50%)
+    CCP1CON = 0x0C;       // Configure CCP1 module in PWM mode
+    T2CON = 0x04;         // Timer2 ON with prescaler 1:1
+}
+
+void set_motor_speed(unsigned char duty_cycle) {
+    CCPR1L = duty_cycle;  // Adjust duty cycle to control motor speed
+}
+
+void main() {
+    pwm_init();
+    while (1) {
+        set_motor_speed(192);  // Set motor speed (75% duty cycle)
+    }
+}
+```
+
+---
+
+## Stepper Motor Interfacing with PIC
+
+A **Stepper motor** is a brushless DC motor that divides a full rotation into equal steps. Each step corresponds to a specific angular movement, making it ideal for precise positioning applications like CNC machines and 3D printers.
+
+### Interfacing Steps:
+
+1. **Half-Step or Full-Step Mode**: Choose between these modes depending on the required resolution.
+2. **Driving the Coils**: Use transistors or a dedicated driver circuit to supply current to the motor coils.
+3. **Control Sequence**: Send a specific sequence of HIGH and LOW signals to the motor coils to make the motor rotate.
+
+#### Example Code (Stepper Motor Control):
+
+```c
+#include <xc.h>
+
+void stepper_init() {
+    TRISB = 0x00;        // Set PORTB as output
+}
+
+void rotate_stepper(unsigned char steps) {
+    const unsigned char sequence[] = {0x09, 0x0A, 0x06, 0x05}; // Full-step sequence
+    for (unsigned char i = 0; i < steps; i++) {
+        for (unsigned char j = 0; j < 4; j++) {
+            PORTB = sequence[j];  // Apply step sequence
+            __delay_ms(100);      // Delay between steps
+        }
+    }
+}
+
+void main() {
+    stepper_init();
+    while (1) {
+        rotate_stepper(100);      // Rotate motor 100 steps
+    }
+}
+```
+
+---
+
+## Serial Communication Protocols
+
+### RS232
+
+**RS232** is a serial communication protocol used for short-distance communication. It involves a **transmit** and **receive** pin, and data is transmitted in bits (one bit at a time).
+
+- Voltage levels: RS232 uses **+12V** and **-12V** for signaling.
+- Baud rate: Defines how fast data is transmitted (e.g., 9600 baud).
+
+### I2C
+
+**I2C (Inter-Integrated Circuit)** is a two-wire protocol used for communication between multiple ICs. The two wires are:
+
+- **SCL (Serial Clock)**: Used to synchronize the communication.
+- **SDA (Serial Data)**: Used to transmit and receive data.
+
+I2C allows communication between multiple devices, where each device has a unique address.
+
+### SPI
+
+**SPI (Serial Peripheral Interface)** is a four-wire communication protocol commonly used to interface sensors, SD cards, and display modules with microcontrollers. The wires are:
+
+- **MOSI (Master Out Slave In)**: Data sent from master to slave.
+- **MISO (Master In Slave Out)**: Data sent from slave to master.
+- **SCLK (Serial Clock)**: Clock signal for synchronization.
+- **SS (Slave Select)**: Selects which slave device to communicate with.
+
+### UART
+
+**UART (Universal Asynchronous Receiver-Transmitter)** is a widely used protocol for serial communication. It involves only two data lines:
+
+- **TX (Transmit)**: Sends data from the microcontroller.
+- **RX (Receive)**: Receives data into the microcontroller.
+
+---
+
+## Serial Communication Programming using Embedded C
+
+### RS232 Example:
+
+```c
+#include <xc.h>
+
+void uart_init() {
+    TXSTAbits.TXEN = 1;  // Enable UART transmission
+    RCSTAbits.SPEN = 1;  // Enable UART module
+    SPBRG = 25;          // Set baud rate to 9600
+}
+
+void uart_write(char data) {
+    while (!TXSTAbits.TRMT);  // Wait until buffer is empty
+    TXREG = data;             // Transmit data
+}
+
+void main() {
+    uart_init();
+    uart_write('A');          // Send character 'A'
+    while (1);
+}
+```
+
+### I2C Example:
+
+```c
+char i2c_read_ack() {
+    SSPCON2bits.RCEN = 1; // Enable receive mode
+    while (!SSPSTATbits.BF); // Wait for data
+    return SSPBUF;        // Return received data
+}
+
+char i2c_read_nack() {
+    SSPCON2bits.RCEN = 1; // Enable receive mode
+    while (!SSPSTATbits.BF); // Wait for data
+    SSPCON2bits.ACKDT = 1; // Send NACK
+    SSPCON2bits.ACKEN = 1; // Send ACK
+    return SSPBUF;        // Return received data
+}
+
+void main() {
+    i2c_init();
+    i2c_start();
+    i2c_write(0xA0); // Device address
+    char data = i2c_read_nack(); // Read data with NACK
+    while (1);
+}
+```
+
+### SPI Example:
+
+```cpp
+char spi_read() {
+    SSPBUF = 0xFF;       // Send dummy byte to generate clock
+    while (!SSPSTATbits.BF); // Wait for transmission to complete
+    return SSPBUF;       // Read received data
+}
+
+void main() {
+    spi_init();
+    while (1) {
+        char data = spi_read(); // Read data from SPI
+    }
+}
+```

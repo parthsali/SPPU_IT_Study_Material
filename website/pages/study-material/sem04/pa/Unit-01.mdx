@@ -1,0 +1,175 @@
+# Unit 1: Introduction to Microcontrollers
+
+## Table of Contents:
+
+1. [Introduction to Microcontroller](#introduction-to-microcontroller)
+   - Brief History of Microcontrollers
+   - Difference Between Microprocessor and Microcontroller
+   - Criteria for Selection of Microcontroller
+2. [PIC18FXXX Microcontroller](#pic18fxxx-microcontroller)
+   - Features and Architecture
+   - Comparison of PIC18 Series Microcontrollers
+3. [PIC18F458/452 Pin-out Connection](#pic18f458452-pin-out-connection)
+4. [Registers of PIC18F](#registers-of-pic18f)
+5. [Program and Data Memory Organization](#program-and-data-memory-organization)
+   - The Program Counter and Programmable ROM Space in the PIC
+   - File Register and Access Bank
+   - Bank Switching in PIC18
+6. [Addressing Modes](#addressing-modes)
+   - Addressing Modes with Instruction Example
+7. [Oscillator Configurations](#oscillator-configurations)
+8. [Reset Operations](#reset-operations)
+   - Brownout Reset
+   - Watchdog Timer
+9. [Power-Down Modes & Configuration Registers](#power-down-modes-configuration-registers)
+
+---
+
+## Introduction to Microcontroller
+
+### Brief History of Microcontrollers
+
+Microcontrollers have evolved as essential components in embedded systems and everyday electronic devices. The first microcontroller was introduced by **Intel** in 1971, known as the **Intel 4004**. Over the years, advancements in technology led to the development of microcontrollers that integrate memory, CPU, and I/O ports into a single chip, making them compact, cost-effective, and powerful.
+
+Microcontrollers became popular due to their applications in embedded systems, such as home appliances, automobiles, and industrial automation. Today, they are integral to IoT devices, medical equipment, and various consumer electronics.
+
+### Difference Between Microprocessor and Microcontroller
+
+Although both microprocessors and microcontrollers serve the purpose of processing data, they differ in terms of functionality, architecture, and applications.
+
+| **Parameter**              | **Microprocessor**                                            | **Microcontroller**                                                                      |
+| -------------------------- | ------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| **Definition**             | A general-purpose computing device designed to execute tasks. | A compact integrated circuit designed to perform specific tasks within embedded systems. |
+| **Components**             | Requires external components like memory and I/O ports.       | Includes CPU, memory (RAM, ROM), and I/O ports on a single chip.                         |
+| **Applications**           | Desktops, laptops, servers.                                   | Embedded systems like washing machines, cars, and home automation.                       |
+| **Power Consumption**      | High due to additional components.                            | Low, as everything is integrated on a single chip.                                       |
+| **Cost**                   | Expensive due to external components.                         | Inexpensive and suitable for mass production.                                            |
+| **Programming Complexity** | Requires a complex operating system.                          | Can run on simple real-time operating systems (RTOS).                                    |
+
+### Criteria for Selection of Microcontroller
+
+When selecting a microcontroller for a project, several factors must be considered:
+
+1. **Processing Speed**: Measured in MHz, the speed of the microcontroller should match the application’s requirements.
+2. **Memory Size**: Both RAM and ROM sizes should be sufficient for storing programs and data.
+3. **Power Consumption**: Low-power microcontrollers are ideal for battery-powered devices.
+4. **I/O Capabilities**: The number of input/output pins needed for sensors, displays, and other peripherals.
+5. **Cost**: Microcontroller cost should align with the budget and production volume.
+6. **Development Tools**: Availability of development environments, debugging tools, and support.
+7. **Architecture**: Consider the bit size (8-bit, 16-bit, 32-bit) based on application complexity.
+
+---
+
+## PIC18FXXX Microcontroller
+
+### Features and Architecture
+
+**PIC18FXXX microcontrollers** are part of Microchip’s 8-bit family of microcontrollers, known for their versatility, robustness, and suitability for a wide range of applications.
+
+#### Key Features:
+
+- **8-bit Architecture**: Ensures simple processing and control in embedded systems.
+- **Up to 40 MHz Clock Speed**: Provides sufficient speed for most embedded applications.
+- **Large Memory**: Typically includes up to 32KB of program memory and 4KB of data memory.
+- **I/O Ports**: Includes multiple input/output pins for communication and control of external devices.
+- **Timers and Counters**: Built-in timers allow for precise control over time-sensitive processes.
+- **Peripheral Interface**: Supports interfaces such as UART, I2C, SPI, and CAN for communication with external devices.
+- **Analog-to-Digital Converters (ADC)**: Enables the conversion of analog signals to digital values for processing.
+
+### Comparison of PIC18 Series Microcontrollers
+
+| **Model**  | **Flash Memory** | **RAM** | **EEPROM** | **I/O Pins** | **ADC Channels** |
+| ---------- | ---------------- | ------- | ---------- | ------------ | ---------------- |
+| PIC18F452  | 32KB             | 1.5KB   | 256B       | 34           | 8                |
+| PIC18F458  | 32KB             | 1.5KB   | 256B       | 34           | 8                |
+| PIC18F2550 | 32KB             | 2KB     | 256B       | 24           | 13               |
+| PIC18F4550 | 32KB             | 2KB     | 256B       | 34           | 13               |
+
+---
+
+## PIC18F458/452 Pin-out Connection
+
+The **PIC18F452/458** microcontrollers have a 40-pin dual in-line package (DIP). The pin-out diagram includes the following key components:
+
+- **VDD and VSS**: Power supply pins (VDD for power, VSS for ground).
+- **Oscillator Pins (OSC1/OSC2)**: Used to connect an external crystal oscillator for clock generation.
+- **Reset Pin (MCLR)**: Used to reset the microcontroller.
+- **I/O Pins**: General-purpose input/output pins (PORTA, PORTB, PORTC, etc.) for interfacing with peripherals.
+- **Analog Pins (AN0 to AN7)**: For analog-to-digital conversion.
+- **Communication Pins**: UART (TX, RX), SPI (MOSI, MISO, SCK), I2C (SCL, SDA), and CAN interface pins.
+
+---
+
+## Registers of PIC18F
+
+PIC18F microcontrollers use a combination of special function registers (SFRs) to manage their functionality. The most important registers include:
+
+1. **STATUS Register**: Reflects the status of the arithmetic and logical operations. It contains flags like Carry (C), Zero (Z), and Digit Carry (DC).
+2. **WREG (Working Register)**: Used as a general-purpose accumulator for storing the result of operations.
+3. **PCL (Program Counter Low)**: Stores the lower byte of the program counter, which tracks the current instruction being executed.
+4. **INTCON Register**: Manages interrupts and provides status bits for external and timer-related interrupts.
+
+---
+
+## Program and Data Memory Organization
+
+### The Program Counter and Programmable ROM Space in the PIC
+
+The **Program Counter (PC)** in the PIC18F microcontroller is responsible for holding the address of the next instruction to be executed. It works with a maximum address range of 64KB, allowing for a sizable program memory.
+
+Program memory is typically made up of **Flash ROM**, which is non-volatile, meaning that data is retained even after power is removed.
+
+### File Register and Access Bank
+
+The **File Register** in the PIC18 is a collection of general-purpose registers used to store data. These registers are grouped into **banks** (sets of 128 registers), and the **Access Bank** provides fast access to a portion of these registers without needing to switch banks manually.
+
+### Bank Switching in PIC18
+
+Since the PIC18 has multiple banks of registers, it uses a technique called **bank switching** to access more than 256 bytes of memory. The **Bank Select Register (BSR)** determines which bank is currently active, allowing for efficient memory management.
+
+---
+
+## Addressing Modes
+
+### Addressing Modes with Instruction Example
+
+PIC18F microcontrollers support several addressing modes, including:
+
+1. **Immediate Addressing**: The operand is provided in the instruction itself.  
+   Example: `MOVLW 0x55` (Move literal value 0x55 into WREG).
+2. **Direct Addressing**: The instruction specifies the address of the operand in the file register.  
+   Example: `MOVF 0x20, W` (Move the contents of register 0x20 into WREG).
+3. **Indirect Addressing**: The address of the operand is provided by a pointer register.  
+   Example: `MOVF INDF0, W` (Move the contents of the address pointed by FSR0 into WREG).
+
+---
+
+## Oscillator Configurations
+
+PIC18 microcontrollers require a clock source for operation. Common oscillator configurations include:
+
+- **RC Oscillator**: Uses a resistor-capacitor network for generating clock signals.
+- **XT Oscillator**: Uses an external crystal for accurate clock generation.
+- **HS Oscillator**: High-speed oscillator configuration for fast clock frequencies.
+
+---
+
+## Reset Operations
+
+PIC18 microcontrollers support various reset mechanisms to ensure proper operation in case of faults.
+
+### Brownout Reset
+
+A **Brownout Reset** occurs when the supply voltage drops below a certain threshold, ensuring that the microcontroller doesn’t malfunction during power instability
+
+.
+
+### Watchdog Timer
+
+The **Watchdog Timer (WDT)** is a safety feature that automatically resets the microcontroller if the program execution goes wrong or enters an infinite loop.
+
+---
+
+## Power-Down Modes & Configuration Registers
+
+PIC18 microcontrollers have several low-power modes, such as **Sleep Mode**, where most of the microcontroller's operations are shut down to conserve energy. These modes are configured using **Configuration Registers**, which also control settings like oscillator selection and reset conditions.
