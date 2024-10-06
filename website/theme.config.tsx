@@ -47,6 +47,7 @@ const config: DocsThemeConfig = {
       titleTemplate: "%s – LearnVerse",
     };
   },
+  darkMode: true,
   sidebar: {
     toggleButton: true,
   },
