@@ -1,0 +1,164 @@
+# Unit 1: Computer Graphics Basics, OpenGL, and Line, Circle Drawing
+
+## Table of Contents
+
+1. [Introduction to Computer Graphics](#introduction-to-computer-graphics)
+   - Definition and Applications of Computer Graphics
+   - Basic Graphics Systems: Raster and Random Scan
+   - Basic Display Processor Overview
+2. [OpenGL Basics](#opengl-basics)
+   - Introduction to OpenGL
+   - Graphics Functions and Primitives
+   - OpenGL Interface and Control Functions
+   - Attributes and Event Programming
+3. [Line Drawing Algorithms](#line-drawing-algorithms)
+   - DDA (Digital Differential Analyzer) Line Drawing Algorithm
+   - Bresenham’s Line Drawing Algorithm
+4. [Circle Drawing Algorithms](#circle-drawing-algorithms)
+   - Bresenham’s Circle Drawing Algorithm
+5. [Character Generation](#character-generation)
+   - Stroke Principle
+   - Starburst Principle
+   - Bitmap Method
+6. [Aliasing and Anti-aliasing](#aliasing-and-anti-aliasing)
+   - Introduction to Aliasing
+   - Anti-aliasing Techniques
+
+---
+
+## Introduction to Computer Graphics
+
+### Definition and Applications of Computer Graphics
+
+**Computer Graphics (CG)** refers to the creation, manipulation, and storage of pictures and images using computers. It involves the representation of visual data and the techniques used to generate, display, and manipulate images in various formats. Computer graphics are widely used in areas such as:
+
+- Video games
+- Virtual Reality (VR) and Augmented Reality (AR)
+- Movies and animations
+- Computer-aided design (CAD)
+- Medical imaging
+- Scientific simulations
+
+### Basic Graphics Systems: Raster and Random Scan
+
+Graphics systems can be categorized into two main types: **raster scan** and **random scan** systems.
+
+- **Raster Scan Systems**: In raster scan systems, the screen is divided into a grid of pixels. The image is created by illuminating these pixels in rows from top to bottom. Raster systems are commonly used in monitors and televisions.
+- **Random Scan Systems**: Also known as vector scan systems, these create images by drawing lines between specific points, rather than illuminating individual pixels. This method is ideal for drawing shapes like lines and curves, and it's used in applications like engineering workstations.
+
+### Basic Display Processor Overview
+
+The **display processor** is a key component in graphics systems. It handles the processing of display commands, converts graphical data into visual outputs, and manages the display memory. The display processor communicates with the computer's central processing unit (CPU) to create and update images on the screen.
+
+---
+
+## OpenGL Basics
+
+### Introduction to OpenGL
+
+**OpenGL** (Open Graphics Library) is a powerful cross-platform graphics API (Application Programming Interface) that is widely used for developing 2D and 3D graphics applications. It provides a set of functions to render graphics by communicating with the graphics hardware, making it suitable for both beginner-level applications and professional-level games and simulations.
+
+### Graphics Functions and Primitives
+
+In OpenGL, **primitives** refer to the basic geometric shapes that form the building blocks for creating complex graphics. These include:
+
+- **Points**
+- **Lines**
+- **Triangles**
+- **Polygons**
+
+OpenGL functions allow users to draw these primitives by specifying their coordinates and attributes (like color, size, and line thickness).
+
+### OpenGL Interface and Control Functions
+
+The **OpenGL interface** consists of a set of functions that allow developers to communicate with the hardware to create visual outputs. These functions provide control over:
+
+- **Rendering Context**: Sets up the environment where graphics are drawn.
+- **Graphics State**: Manages the current state of rendering attributes (e.g., color, transformations).
+- **Viewport**: Defines the region of the window where rendering occurs.
+
+### Attributes and Event Programming
+
+**Attributes** in OpenGL include properties like color, line thickness, and shading mode. OpenGL also supports **event-driven programming**, where actions such as mouse clicks and keyboard inputs trigger specific responses in the application.
+
+---
+
+## Line Drawing Algorithms
+
+### DDA (Digital Differential Analyzer) Line Drawing Algorithm
+
+The **DDA algorithm** is a simple line-drawing algorithm used to plot lines on raster displays. It calculates intermediate points between the start and end coordinates of a line and plots them one by one.
+
+- **Steps**:
+  1. Calculate the slope of the line.
+  2. Determine the steps required to increment either the x or y coordinates.
+  3. Plot the points by incrementing in small steps, adjusting x and y coordinates accordingly.
+
+The DDA algorithm is straightforward but may result in gaps or uneven pixel distribution due to rounding errors.
+
+### Bresenham’s Line Drawing Algorithm
+
+**Bresenham’s Line Algorithm** is a more efficient and accurate algorithm for drawing lines, compared to the DDA algorithm. It avoids floating-point arithmetic and uses only integer calculations, making it ideal for raster systems.
+
+- **Steps**:
+  1. Start from one end of the line.
+  2. Calculate the error between the actual line and the plotted pixels.
+  3. Adjust the pixel position based on the error and continue plotting.
+
+This algorithm ensures smooth, continuous lines without gaps, and is faster than DDA.
+
+---
+
+## Circle Drawing Algorithms
+
+### Bresenham’s Circle Drawing Algorithm
+
+Similar to Bresenham’s line algorithm, **Bresenham’s Circle Algorithm** uses integer calculations to efficiently plot a circle by determining the pixels that form the circumference. It takes advantage of the symmetry of circles to reduce the number of calculations needed.
+
+- **Steps**:
+  1. Start at a point on the circle.
+  2. Use the symmetry of the circle to calculate the next pixel.
+  3. Adjust the pixel position based on the error between the ideal circle and the actual pixels plotted.
+
+Bresenham’s Circle Algorithm is particularly useful in raster graphics systems for drawing smooth, continuous circles.
+
+---
+
+## Character Generation
+
+**Character generation** refers to the techniques used to display text and characters on a screen. There are several methods for character generation in computer graphics:
+
+### Stroke Principle
+
+In the **stroke method**, characters are generated using a series of line segments (strokes). Each character is represented by a set of strokes, which can be drawn using line drawing algorithms.
+
+- Pros: Characters can be scaled and rotated easily.
+- Cons: More complex to implement compared to bitmap methods.
+
+### Starburst Principle
+
+The **starburst method** is another technique for generating characters by projecting lines (strokes) from a central point to various positions around the character’s outline. This method is less commonly used but provides a unique way to render text.
+
+### Bitmap Method
+
+The **bitmap method** is one of the simplest and most commonly used methods for character generation. In this method, each character is represented as a grid of pixels (bitmap), where each pixel is either on or off, forming the shape of the character.
+
+- Pros: Simple and efficient for small fonts.
+- Cons: Limited scalability; larger characters can become pixelated.
+
+---
+
+## Aliasing and Anti-aliasing
+
+### Introduction to Aliasing
+
+**Aliasing** is a visual artifact that occurs when high-frequency detail in an image is not accurately represented, resulting in jagged edges or stair-step effects in line and shape rendering. Aliasing is particularly noticeable in diagonal lines and curves.
+
+### Anti-aliasing Techniques
+
+To reduce the effects of aliasing, **anti-aliasing** techniques are used to smooth out the jagged edges by averaging the colors of the pixels around the edges. Some common anti-aliasing techniques include:
+
+- **Supersampling**: Involves rendering the image at a higher resolution and then downscaling it to smooth out the edges.
+- **Multisample Anti-aliasing (MSAA)**: Samples multiple points within each pixel and averages the results to produce smoother edges.
+
+Anti-aliasing improves the visual quality of graphics but can increase the computational load.

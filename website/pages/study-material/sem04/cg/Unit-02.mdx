@@ -1,0 +1,174 @@
+# Unit 2: Polygons and 2D Transformations
+
+## Table of Contents
+
+1. [Introduction to Polygons](#introduction-to-polygons)
+   - Definition of Polygons
+   - Types of Polygons
+   - Properties of Polygons
+2. [Inside Test for Polygons](#inside-test-for-polygons)
+   - Point-in-Polygon Test
+   - Applications of Inside Tests
+3. [Polygon Filling Methods](#polygon-filling-methods)
+   - Seed Fill Algorithm
+   - Flood Fill Algorithm
+   - Boundary Fill Algorithm
+   - Scan-line Fill Algorithm
+4. [2D Transformations](#2d-transformations)
+   - Introduction to 2D Transformations
+   - Types of 2D Transformations
+     - Translation
+     - Scaling
+     - Rotation
+     - Reflection
+     - Shearing
+5. [Matrix Representation of Transformations](#matrix-representation-of-transformations)
+   - Importance of Matrix Representation
+   - Homogeneous Coordinate System
+6. [Composite Transformations](#composite-transformations)
+   - Definition of Composite Transformations
+   - Applications of Composite Transformations
+
+---
+
+## Introduction to Polygons
+
+A **polygon** is a two-dimensional geometric figure formed by connecting a finite number of straight line segments. The points where the line segments meet are known as vertices, and the line segments themselves are referred to as edges or sides. Polygons can be categorized based on their characteristics, such as the number of sides or whether they are convex or concave.
+
+### Definition of Polygons
+
+Polygons are defined as closed shapes made up of straight lines. The simplest polygon is a triangle, which has three sides, while a polygon with four sides is known as a quadrilateral. Polygons can have any number of sides, and they are typically classified into two main categories: convex and concave.
+
+### Types of Polygons
+
+1. **Convex Polygons**: In a convex polygon, all interior angles are less than 180 degrees, and no line segment between two vertices goes outside the polygon. Examples include triangles, rectangles, and regular polygons like pentagons and hexagons.
+
+2. **Concave Polygons**: A concave polygon has at least one interior angle greater than 180 degrees. This means that at least one vertex "caves in." An example is a star shape.
+
+3. **Regular Polygons**: A regular polygon is both equiangular (all angles are equal) and equilateral (all sides are of equal length). Examples include a square and an equilateral triangle.
+
+4. **Irregular Polygons**: An irregular polygon does not have all sides and angles equal. For instance, a rectangle is regular, while a quadrilateral with sides of different lengths is irregular.
+
+### Properties of Polygons
+
+Polygons have several important properties, including:
+
+- **Perimeter**: The perimeter is the total length of all the sides of the polygon.
+- **Area**: The area is the measure of the space enclosed by the polygon.
+- **Diagonals**: A diagonal is a line segment connecting two non-adjacent vertices of the polygon. The number of diagonals in a polygon can be calculated using the formula "n times (n minus 3) divided by 2", where "n" is the number of sides.
+
+---
+
+## Inside Test for Polygons
+
+To determine whether a point is located inside a polygon, we use the **inside test**. This test is essential in computer graphics for various applications, such as determining collision detection, selecting objects, and filling polygons.
+
+### Point-in-Polygon Test
+
+The point-in-polygon test checks if a given point is inside, outside, or on the boundary of a polygon. Several algorithms exist for this purpose, including:
+
+- **Ray-Casting Algorithm**: This algorithm involves drawing a horizontal line from the point in question to infinity and counting how many times this line intersects with the edges of the polygon. If the count is odd, the point is inside the polygon; if even, it is outside.
+
+- **Winding Number Algorithm**: This algorithm counts how many times the polygon winds around the point. If the winding number is zero, the point is outside; otherwise, it is inside.
+
+### Applications of Inside Tests
+
+Inside tests are commonly used in graphics applications, including:
+
+- **Selection**: Determining whether a mouse click falls within the bounds of a graphical object.
+- **Clipping**: Identifying which parts of a shape are inside a defined area.
+- **Texture Mapping**: Ensuring textures are applied correctly to polygons by verifying point locations.
+
+---
+
+## Polygon Filling Methods
+
+Filling a polygon is the process of coloring or shading the interior of a polygon. Several algorithms can be used for polygon filling, each with its advantages and applications.
+
+### Seed Fill Algorithm
+
+The **Seed Fill Algorithm** begins with a seed point inside the polygon and spreads outwards, filling the area with the specified color. This algorithm can be implemented using either depth-first search (DFS) or breadth-first search (BFS) techniques.
+
+#### Applications:
+
+- Used in flood fill operations in image processing and computer graphics, such as in paint applications.
+
+### Flood Fill Algorithm
+
+The **Flood Fill Algorithm** is similar to the seed fill algorithm but allows for more flexibility. This method fills the polygon from a given starting point and continues to fill adjacent pixels of the same color until it encounters a boundary of a different color.
+
+#### Applications:
+
+- Commonly used in 2D graphics for coloring and filling shapes, especially in graphic design software.
+
+### Boundary Fill Algorithm
+
+The **Boundary Fill Algorithm** starts from a seed point inside the polygon and fills outward until it reaches a boundary color. This method is effective for filling complex polygons with defined edges.
+
+#### Applications:
+
+- Useful in rendering graphics where the boundary is easily identifiable, such as in vector graphics.
+
+### Scan-line Fill Algorithm
+
+The **Scan-line Fill Algorithm** is a more advanced technique used to fill polygons efficiently. This algorithm processes the polygon one horizontal line (scan line) at a time. It calculates the intersection points of the scan line with the edges of the polygon and fills between these intersections.
+
+#### Applications:
+
+- Particularly effective for complex polygons and is widely used in rendering graphics in real-time applications, such as video games.
+
+---
+
+## 2D Transformations
+
+**2D transformations** are mathematical operations applied to graphical objects in a two-dimensional space. These transformations allow objects to be manipulated in various ways, including changing their position, size, and orientation.
+
+### Introduction to 2D Transformations
+
+Transformations in computer graphics are essential for rendering scenes, animations, and user interactions. They allow for the manipulation of objects within a graphical environment, making it possible to create dynamic visuals.
+
+### Types of 2D Transformations
+
+1. **Translation**: This transformation moves an object from one location to another in the 2D space. It is achieved by adding a translation vector to the coordinates of the object's vertices. For example, translating an object by a vector (tx, ty) shifts all points in the object by that amount.
+
+2. **Scaling**: Scaling alters the size of an object by multiplying the coordinates of its vertices by scaling factors. A scaling factor greater than one enlarges the object, while a factor between zero and one shrinks it. Scaling can be uniform (same factor in all directions) or non-uniform (different factors in different directions).
+
+3. **Rotation**: Rotation changes the orientation of an object around a specified point (often the origin). The angle of rotation can be specified in degrees or radians. The coordinates of the vertices are transformed based on this angle.
+
+4. **Reflection**: Reflection flips an object over a specified axis, creating a mirror image. Common axes for reflection include the x-axis, y-axis, and lines at 45 degrees.
+
+5. **Shearing**: Shearing skews the shape of an object along an axis. This transformation changes the angles between the sides but maintains the area. Shearing can be applied in the x or y direction.
+
+---
+
+## Matrix Representation of Transformations
+
+Matrix representation is a powerful tool for handling transformations in computer graphics. By using matrices, multiple transformations can be combined and applied in a single operation, simplifying calculations and improving efficiency.
+
+### Importance of Matrix Representation
+
+Matrix representation allows for the concise and unified representation of transformations. Each transformation type can be expressed as a matrix, enabling easy multiplication to combine transformations. This is particularly useful when applying multiple transformations to an object, as it reduces the computational overhead.
+
+### Homogeneous Coordinate System
+
+The **homogeneous coordinate system** extends the standard Cartesian coordinate system by adding an extra dimension. This allows for more straightforward representation of transformations, including translation. In homogeneous coordinates, a point (x, y) is represented as (x, y, 1). This extra dimension facilitates matrix operations and enables the combination of different transformations into a single matrix.
+
+---
+
+## Composite Transformations
+
+**Composite transformations** refer to the process of combining multiple transformations into one. By multiplying the transformation matrices, a single matrix representing the overall transformation can be created. This matrix can then be applied to the object's vertices in one operation, resulting in a significant performance improvement.
+
+### Definition of Composite Transformations
+
+Composite transformations are defined by the sequence of transformations applied to an object. For example, if an object is first translated, then scaled, and finally rotated, the composite transformation matrix combines these individual matrices in the correct order.
+
+### Applications of Composite Transformations
+
+Composite transformations are widely used in computer graphics for various applications, including:
+
+- **Animation**: Objects can be animated smoothly by applying a sequence of transformations over time.
+- **User Interface**: UI elements can be dynamically repositioned and resized using composite transformations.
+- **Game Development**: In video games,
+
+composite transformations allow for complex movements and interactions between objects in the game world.
