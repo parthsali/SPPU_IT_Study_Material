@@ -39,6 +39,7 @@ const config: DocsThemeConfig = {
       <link rel="icon" href="./logo.png" />
       <link rel="canonical" href="https://learnverse.live" />
       <meta property="og:title" content="LearnVerse" />
+
       {/* Add your actual website URL */}
     </>
   ),
