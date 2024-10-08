@@ -29,7 +29,7 @@ const config: DocsThemeConfig = {
       <meta title="LearnVerse" />
       <meta
         name="description"
-        content="LearvVerse offers comprehensive study materials for Savitribai Phule Pune University IT students, helping them excel in their studies."
+        content="LearnVerse offers comprehensive study materials for Savitribai Phule Pune University IT students, helping them excel in their studies."
       />
       <meta
         name="keywords"
@@ -42,7 +42,7 @@ const config: DocsThemeConfig = {
       <meta property="og:site_name" content="LearnVerse" />
       <meta
         property="og:description"
-        content="LearvVerse offers comprehensive study materials for Savitribai Phule Pune University IT students, helping them excel in their studies."
+        content="LearnVerse offers comprehensive study materials for Savitribai Phule Pune University IT students, helping them excel in their studies."
       />
       <meta property="og:image" content="/logo.png" />
       <meta property="og:image:width" content="1200" />
