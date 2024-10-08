@@ -33,13 +33,26 @@ const config: DocsThemeConfig = {
       />
       <meta
         name="keywords"
-        content="LearnVerse, SPPU, IT Study Hub, study materials, SPPU IT, educational resources"
+        content="LearnVerse, SPPU, IT Study Hub, study materials, SPPU IT, educational resources, SPPU IT study materials GitHub, SE Study Materials, TE Study Materials, BE Study Materials"
       />
+
+      <meta name="language" content="English" />
+
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="LearnVerse" />
+      <meta
+        property="og:description"
+        content="LearvVerse offers comprehensive study materials for Savitribai Phule Pune University IT students, helping them excel in their studies."
+      />
+      <meta property="og:image" content="/logo.png" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:url" content="https://learnverse.live" />
+
       <meta name="author" content="Parth Sali" />
       <link rel="icon" href="./logo.png" />
       <link rel="canonical" href="https://learnverse.live" />
       <meta property="og:title" content="LearnVerse" />
-
       {/* Add your actual website URL */}
     </>
   ),
