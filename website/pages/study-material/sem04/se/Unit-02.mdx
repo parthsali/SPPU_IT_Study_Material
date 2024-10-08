@@ -1,0 +1,144 @@
+# Unit 2: Requirements Engineering & Analysis
+
+## Table of Contents
+
+1. [Requirements Engineering](#requirements-engineering)
+   - User and System Requirements
+   - Functional and Non-Functional Requirements
+   - Elicitation, Specification, Validation, Negotiation
+   - Prioritizing Requirements (Kano Diagram)
+   - Requirement Traceability Matrix (RTM)
+2. [Software Requirements Specification (SRS)](#software-requirements-specification-srs)
+   - Structure of an SRS Document
+   - Writing a Structured SRS
+   - Example of SRS for Online Shopping System
+3. [Requirements Analysis](#requirements-analysis)
+   - Analysis Model
+   - Data Modeling
+   - Scenario-Based Modeling
+   - Class-Based Modeling
+   - Flow-Oriented Modeling
+   - Behavioral Modeling
+   - Introduction to UML Diagrams
+
+---
+
+## Requirements Engineering
+
+### User and System Requirements
+
+Requirements engineering is the first and crucial phase in software development. It involves understanding what the user needs from the system and documenting those needs clearly.
+
+- **User Requirements**: These are high-level requirements expressed in natural language or diagrams that define what the user expects the software to do. They are written in terms familiar to the customer, like user stories, without technical details.
+- **System Requirements**: These are detailed descriptions of the system's functionality and constraints. They define how the software will fulfill the user’s needs and are more technical, specifying how the system will be built and function.
+
+### Functional and Non-Functional Requirements
+
+- **Functional Requirements**: These describe the system's specific behavior or functions. For example, "The system must allow users to log in using a username and password."
+
+- **Non-Functional Requirements**: These are the quality attributes of the system, such as performance, security, usability, and reliability. They don’t describe what the system does but how it does it. For example, "The system should respond within 2 seconds to a user's action."
+
+### Elicitation, Specification, Validation, Negotiation
+
+- **Elicitation**: This is the process of gathering requirements from stakeholders through interviews, questionnaires, workshops, or brainstorming. The aim is to understand the needs and constraints.
+
+- **Specification**: Once requirements are gathered, they need to be clearly documented. Specification means writing the requirements in a structured way so they are easy to understand by both users and developers.
+
+- **Validation**: After requirements are specified, they must be validated to ensure that they meet the user's needs and are feasible. This step helps to identify any missing, ambiguous, or incorrect requirements.
+
+- **Negotiation**: Sometimes, it’s not possible to meet all requirements due to time, budget, or technical constraints. In such cases, stakeholders may need to negotiate and prioritize the most important requirements.
+
+### Prioritizing Requirements (Kano Diagram)
+
+The **Kano Diagram** is a model that helps in prioritizing requirements based on customer satisfaction. Requirements are classified into three categories:
+
+1. **Basic Needs**: These are essential features that users expect. If they are not met, users will be dissatisfied, but meeting them doesn't increase satisfaction.
+2. **Performance Needs**: These are features that users want and expect. The better they are, the more satisfied the users will be.
+3. **Excitement Needs**: These are features that users don't expect but will pleasantly surprise them, increasing satisfaction.
+
+### Requirement Traceability Matrix (RTM)
+
+The **Requirement Traceability Matrix (RTM)** is a document that maps and traces user requirements with the test cases to ensure that all requirements are covered during testing. It helps track the progress of requirement implementation and ensures that no requirement is missed.
+
+---
+
+## Software Requirements Specification (SRS)
+
+### Structure of an SRS Document
+
+The **Software Requirements Specification (SRS)** is a formal document that describes the system’s intended functionality and environment. A well-structured SRS helps both developers and stakeholders understand the project clearly. The typical structure of an SRS document includes:
+
+1. **Introduction**: Provides an overview of the system, including its purpose and scope.
+2. **Overall Description**: Describes the system context, including users, environment, and system constraints.
+3. **Specific Requirements**: Details all the functional and non-functional requirements.
+4. **External Interfaces**: Describes how the system will interact with other systems or hardware.
+5. **Performance Requirements**: Defines system performance criteria.
+6. **Design Constraints**: Specifies any limitations or constraints on the design.
+7. **Glossary**: Provides definitions of terms used in the document.
+
+### Writing a Structured SRS
+
+Writing a good SRS involves clear, precise, and unambiguous documentation. Here are some best practices for writing an SRS:
+
+- **Be Clear**: Use simple, clear language that both technical and non-technical stakeholders can understand.
+- **Be Precise**: Avoid vague words like "easy to use" or "fast." Instead, provide specific, measurable criteria (e.g., "The system will process 1,000 transactions per minute").
+- **Be Complete**: Ensure that all necessary information, including functional and non-functional requirements, is covered.
+- **Be Consistent**: Ensure there are no contradictions in the requirements.
+
+### Example of SRS for Online Shopping System
+
+**1. Introduction**
+
+- **Purpose**: The purpose of the online shopping system is to provide an e-commerce platform for users to browse, select, and purchase products.
+- **Scope**: The system will handle product catalogs, customer registration, order placement, payment, and shipment tracking.
+
+**2. Specific Requirements**
+
+- **User Login**: The system must allow users to log in using an email and password.
+- **Product Browsing**: Users should be able to browse products by category and search for specific items.
+- **Order Placement**: Users must be able to place orders by adding products to a cart and checking out.
+- **Payment**: The system will support payment via credit card, PayPal, and other payment methods.
+- **Shipment Tracking**: Users should be able to track the status of their orders.
+
+---
+
+## Requirements Analysis
+
+### Analysis Model
+
+Requirements analysis involves creating an analysis model, which represents the system’s functionality and data flow in different forms. This model helps in understanding how the system will fulfill the requirements.
+
+### Data Modeling
+
+Data modeling involves creating a **data model** that describes the structure of the data that the system will store. This includes defining entities, attributes, and relationships between entities.
+
+- **Entity**: A real-world object or concept (e.g., customer, product).
+- **Attribute**: Properties or details of an entity (e.g., customer name, product price).
+- **Relationship**: The association between two entities (e.g., a customer places an order).
+
+### Scenario-Based Modeling
+
+Scenario-based modeling focuses on understanding the system's behavior in different use cases or scenarios. Use cases describe the interaction between users (actors) and the system to achieve a specific goal. This helps identify functional requirements.
+
+### Class-Based Modeling
+
+Class-based modeling is a technique used in object-oriented analysis where the system is modeled as a collection of classes. Each class represents an object and contains attributes and methods. For example, in an online shopping system, the "Customer" class might have attributes like "name" and "address" and methods like "placeOrder."
+
+### Flow-Oriented Modeling
+
+Flow-oriented modeling describes how data flows through the system. It focuses on data movement and processing, using **data flow diagrams (DFDs)** to represent how data moves from one part of the system to another.
+
+### Behavioral Modeling
+
+Behavioral modeling is used to capture how the system behaves in response to events. This can be represented using **state diagrams** that show the states an object can be in and the transitions between these states. For example, an "Order" object in an online shopping system can have states like "Placed," "Shipped," and "Delivered."
+
+---
+
+## Introduction to UML Diagrams
+
+Unified Modeling Language (UML) is a standardized way to visualize the design of a system. UML diagrams are often used during requirements analysis to represent different aspects of the system.
+
+- **Use Case Diagrams**: Represent interactions between actors and the system.
+- **Class Diagrams**: Show the structure of the system by representing classes, attributes, and relationships.
+- **Sequence Diagrams**: Show how objects interact over time in a sequence of events.
+- **Activity Diagrams**: Represent workflows or processes in the system.
