@@ -1,0 +1,182 @@
+# Unit 4: Memory Management
+
+Memory management is a crucial function of an operating system (OS), ensuring that each program gets the memory it requires to execute while optimizing system performance. This unit will explore key concepts such as memory partitioning, paging, segmentation, virtual memory, and memory replacement strategies. We will delve into the requirements of memory management, different partitioning strategies, virtual memory, and the techniques used to allocate frames and prevent issues like thrashing.
+
+## Table of Contents
+
+1. [Memory Management Requirements](#memory-management-requirements)
+   - Objectives of Memory Management
+   - Responsibilities of Memory Management in an OS
+2. [Memory Partitioning](#memory-partitioning)
+   - Fixed Partitioning
+   - Dynamic Partitioning
+   - Buddy System
+   - Relocation
+3. [Paging](#paging)
+   - Page Table Structure
+4. [Segmentation](#segmentation)
+5. [Virtual Memory](#virtual-memory)
+   - Background
+   - Demand Paging
+   - Page Replacement Algorithms (FIFO, LRU, Optimal)
+   - Allocation of Frames
+   - Thrashing
+
+---
+
+## Memory Management Requirements
+
+### Objectives of Memory Management
+
+Memory management ensures efficient utilization of a system’s memory resources, facilitating multiple processes to execute concurrently. The primary objectives include:
+
+1. **Process Isolation**: Ensures that one process cannot interfere with the memory of another.
+2. **Automatic Allocation and Management**: Dynamically allocates memory to processes when needed and reclaims it after usage.
+3. **Support for Multiprogramming**: Enables several programs to run simultaneously by dynamically managing memory.
+4. **Protection**: Protects the memory space of processes to prevent malicious or accidental data overwrites.
+
+### Responsibilities of Memory Management in an OS
+
+Memory management in an OS ensures:
+
+1. **Tracking Memory Allocation**: The OS must keep track of which parts of memory are allocated and which are free.
+2. **Handling Fragmentation**: It must address both internal and external fragmentation to ensure efficient memory use.
+3. **Memory Allocation**: When a process is loaded or requests additional memory, the OS allocates it appropriately.
+4. **Swapping and Paging**: The OS may move parts of memory to and from disk (swapping) or use paging mechanisms for memory management.
+
+---
+
+## Memory Partitioning
+
+Memory partitioning is one of the fundamental techniques to manage memory allocation for multiple processes. It involves dividing the memory into different partitions, each of which can hold a process.
+
+### Fixed Partitioning
+
+Fixed partitioning is one of the oldest memory management techniques. Here, memory is divided into fixed-sized partitions at boot time. Each partition can hold exactly one process.
+
+#### Advantages:
+
+- Simple to implement.
+- Minimal overhead.
+
+#### Disadvantages:
+
+- **Internal Fragmentation**: When a process does not fully utilize a partition, the remaining memory in the partition is wasted.
+- **Size Limitation**: Processes must fit into available partitions, limiting flexibility.
+
+### Dynamic Partitioning
+
+Dynamic partitioning allows memory to be allocated dynamically based on the size of processes. Instead of fixed-sized partitions, the system allocates exactly the amount of memory a process needs.
+
+#### Advantages:
+
+- Eliminates internal fragmentation, as processes get exactly the memory they need.
+
+#### Disadvantages:
+
+- **External Fragmentation**: As processes are loaded and terminated, free memory can become fragmented into small blocks, making it difficult to allocate memory to large processes.
+
+To counteract external fragmentation, the system may periodically perform **compaction**, where memory blocks are reorganized to coalesce free blocks.
+
+### Buddy System
+
+The Buddy System is a memory allocation and management algorithm that splits memory into blocks of sizes that are powers of two. When a process requests memory, the system finds the smallest available block (buddy) of memory that can accommodate the request.
+
+#### Advantages:
+
+- **Efficient Memory Allocation**: Reduces external fragmentation.
+- **Ease of Coalescing**: Free blocks are merged to form larger blocks when adjacent memory blocks are freed.
+
+#### Disadvantages:
+
+- **Internal Fragmentation**: Some memory may still be wasted if processes do not fully utilize their allocated block.
+
+### Relocation
+
+Relocation refers to the ability to move processes within memory during execution. This helps in compaction and reduces fragmentation. For relocation to be possible, memory references in a program must be translated dynamically from logical to physical addresses, usually handled by hardware components like the Memory Management Unit (MMU).
+
+---
+
+## Paging
+
+Paging is a memory management scheme that eliminates the need for contiguous memory allocation by dividing memory into fixed-size pages. Each process is divided into equal-sized pages, and the memory is divided into frames of the same size. The OS maintains a **page table** to map each logical page of a process to a physical memory frame.
+
+### Page Table Structure
+
+The page table is a key data structure in paging systems, holding the mapping of process pages to physical memory frames. Page tables can vary in structure:
+
+- **Single-Level Page Table**: Simple structure where each process has a single page table. However, it can become large and inefficient for large address spaces.
+- **Multi-Level Page Table**: Hierarchical structure, where a large page table is split into smaller tables, improving memory efficiency.
+- **Inverted Page Table**: Reduces memory overhead by maintaining a global page table for all processes, with each entry corresponding to a frame.
+
+Paging solves the problem of external fragmentation and allows processes to occupy non-contiguous memory. However, it introduces a performance overhead due to the frequent address translations required between logical and physical addresses.
+
+---
+
+## Segmentation
+
+Segmentation divides a program’s memory into logically distinct units called segments (e.g., code, stack, data). Unlike paging, segments vary in size and reflect the logical structure of a process. Each segment has a segment number and an offset.
+
+### Advantages of Segmentation:
+
+- **Logical Organization**: Allows easy access to different parts of a process, such as code and data, independently.
+- **Protection and Sharing**: Segments can be individually protected and shared among processes, making segmentation ideal for multi-user systems.
+
+### Disadvantages of Segmentation:
+
+- **External Fragmentation**: Since segments vary in size, they may cause external fragmentation, similar to dynamic partitioning.
+- **Complex Address Translation**: Requires more complex address translation mechanisms compared to paging.
+
+---
+
+## Virtual Memory
+
+Virtual memory allows a system to execute processes that require more memory than is physically available by using disk space to simulate additional RAM. The virtual address space of a process can be much larger than the actual physical memory, enabling more processes to run concurrently.
+
+### Background
+
+Virtual memory systems rely on the concept of **demand paging**, where pages of a process are only loaded into memory when they are needed (on demand). This allows the system to handle larger workloads with limited physical memory by swapping pages in and out of memory as required.
+
+---
+
+### Demand Paging
+
+In demand paging, the OS only loads the necessary pages of a process into memory, instead of loading the entire process at once. When a page that is not in memory is accessed, a **page fault** occurs. The OS then loads the required page from disk into memory and resumes the process.
+
+---
+
+### Page Replacement Algorithms
+
+When physical memory is full and a new page must be loaded, the OS must replace an existing page. Various page replacement algorithms determine which page to replace:
+
+#### 1. FIFO (First-In, First-Out)
+
+The oldest page in memory is replaced first, regardless of how frequently it has been accessed. While easy to implement, FIFO can lead to suboptimal performance due to the **Belady’s anomaly**, where increasing the number of frames results in more page faults.
+
+#### 2. LRU (Least Recently Used)
+
+LRU replaces the page that has not been used for the longest time. It is a more effective algorithm than FIFO in most cases, but it requires tracking the order of page accesses, which can be costly in terms of performance.
+
+#### 3. Optimal
+
+The **Optimal** page replacement algorithm replaces the page that will not be used for the longest period in the future. Although this algorithm provides the best performance, it is impractical since it requires predicting future page references.
+
+---
+
+### Allocation of Frames
+
+The OS allocates memory frames to processes based on their needs. There are two main strategies for frame allocation:
+
+1. **Fixed Allocation**: Each process is assigned a fixed number of frames. This strategy is simple but can lead to inefficiency if a process’s working set (the set of pages it frequently uses) changes dynamically.
+2. **Dynamic Allocation**: Frames are allocated dynamically based on the current working set of a process, allowing for better memory utilization.
+
+---
+
+### Thrashing
+
+**Thrashing** occurs when a system spends more time swapping pages in and out of memory than executing processes. This typically happens when there is insufficient memory to hold the working sets of all active processes. The system becomes overwhelmed by page faults, significantly reducing performance.
+
+#### Solutions to Thrashing:
+
+1. **Working Set Model**: The OS monitors the working set of each process and ensures that sufficient frames are allocated to meet the demands of the working set.
+2. **Page Fault Frequency (PFF)**: The OS dynamically adjusts the number of frames allocated to a process based on its page fault rate. If the page fault rate is too high, more frames are allocated.

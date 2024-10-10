@@ -1,0 +1,152 @@
+# Unit 1: Introduction to Operating Systems
+
+## Table of Contents
+
+1. [Introduction to Operating Systems](#introduction-to-operating-systems)
+   - Definition and Purpose of an Operating System
+   - Core Functions of an Operating System
+2. [The Evolution of Operating Systems](#the-evolution-of-operating-systems)
+   - Batch Processing Systems
+   - Time-Sharing Systems
+   - Real-Time and Distributed Systems
+3. [Developments Leading to Modern Operating Systems](#developments-leading-to-modern-operating-systems)
+   - Graphical User Interfaces (GUIs)
+   - Virtualization
+   - Multi-User Systems
+4. [Virtual Machines](#virtual-machines)
+   - Definition and Purpose of Virtual Machines
+   - Types of Virtual Machines
+   - Benefits of Virtual Machines
+5. [Introduction to Linux OS](#introduction-to-linux-os)
+   - Features of Linux
+   - Linux Kernel and Distributions
+6. [BASH Shell Scripting](#bash-shell-scripting)
+   - Introduction to Shell Scripting
+   - Basic BASH Commands
+   - Writing and Executing a Shell Script
+
+---
+
+## Introduction to Operating Systems
+
+An **Operating System (OS)** is system software that manages hardware resources and provides services for application software. The operating system acts as an intermediary between users and the hardware, ensuring that all components of the system function together smoothly.
+
+### Definition and Purpose of an Operating System
+
+The primary goal of an operating system is to make the computer system convenient for users and to efficiently manage the hardware resources. Without an OS, users would need to communicate directly with the hardware using complex instructions, which would make computing highly inefficient and difficult.
+
+### Core Functions of an Operating System
+
+The core functions of an operating system include:
+
+- **Process Management**: The OS manages processes, allowing multiple processes to run simultaneously. It ensures that each process has sufficient CPU time and memory.
+- **Memory Management**: It keeps track of each byte in a computer's memory, ensuring efficient allocation and management of memory for different applications.
+- **File System Management**: The OS manages files and directories on storage devices, allowing users to store, retrieve, and manipulate data.
+- **Device Management**: It handles communication between the computer and peripheral devices (e.g., printers, storage drives).
+- **Security and Access Control**: The OS ensures that users only have access to the data and resources that they are authorized to use.
+- **User Interface**: Operating systems provide user interfaces (CLI, GUI) that allow users to interact with the computer system easily.
+
+---
+
+## The Evolution of Operating Systems
+
+Operating systems have undergone significant changes and improvements over the decades to meet the growing demands of computing. From the early days of batch processing to the sophisticated multi-user systems we use today, OS development has been shaped by advances in both hardware and software.
+
+### Batch Processing Systems
+
+The earliest operating systems were batch processing systems, designed to execute a series of jobs sequentially without user interaction. In this model, jobs were submitted in batches, and the OS executed them one by one. This approach minimized CPU idle time but lacked flexibility for user interaction.
+
+### Time-Sharing Systems
+
+With the development of **time-sharing systems**, multiple users could access the computer simultaneously by sharing CPU time. This innovation allowed for interactive computing, where users could interact with their programs in real time, significantly improving user experience.
+
+### Real-Time and Distributed Systems
+
+- **Real-Time Systems** are designed to process data and provide output almost immediately, making them ideal for applications like medical devices, robotics, and industrial control systems.
+- **Distributed Systems** involve multiple computers working together to provide a unified service, allowing for resource sharing, increased reliability, and better scalability.
+
+---
+
+## Developments Leading to Modern Operating Systems
+
+### Graphical User Interfaces (GUIs)
+
+One of the most important developments in operating systems was the introduction of graphical user interfaces (GUIs), which allow users to interact with computers through graphical icons and visual indicators rather than text-based commands. This innovation made computing more accessible to non-technical users.
+
+### Virtualization
+
+Virtualization technologies enable multiple operating systems to run simultaneously on the same physical hardware. This has become a cornerstone of modern computing, allowing for the creation of virtual machines that simulate independent computers, leading to better resource utilization and isolation.
+
+### Multi-User Systems
+
+Modern operating systems are capable of managing multiple users simultaneously, ensuring that resources are allocated fairly and securely among all users. This capability is essential for enterprise environments where multiple users need access to the same system.
+
+---
+
+## Virtual Machines
+
+A **Virtual Machine (VM)** is a software emulation of a physical computer that runs an operating system and applications just like a real computer. VMs provide the ability to run multiple operating systems on a single physical machine, allowing for testing, development, and efficient use of hardware resources.
+
+### Definition and Purpose of Virtual Machines
+
+A virtual machine is a software-based computer that runs its own operating system and behaves like a physical machine. VMs are typically used to run different OS environments, isolate applications for testing, or consolidate workloads on fewer physical servers.
+
+### Types of Virtual Machines
+
+- **System Virtual Machines**: Provide a complete system platform, supporting the execution of a full operating system.
+- **Process Virtual Machines**: Designed to run a single application or process and are typically used to execute programs in a platform-independent environment (e.g., Java Virtual Machine).
+
+### Benefits of Virtual Machines
+
+- **Isolation**: Each VM runs independently of others, so an error in one machine does not affect the others.
+- **Resource Efficiency**: Multiple VMs can run on a single piece of hardware, maximizing resource utilization.
+- **Portability**: VMs can be easily moved between different physical machines without modification.
+- **Development and Testing**: Developers can use VMs to test software in different environments without needing multiple physical machines.
+
+---
+
+## Introduction to Linux OS
+
+**Linux** is an open-source operating system known for its stability, security, and flexibility. It is widely used in servers, desktops, mobile devices, and embedded systems. Linux stands out from other operating systems due to its modularity, allowing users to customize and configure it to suit their needs.
+
+### Features of Linux
+
+- **Open Source**: Linux is freely available, and its source code can be modified by anyone.
+- **Security**: It offers robust security features, including user-based file permissions and support for encryption.
+- **Stability**: Linux is known for its stability, especially in server environments where uptime is critical.
+- **Portability**: Linux can run on a wide variety of hardware platforms, from desktops to servers to embedded devices.
+
+### Linux Kernel and Distributions
+
+The **Linux Kernel** is the core of the Linux operating system, responsible for managing hardware resources and system processes. Linux distributions, such as Ubuntu, Fedora, and Debian, bundle the kernel with software and utilities to provide a complete operating system for users.
+
+---
+
+## BASH Shell Scripting
+
+**BASH** (Bourne Again SHell) is a command processor that allows users to interact with the operating system by typing commands. BASH scripting is a powerful way to automate repetitive tasks, manage files, and interact with the system programmatically.
+
+### Introduction to Shell Scripting
+
+Shell scripts are text files that contain a series of commands. When executed, these commands are run in sequence by the shell, automating tasks that would otherwise be performed manually.
+
+### Basic BASH Commands
+
+- **ls**: Lists files and directories in the current directory.
+- **cd**: Changes the current directory.
+- **mkdir**: Creates a new directory.
+- **touch**: Creates a new file.
+- **echo**: Outputs text to the terminal.
+
+### Writing and Executing a Shell Script
+
+To create a shell script, you can write a series of BASH commands in a file and save it with a `.sh` extension. To execute the script, you use the `chmod` command to make it executable and then run it in the terminal.
+
+For example:
+
+```bash
+#!/bin/bash
+echo "Hello, World!"
+```
+
+Save this file as `hello.sh`, make it executable with `chmod +x hello.sh`, and run it by typing `./hello.sh` in the terminal.

@@ -1,0 +1,352 @@
+# Unit 3: Concurrency Control
+
+Concurrency is a fundamental concept in modern computing where multiple processes or threads execute simultaneously, either on a single processor system or in a multi-core processor environment. Effective **concurrency control** is essential to avoid potential issues such as race conditions, deadlock, and data inconsistency. This unit explores the concepts of process/thread synchronization, mutual exclusion, classical synchronization problems, and deadlock management.
+
+## Table of Contents
+
+1. [Process/Thread Synchronization and Mutual Exclusion](#process-thread-synchronization-and-mutual-exclusion)
+   - Principles of Concurrency
+   - Requirements for Mutual Exclusion
+   - Operating System Support for Mutual Exclusion (Semaphores, Mutex)
+2. [Classical Synchronization Problems](#classical-synchronization-problems)
+   - Readers/Writers Problem
+   - Producer/Consumer Problem
+   - Inter-process Communication (Pipes, Shared Memory)
+3. [Deadlock Management](#deadlock-management)
+   - Principles of Deadlock
+   - Deadlock Modeling
+   - Strategies for Deadlock Management (Prevention, Avoidance, Detection and Recovery)
+   - Dining Philosophers Problem
+   - Banker’s Algorithm
+
+---
+
+## Process/Thread Synchronization and Mutual Exclusion
+
+### Principles of Concurrency
+
+**Concurrency** refers to the execution of multiple processes or threads simultaneously. In a multi-core system, multiple processes or threads can run truly parallel, while in a single-core system, concurrency is achieved through time-sharing. Concurrency increases system efficiency and responsiveness but introduces challenges such as **race conditions**, **deadlocks**, and **data inconsistencies**.
+
+To address these challenges, we need mechanisms for **synchronization** and **mutual exclusion** to control the access to shared resources.
+
+### Requirements for Mutual Exclusion
+
+**Mutual exclusion** ensures that only one process or thread can access a shared resource (such as memory or a critical section) at any given time. The requirements for achieving mutual exclusion are:
+
+1. **Mutual Exclusion**: No two processes should simultaneously be in their critical sections.
+2. **Progress**: If no process is in its critical section, other processes waiting to enter must eventually be able to do so.
+3. **Bounded Waiting**: There should be a limit on how long any process must wait before being allowed into its critical section.
+4. **No Assumptions on Speed**: Mutual exclusion should work regardless of the relative speeds of the processes or CPUs.
+
+### Operating System Support for Mutual Exclusion
+
+#### Semaphores
+
+A **semaphore** is a synchronization primitive used to control access to shared resources by multiple processes in a concurrent system. Semaphores can be either binary (acting like a mutex) or counting (used for multiple resources).
+
+A semaphore maintains a counter and two primary atomic operations:
+
+- `wait()` (also called `P()`): Decrements the semaphore. If the value is negative, the process is blocked.
+- `signal()` (also called `V()`): Increments the semaphore. If the value is non-negative, a blocked process is awakened.
+
+```c
+#include <stdio.h>
+#include <pthread.h>
+#include <semaphore.h>
+
+sem_t semaphore;
+
+void *critical_section(void *arg) {
+    sem_wait(&semaphore);  // Wait/Acquire semaphore
+    printf("Thread %d is in the critical section.\n", *(int*)arg);
+    sem_post(&semaphore);  // Signal/Release semaphore
+    return NULL;
+}
+
+int main() {
+    pthread_t threads[5];
+    sem_init(&semaphore, 0, 1);  // Initialize semaphore with value 1
+
+    for (int i = 0; i < 5; i++) {
+        int *arg = malloc(sizeof(int));
+        *arg = i + 1;
+        pthread_create(&threads[i], NULL, critical_section, arg);
+    }
+
+    for (int i = 0; i < 5; i++) {
+        pthread_join(threads[i], NULL);
+    }
+
+    sem_destroy(&semaphore);
+    return 0;
+}
+```
+
+#### Mutex
+
+A **mutex (Mutual Exclusion Object)** is similar to a binary semaphore but specifically designed for locking and unlocking critical sections. It ensures that only one thread can execute the critical section at any given time.
+
+```c
+#include <stdio.h>
+#include <pthread.h>
+
+pthread_mutex_t mutex;
+
+void *critical_section(void *arg) {
+    pthread_mutex_lock(&mutex);  // Lock the mutex
+    printf("Thread %d is in the critical section.\n", *(int*)arg);
+    pthread_mutex_unlock(&mutex);  // Unlock the mutex
+    return NULL;
+}
+
+int main() {
+    pthread_t threads[5];
+    pthread_mutex_init(&mutex, NULL);  // Initialize the mutex
+
+    for (int i = 0; i < 5; i++) {
+        int *arg = malloc(sizeof(int));
+        *arg = i + 1;
+        pthread_create(&threads[i], NULL, critical_section, arg);
+    }
+
+    for (int i = 0; i < 5; i++) {
+        pthread_join(threads[i], NULL);
+    }
+
+    pthread_mutex_destroy(&mutex);
+    return 0;
+}
+```
+
+---
+
+## Classical Synchronization Problems
+
+### Readers/Writers Problem
+
+The **Readers/Writers Problem** is a classic synchronization problem where a shared resource is being accessed by multiple readers and writers. The goal is to allow multiple readers to read simultaneously but to ensure that writers have exclusive access to modify the resource.
+
+A solution is to use a semaphore to control access between readers and writers:
+
+- Multiple readers can access the resource concurrently.
+- A writer must have exclusive access, preventing both readers and other writers from accessing the resource simultaneously.
+
+```c
+#include <stdio.h>
+#include <pthread.h>
+#include <semaphore.h>
+
+sem_t write_lock;
+int read_count = 0;
+pthread_mutex_t read_count_lock;
+
+void *reader(void *arg) {
+    pthread_mutex_lock(&read_count_lock);
+    read_count++;
+    if (read_count == 1)
+        sem_wait(&write_lock);  // First reader locks writing
+    pthread_mutex_unlock(&read_count_lock);
+
+    printf("Reader %d is reading.\n", *(int *)arg);
+
+    pthread_mutex_lock(&read_count_lock);
+    read_count--;
+    if (read_count == 0)
+        sem_post(&write_lock);  // Last reader unlocks writing
+    pthread_mutex_unlock(&read_count_lock);
+    return NULL;
+}
+
+void *writer(void *arg) {
+    sem_wait(&write_lock);  // Only one writer allowed
+    printf("Writer %d is writing.\n", *(int *)arg);
+    sem_post(&write_lock);
+    return NULL;
+}
+
+int main() {
+    pthread_t r_threads[5], w_threads[2];
+    pthread_mutex_init(&read_count_lock, NULL);
+    sem_init(&write_lock, 0, 1);
+
+    for (int i = 0; i < 5; i++) {
+        int *arg = malloc(sizeof(int));
+        *arg = i + 1;
+        pthread_create(&r_threads[i], NULL, reader, arg);
+    }
+
+    for (int i = 0; i < 2; i++) {
+        int *arg = malloc(sizeof(int));
+        *arg = i + 1;
+        pthread_create(&w_threads[i], NULL, writer, arg);
+    }
+
+    for (int i = 0; i < 5; i++) {
+        pthread_join(r_threads[i], NULL);
+    }
+
+    for (int i = 0; i < 2; i++) {
+        pthread_join(w_threads[i], NULL);
+    }
+
+    sem_destroy(&write_lock);
+    pthread_mutex_destroy(&read_count_lock);
+    return 0;
+}
+```
+
+### Producer/Consumer Problem
+
+The **Producer/Consumer Problem** (also known as the Bounded Buffer Problem) involves two types of processes:
+
+- **Producer**: Produces data and stores it in a buffer.
+- **Consumer**: Consumes data from the buffer.
+
+The challenge is to synchronize the producer and consumer processes to ensure that:
+
+- The producer does not add data when the buffer is full.
+- The consumer does not remove data when the buffer is empty.
+
+This can be implemented using semaphores to track empty and full slots in the buffer, as well as a mutex for accessing the buffer itself.
+
+```c
+#include <stdio.h>
+#include <pthread.h>
+#include <semaphore.h>
+
+#define BUFFER_SIZE 5
+int buffer[BUFFER_SIZE];
+int in = 0, out = 0;
+
+sem_t empty, full;
+pthread_mutex_t buffer_lock;
+
+void *producer(void *arg) {
+    for (int i = 0; i < 10; i++) {
+        sem_wait(&empty);  // Wait if buffer is full
+        pthread_mutex_lock(&buffer_lock);  // Lock buffer
+        buffer[in] = i;
+        printf("Producer produced: %d\n", i);
+        in = (in + 1) % BUFFER_SIZE;
+        pthread_mutex_unlock(&buffer_lock);  // Unlock buffer
+        sem_post(&full);  // Signal that buffer is not empty
+    }
+    return NULL;
+}
+
+void *consumer(void *arg) {
+    for (int i = 0; i < 10; i++) {
+        sem_wait(&full);  // Wait if buffer is empty
+        pthread_mutex_lock(&buffer_lock);  // Lock buffer
+        int item = buffer[out];
+        printf("Consumer consumed: %d\n", item);
+        out = (out + 1) % BUFFER_SIZE;
+        pthread_mutex_unlock(&buffer_lock);  // Unlock buffer
+        sem_post(&empty);  // Signal that buffer is not full
+    }
+    return NULL;
+}
+
+int main() {
+
+
+ pthread_t prod, cons;
+    sem_init(&empty, 0, BUFFER_SIZE);  // Initially, all slots are empty
+    sem_init(&full, 0, 0);  // Initially, no slots are full
+    pthread_mutex_init(&buffer_lock, NULL);
+
+    pthread_create(&prod, NULL, producer, NULL);
+    pthread_create(&cons, NULL, consumer, NULL);
+
+    pthread_join(prod, NULL);
+    pthread_join(cons, NULL);
+
+    sem_destroy(&empty);
+    sem_destroy(&full);
+    pthread_mutex_destroy(&buffer_lock);
+
+    return 0;
+}
+```
+
+### Inter-process Communication (Pipes, Shared Memory)
+
+**Pipes** and **Shared Memory** are two common methods of inter-process communication (IPC) in Unix-like systems.
+
+- **Pipes** are used for unidirectional communication between processes, where one process writes data to the pipe, and the other reads it.
+- **Shared Memory** allows multiple processes to share a segment of memory, making it the fastest IPC method. However, it requires synchronization mechanisms such as semaphores or mutexes to avoid race conditions.
+
+---
+
+## Deadlock Management
+
+### Principles of Deadlock
+
+A **deadlock** occurs when a set of processes is blocked because each process holds a resource and waits for another resource held by another process in the set. The four necessary conditions for a deadlock are:
+
+1. **Mutual Exclusion**: At least one resource must be held in a non-shareable mode.
+2. **Hold and Wait**: A process holding at least one resource is waiting for additional resources held by other processes.
+3. **No Preemption**: Resources cannot be forcibly taken away from a process.
+4. **Circular Wait**: A set of processes is waiting in a circular chain where each process waits for a resource held by the next process.
+
+### Deadlock Modeling
+
+Deadlocks can be modeled using **resource allocation graphs**. If there is a cycle in the graph, then a deadlock is possible.
+
+### Strategies for Deadlock Management
+
+1. **Prevention**: Eliminate one of the four necessary conditions for deadlock (e.g., removing hold-and-wait or circular wait).
+2. **Avoidance**: Use algorithms like the **Banker's Algorithm** to ensure that resources are allocated safely.
+3. **Detection and Recovery**: Allow deadlock to occur, detect it, and recover by terminating processes or preempting resources.
+
+### Example: Dining Philosophers Problem
+
+The **Dining Philosophers Problem** involves five philosophers sitting around a table, each alternating between thinking and eating. Each philosopher needs two forks to eat, but only one fork is available between each pair of philosophers, leading to potential deadlock. A solution to this problem involves using semaphores to ensure that a philosopher can pick up both forks or none at all.
+
+```c
+#include <stdio.h>
+#include <pthread.h>
+#include <semaphore.h>
+
+#define N 5  // Number of philosophers
+sem_t forks[N];
+
+void *philosopher(void *arg) {
+    int id = *(int *)arg;
+
+    while (1) {
+        printf("Philosopher %d is thinking.\n", id);
+        sem_wait(&forks[id]);  // Pick up left fork
+        sem_wait(&forks[(id + 1) % N]);  // Pick up right fork
+
+        printf("Philosopher %d is eating.\n", id);
+
+        sem_post(&forks[id]);  // Put down left fork
+        sem_post(&forks[(id + 1) % N]);  // Put down right fork
+    }
+}
+
+int main() {
+    pthread_t philosophers[N];
+    for (int i = 0; i < N; i++)
+        sem_init(&forks[i], 0, 1);  // Initialize forks
+
+    for (int i = 0; i < N; i++) {
+        int *arg = malloc(sizeof(int));
+        *arg = i;
+        pthread_create(&philosophers[i], NULL, philosopher, arg);
+    }
+
+    for (int i = 0; i < N; i++)
+        pthread_join(philosophers[i], NULL);
+
+    for (int i = 0; i < N; i++)
+        sem_destroy(&forks[i]);
+
+    return 0;
+}
+```
+
+### Banker’s Algorithm
+
+The **Banker’s Algorithm** is a deadlock avoidance algorithm that works by simulating resource allocation for processes and determining whether the allocation leaves the system in a safe state.

@@ -1,0 +1,171 @@
+# Unit 2: Process Management
+
+## Table of Contents
+
+1. [Introduction to Process Management](#introduction-to-process-management)
+   - Definition of a Process
+   - Process Lifecycle and States
+   - Process Description and Control
+2. [Threads and Multithreading](#threads-and-multithreading)
+   - Processes vs Threads
+   - Concept of Multithreading
+   - Types of Threads
+   - Thread Programming with Pthreads
+3. [Scheduling in Operating Systems](#scheduling-in-operating-systems)
+   - Types of Scheduling
+   - Scheduling Algorithms
+     - First Come First Served (FCFS)
+     - Shortest Job First (SJF)
+     - Priority Scheduling
+     - Round Robin Scheduling
+
+---
+
+## Introduction to Process Management
+
+In modern computing systems, **process management** plays a crucial role in ensuring efficient operation and execution of multiple programs simultaneously. The operating system (OS) is responsible for managing these processes, ensuring that the CPU is utilized effectively, and that the system resources are allocated in an optimal manner.
+
+### Definition of a Process
+
+A **process** is a program in execution, and it serves as a fundamental unit of work within a computer system. A process requires system resources such as CPU time, memory, files, and I/O devices to perform its tasks. When a program is loaded into memory, it becomes a process that moves through various stages of execution.
+
+A process can be described as a container for a set of instructions (code), data (variables and memory space), and the resources it requires. It is important to differentiate between a **program** and a **process**. A program is a static set of instructions, while a process is a dynamic entity with its own state and execution context.
+
+### Process Lifecycle and States
+
+A process goes through several states during its lifetime. These states represent the current status of the process, whether it's running, waiting, or terminated. The five fundamental process states are:
+
+1. **New**: The process is being created.
+2. **Ready**: The process is waiting to be assigned to the CPU for execution.
+3. **Running**: The process is currently being executed by the CPU.
+4. **Waiting**: The process is waiting for some event to occur, such as I/O completion.
+5. **Terminated**: The process has finished its execution and is no longer active.
+
+A process moves from one state to another depending on the conditions and the system’s requirements. For instance, a process moves from the "ready" state to the "running" state when it is scheduled for execution, and it moves to the "waiting" state if it requires I/O services.
+
+### Process Description and Control
+
+The OS uses a **process control block (PCB)** to keep track of the status and information related to a process. A PCB contains essential data, such as:
+
+- **Process ID (PID)**: A unique identifier for the process.
+- **Program Counter**: Indicates the next instruction to be executed.
+- **CPU Registers**: Holds the current state of the process.
+- **Memory Management Information**: Details about the process's address space and memory allocation.
+- **Process State**: The current state of the process (e.g., running, waiting, etc.).
+- **I/O Status**: Information about the process's I/O devices and file descriptors.
+
+The OS manages and controls processes by switching between them, creating and terminating processes, and handling their states. The transitions between states, allocation of resources, and process scheduling are governed by the OS's process management functionality.
+
+---
+
+## Threads and Multithreading
+
+In modern operating systems, the concept of threads and multithreading is used to increase the efficiency and responsiveness of applications. Threads provide a way to break a process into smaller, independently executable units.
+
+### Processes vs Threads
+
+A **thread** is the smallest unit of execution within a process. While a process can contain multiple threads, each thread within a process shares the same memory space and resources. This enables threads to communicate and work together more efficiently compared to separate processes.
+
+Threads, unlike processes, do not have their own address space. All threads within a process share the same code, data, and resources, but each thread maintains its own set of registers, program counter, and stack. This sharing of resources makes threads lightweight and more efficient than processes, as the overhead of context switching is reduced.
+
+### Concept of Multithreading
+
+**Multithreading** refers to the ability of a process to run multiple threads concurrently, allowing parallel execution of tasks. Multithreading enhances the performance of applications by making better use of system resources, particularly in multi-core processors.
+
+Multithreading is useful in situations where an application can perform multiple tasks at the same time, such as:
+
+- A web browser rendering a webpage while downloading resources in the background.
+- A word processor checking spelling while the user types.
+
+There are two main types of multithreading:
+
+1. **User-level threads**: Managed by user-level libraries, with the OS being unaware of the existence of threads. Context switching between threads is fast but lacks some features provided by the OS, such as handling system calls efficiently.
+2. **Kernel-level threads**: Managed directly by the OS. Context switching is slower compared to user-level threads, but kernel-level threads can take full advantage of system resources, such as multi-core CPUs.
+
+### Types of Threads
+
+Threads can be classified into two categories based on their management and the OS's involvement:
+
+1. **User Threads**: Managed by user-level libraries, where the OS is unaware of the existence of multiple threads within a process. User threads are more lightweight but can encounter challenges, such as inefficient handling of blocking system calls.
+2. **Kernel Threads**: Managed directly by the OS kernel, and are scheduled and executed by the system. Kernel threads can perform blocking operations and are generally more robust, but they require more overhead in terms of resource management.
+
+### Thread Programming with Pthreads
+
+**Pthreads** (POSIX threads) is a standard for multithreading in UNIX-based operating systems. It provides a portable API for thread creation, synchronization, and management. Pthreads allow developers to create and manage multiple threads within a process, enabling concurrent execution of tasks.
+
+A typical Pthreads program includes the following functions:
+
+- `pthread_create()`: Used to create a new thread.
+- `pthread_exit()`: Terminates the calling thread.
+- `pthread_join()`: Waits for a specified thread to complete.
+- `pthread_mutex_lock()` and `pthread_mutex_unlock()`: Used to implement synchronization between threads to avoid race conditions.
+
+---
+
+## Scheduling in Operating Systems
+
+**Scheduling** is the process by which the OS decides which process or thread should execute at any given time. Scheduling ensures efficient use of the CPU and system resources, providing fairness and prioritization among processes.
+
+### Types of Scheduling
+
+There are two main types of scheduling in operating systems:
+
+1. **Preemptive Scheduling**: The OS can preempt (interrupt) a running process to allocate the CPU to another process. Preemptive scheduling ensures that higher-priority processes get access to the CPU even if a lower-priority process is running.
+2. **Non-Preemptive Scheduling**: Once a process starts executing, it runs to completion or until it voluntarily yields control of the CPU. Non-preemptive scheduling is simpler but less flexible than preemptive scheduling.
+
+### Scheduling Algorithms
+
+Scheduling algorithms define the rules by which processes are assigned to the CPU for execution. The choice of scheduling algorithm affects the overall performance and efficiency of the system. Some common scheduling algorithms are:
+
+#### First Come First Served (FCFS)
+
+In **First Come First Served (FCFS)** scheduling, processes are executed in the order they arrive. The first process to request the CPU is the first one to be executed, and subsequent processes wait in a queue. FCFS is simple to implement but can result in long waiting times for processes, especially if a large process occupies the CPU for an extended period.
+
+Advantages:
+
+- Simple to understand and implement.
+- Fair, as processes are executed in the order of arrival.
+
+Disadvantages:
+
+- Can lead to the "convoy effect," where shorter processes are delayed by long-running processes.
+
+#### Shortest Job First (SJF)
+
+**Shortest Job First (SJF)** scheduling selects the process with the shortest execution time. This algorithm minimizes the average waiting time for processes, making it more efficient than FCFS in many cases. However, SJF requires prior knowledge of the process's execution time, which is not always feasible.
+
+Advantages:
+
+- Minimizes average waiting time.
+- Efficient for systems with predictable workloads.
+
+Disadvantages:
+
+- Requires prior knowledge of process execution times.
+- Can result in process starvation for longer jobs.
+
+#### Priority Scheduling
+
+In **Priority Scheduling**, each process is assigned a priority, and the process with the highest priority is selected for execution. Priorities can be assigned based on factors such as process importance, resource requirements, or user-defined values.
+
+Advantages:
+
+- Allows prioritization of important processes.
+- Suitable for real-time systems where certain tasks must be completed within a specific timeframe.
+
+Disadvantages:
+
+- Can result in process starvation if low-priority processes are never scheduled.
+
+#### Round Robin Scheduling
+
+**Round Robin (RR)** scheduling assigns a fixed time slice (or quantum) to each process. Processes are executed in a circular queue, and if a process's time slice expires before it completes, it is moved to the back of the queue, allowing other processes to execute. Round Robin is a preemptive scheduling algorithm.
+
+Advantages:
+
+- Fair, as each process gets an equal share of the CPU.
+- Suitable for time-sharing systems.
+
+Disadvantages:
+
+- Requires careful selection of the time slice to balance between responsiveness and overhead.
