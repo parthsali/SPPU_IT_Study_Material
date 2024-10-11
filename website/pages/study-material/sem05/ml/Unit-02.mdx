@@ -1,0 +1,192 @@
+# Unit 2: Classification
+
+## Table of Contents
+
+1. [Introduction to Classification](#introduction-to-classification)
+   - What is Classification?
+   - Types of Classification Problems
+2. [Binary Classification](#binary-classification)
+   - Linear Classification Model
+   - Performance Evaluation Metrics
+     - Confusion Matrix
+     - Accuracy
+     - Precision
+     - Recall
+     - ROC Curves
+     - F-Measure
+3. [Multi-class Classification](#multi-class-classification)
+   - Model for Multi-class Classification
+   - Performance Evaluation Metrics
+     - Per-class Precision
+     - Per-class Recall
+     - Weighted Average Precision and Recall
+   - Techniques for Handling More than Two Classes
+     - One-vs-One
+     - One-vs-Rest
+4. [Linear Models](#linear-models)
+   - Introduction to Linear Models
+   - Support Vector Machines (SVM)
+     - Soft Margin SVM
+     - Non-linear Data Handling with SVM Kernels
+       - Radial Basis Function (RBF) Kernel
+       - Gaussian Kernel
+       - Polynomial Kernel
+       - Sigmoid Kernel
+   - Logistic Regression
+     - Logistic Regression Model
+     - Cost Function
+
+---
+
+## Introduction to Classification
+
+**Classification** is a type of supervised learning problem where the goal is to predict a discrete label (category) for a given input. A classification algorithm learns from labeled data and predicts the label for unseen data based on learned patterns. Classification is applied in various domains like spam detection, medical diagnosis, sentiment analysis, etc.
+
+### Types of Classification Problems
+
+1. **Binary Classification**: The simplest form of classification where the model predicts one of two possible labels. For example, classifying emails as spam or not spam.
+
+2. **Multi-class Classification**: The model predicts one label from multiple classes. For example, classifying images as cats, dogs, or birds.
+
+---
+
+## Binary Classification
+
+### Linear Classification Model
+
+In **Linear Classification**, the classifier tries to separate the data using a linear boundary (a straight line in 2D or a hyperplane in higher dimensions). The classifier's goal is to find the best linear decision boundary that separates the classes. Common algorithms like Logistic Regression and Support Vector Machines (SVM) with a linear kernel fall into this category.
+
+### Performance Evaluation Metrics
+
+Evaluating a binary classification model's performance requires various metrics:
+
+#### Confusion Matrix
+
+A **Confusion Matrix** is a summary of the prediction results. It shows the number of:
+
+- **True Positives (TP)**: Correctly predicted positive cases.
+- **True Negatives (TN)**: Correctly predicted negative cases.
+- **False Positives (FP)**: Incorrectly predicted positive cases.
+- **False Negatives (FN)**: Incorrectly predicted negative cases.
+
+#### Accuracy
+
+**Accuracy** is the ratio of correctly predicted cases (both TP and TN) to the total number of cases. It's calculated as:
+
+Accuracy = (TP + TN) / (TP + TN + FP + FN)
+
+#### Precision
+
+**Precision** measures how many of the predicted positive cases are actually positive. It focuses on minimizing false positives. It's calculated as:
+
+Precision = TP / (TP + FP)
+
+#### Recall
+
+**Recall**, also known as **Sensitivity** or **True Positive Rate**, measures how many actual positive cases were correctly predicted. It's calculated as:
+
+Recall = TP / (TP + FN)
+
+#### ROC Curves
+
+The **ROC Curve** (Receiver Operating Characteristic Curve) plots the True Positive Rate (Recall) against the False Positive Rate at various threshold settings. The **Area Under the ROC Curve (AUC-ROC)** is a commonly used metric to evaluate the model's overall performance, where a higher AUC indicates better performance.
+
+#### F-Measure
+
+The **F-Measure**, or **F1-Score**, is the harmonic mean of Precision and Recall. It provides a balance between the two metrics, especially when there's a class imbalance. It's calculated as:
+
+F1-Score = 2 _ (Precision _ Recall) / (Precision + Recall)
+
+---
+
+## Multi-class Classification
+
+### Model for Multi-class Classification
+
+**Multi-class Classification** is the extension of binary classification to more than two classes. The model learns to assign one label out of multiple possible classes for each instance. For example, a model might classify different types of fruits (apples, bananas, oranges) based on features like size, color, and shape.
+
+### Performance Evaluation Metrics
+
+#### Per-class Precision
+
+For multi-class classification, **Per-class Precision** is computed individually for each class by treating that class as the positive class and all other classes as negative.
+
+#### Per-class Recall
+
+Similarly, **Per-class Recall** is calculated for each class. It shows how well the model identifies instances of each class correctly.
+
+#### Weighted Average Precision and Recall
+
+In cases where there is class imbalance (some classes have more instances than others), **Weighted Average Precision** and **Recall** calculate a weighted mean of precision and recall across all classes, ensuring a balanced evaluation.
+
+### Techniques for Handling More than Two Classes
+
+1. **One-vs-One (OvO)**: This approach involves training multiple binary classifiers for each pair of classes. If there are _n_ classes, the algorithm trains _n(n-1)/2_ classifiers. The final prediction is made using a majority voting mechanism.
+
+2. **One-vs-Rest (OvR)**: In this method, a separate binary classifier is trained for each class, where the class in question is treated as the positive class and all other classes as the negative class. The final prediction is based on the classifier that outputs the highest probability.
+
+---
+
+## Linear Models
+
+### Introduction to Linear Models
+
+**Linear Models** are used in machine learning to classify data that can be separated by a straight line or hyperplane. The goal of these models is to find a linear decision boundary that can best separate different classes. Linear models include Logistic Regression and Support Vector Machines (SVM).
+
+### Support Vector Machines (SVM)
+
+**Support Vector Machines (SVM)** is a powerful classification algorithm that tries to find the best hyperplane that separates data points into two classes by maximizing the margin between the closest data points of the two classes (called **support vectors**).
+
+#### Soft Margin SVM
+
+In cases where the data isn't linearly separable, **Soft Margin SVM** allows some misclassifications by introducing a penalty for points that lie inside the margin. This helps the model handle noisy data and prevents overfitting.
+
+#### Non-linear Data Handling with SVM Kernels
+
+For data that is not linearly separable, SVM can handle non-linear decision boundaries by using **Kernels**. Kernels map the input features into a higher-dimensional space, where the data can become linearly separable.
+
+##### Radial Basis Function (RBF) Kernel
+
+The **RBF Kernel** maps the data points to a higher-dimensional space based on their distance from a central point. It is commonly used in SVM to handle non-linear data.
+
+##### Gaussian Kernel
+
+The **Gaussian Kernel** is similar to the RBF Kernel and is used for non-linear data classification. It can create smooth decision boundaries and is effective in high-dimensional spaces.
+
+##### Polynomial Kernel
+
+The **Polynomial Kernel** maps input data into a polynomial space. It is useful when the relationship between the input features is not linear. A polynomial kernel allows for more flexible decision boundaries.
+
+##### Sigmoid Kernel
+
+The **Sigmoid Kernel** is similar to the activation function used in neural networks. It is often used for non-linear classification problems and maps data to a space where it can be linearly separated.
+
+---
+
+## Logistic Regression
+
+### Logistic Regression Model
+
+**Logistic Regression** is a widely used binary classification algorithm. It models the probability that a given instance belongs to a particular class by using the logistic (sigmoid) function. Logistic regression works well for data that can be separated by a linear decision boundary.
+
+The logistic function is:
+
+`sigmoid(z) = 1 / (1 + e^(-z))`
+
+Where `z` is the weighted sum of the input features.
+
+The output of the sigmoid function is a value between 0 and 1, representing the probability of the instance belonging to the positive class.
+
+### Cost Function
+
+The **Cost Function** in logistic regression measures the error between the predicted probabilities and the actual labels. The goal is to minimize this error. The cost function for logistic regression is based on the concept of **log-likelihood** and is defined as:
+
+`J(θ) = - (1/m) * Σ [ y_i * log(h(x_i)) + (1 - y_i) * log(1 - h(x_i)) ]`
+
+Where:
+
+- `m` is the number of training examples,
+- `y_i` is the actual label for instance `i`,
+- `h(x_i)` is the predicted probability for instance `i`.
+
+The model is optimized using techniques like **Gradient Descent** to minimize this cost function, ensuring the predicted probabilities align with the actual labels.

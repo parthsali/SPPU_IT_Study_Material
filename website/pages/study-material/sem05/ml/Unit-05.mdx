@@ -1,0 +1,224 @@
+# Unit 5: Distance and Rule-Based Models
+
+## Table of Contents
+
+1. [Distance Based Models](#distance-based-models)
+   - Distance Metrics
+     - Euclidean Distance
+     - Manhattan Distance
+     - Hamming Distance
+     - Minkowski Distance Metric
+   - Neighbors and Examples
+   - K-Nearest Neighbors for Classification and Regression
+   - Clustering as a Learning Task
+     - K-Means Clustering Algorithm
+     - K-Medoids Algorithm
+     - Hierarchical Clustering
+     - Divisive Dendrogram for Hierarchical Clustering
+   - Performance Measures
+2. [Association Rule Mining](#association-rule-mining)
+   - Introduction
+   - Rule Learning for Subgroup Discovery
+   - Apriori Algorithm
+   - Performance Measures
+     - Support
+     - Confidence
+     - Lift
+
+---
+
+## Distance Based Models
+
+### Distance Metrics
+
+Distance metrics are mathematical functions that quantify the similarity or dissimilarity between data points in a dataset. They play a crucial role in various machine learning algorithms, particularly in clustering and classification tasks. Below are some commonly used distance metrics:
+
+#### Euclidean Distance
+
+**Euclidean Distance** is the most commonly used distance metric, representing the straight-line distance between two points in Euclidean space. It is calculated as the square root of the sum of the squared differences between corresponding coordinates.
+
+For two points A(x₁, y₁) and B(x₂, y₂), the Euclidean distance is calculated as:
+
+`D(A, B) = √((x₂ - x₁)² + (y₂ - y₁)²)`
+
+Euclidean distance is sensitive to the scale of the features and is appropriate for continuous variables.
+
+#### Manhattan Distance
+
+**Manhattan Distance**, also known as **Taxicab Distance** or **City Block Distance**, measures the distance between two points based on the sum of the absolute differences of their coordinates. It represents the distance one would travel in a grid-like path, moving only horizontally and vertically.
+
+For two points A(x₁, y₁) and B(x₂, y₂), the Manhattan distance is calculated as:
+
+`D(A, B) = |x₂ - x₁| + |y₂ - y₁|`
+
+Manhattan distance is more robust to outliers compared to Euclidean distance and is suitable for data with categorical or ordinal features.
+
+#### Hamming Distance
+
+**Hamming Distance** measures the number of positions at which two strings of equal length differ. It is primarily used for categorical variables or binary data. The Hamming distance is defined as the total count of differing positions.
+
+For two binary strings A and B, the Hamming distance is calculated as:
+
+`D(A, B) = count of positions where A[i] ≠ B[i]`
+
+Hamming distance is particularly useful in error detection and correction algorithms.
+
+#### Minkowski Distance Metric
+
+**Minkowski Distance** is a generalization of both Euclidean and Manhattan distances. It is defined by a parameter 'p' that determines the order of the distance metric. The Minkowski distance is calculated as:
+
+`D(A, B) = (Σ(|xᵢ - yᵢ|^p))^(1/p)`
+
+Where:
+
+- A and B are two points in space,
+- xᵢ and yᵢ are the coordinates of points A and B, respectively,
+- p is a parameter that defines the distance metric (p=1 gives Manhattan distance, p=2 gives Euclidean distance).
+
+Minkowski distance is flexible, allowing the user to choose the appropriate metric based on the nature of the data.
+
+---
+
+### Neighbors and Examples
+
+In distance-based models, the concept of "neighbors" refers to the data points that are closest to a given point based on a specified distance metric. For example, in a 2D space, the nearest neighbors to a point can be determined by calculating the distance between the point and all other points in the dataset.
+
+When using distance metrics for classification or regression tasks, the nearest neighbors significantly influence the prediction. The most common methods for utilizing neighbors include the **K-Nearest Neighbors (KNN)** algorithm.
+
+---
+
+### K-Nearest Neighbors for Classification and Regression
+
+The **K-Nearest Neighbors (KNN)** algorithm is a simple yet powerful supervised learning method used for classification and regression tasks. The fundamental idea is to classify or predict the value of a data point based on the majority class or average value of its k-nearest neighbors.
+
+#### Classification
+
+In KNN classification, the algorithm works as follows:
+
+1. Choose the number of neighbors (k).
+2. Calculate the distance from the test point to all training points using a distance metric.
+3. Identify the k-nearest neighbors based on the calculated distances.
+4. Determine the class of the test point by majority voting among the k-nearest neighbors.
+
+For example, if k=3 and the nearest neighbors belong to classes A, B, and A, the test point will be classified as A.
+
+#### Regression
+
+In KNN regression, the algorithm predicts the value of a test point by averaging the values of its k-nearest neighbors. The steps are similar to classification:
+
+1. Choose the number of neighbors (k).
+2. Calculate the distance from the test point to all training points.
+3. Identify the k-nearest neighbors.
+4. Predict the value of the test point as the average of the values of the k-nearest neighbors.
+
+KNN is straightforward to implement and works well with small datasets. However, it can become computationally expensive with larger datasets, and the choice of k can significantly affect the performance of the algorithm.
+
+---
+
+### Clustering as a Learning Task
+
+Clustering is an unsupervised learning task that involves grouping similar data points into clusters based on their distance from one another. Several algorithms are used for clustering, including K-means, K-medoids, and hierarchical clustering.
+
+#### K-Means Clustering Algorithm
+
+The **K-Means Clustering Algorithm** is one of the most popular clustering methods. It partitions the dataset into K clusters, where each data point belongs to the cluster with the nearest mean. The steps of the K-means algorithm are as follows:
+
+1. Initialize K centroids randomly from the dataset.
+2. Assign each data point to the nearest centroid, forming K clusters.
+3. Recalculate the centroids as the mean of the points assigned to each cluster.
+4. Repeat steps 2 and 3 until the centroids no longer change significantly or a maximum number of iterations is reached.
+
+**Example**: Suppose we have a dataset of customer data with features like age and income. By applying K-means clustering with K=3, the algorithm will partition the customers into three groups based on similarities in age and income.
+
+#### K-Medoids Algorithm
+
+The **K-Medoids Algorithm** is similar to K-means but is more robust to noise and outliers. Instead of using the mean to represent the center of a cluster, K-medoids uses actual data points as the medoids (central points). The steps of the K-medoids algorithm are as follows:
+
+1. Select K initial medoids randomly from the dataset.
+2. Assign each data point to the nearest medoid.
+3. Update the medoids by choosing the point that minimizes the total distance to all points in the cluster.
+4. Repeat steps 2 and 3 until the medoids no longer change significantly.
+
+**Example**: In a dataset of geographical locations, the K-medoids algorithm can cluster locations based on distance, with each medoid being the most representative location in each cluster.
+
+#### Hierarchical Clustering
+
+**Hierarchical Clustering** creates a hierarchy of clusters, allowing for a more detailed representation of data relationships. There are two main approaches:
+
+1. **Agglomerative (Bottom-Up)**: Each data point starts as its own cluster, and clusters are merged iteratively based on proximity until a single cluster remains or a desired number of clusters is formed.
+
+2. **Divisive (Top-Down)**: Starts with a single cluster containing all data points and recursively splits clusters until each data point forms its own cluster.
+
+#### Divisive Dendrogram for Hierarchical Clustering
+
+A **Dendrogram** is a tree-like diagram that visually represents the arrangement of clusters formed through hierarchical clustering. The dendrogram displays the merging (agglomerative) or splitting (divisive) of clusters, illustrating the relationships among the data points.
+
+The height of the branches in the dendrogram indicates the distance between clusters, helping to decide the optimal number of clusters by cutting the dendrogram at a certain height.
+
+---
+
+### Performance Measures
+
+To evaluate the effectiveness of clustering algorithms, various performance measures can be used:
+
+1. **Silhouette Score**: Measures how similar a data point is to its own cluster compared to other clusters. Values range from -1 to 1, where a higher score indicates better clustering.
+
+2. **Inertia (Within-Cluster Sum of Squares)**: Measures how tightly the clusters are packed. Lower inertia values indicate better clustering.
+
+3. **Davies-Bouldin Index**: Evaluates the average similarity ratio of each cluster with its most similar cluster. A lower Davies-Bouldin index indicates better clustering.
+
+4. **Rand Index**: Measures the similarity between two data clusterings by considering the pairs of data points. A higher Rand Index indicates better agreement between clusterings.
+
+---
+
+## Association Rule Mining
+
+### Introduction
+
+**Association Rule Mining** is a data mining technique used to discover interesting relationships between variables in large datasets. It identifies rules that describe how items co-occur, making it widely used in market basket analysis, recommendation systems, and more.
+
+For example, a common association rule might indicate that customers who buy bread are also likely to buy butter.
+
+### Rule Learning for Subgroup Discovery
+
+Rule learning involves identifying subsets of data that exhibit specific characteristics or behaviors. This process helps in discovering patterns and
+
+making predictions based on observed data. Subgroup discovery aims to find rules that characterize certain groups within the dataset, providing insights into relationships and trends.
+
+### Apriori Algorithm
+
+The **Apriori Algorithm** is a classic algorithm used for mining frequent itemsets and generating association rules. The key steps of the Apriori algorithm are as follows:
+
+1. **Generate Frequent Itemsets**: Identify itemsets that meet a minimum support threshold. The support of an itemset is the proportion of transactions that contain the itemset.
+
+2. **Generate Association Rules**: For each frequent itemset, generate rules that meet a minimum confidence threshold. The confidence of a rule is the likelihood that if a transaction contains the antecedent, it also contains the consequent.
+
+**Example**: In a retail transaction dataset, the Apriori algorithm might reveal a rule: "If a customer buys diapers (antecedent), they are likely to buy baby wipes (consequent)".
+
+### Performance Measures
+
+Several performance measures are used to evaluate the quality of the discovered association rules:
+
+#### Support
+
+**Support** measures the frequency of occurrence of an itemset in the dataset. It is defined as:
+
+`Support(X) = P(X) = (Number of transactions containing X) / (Total number of transactions)`
+
+Higher support values indicate that the rule is more generalizable.
+
+#### Confidence
+
+**Confidence** measures the likelihood that the consequent of a rule occurs given that the antecedent occurs. It is defined as:
+
+`Confidence(A → B) = P(B|A) = Support(A ∩ B) / Support(A)`
+
+Higher confidence values indicate stronger rules.
+
+#### Lift
+
+**Lift** measures the strength of a rule compared to the expected frequency of the consequent occurring independently of the antecedent. It is defined as:
+
+`Lift(A → B) = Confidence(A → B) / Support(B)`
+
+A lift value greater than 1 indicates a positive association between A and B.

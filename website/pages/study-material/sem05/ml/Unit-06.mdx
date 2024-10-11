@@ -1,0 +1,162 @@
+# Unit 6: Introduction to Artificial Neural Networks
+
+## Table of Contents
+
+1. [Perceptron Learning](#perceptron-learning)
+   - Biological Neuron
+   - Introduction to Artificial Neural Networks (ANN)
+   - McCulloch-Pitts Neuron
+   - Perceptron and its Learning Algorithm
+   - Sigmoid Neuron
+   - Activation Functions
+     - Tanh
+     - ReLU
+2. [Multi-layer Perceptron Model](#multi-layer-perceptron-model)
+   - Introduction
+   - Learning Parameters: Weight and Bias
+   - Loss Function: Mean Square Error
+3. [Introduction to Deep Learning](#introduction-to-deep-learning)
+
+---
+
+## Perceptron Learning
+
+### Biological Neuron
+
+A biological neuron is the fundamental unit of the nervous system, responsible for receiving, processing, and transmitting information through electrical and chemical signals. Each neuron consists of three main parts:
+
+1. **Dendrites**: Extensions that receive signals from other neurons.
+2. **Cell Body (Soma)**: Contains the nucleus and processes incoming signals.
+3. **Axon**: Transmits signals away from the cell body to other neurons or muscles.
+
+Neurons communicate through synapses, where the release of neurotransmitters influences the activity of neighboring neurons. This biological framework serves as the inspiration for artificial neural networks, which aim to emulate the way biological neurons process information.
+
+### Introduction to Artificial Neural Networks (ANN)
+
+Artificial Neural Networks (ANNs) are computational models inspired by the structure and functioning of biological neural networks. ANNs consist of interconnected nodes (neurons) organized in layers that can learn from data. They are designed to recognize patterns and solve complex problems, making them widely used in various fields such as image recognition, natural language processing, and predictive analytics.
+
+The primary advantage of ANNs is their ability to learn and adapt through experience, allowing them to improve performance over time as they are exposed to more data.
+
+### McCulloch-Pitts Neuron
+
+The **McCulloch-Pitts Neuron**, introduced in 1943, is one of the earliest models of an artificial neuron. It operates as a binary unit that processes inputs and produces an output based on a simple threshold mechanism. Each input is associated with a weight, and the neuron sums the weighted inputs. If the sum exceeds a predefined threshold, the neuron fires (outputs a 1); otherwise, it remains inactive (outputs a 0).
+
+The mathematical representation of the McCulloch-Pitts neuron can be expressed as:
+
+```
+output = f(Σ(wᵢ * xᵢ) - θ)
+```
+
+Where:
+
+- wᵢ is the weight of the i-th input,
+- xᵢ is the i-th input,
+- θ is the threshold,
+- f is the activation function (often a step function).
+
+Despite its simplicity, the McCulloch-Pitts neuron laid the foundation for more complex neural network architectures.
+
+### Perceptron and its Learning Algorithm
+
+The **Perceptron**, developed by Frank Rosenblatt in the late 1950s, is a more advanced model that can learn from data and classify inputs into two categories. The perceptron consists of input nodes, weights, a summation function, an activation function, and an output node.
+
+The learning algorithm for a perceptron involves the following steps:
+
+1. **Initialization**: Set the weights to small random values.
+2. **For each training sample**:
+
+   - Compute the weighted sum of the inputs.
+   - Apply the activation function to determine the output.
+   - Update the weights based on the difference between the predicted and actual output using the learning rule:
+     ```
+     wᵢ = wᵢ + η * (target - output) * xᵢ
+     ```
+     Where:
+     - η is the learning rate,
+     - target is the desired output.
+
+3. **Repeat** the process for multiple epochs until convergence is achieved.
+
+The perceptron can effectively classify linearly separable data, but it struggles with more complex patterns, which led to the development of multi-layer networks.
+
+### Sigmoid Neuron
+
+The **Sigmoid Neuron** uses a sigmoid activation function to produce a smooth output between 0 and 1, making it more suitable for probabilistic interpretations. The sigmoid function is defined as:
+
+```
+σ(x) = 1 / (1 + e^(-x))
+```
+
+The output of a sigmoid neuron can be interpreted as the probability of the input belonging to a particular class, making it widely used in binary classification tasks. However, it suffers from the vanishing gradient problem, where gradients become very small, hindering learning in deeper networks.
+
+### Activation Functions
+
+Activation functions are critical components of neural networks that introduce non-linearity into the model. They determine the output of a neuron based on its input, allowing the network to learn complex patterns. Some commonly used activation functions include:
+
+#### Tanh
+
+The **Tanh (Hyperbolic Tangent)** function is another popular activation function, which outputs values between -1 and 1. It is defined as:
+
+```
+tanh(x) = (e^x - e^(-x)) / (e^x + e^(-x))
+```
+
+Tanh is zero-centered, which helps in convergence during training. However, it also suffers from the vanishing gradient problem for large input values.
+
+#### ReLU
+
+The **ReLU (Rectified Linear Unit)** activation function is defined as:
+
+```
+ReLU(x) = max(0, x)
+```
+
+ReLU outputs the input directly if it is positive; otherwise, it returns zero. It has become the preferred activation function in many deep learning applications due to its simplicity and effectiveness in mitigating the vanishing gradient problem. ReLU allows for faster training and helps in building deeper networks.
+
+---
+
+## Multi-layer Perceptron Model
+
+### Introduction
+
+A **Multi-layer Perceptron (MLP)** is a type of artificial neural network consisting of multiple layers of neurons. It typically comprises an input layer, one or more hidden layers, and an output layer. MLPs are capable of learning complex relationships between inputs and outputs through a process called backpropagation.
+
+Backpropagation is an algorithm used to update the weights in the network by calculating the gradient of the loss function concerning each weight, allowing for efficient learning.
+
+### Learning Parameters: Weight and Bias
+
+In an MLP, each connection between neurons has an associated weight that determines the strength of the input signal. During training, these weights are adjusted to minimize the error in the network’s predictions. Additionally, each neuron has a bias term that allows for greater flexibility in the model, enabling the neuron to shift the activation function left or right.
+
+The parameters (weights and biases) are updated using the gradient descent algorithm, which iteratively adjusts the parameters in the opposite direction of the gradient of the loss function.
+
+### Loss Function: Mean Square Error
+
+The **Mean Square Error (MSE)** is a commonly used loss function for regression tasks in neural networks. It measures the average squared difference between the predicted values and the actual target values. The MSE is defined as:
+
+```
+MSE = (1/n) * Σ(target_i - predicted_i)²
+```
+
+Where:
+
+- n is the number of samples,
+- target_i is the actual target value for the i-th sample,
+- predicted_i is the predicted value for the i-th sample.
+
+Minimizing the MSE during training helps improve the accuracy of the model's predictions, ensuring that the network learns the underlying patterns in the data.
+
+---
+
+## Introduction to Deep Learning
+
+**Deep Learning** is a subfield of machine learning that focuses on neural networks with multiple layers (deep neural networks). These networks can learn hierarchical representations of data, making them particularly effective for tasks involving unstructured data such as images, audio, and text.
+
+Deep learning has gained immense popularity due to its success in various applications, including:
+
+- **Image Recognition**: Convolutional Neural Networks (CNNs) are commonly used for image classification and object detection tasks.
+- **Natural Language Processing**: Recurrent Neural Networks (RNNs) and Transformers excel in understanding and generating human language.
+- **Generative Models**: Generative Adversarial Networks (GANs) are used for creating realistic images and videos.
+
+Deep learning models can automatically learn features from raw data without manual feature engineering, allowing them to achieve state-of-the-art performance in many domains.
+
+The advent of powerful hardware (such as GPUs) and large labeled datasets has propelled the growth of deep learning, making it a crucial area of research and application in artificial intelligence.

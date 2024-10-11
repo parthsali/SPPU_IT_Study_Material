@@ -1,0 +1,203 @@
+# Unit 4: Tree-Based and Probabilistic Models
+
+## Table of Contents
+
+1. [Tree-Based Model](#tree-based-model)
+   - Decision Tree: Concepts and Terminologies
+   - Impurity Measures
+     - Gini Index
+     - Information Gain
+     - Entropy
+   - Tree Pruning
+     - ID3 Algorithm
+     - C4.5 Algorithm
+   - Advantages and Limitations of Decision Trees
+2. [Probabilistic Models](#probabilistic-models)
+   - Conditional Probability and Bayes Theorem
+   - Naïve Bayes Classifier
+   - Bayesian Network for Learning and Inferencing
+
+---
+
+## Tree-Based Model
+
+### Decision Tree: Concepts and Terminologies
+
+A **Decision Tree** is a tree-like model used for decision-making and classification. It splits the data into branches at each node based on certain conditions or features, ultimately arriving at a decision or prediction at the leaf nodes. It is a non-parametric supervised learning method, often used for classification and regression tasks.
+
+#### Terminologies
+
+1. **Root Node**: The starting point of the decision tree, representing the entire dataset. It is the topmost node in the tree where the first decision or split occurs.
+2. **Leaf Node (Terminal Node)**: The nodes at the end of the tree where a class label is assigned. No further splitting occurs at these nodes.
+
+3. **Internal Node**: The nodes that are split based on feature values. Each internal node represents a decision based on one of the input features.
+
+4. **Branch (Sub-tree)**: A connection between nodes representing a specific decision path.
+
+5. **Splitting**: The process of dividing the dataset into subsets based on a specific feature.
+
+6. **Pruning**: The process of reducing the size of a tree by removing unnecessary splits or nodes to prevent overfitting.
+
+7. **Impurity**: A measure of how mixed the target classes are in a given node. The goal of each split is to decrease the impurity of the nodes.
+
+---
+
+### Impurity Measures
+
+Impurity measures help decide the best feature to split on at each node. They evaluate how well a split separates the data into pure subsets, where all data points in each subset belong to the same class.
+
+#### Gini Index
+
+The **Gini Index** is a measure of the impurity of a node in a decision tree. It quantifies how often a randomly chosen element from the dataset would be incorrectly classified. The Gini Index is calculated as:
+
+`Gini = 1 - Σ(pᵢ)²`
+
+Where `pᵢ` is the probability of a data point belonging to class `i`.
+
+- A Gini Index of 0 indicates a perfectly pure node (all data points in the node belong to one class).
+- A higher Gini Index indicates more impurity.
+
+The goal is to minimize the Gini Index at each split, aiming for pure nodes.
+
+#### Information Gain
+
+**Information Gain** measures the reduction in entropy after a dataset is split based on a feature. It helps determine the best feature to split on by evaluating how much information is gained from the split. Information Gain is defined as the difference between the entropy of the parent node and the weighted entropy of the child nodes:
+
+`Information Gain = Entropy(parent) - Σ(pᵢ * Entropy(child₍ᵢ₎))`
+
+Where:
+
+- `pᵢ` is the proportion of samples in child node `i`,
+- `Entropy(child₍ᵢ₎)` is the entropy of the child node `i`.
+
+A higher Information Gain means that the feature provides more useful information for classification, making it a better choice for splitting the node.
+
+#### Entropy
+
+**Entropy** is a measure of the disorder or uncertainty in a dataset. It quantifies the impurity in a node by considering the distribution of classes. The formula for entropy is:
+
+`Entropy = - Σ(pᵢ * log₂(pᵢ))`
+
+Where `pᵢ` is the proportion of data points belonging to class `i`.
+
+- An entropy of 0 indicates a pure node where all data points belong to a single class.
+- Higher entropy values indicate more uncertainty or disorder.
+
+The goal in decision trees is to minimize the entropy at each split, aiming to reduce uncertainty and create purer nodes.
+
+---
+
+### Tree Pruning
+
+**Tree Pruning** is a technique used to simplify decision trees and prevent overfitting. By removing unnecessary branches or nodes, the model becomes more general and performs better on unseen data. Pruning can be done in two ways:
+
+1. **Pre-pruning**: Stopping the tree from growing once it reaches a certain depth or when further splitting does not provide significant Information Gain.
+2. **Post-pruning**: Growing the tree fully and then removing nodes that provide little predictive power.
+
+#### ID3 Algorithm
+
+**ID3 (Iterative Dichotomiser 3)** is an algorithm used to build decision trees by recursively selecting the feature with the highest Information Gain to split the data. The steps of the ID3 algorithm are as follows:
+
+1. Calculate the entropy of the target class.
+2. For each feature, calculate the Information Gain when splitting the data using that feature.
+3. Choose the feature with the highest Information Gain for the split.
+4. Repeat the process for each subset of the data until all data points are classified, or the Information Gain becomes insignificant.
+
+#### C4.5 Algorithm
+
+The **C4.5 Algorithm** is an improvement over the ID3 algorithm. It introduces several enhancements, such as handling both categorical and continuous features, handling missing data, and incorporating post-pruning to reduce overfitting. C4.5 uses a metric called **Gain Ratio**, which adjusts Information Gain by accounting for the number of splits made.
+
+---
+
+### Advantages and Limitations of Decision Trees
+
+#### Advantages
+
+- **Simple to Understand and Interpret**: Decision trees are easy to visualize and interpret, making them accessible to non-experts.
+- **Handles Both Categorical and Continuous Data**: Decision trees can handle both types of data without the need for extensive pre-processing.
+- **Non-parametric**: They do not assume any underlying distribution in the data, making them flexible for various types of data.
+- **Resistant to Outliers**: Decision trees are relatively robust to outliers because the splitting process focuses on feature thresholds.
+
+#### Limitations
+
+- **Overfitting**: Decision trees tend to overfit the training data, especially when the tree grows deep. Pruning helps mitigate this issue.
+- **Bias Toward Features with More Levels**: Features with more levels (e.g., features with many categories) may dominate the splits, even if they do not provide useful information.
+- **Instability**: Small changes in the data can lead to significantly different trees, making them sensitive to variations in the dataset.
+- **Limited to Single Output**: Traditional decision trees only predict one target variable at a time, although this limitation can be addressed with modifications.
+
+---
+
+## Probabilistic Models
+
+### Conditional Probability and Bayes Theorem
+
+**Conditional Probability** is the probability of an event occurring given that another event has already occurred. It is denoted as `P(A|B)`, meaning the probability of event `A` happening given that event `B` has occurred.
+
+**Bayes Theorem** provides a way to update the probability of a hypothesis based on new evidence. The formula for Bayes Theorem is:
+
+`P(H|E) = (P(E|H) * P(H)) / P(E)`
+
+Where:
+
+- `P(H|E)` is the posterior probability of hypothesis `H` given evidence `E`,
+- `P(E|H)` is the likelihood of the evidence given the hypothesis,
+- `P(H)` is the prior probability of the hypothesis,
+- `P(E)` is the total probability of the evidence.
+
+Bayes Theorem is fundamental in probabilistic models, allowing for the updating of beliefs as new data becomes available.
+
+---
+
+### Naïve Bayes Classifier
+
+The **Naïve Bayes Classifier** is a probabilistic classifier based on Bayes Theorem, with the assumption that the features are conditionally independent given the class. This assumption, though often unrealistic, simplifies the computation and makes the algorithm highly efficient.
+
+The Naïve Bayes classifier computes the probability of each class given the input features and chooses the class with the highest probability as the predicted class. The formula for Naïve Bayes classification is:
+
+`P(C|X) = (P(X₁|C) * P(X₂|C) * ... * P(Xₙ|C) * P(C)) / P(X)`
+
+Where:
+
+- `P(C|X)` is the posterior probability of class `C` given the feature set `X`,
+- `P(X₁|C), P(X₂|C), ..., P(Xₙ|C)` are the conditional probabilities of each feature given class `C`,
+- `P(C)` is the prior probability of the class,
+- `P(X)` is the total probability of the feature set.
+
+#### Steps in Naïve Bayes Classification
+
+1. **Calculate the Prior Probabilities**: Estimate the prior probabilities of each class by counting the frequency of each class in the training data.
+2. **Calculate the Likelihood**: For each feature, calculate the conditional probability of each feature value given the class.
+3. **Apply Bayes Theorem**: Combine the prior probabilities and likelihoods to compute the posterior probabilities for each class.
+4. **Classify**: Choose the class with the highest posterior probability.
+
+Naïve Bayes is widely used for tasks like spam detection, sentiment analysis, and document classification due to its simplicity and effectiveness.
+
+---
+
+### Bayesian Network for Learning and Inferencing
+
+A **Bayesian Network** is a graphical model that represents
+
+a set of variables and their conditional dependencies using a directed acyclic graph (DAG). Each node in the graph represents a random variable, and the edges represent the conditional dependencies between variables.
+
+#### Structure of a Bayesian Network
+
+- **Nodes**: Represent random variables.
+- **Edges**: Represent conditional dependencies between variables.
+- **Conditional Probability Tables (CPTs)**: Each node has an associated CPT that quantifies the relationship between the node and its parent nodes.
+
+#### Learning in Bayesian Networks
+
+Learning a Bayesian Network involves two key tasks:
+
+1. **Structure Learning**: Determining the structure of the network, i.e., which variables are dependent on each other.
+2. **Parameter Learning**: Estimating the conditional probability distributions (CPTs) that quantify the relationships between the variables.
+
+#### Inference in Bayesian Networks
+
+Inference in a Bayesian Network involves computing the probability of certain variables given the observed values of other variables. This is typically done using algorithms such as:
+
+- **Variable Elimination**: A method for exact inference that eliminates variables one by one to compute the desired probabilities.
+- **Belief Propagation**: An approximate inference method that propagates probabilities through the network to estimate the marginal probabilities of variables.
+
+Bayesian Networks are powerful tools for modeling uncertain systems, allowing for both learning from data and making predictions based on observed evidence.

@@ -1,0 +1,191 @@
+# Unit 3: Regression
+
+## Table of Contents
+
+1. [Introduction to Regression](#introduction-to-regression)
+   - What is Regression?
+   - Types of Regression Problems
+2. [Univariate Regression](#univariate-regression)
+   - Least-Square Method
+   - Model Representation
+   - Cost Functions
+     - Mean Squared Error (MSE)
+     - Mean Absolute Error (MAE)
+     - R-Squared
+   - Performance Evaluation
+   - Optimization of Simple Linear Regression with Gradient Descent
+     - Example of Gradient Descent
+   - Estimating the Values of the Regression Coefficients
+3. [Multivariate Regression](#multivariate-regression)
+   - Model Representation
+4. [Introduction to Polynomial Regression](#introduction-to-polynomial-regression)
+   - Generalization
+   - Overfitting vs. Underfitting
+   - Bias vs. Variance
+
+---
+
+## Introduction to Regression
+
+### What is Regression?
+
+**Regression** is a type of supervised learning algorithm used for predicting continuous numerical values. Unlike classification, which predicts discrete labels, regression models predict a numerical output based on input features. Regression analysis estimates the relationships among variables, and it is widely used in fields such as economics, finance, medicine, and engineering.
+
+### Types of Regression Problems
+
+1. **Univariate Regression**: In this type of regression, there is one independent variable (predictor) and one dependent variable (target). The task is to predict the value of the dependent variable based on the independent variable.
+2. **Multivariate Regression**: This type of regression involves more than one independent variable. The model learns the relationships between multiple features and the target variable.
+
+---
+
+## Univariate Regression
+
+**Univariate Regression** is the simplest form of regression, where there is only one input feature or independent variable. The goal of univariate regression is to find the relationship between this single feature and the target variable. The most common technique used is **Simple Linear Regression**, which fits a straight line to the data.
+
+### Least-Square Method
+
+The **Least-Square Method** is a standard approach used to find the best-fitting line by minimizing the sum of the squared differences between the observed values and the predicted values. The formula for the line in univariate linear regression is:
+
+`y = mx + c`
+
+Where:
+
+- `y` is the dependent variable (target),
+- `x` is the independent variable (feature),
+- `m` is the slope of the line,
+- `c` is the y-intercept.
+
+The **Least-Square Method** seeks to minimize the difference between the predicted values `y` and the actual values `y_actual`.
+
+### Model Representation
+
+The model representation of simple linear regression can be written as:
+
+`h(x) = θ₀ + θ₁x`
+
+Where:
+
+- `h(x)` is the hypothesis or predicted value,
+- `θ₀` is the y-intercept (bias),
+- `θ₁` is the slope (weight),
+- `x` is the input feature.
+
+### Cost Functions
+
+A **Cost Function** is used to measure the error in predictions made by the regression model. The cost function evaluates how well the model's predictions match the actual data. In regression, some common cost functions are:
+
+#### Mean Squared Error (MSE)
+
+**Mean Squared Error (MSE)** is the average of the squared differences between the actual and predicted values. It is one of the most commonly used cost functions for regression. The formula for MSE is:
+
+`MSE = (1/n) * Σ(y_actual - y_predicted)²`
+
+Where:
+
+- `n` is the number of data points,
+- `y_actual` is the actual value,
+- `y_predicted` is the predicted value.
+
+#### Mean Absolute Error (MAE)
+
+**Mean Absolute Error (MAE)** is the average of the absolute differences between the actual and predicted values. Unlike MSE, it does not square the errors, making it less sensitive to large errors. The formula for MAE is:
+
+`MAE = (1/n) * Σ|y_actual - y_predicted|`
+
+#### R-Squared
+
+**R-Squared (R²)**, also known as the **Coefficient of Determination**, measures the proportion of the variance in the dependent variable that is predictable from the independent variable. R² is a value between 0 and 1, where a higher value indicates a better fit of the model. The formula for R² is:
+
+`R² = 1 - (Σ(y_actual - y_predicted)² / Σ(y_actual - y_mean)²)`
+
+Where:
+
+- `y_mean` is the mean of the actual values.
+
+### Performance Evaluation
+
+To evaluate the performance of a regression model, we use the above cost functions (MSE, MAE, R²) to check how well the model fits the data. Lower values of MSE and MAE indicate better performance, while a higher R² value (closer to 1) signifies a stronger model fit.
+
+### Optimization of Simple Linear Regression with Gradient Descent
+
+**Gradient Descent** is an optimization algorithm used to minimize the cost function and find the optimal values of the regression coefficients (θ₀, θ₁). The idea is to update the parameters iteratively in the direction of the steepest descent of the cost function.
+
+The formula to update the parameters using gradient descent is:
+
+`θ_j := θ_j - α * (1/n) * Σ(h(xᵢ) - yᵢ) * xᵢ`
+
+Where:
+
+- `θ_j` is the parameter being updated (either θ₀ or θ₁),
+- `α` is the learning rate (controls the step size of each update),
+- `h(xᵢ)` is the predicted value for data point `i`,
+- `yᵢ` is the actual value for data point `i`.
+
+The process is repeated until the cost function converges to a minimum.
+
+#### Example of Gradient Descent
+
+Suppose we have the following data points:
+
+| x   | y   |
+| --- | --- |
+| 1   | 2   |
+| 2   | 4   |
+| 3   | 6   |
+| 4   | 8   |
+
+We start with initial values for θ₀ and θ₁, and then apply gradient descent to find the best-fitting line. By iterating and updating the values of θ₀ and θ₁, we gradually minimize the cost function until the line fits the data as closely as possible.
+
+### Estimating the Values of the Regression Coefficients
+
+The **regression coefficients** (θ₀, θ₁) represent the parameters of the model. In simple linear regression, these coefficients are estimated using the least-square method or gradient descent. The coefficients define the slope and intercept of the regression line, and they are critical in making predictions.
+
+For example, in the formula `y = θ₀ + θ₁x`, the coefficient θ₁ represents the change in `y` for a one-unit change in `x`.
+
+---
+
+## Multivariate Regression
+
+### Model Representation
+
+**Multivariate Regression** extends simple linear regression to handle multiple input features. The goal is to predict the target variable based on several independent variables. The model representation for multivariate regression is:
+
+`h(x) = θ₀ + θ₁x₁ + θ₂x₂ + ... + θₙxₙ`
+
+Where:
+
+- `x₁, x₂, ..., xₙ` are the input features,
+- `θ₁, θ₂, ..., θₙ` are the corresponding coefficients.
+
+The process of fitting the model is similar to simple linear regression, but instead of fitting a straight line, multivariate regression fits a **hyperplane** to the data. The same optimization techniques, such as gradient descent, are used to estimate the values of the coefficients.
+
+In multivariate regression, it is crucial to handle **multicollinearity**, which occurs when the independent variables are highly correlated with each other. Multicollinearity can lead to unstable estimates of the regression coefficients and affect the model's performance.
+
+---
+
+## Introduction to Polynomial Regression
+
+### Generalization
+
+**Polynomial Regression** is a type of regression that models the relationship between the independent variable and the dependent variable as an nth-degree polynomial. It extends linear regression by introducing polynomial terms, allowing the model to fit non-linear relationships.
+
+The model representation for polynomial regression is:
+
+`h(x) = θ₀ + θ₁x + θ₂x² + ... + θₙxⁿ`
+
+Where `x², x³, ..., xⁿ` are the polynomial terms. Polynomial regression provides more flexibility to capture complex relationships between variables.
+
+### Overfitting vs. Underfitting
+
+**Overfitting** occurs when a model fits the training data too well, capturing noise and outliers, which leads to poor generalization to new data. In contrast, **Underfitting** happens when the model is too simple to capture the underlying patterns in the data, leading to high bias and poor performance on both training and test data.
+
+The challenge in polynomial regression is to find the right degree of the polynomial that balances bias and variance. A high-degree polynomial can lead to overfitting, while a low-degree polynomial may lead to underfitting.
+
+### Bias vs. Variance
+
+- **Bias** refers to the error introduced by approximating a complex real-world problem with a simple model. High bias indicates that the model is too simple and underfits the data.
+- **Variance** refers to the model's sensitivity to fluctuations in the training data. High variance indicates that the model is overfitting the training data and may not perform well on unseen data.
+
+The goal of any regression model is to find the optimal trade-off between bias and variance, achieving a good
+
+generalization performance. This is known as the **bias-variance tradeoff**.
