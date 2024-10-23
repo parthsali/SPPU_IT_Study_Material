@@ -1,0 +1,224 @@
+# Unit 5: Numerical Methods
+
+Numerical methods are essential techniques in computational mathematics that are used to obtain approximate solutions for mathematical problems that cannot be solved analytically. This unit focuses on two main areas: the numerical solution of algebraic and transcendental equations, and the numerical solutions of systems of linear equations. This comprehensive overview covers various numerical methods such as Bisection, Secant, Newton-Raphson, Gauss elimination, and Jacobi methods, among others.
+
+## Numerical Solution of Algebraic and Transcendental Equations
+
+### 1. Introduction
+
+Algebraic and transcendental equations are fundamental in mathematical modeling, where exact solutions are often unattainable. Numerical methods provide a way to find approximate solutions with a specified degree of accuracy.
+
+#### Definition:
+
+- **Algebraic equations** are equations involving polynomial expressions, such as $f(x) = 0$, where $f(x)$ is a polynomial.
+- **Transcendental equations** involve transcendental functions such as exponential, logarithmic, or trigonometric functions, e.g., $e^x - x^2 = 0$.
+
+### 2. Bisection Method
+
+The **Bisection method** is a root-finding method that applies to any continuous function for which one knows two values with opposite signs.
+
+#### Process:
+
+1. Choose two initial points $a$ and $b$ such that $f(a)$ and $f(b)$ have opposite signs (i.e., $f(a) \cdot f(b) < 0$).
+2. Compute the midpoint $c = \frac{a + b}{2}$.
+3. Evaluate $f(c)$:
+   - If $f(c) = 0$, then $c$ is a root.
+   - If $f(c)$ has the same sign as $f(a)$, then replace $a$ with $c$; otherwise, replace $b$ with $c$.
+4. Repeat the process until $|f(c)|$ is less than a specified tolerance.
+
+#### Example:
+
+For $f(x) = x^2 - 4$, choose $a = 0$ and $b = 3$.
+
+1. $c = \frac{0 + 3}{2} = 1.5$ -> $f(1.5) = -2.5$ (same sign as $f(0)$).
+2. Update $a$ to $1.5$.
+3. Repeat until convergence to the root $x = 2$.
+
+### 3. Secant Method
+
+The **Secant method** is a root-finding algorithm that uses a succession of roots of secant lines to approximate the root of a function.
+
+#### Process:
+
+1. Select two initial approximations $x_0$ and $x_1$.
+2. Compute the next approximation $x_2$ using the formula:
+
+$$
+x_2 = x_1 - \frac{f(x_1)(x_1 - x_0)}{f(x_1) - f(x_0)}
+$$
+
+3. Update $x_0$ to $x_1$ and $x_1$ to $x_2$, and repeat until convergence.
+
+#### Example:
+
+Given $f(x) = e^x - x^2$:
+
+- Start with $x_0 = 0$ and $x_1 = 1$.
+- Calculate $x_2$ and update iteratively until convergence.
+
+### 4. Regula Falsi Method
+
+The **Regula Falsi method**, also known as the False Position method, is similar to the Bisection method but uses a linear interpolation to find the root.
+
+#### Process:
+
+1. Choose two initial points $a$ and $b$ such that $f(a) \cdot f(b) < 0$.
+2. Compute the point $c$ using:
+
+$$
+c = \frac{a f(b) - b f(a)}{f(b) - f(a)}
+$$
+
+3. Evaluate $f(c)$:
+   - If $f(c) = 0$, then $c$ is a root.
+   - If $f(c)$ has the same sign as $f(a)$, set $a = c$; otherwise, set $b = c$.
+4. Repeat until convergence.
+
+#### Example:
+
+For $f(x) = x^3 - 2x - 5$, iterate using $a = 2$ and $b = 3$.
+
+### 5. Newton-Raphson Method
+
+The **Newton-Raphson method** is an efficient iterative technique for finding roots of real-valued functions.
+
+#### Process:
+
+1. Start with an initial guess $x_0$.
+2. Compute the next approximation using the formula:
+
+$$
+x\_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
+$$
+
+3. Repeat until convergence.
+
+#### Example:
+
+For $f(x) = x^2 - 2$, the derivative $f'(x) = 2x$.
+
+1. Start with $x_0 = 1$.
+2. Iterate to find $x \approx \sqrt{2}$.
+
+### 6. Successive Approximation Methods
+
+Successive approximation methods are used for solving equations of the form $x = g(x)$.
+
+#### Process:
+
+1. Rearrange the equation to isolate $x$.
+2. Choose an initial guess $x_0$.
+3. Compute subsequent approximations using $x\_{n+1} = g(x_n)$.
+4. Continue until convergence.
+
+#### Example:
+
+For $x = \cos(x)$, start with $x_0 = 0.5$ and iterate using $g(x) = \cos(x)$.
+
+### 7. Convergence and Stability
+
+The convergence of a numerical method is crucial, indicating whether the method will yield accurate results as iterations increase. Stability refers to how errors propagate through computations.
+
+- **Convergence**: A method converges if $\lim\_{n \to \infty} x_n = r$ (the actual root).
+- **Stability**: A method is stable if small changes in input do not cause large changes in output.
+
+## Numerical Solutions of Systems of Linear Equations
+
+### 1. Introduction
+
+Systems of linear equations can be represented in matrix form $Ax = b$, where $A$ is a matrix of coefficients, $x$ is the vector of variables, and $b$ is the result vector.
+
+### 2. Gauss Elimination
+
+**Gauss elimination** is a systematic method for solving linear equations by transforming the system into an upper triangular form.
+
+#### Process:
+
+1. Form the augmented matrix \([A|b]\).
+2. Use elementary row operations to transform the matrix into upper triangular form.
+3. Perform back substitution to find the values of the variables.
+
+#### Example:
+
+For the system:
+
+$$
+\begin{align*}
+2x + 3y + z &= 1 \\
+4x + y + 2z &= 2 \\
+3x + 4y + 5z &= 3
+\end{align*}
+$$
+
+Transform the augmented matrix and apply back substitution.
+
+### 3. LU Decomposition
+
+**LU decomposition** factors a matrix $A$ into the product of a lower triangular matrix $L$ and an upper triangular matrix $U$.
+
+#### Process:
+
+1. Decompose $A$ into $L$ and $U$ such that $A = LU$.
+2. Solve $Ly = b$ for $y$ using forward substitution.
+3. Solve $Ux = y$ for $x$ using back substitution.
+
+#### Example:
+
+For a matrix $A$, perform the decomposition to obtain $L$ and $U$.
+
+### 4. Cholesky Decomposition
+
+The **Cholesky decomposition** is a specialized method for solving systems with positive definite matrices.
+
+#### Process:
+
+1. Decompose $A$ into $A = LL^T$.
+2. Similar to LU decomposition, solve $Ly = b$ and then $L^Tx = y$.
+
+#### Example:
+
+For a positive definite matrix, apply the Cholesky method.
+
+### 5. Jacobi Method
+
+The **Jacobi method** is an iterative algorithm for solving a system of linear equations.
+
+#### Process:
+
+1. Rewrite each equation in terms of the variable to be solved.
+2. Use initial guesses for the variables.
+3. Update the values iteratively:
+
+$$
+x*i^{(k+1)} = \frac{1}{a*{ii}} \left( b*i - \sum*{j \neq i} a\_{ij} x_j^{(k)} \right)
+$$
+
+#### Example:
+
+For the system of equations, iterate using the Jacobi formula until convergence.
+
+### 6. Gauss-Seidel Method
+
+The **Gauss-Seidel method** is an improvement over the Jacobi method, using updated values as soon as they are calculated.
+
+#### Process:
+
+1. Start with initial guesses.
+2. Update variables using:
+
+$$
+x*i^{(k+1)} = \frac{1}{a*{ii}} \left( b*i - \sum*{j < i} a*{ij} x_j^{(k+1)} - \sum*{j > i} a\_{ij} x_j^{(k)} \right)
+$$
+
+3. Repeat until convergence.
+
+#### Example:
+
+For the same system
+
+, apply the Gauss-Seidel method.
+
+### 7. Comparison of Methods
+
+- **Bisection, Secant, Newton-Raphson**: Suitable for single-variable equations; varying rates of convergence.
+- **Gauss Elimination, LU Decomposition, Jacobi, Gauss-Seidel**: Suitable for systems of linear equations; choice depends on matrix properties and dimensions.

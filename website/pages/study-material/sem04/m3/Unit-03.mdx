@@ -1,0 +1,303 @@
+# Unit 3: Statistics
+
+## Measures of Central Tendency
+
+Measures of central tendency are statistical values that describe the center point of a dataset. The three most common measures are the **mean**, **median**, and **mode**. These measures help summarize a set of data by providing a representative value.
+
+### 1. Mean
+
+The **mean**, or arithmetic average, is calculated by summing all the values in a dataset and dividing by the number of values. Mathematically, it is represented as:
+
+$$
+\text{Mean} (\mu) = \frac{\sum_{i=1}^{n} x_i}{n}
+$$
+
+where $x_i$ represents each value in the dataset and $n$ is the total number of values.
+
+#### Example:
+
+Given the dataset $\{2, 4, 6, 8, 10\}$:
+
+$$
+\text{Mean} = \frac{2 + 4 + 6 + 8 + 10}{5} = \frac{30}{5} = 6
+$$
+
+### 2. Median
+
+The **median** is the middle value of a dataset when arranged in ascending order. If the number of observations is odd, the median is the middle number. If even, it is the average of the two middle numbers.
+
+#### Example:
+
+For the dataset $\{3, 1, 4, 2, 5\}$:
+
+1. Arrange in order: $\{1, 2, 3, 4, 5\}$
+2. The median is $3$ (the middle value).
+
+For the dataset $\{1, 2, 3, 4\}$:
+
+1. Arrange in order: $\{1, 2, 3, 4\}$
+2. The median is $\frac{2 + 3}{2} = 2.5$.
+
+### 3. Mode
+
+The **mode** is the value that appears most frequently in a dataset. A dataset can have one mode (unimodal), more than one mode (bimodal or multimodal), or no mode at all.
+
+#### Example:
+
+For the dataset $\{1, 2, 2, 3, 4\}$, the mode is $2$. For $\{1, 1, 2, 2, 3\}$, both $1$ and $2$ are modes.
+
+## Measures of Dispersion
+
+Dispersion measures how much the values in a dataset spread out. Key measures include **range**, **variance**, and **standard deviation**.
+
+### 1. Range
+
+The **range** is the difference between the highest and lowest values in a dataset.
+
+$$
+\text{Range} = \text{Max} - \text{Min}
+$$
+
+#### Example:
+
+For the dataset $\{3, 7, 5, 9, 1\}$:
+
+$$
+\text{Range} = 9 - 1 = 8
+$$
+
+### 2. Variance
+
+**Variance** measures the average squared deviation of each number from the mean. It is calculated as:
+
+$$
+\sigma^2 = \frac{\sum_{i=1}^{n} (x_i - \mu)^2}{n}
+$$
+
+#### Example:
+
+For the dataset $\{2, 4, 6\}$:
+
+1. Mean $\mu = 4$
+2. Variance:
+
+$$
+\sigma^2 = \frac{(2-4)^2 + (4-4)^2 + (6-4)^2}{3} = \frac{4 + 0 + 4}{3} = \frac{8}{3} \approx 2.67
+$$
+
+### 3. Standard Deviation
+
+The **standard deviation** is the square root of the variance and indicates the average distance of each data point from the mean.
+
+$$
+\sigma = \sqrt{\sigma^2}
+$$
+
+#### Example:
+
+Continuing from the previous example:
+
+$$
+\sigma = \sqrt{\frac{8}{3}} \approx 1.63
+$$
+
+## Coefficient of Variation
+
+The **coefficient of variation (CV)** is a standardized measure of dispersion, expressed as a percentage. It is calculated by dividing the standard deviation by the mean:
+
+$$
+\text{CV} = \frac{\sigma}{\mu} \times 100
+$$
+
+#### Example:
+
+For the dataset $\{2, 4, 6\}$:
+
+1. Mean $\mu = 4$
+2. Standard deviation $\sigma \approx 1.63$
+
+Calculating CV:
+
+$$
+\text{CV} = \frac{1.63}{4} \times 100 \approx 40.75\%
+$$
+
+## Moments
+
+**Moments** are quantitative measures related to the shape of a dataset's distribution. The $n^{th}$ moment about the mean is given by:
+
+$$
+\mu_n = \frac{\sum_{i=1}^{n} (x_i - \mu)^n}{n}
+$$
+
+### 1. First Moment
+
+The first moment is always zero since it measures deviation from the mean.
+
+### 2. Second Moment
+
+The second moment gives us the variance, providing insight into the dataset's spread.
+
+### 3. Third Moment
+
+The third moment helps to measure the skewness of the distribution, indicating asymmetry.
+
+### 4. Fourth Moment
+
+The fourth moment relates to the kurtosis of the distribution, providing information about the "tailedness" of the distribution.
+
+## Skewness and Kurtosis
+
+### 1. Skewness
+
+**Skewness** quantifies the asymmetry of a distribution. A distribution can be positively skewed (long tail on the right), negatively skewed (long tail on the left), or symmetric.
+
+The formula for skewness $S$ is given by:
+
+$$
+S = \frac{n}{(n-1)(n-2)} \sum_{i=1}^{n} \left(\frac{x_i - \mu}{\sigma}\right)^3
+$$
+
+#### Example:
+
+For a dataset that is positively skewed, the skewness value will be greater than 0.
+
+### 2. Kurtosis
+
+**Kurtosis** measures the "tailedness" of the distribution. High kurtosis indicates heavy tails, while low kurtosis indicates light tails.
+
+The formula for kurtosis $K$ is:
+
+$$
+K = \frac{n(n+1)}{(n-1)(n-2)(n-3)} \sum_{i=1}^{n} \left(\frac{x_i - \mu}{\sigma}\right)^4 - \frac{3(n-1)^2}{(n-2)(n-3)}
+$$
+
+#### Example:
+
+For a normal distribution, the kurtosis is 3. Distributions with kurtosis greater than 3 are considered leptokurtic (heavy-tailed), while those with less than 3 are platykurtic (light-tailed).
+
+## Curve Fitting
+
+**Curve fitting** involves constructing a curve that best approximates the data points in a dataset. Common methods include fitting a straight line, parabola, and other related curves.
+
+### 1. Fitting of Straight Line
+
+The equation of a straight line is given by:
+
+$$
+y = mx + c
+$$
+
+where $m$ is the slope and $c$ is the y-intercept. The least squares method is commonly used to minimize the sum of the squared differences between the observed and predicted values.
+
+#### Example:
+
+Given points $(x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)$, the best fit line can be determined using:
+
+$$
+m = \frac{n(\sum xy) - (\sum x)(\sum y)}{n(\sum x^2) - (\sum x)^2}
+$$
+
+### 2. Fitting of Parabola
+
+The general equation of a parabola is:
+
+$$
+y = ax^2 + bx + c
+$$
+
+Fitting a parabola is similar to fitting a straight line but involves minimizing the sum of squared differences in a quadratic context.
+
+#### Example:
+
+To fit a parabola through given points, one would solve for $a$, $b$, and $c$ by using systems of equations derived from the points.
+
+### 3. Related Curves
+
+Other related curves such as exponential and logarithmic can also be fitted to data using similar methods. The choice of curve depends on the nature of the data and its distribution.
+
+## Correlation and Regression
+
+**Correlation** measures the strength and direction of a relationship between two variables. It is quantified using the correlation coefficient $r$, which ranges from -1 to 1.
+
+### 1. Correlation Coefficient
+
+The Pearson correlation coefficient is defined as:
+
+$$
+r = \frac{n(\sum xy) - (\sum x)(\sum y)}{\sqrt{[n\sum x^2 - (\sum x)^2][n\sum y^2 - (\sum y)^2]}}
+$$
+
+#### Example:
+
+For datasets $X = \{x_1, x_2, x_3\}$ and $Y = \{y_1, y_2, y_3\}$, calculate $r$ to determine the strength of their relationship.
+
+### 2. Simple Linear Regression
+
+**Simple linear regression** is used to model the relationship between two variables by fitting a linear equation. The model predicts the dependent variable $y$ based on the independent variable $x$:
+
+$$
+y = mx + c
+$$
+
+where $m$ is the slope and $c$ is the y-intercept.
+
+#### Example:
+
+Using the least squares method, determine $m$ and $c$ to minimize the error in predictions.
+
+### 3. Multiple Linear Regression
+
+**Multiple linear regression** extends simple linear regression to include multiple independent variables:
+
+$$
+y = b_0 + b_1x_1 + b_2x_2 + \ldots + b_kx_k
+$$
+
+where $b_0$ is the intercept, and $b_1, b_2, \ldots, b_k$ are the coefficients for each independent variable.
+
+#### Example:
+
+Using datasets with multiple features, apply the least squares method to estimate the coefficients.
+
+## Probability Distribution
+
+**Probability distributions** describe how probabilities are distributed over the values of a random variable. Common types include the **normal distribution**, **binomial distribution**, and **Poisson distribution**.
+
+### 1. Normal Distribution
+
+The **normal distribution** is characterized by its bell-shaped curve, defined by the mean $\mu$ and standard deviation $\sigma$.
+
+#### Example:
+
+For a normal distribution with $\mu = 0$ and $\sigma = 1$, the probability density function is given by:
+
+$$
+f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+$$
+
+### 2. Binomial Distribution
+
+The **binomial distribution** models the number of successes in $n$ independent Bernoulli trials, with the probability of success $p$. The probability mass function is:
+
+$$
+P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}
+$$
+
+where $k$ is the number of successes.
+
+#### Example:
+
+If $n = 10$ and $p = 0.5$, calculate the probability of getting $k = 5$ successes.
+
+### 3. Poisson Distribution
+
+The **Poisson distribution** models the number of events occurring in a fixed interval of time or space, with a known average rate $\lambda$. The probability mass function is given by:
+
+$$
+P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}
+$$
+
+#### Example:
+
+For $\lambda = 3$, find the probability of observing $k = 2$ events.
