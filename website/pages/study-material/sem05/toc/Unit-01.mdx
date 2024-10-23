@@ -1,0 +1,214 @@
+# Unit I: Finite Automata
+
+## Introduction to Finite Automata
+
+Finite Automata (FA) is a foundational concept in the theory of computation. It is a simple abstract machine that accepts regular languages and is crucial in various fields, such as lexical analysis, parsing, protocol design, and pattern matching. In this unit, we explore the basic concepts of symbols, strings, and languages, which lead to the formalization of automata. We then examine the construction, properties, and transformations of Deterministic Finite Automata (DFA), Non-deterministic Finite Automata (NFA), and their variations, including epsilon transitions. Furthermore, the unit covers minimization techniques and the equivalence of different forms of finite automata. Finally, we explore Moore and Mealy machines, which are finite state machines with output, their definitions, constructions, and inter-conversions.
+
+### Basic Concepts: Symbols, Strings, and Formal Languages
+
+#### Symbols
+
+In the context of formal languages and automata, a **symbol** refers to an indivisible atomic unit. Symbols are the basic building blocks of strings. For example, characters from the English alphabet (such as `a`, `b`, `c`, etc.) or binary digits (`0`, `1`) are symbols.
+
+Formally, a **finite set of symbols** is called an **alphabet** and is typically denoted by $\Sigma$. For example:
+
+- $\Sigma = \{ 0, 1 \}$ represents the binary alphabet.
+- $\Sigma = \{ a, b, c, d, e \}$ could represent an alphabet for a toy language.
+
+#### Strings
+
+A **string** is a finite sequence of symbols from an alphabet. For instance, given $\Sigma = \{ 0, 1 \}$, a string could be `101`, `0110`, or even the empty string `ε`. The **length** of a string $s$, denoted $|s|$, is the number of symbols in the string.
+
+- Example: For the string $s = 1011$, $|s| = 4$.
+- The **empty string**, denoted by $ε$, has a length of zero: $|ε| = 0$.
+
+#### Language
+
+A **language** is a set of strings formed from a particular alphabet. Formally, if $\Sigma$ is an alphabet, then a language $L$ over $\Sigma$ is a subset of $\Sigma$, where $\Sigma$ represents all possible strings (including the empty string) that can be constructed using symbols from $\Sigma$.
+
+Examples of languages:
+
+1. The set of all strings over $\Sigma = \{ 0, 1 \}$ where the string length is even: $L = \{ ε, 00, 11, 1010, 1001, \dots \}$.
+2. The set of binary strings where every string starts with `1`: $L = \{ 1, 10, 11, 101, 110 \dots \}$.
+
+A language can be **finite** (if it contains a finite number of strings) or **infinite** (if it contains an infinite number of strings). For example, the set of all binary strings of length 3 is finite, while the set of all binary strings is infinite.
+
+### Finite Automata
+
+A **finite automaton** is a mathematical model of a system with a finite number of states. It processes input strings symbol by symbol, transitioning between states according to rules defined by the automaton's structure. A **finite automaton** can either accept or reject a string, depending on whether the automaton reaches an accepting state after processing the string.
+
+#### Formal Definition of Finite Automata
+
+A **Finite Automaton (FA)** can be formally defined as a 5-tuple:
+
+$$
+M = (Q, \Sigma, \delta, q_0, F)
+$$
+
+Where:
+
+- $Q$ is a finite set of **states**.
+- $\Sigma$ is a finite set of **input symbols** (alphabet).
+- $\delta$ is the **transition function**, $\delta: Q \times \Sigma \rightarrow Q$, which specifies the next state for each state-symbol pair.
+- $q_0 \in Q$ is the **start state**.
+- $F \subseteq Q$ is the set of **accepting (or final) states**.
+
+#### State Transition Diagram and Transition Table
+
+A **state transition diagram** is a graphical representation of a finite automaton. States are represented by circles, and transitions between states are represented by arrows labeled with the input symbol that causes the transition.
+
+Example:
+
+- Consider a simple DFA that accepts binary strings ending in `1`. The transition diagram might look like:
+
+$$
+\text{Insert State Transition Diagram Here}
+$$
+
+A **transition table** is another way to describe the transitions of a finite automaton. It represents the transition function $\delta$ in tabular form, with states listed in rows and input symbols in columns. The entries in the table specify the state the automaton transitions to upon reading a particular input symbol from a given state.
+
+| State | Input: 0 | Input: 1 |
+| ----- | -------- | -------- |
+| $q_0$ | $q_0$    | $q_1$    |
+| $q_1$ | $q_0$    | $q_1$    |
+
+### Deterministic Finite Automaton (DFA)
+
+A **Deterministic Finite Automaton (DFA)** is a type of finite automaton in which, for each state and input symbol, there is exactly one transition to a next state. In a DFA, the machine can never be in more than one state at any time.
+
+#### Construction of DFA
+
+To construct a DFA, follow these steps:
+
+1. Identify the set of states $Q$.
+2. Define the input alphabet $\Sigma$.
+3. Determine the transition function $\delta$, specifying how the automaton transitions between states on reading input symbols.
+4. Specify the start state $q_0$ and the accepting states $F$.
+
+**Example**:
+Construct a DFA that accepts strings containing an even number of `0`s:
+
+- $Q = \{ q_0, q_1 \}$, where $q_0$ is the initial state (also accepting) and $q_1$ is the state for odd numbers of `0`s.
+- $\Sigma = \{ 0, 1 \}$
+- Transition function:
+  - $\delta(q_0, 0) = q_1$
+  - $\delta(q_0, 1) = q_0$
+  - $\delta(q_1, 0) = q_0$
+  - $\delta(q_1, 1) = q_1$
+
+The state diagram would have arrows representing these transitions.
+
+### Non-deterministic Finite Automaton (NFA)
+
+A **Non-deterministic Finite Automaton (NFA)** differs from a DFA in that it may have multiple transitions for the same input symbol from a given state. Additionally, an NFA can have transitions that do not consume any input symbol, called **epsilon (ε) transitions**.
+
+#### Construction of NFA
+
+An NFA can be constructed similarly to a DFA but with added flexibility in the transition function. For each state and input symbol, the transition function $\delta$ can map to a set of states instead of a single state.
+
+**Example**:
+Construct an NFA that accepts strings containing the substring `01`:
+
+- $Q = \{ q_0, q_1, q_2 \}$
+- $\Sigma = \{ 0, 1 \}$
+- Transition function:
+  - $\delta(q_0, 0) = \{ q_0, q_1 \}$
+  - $\delta(q_1, 1) = \{ q_2 \}$
+  - $\delta(q_2, 0) = \emptyset$
+
+In this NFA, state $q_0$ represents the start state, and $q_2$ is the accepting state.
+
+### NFA with Epsilon (ε) Moves
+
+An NFA with **epsilon moves** allows transitions between states without consuming any input symbols. These transitions are useful for simplifying automata design and facilitating certain types of conversions.
+
+#### Conversion of NFA with ε-moves to NFA
+
+To convert an NFA with ε-moves to an equivalent NFA without ε-moves, follow these steps:
+
+1. For each state, compute the **ε-closure**, which is the set of states reachable using ε-transitions.
+2. Modify the transition function to account for ε-transitions by considering the ε-closure at each step.
+
+#### Conversion of NFA to DFA
+
+To convert an NFA to an equivalent DFA, use the **subset construction algorithm**:
+
+1. The states of the DFA correspond to subsets of the NFA's states.
+2. The DFA's start state is the ε-closure of the NFA's start state.
+3. Transitions in the DFA are determined by taking the union of the NFA transitions for each input symbol across all states in the subset.
+
+#### Minimization of DFA
+
+Minimizing a DFA involves reducing the number of states while preserving the language it recognizes. This is done by merging equivalent states (i.e., states that behave identically for all inputs).
+
+The **Minimization Algorithm** involves the
+
+following steps:
+
+1. Partition the states into two groups: accepting states and non-accepting states.
+2. Refine the partition by splitting groups based on their behavior under input symbols.
+3. Merge states within the same group in the final partition.
+
+### Equivalence of Finite Automata
+
+Two finite automata are said to be **equivalent** if they recognize the same language. This can be determined by comparing the states and transitions of both automata to ensure that they accept exactly the same set of strings.
+
+### Finite Automata with Output: Moore and Mealy Machines
+
+A **Finite State Machine with Output** is a type of finite automaton that produces output based on its transitions or states. There are two common types of machines that generate output:
+
+#### Moore Machine
+
+In a **Moore machine**, the output depends only on the current state. Each state has an associated output value, and the machine produces this output whenever it enters the state.
+
+A Moore machine is defined as a 6-tuple:
+
+$$
+M = (Q, \Sigma, \Delta, \delta, q_0, \lambda)
+$$
+
+Where:
+
+- $Q$, $\Sigma$, and $\delta$ are defined as in a standard finite automaton.
+- $\Delta$ is the output alphabet.
+- $\lambda$ is the output function, $\lambda: Q \rightarrow \Delta$, which assigns an output to each state.
+
+#### Mealy Machine
+
+In a **Mealy machine**, the output depends on both the current state and the input symbol. The output is produced during the transitions between states, rather than in the states themselves.
+
+A Mealy machine is defined as a 6-tuple:
+
+$$
+M = (Q, \Sigma, \Delta, \delta, q_0, \lambda)
+$$
+
+Where:
+
+- $\lambda: Q \times \Sigma \rightarrow \Delta$ is the output function, which maps each state-symbol pair to an output value.
+
+### Inter-conversion of Moore and Mealy Machines
+
+Moore and Mealy machines are equivalent in the sense that any Moore machine can be converted into an equivalent Mealy machine and vice versa.
+
+#### Conversion of Mealy Machine to Moore Machine
+
+To convert a Mealy machine to a Moore machine:
+
+1. Add intermediate states in the Moore machine for each transition in the Mealy machine.
+2. Assign output values to these intermediate states based on the Mealy machine's transition-based output.
+
+#### Conversion of Moore Machine to Mealy Machine
+
+To convert a Moore machine to a Mealy machine:
+
+1. Modify the transition function of the Mealy machine to incorporate the output of the Moore machine's current state.
+
+### Applications of Finite Automata
+
+Finite Automata have numerous applications in computer science, including:
+
+- **Lexical Analysis**: DFAs are used in compilers to recognize tokens in source code.
+- **Pattern Matching**: NFAs can be used to match regular expressions in text processing tools like grep.
+- **Modeling Protocols**: Finite automata are used to model communication protocols in computer networks.
+- **Natural Language Processing**: Finite automata help parse sentences and check the syntax of languages.

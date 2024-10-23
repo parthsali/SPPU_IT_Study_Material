@@ -1,0 +1,139 @@
+# Unit 2: Regular Expressions and Languages
+
+## Introduction to Regular Expressions and Regular Languages
+
+Regular expressions (RE) and regular languages (RL) are fundamental concepts in formal language theory, forming the basis for defining search patterns in text, lexical analysis, and various other computational tasks. A **regular expression** provides a concise way to specify sets of strings, while a **regular language** is a collection of strings that can be described by a regular expression. Regular expressions are used in programming languages, compilers, and various tools to search, match, and manipulate text.
+
+This unit focuses on understanding regular expressions, their equivalence to finite automata, conversion techniques, and closure properties. Additionally, the pumping lemma, which helps prove whether a language is regular, is discussed, along with practical applications of regular expressions.
+
+## Regular Expressions: Definition and Operators
+
+### Definition of Regular Expressions (RE)
+
+A **regular expression (RE)** is a pattern that specifies a set of strings from an alphabet. The strings described by a regular expression form a regular language. The operators used in regular expressions allow the construction of complex patterns from simpler ones.
+
+Formally, a regular expression over an alphabet $\Sigma$ is defined using the following rules:
+
+1. **Base cases:**
+
+   - The symbol $ε$ (epsilon) is a regular expression denoting the language $\{ε\}$ (the language containing the empty string).
+   - Any symbol $a \in \Sigma$ is a regular expression denoting the language $\{a\}$ (the language containing the single string "a").
+   - The empty set $\emptyset$ is a regular expression denoting the empty language.
+
+2. **Recursive construction:**
+   - If $r_1$ and $r_2$ are regular expressions, then the following are also regular expressions:
+     - **Union (or)**: $r_1 + r_2$ denotes the union of the languages of $r_1$ and $r_2$.
+     - **Concatenation**: $r_1r_2$ denotes the concatenation of the languages of $r_1$ and $r_2$.
+     - **Kleene Star**: $r_1^*$ denotes zero or more repetitions of the language of $r_1$.
+
+### Operators of Regular Expressions
+
+The three basic operators in regular expressions are:
+
+1. **Union (or addition)**: Denoted by the operator `+`, it combines two languages by allowing strings from either language. For example, the regular expression `a + b` denotes the language $\{a, b\}$.
+2. **Concatenation**: This operator combines two regular expressions by appending strings from one to strings from another. For example, `ab` denotes the language containing the string "ab".
+3. **Kleene Star (repetition)**: Denoted by `*`, it represents zero or more occurrences of the language defined by the regular expression. For example, `a*` denotes the language $\{ε, a, aa, aaa, \dots\}$.
+
+### Identities of Regular Expressions
+
+The following identities help simplify regular expressions:
+
+1. **Associativity**:
+   - $(r_1 + r_2) + r_3 = r_1 + (r_2 + r_3)$
+   - $(r_1r_2)r_3 = r_1(r_2r_3)$
+2. **Commutativity** of Union:
+
+   - $r_1 + r_2 = r_2 + r_1$
+
+3. **Distributivity**:
+   - $r_1(r_2 + r_3) = r_1r_2 + r_1r_3$
+   - $(r_1 + r_2)r_3 = r_1r_3 + r_2r_3$
+4. **Kleene Star**:
+   - $(r_1^*)^* = r_1^*$
+   - $r_1 + r_1^* = r_1^*$
+
+These identities can be used to prove the equivalence of two regular expressions.
+
+## Equivalence of Regular Expressions and Regular Languages
+
+A **regular language** is a language that can be expressed by a regular expression. Conversely, for any regular expression, there exists a finite automaton that accepts the language it defines. Therefore, regular languages and finite automata (FA) are equivalent in terms of the languages they recognize.
+
+### Equivalence of Two Regular Expressions
+
+Two regular expressions are considered **equivalent** if they describe the same language. For instance, the regular expressions `a(a + b)*` and `aa* + ab*` are equivalent if they both represent the same set of strings over the alphabet $\{a, b\}$. The equivalence can be proved by constructing finite automata for each regular expression and checking whether they accept the same strings.
+
+## Conversion between Regular Expressions and Finite Automata
+
+There is a close relationship between regular expressions and finite automata (FA). In fact, any regular expression can be converted into an FA, and any FA can be converted into a regular expression. This section covers these conversion methods in detail.
+
+### Conversion of Regular Expressions to Finite Automata
+
+The **direct method** is commonly used to convert a regular expression into a finite automaton (FA). This method constructs a non-deterministic finite automaton (NFA) that accepts the language of the given regular expression.
+
+#### Steps:
+
+1. For each basic element of the regular expression (such as a symbol or an empty string), construct a simple NFA.
+2. Apply the operators of concatenation, union, and Kleene star to build the corresponding NFA for the entire regular expression.
+3. Once the NFA is built, it can be converted into a deterministic finite automaton (DFA) using the subset construction algorithm.
+
+### Conversion of Finite Automata to Regular Expressions
+
+Finite automata can also be converted into regular expressions using **Arden’s theorem**. Arden’s theorem provides a method to derive a regular expression from a finite automaton’s transition table. The theorem is based on solving equations that represent the behavior of the finite automaton.
+
+#### Arden’s Theorem:
+
+If $P$ and $Q$ are sets of strings, and $P = Q + RP$, then the solution to this equation is $P = QR^*$. This theorem is used to eliminate states and transitions in a finite automaton, gradually reducing it to a regular expression.
+
+## Pumping Lemma for Regular Languages
+
+The **pumping lemma** is a fundamental property of regular languages. It provides a method to prove that a given language is not regular. The pumping lemma states that for any regular language, there exists a constant $p$ (called the pumping length) such that any string $s$ in the language, where $|s| \geq p$, can be divided into three parts $s = xyz$ with the following properties:
+
+1. $|xy| \leq p$.
+2. $|y| > 0$.
+3. For all $i \geq 0$, the string $xy^iz$ is in the language.
+
+If a language fails to satisfy these conditions, it is not regular. The pumping lemma is often used as a proof by contradiction to show that certain languages cannot be regular.
+
+### Example of Using the Pumping Lemma
+
+Consider the language $L = \{a^nb^n | n \geq 1\}$. To prove that this language is not regular, assume it is regular and let $p$ be the pumping length. Take the string $s = a^pb^p$. According to the pumping lemma, $s$ can be divided into three parts $s = xyz$ where $xy^iz \in L$ for all $i \geq 0$.
+
+However, if $y$ consists only of `a`s, pumping it (i.e., repeating or removing `y`) will result in more `a`s than `b`s, which contradicts the definition of the language. Therefore, the language is not regular.
+
+## Closure Properties of Regular Languages
+
+Regular languages are closed under various operations. This means that applying these operations to regular languages will result in another regular language.
+
+### Closure under Union
+
+If $L_1$ and $L_2$ are regular languages, then $L_1 + L_2$ is also a regular language. This property follows directly from the fact that the union of two regular expressions is itself a regular expression.
+
+### Closure under Concatenation
+
+The concatenation of two regular languages is also regular. If $L_1$ and $L_2$ are regular languages, then the language $L_1L_2 = \{xy | x \in L_1, y \in L_2\}$ is regular.
+
+### Closure under Kleene Star
+
+The Kleene star of a regular language is regular. If $L$ is a regular language, then the language $L^* = \{x_1x_2...x_n | n \geq 0, x_i \in L\}$ is also regular.
+
+### Other Closure Properties
+
+Regular languages are also closed under:
+
+- **Intersection**: The intersection of two regular languages is regular.
+- **Complement**: The complement of a regular language is regular.
+- **Difference**: The difference of two regular languages is regular.
+
+## Applications of Regular Expressions
+
+Regular expressions have a wide range of practical applications, particularly in programming, text processing, and formal verification. Some common applications include:
+
+1. **Lexical Analysis**: Regular expressions are used to define the lexical structure of programming languages in compilers. Tokens such as keywords, operators, and identifiers are specified using regular expressions.
+
+2
+
+. **Text Search and Pattern Matching**: Tools like **grep**, **sed**, and text editors use regular expressions for searching and replacing text patterns in files.
+
+3. **Input Validation**: Regular expressions are used to validate user input, such as email addresses, phone numbers, or other structured data.
+
+4. **Parsing and Tokenization**: In natural language processing (NLP) and other fields, regular expressions are used to tokenize text into words, sentences, or other meaningful units.

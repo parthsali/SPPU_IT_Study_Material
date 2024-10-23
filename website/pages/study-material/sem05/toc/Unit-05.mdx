@@ -1,0 +1,98 @@
+# Unit 5: Turing Machines
+
+## Introduction to Turing Machines
+
+Turing Machines (TM) are central to the field of theoretical computer science and computation theory. Proposed by Alan Turing in 1936, these abstract machines serve as a model for computation and play a crucial role in understanding the limits of what can be computed. A Turing machine can simulate any algorithm and is used to define the concepts of computability and complexity. This unit covers the formal definition of Turing machines, their design, variants, the halting problem, and the foundational Church-Turing thesis, along with the classifications of recursive languages.
+
+### Formal Definition of a Turing Machine
+
+A **Turing Machine** can be formally defined as a 7-tuple:
+
+$$
+M = (Q, \Sigma, \Gamma, \delta, q_0, q_{accept}, q_{reject})
+$$
+
+Where:
+
+- **$Q$**: A finite set of states.
+- **$\Sigma$**: A finite set of input symbols (alphabet), which does not include the blank symbol.
+- **$\Gamma$**: A finite set of tape symbols, where $\Gamma$ includes $\Sigma$ and the blank symbol $\#$.
+- **$\delta$**: The transition function, $\delta: Q \times \Gamma \rightarrow Q \times \Gamma \times \{L, R\}$, which specifies the next state, the symbol to write, and the direction to move (Left or Right).
+- **$q_0 \in Q$**: The initial state.
+- **$q_{accept} \in Q$**: The accept state.
+- **$q_{reject} \in Q$**: The reject state.
+
+### Components of a Turing Machine
+
+#### 1. Tape
+
+The **tape** is an infinite memory storage that serves as the Turing machine's working area. It is divided into cells, each of which can hold a single symbol from the tape alphabet $\Gamma$. The tape is conceptually infinite in both directions, allowing the machine to read and write symbols as needed.
+
+#### 2. Head
+
+The **read/write head** is a crucial component of the Turing machine, positioned over the tape. It can move left or right, reading the symbol in the current cell and writing a new symbol in its place.
+
+#### 3. State Register
+
+The **state register** holds the current state of the Turing machine, indicating which state it is currently in during computation.
+
+### Design of Turing Machines
+
+The design of a Turing machine involves specifying the states and the transition function based on the problem being solved. The transition function is typically represented in a tabular form, indicating the actions to take based on the current state and the symbol under the head.
+
+**Example**: Consider a Turing machine that increments a binary number:
+
+- **States**: $Q = \{ q_0, q_1, q_{accept}, q_{reject} \}$
+- **Input Alphabet**: $\Sigma = \{ 0, 1 \}$
+- **Tape Alphabet**: $\Gamma = \{ 0, 1, \# \}$
+- **Transition Function**:
+
+  | Current State | Read Symbol | Write Symbol | Move | Next State   |
+  | ------------- | ----------- | ------------ | ---- | ------------ |
+  | $q_0$         | 1           | 0            | L    | $q_0$        |
+  | $q_0$         | 0           | 1            | -    | $q_{accept}$ |
+  | $q_0$         | \#          | 1            | -    | $q_{accept}$ |
+
+In this design, the Turing machine reads the least significant bit of a binary number and modifies it accordingly to perform the increment operation.
+
+### Variants of Turing Machines
+
+Turing machines have several variants that enhance their computational power or flexibility:
+
+#### 1. Deterministic Turing Machine (DTM)
+
+A **Deterministic Turing Machine** is a type of Turing machine where, for each state and symbol read from the tape, there is exactly one action defined. This means that the machine can only move to one subsequent state based on the current input and state.
+
+#### 2. Non-deterministic Turing Machine (NTM)
+
+A **Non-deterministic Turing Machine** allows multiple possible actions for a given state and symbol. The machine can "choose" among several transitions. NTMs are particularly useful in theoretical computer science because they can solve problems more efficiently than DTMs in certain scenarios. However, all languages that can be recognized by NTMs can also be recognized by DTMs, albeit potentially with a greater time complexity.
+
+#### 3. Multi-tape Turing Machine
+
+A **Multi-tape Turing Machine** has multiple tapes and corresponding read/write heads. Each tape operates independently, allowing for more complex computations. The addition of tapes can increase the efficiency of the machine; for example, a multi-tape machine can perform multiplication more efficiently than a single-tape machine.
+
+#### 4. Universal Turing Machine (UTM)
+
+A **Universal Turing Machine** is a theoretical model that can simulate any other Turing machine. A UTM takes a description of another Turing machine and its input as input and simulates its behavior. This concept is crucial in understanding the universality of computation and lays the groundwork for modern computers.
+
+### Halting Problem of Turing Machines
+
+The **Halting Problem** is a decision problem that states whether a given Turing machine will halt on a particular input or continue to run indefinitely. Alan Turing proved that there is no general algorithm to solve the halting problem for all Turing machines and inputs. This result is significant as it illustrates a fundamental limit to what can be computed.
+
+### Church-Turing Thesis
+
+The **Church-Turing Thesis** posits that any computation that can be performed algorithmically can be executed by a Turing machine. This thesis provides a foundation for understanding the limits of computable functions and serves as a benchmark for various models of computation, including recursive functions and lambda calculus.
+
+### Recursive Languages and Recursively Enumerable Languages
+
+#### 1. Recursive Languages
+
+A **recursive language** is a type of language for which there exists a Turing machine that will always halt and correctly decide whether any given string belongs to the language. In other words, for any string, the Turing machine will either accept or reject it, ensuring it will halt in both cases.
+
+#### 2. Recursively Enumerable Languages
+
+A **recursively enumerable language** is a language for which there exists a Turing machine that will accept any string belonging to the language. However, if a string does not belong to the language, the Turing machine may either reject it or run indefinitely. Essentially, recursively enumerable languages encompass all languages for which membership can be recognized but not necessarily decided.
+
+### Post Correspondence Problem
+
+The **Post Correspondence Problem** is a decision problem that involves finding a sequence of pairs of strings that can match under certain conditions. Given two lists of strings, the task is to find a sequence of indices such that the concatenation of the strings from both lists produces the same string. This problem is known to be undecidable, meaning there is no algorithm that can solve it for all possible instances.
