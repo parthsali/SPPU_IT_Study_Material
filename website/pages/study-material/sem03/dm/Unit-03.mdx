@@ -1,0 +1,456 @@
+# Unit 3: Graph Theory
+
+In this unit, we will explore the fascinating field of **Graph Theory**, which is a significant area of study in discrete mathematics and computer science. Graph theory is essential for understanding relationships and connections between different entities. This unit will cover various concepts and terminologies related to graphs, including their types, properties, and applications in real-world scenarios. We will also delve into the fundamentals of trees, spanning trees, and related theorems, providing numerous examples to illustrate these concepts effectively.
+
+## Graphs
+
+A **graph** is a mathematical structure used to model pairwise relationships between objects. A graph is composed of **vertices** (or nodes) and **edges** (the connections between the vertices). Graph theory studies the properties of these graphs and the relationships between them.
+
+### 1. Basic Terminologies
+
+To understand graph theory, it is essential to familiarize ourselves with some fundamental terms:
+
+- **Vertex (Node)**: The individual objects in a graph. For example, in a social network, each person can be represented as a vertex.
+- **Edge**: A connection between two vertices. It can represent a relationship between two nodes, such as friendship or connectivity.
+
+- **Degree of a Vertex**: The degree of a vertex is the number of edges connected to it. In a directed graph, the degree is divided into **in-degree** (edges coming into the vertex) and **out-degree** (edges going out of the vertex).
+
+- **Path**: A sequence of edges connecting a sequence of vertices.
+
+- **Circuit (Cycle)**: A path that starts and ends at the same vertex without traversing any edge more than once.
+
+- **Connected Graph**: A graph is connected if there is a path between every pair of vertices.
+
+- **Disconnected Graph**: A graph with at least two vertices that are not connected by a path.
+
+#### Example:
+
+Consider the following graph with vertices A, B, C, and D:
+
+```
+  A -- B
+   |   |
+   C -- D
+```
+
+- Vertices: A, B, C, D
+- Edges: (A, B), (A, C), (B, D), (C, D)
+- Degree of Vertex A: 2 (connected to B and C)
+
+### 2. Multi-Graphs and Weighted Graphs
+
+#### Multi-Graphs
+
+A **multi-graph** is a graph that allows multiple edges between the same pair of vertices. For instance, if two friends have multiple connections (like social media, phone calls, and emails), this can be represented by a multi-graph.
+
+**Example:**
+
+In a multi-graph, we can represent the friendships between vertices A and B with two edges:
+
+```
+  A -- B
+  A -- B
+```
+
+#### Weighted Graphs
+
+A **weighted graph** is a graph in which each edge has a numerical value (weight) assigned to it. Weights can represent distances, costs, or any other quantitative measure.
+
+**Example:**
+
+A weighted graph can be represented as follows, where the numbers on the edges represent weights:
+
+```
+  A --(3)-- B
+  |          |
+(2)|          |(5)
+  |          |
+  C --(4)-- D
+```
+
+Here, the weight of the edge between A and B is 3, between A and C is 2, between B and D is 5, and between C and D is 4.
+
+### 3. Subgraphs
+
+A **subgraph** is a graph formed from a subset of the vertices and edges of another graph. A subgraph must contain the vertices and edges from the parent graph while maintaining the connections.
+
+**Example:**
+
+From the previous graph, a subgraph can be created by selecting vertices A, B, and C along with their edges:
+
+```
+  A -- B
+   |
+   C
+```
+
+### 4. Isomorphic Graphs
+
+Two graphs are **isomorphic** if there exists a one-to-one correspondence between their vertices such that the edges are preserved. In simpler terms, isomorphic graphs have the same structure but may have different labels.
+
+**Example:**
+
+Consider the following two graphs:
+
+Graph 1:
+
+```
+  A -- B
+  |
+  C
+```
+
+Graph 2:
+
+```
+  X -- Y
+  |
+  Z
+```
+
+Graphs 1 and 2 are isomorphic since there is a one-to-one correspondence that preserves the edge connections.
+
+### 5. Complete Graphs
+
+A **complete graph** is a graph in which every pair of distinct vertices is connected by a unique edge.
+
+**Example:**
+
+For a complete graph :
+
+```
+    A
+   /|\
+  B- C
+   \|/
+    D
+```
+
+In this case, every vertex (A, B, C, D) is connected to every other vertex.
+
+### 6. Regular Graphs
+
+A **regular graph** is a graph in which every vertex has the same degree. A $k$ regular graph has all vertices with degree $k$.
+
+**Example:**
+
+In a 3-regular graph:
+
+```
+    A
+   /|\
+  B---C
+   \|/
+    D
+```
+
+Here, each vertex (A, B, C, D) has a degree of 3.
+
+### 7. Bipartite Graphs
+
+A **bipartite graph** is a graph that can be divided into two disjoint sets of vertices such that no two graph vertices within the same set are adjacent. Bipartite graphs are commonly used to model relationships between two different classes of objects.
+
+**Example:**
+
+Consider a bipartite graph with sets $X$ and $Y$:
+
+```
+  X1       Y1
+   |       /
+   |      /
+   X2 -- Y2
+```
+
+In this case, vertices in set $X$ (X1, X2) are only connected to vertices in set $Y$ (Y1, Y2).
+
+### 8. Operations on Graphs
+
+Graph operations include adding or removing vertices and edges, finding subgraphs, and merging graphs.
+
+- **Union**: The union of two graphs combines their vertices and edges.
+- **Intersection**: The intersection of two graphs consists of vertices and edges common to both graphs.
+
+- **Difference**: The difference of two graphs is obtained by removing the edges of the second graph from the first.
+
+### 9. Paths and Circuits
+
+#### Paths
+
+A **path** is a sequence of vertices where each adjacent pair is connected by an edge. The length of a path is the number of edges traversed.
+
+**Example:**
+
+In the graph:
+
+```
+  A -- B -- C
+```
+
+The path from A to C is A -> B -> C, which has a length of 2.
+
+#### Circuits
+
+A **circuit** (or cycle) is a path that starts and ends at the same vertex without repeating any edge.
+
+**Example:**
+
+In the graph:
+
+```
+  A -- B
+   |    |
+   C -- D
+```
+
+A circuit could be A -> B -> D -> C -> A.
+
+### 10. Hamiltonian and Eulerian Graphs
+
+#### Hamiltonian Graphs
+
+A **Hamiltonian graph** is a graph that contains a Hamiltonian cycle, which is a cycle that visits every vertex exactly once.
+
+**Example:**
+
+```
+  A -- B
+  |    |
+  D -- C
+```
+
+In this case, A -> B -> C -> D -> A is a Hamiltonian cycle.
+
+#### Eulerian Graphs
+
+An **Eulerian graph** is a graph that contains an Eulerian circuit, which is a circuit that visits every edge exactly once. For a graph to be Eulerian, it must have either zero or two vertices of odd degree.
+
+**Example:**
+
+```
+  A -- B
+   |    |
+   C -- D
+```
+
+The path A -> B -> D -> C -> A is an Eulerian circuit since it visits every edge exactly once.
+
+### 11. Travelling Salesman Problem
+
+The **Travelling Salesman Problem (TSP)** is a classic optimization problem that asks for the shortest possible route that visits each vertex exactly once and returns to the origin vertex. TSP is an NP-hard problem, meaning no polynomial-time solution is known.
+
+**Example:**
+
+Suppose a salesman needs to visit cities A, B, C, and D. The distances between the cities are given as follows:
+
+|       | A   | B   | C   | D   |
+| ----- | --- | --- | --- | --- |
+| **A** | 0   | 10  | 15  | 20  |
+| **B** | 10  | 0   | 35  | 25  |
+| **C** | 15  | 35  | 0   | 30  |
+| **D** | 20  | 25  | 30  | 0   |
+
+The goal is to find the shortest route that visits all cities and returns to the starting point. A brute force approach would evaluate all possible routes, but heuristics and approximation algorithms are often employed in practical applications.
+
+### 12. Factors of Graphs
+
+A **factor** of a graph is a subgraph that satisfies certain properties. For example, a **k-factor** of a graph is a spanning subgraph where each vertex has degree $k$.
+
+**Example:**
+
+In a graph representing a transportation network, a 2-factor would mean that every node (city) has exactly two roads connecting it to other cities.
+
+### 13. Planar Graphs
+
+**planar graph** is a graph that can be drawn on a plane without edges crossing. This property is essential for geographical mapping and circuit design.
+
+**Example:**
+
+The following graph is planar:
+
+```
+  A -- B
+   |   |
+  C -- D
+```
+
+This graph can be drawn in a way that none of the edges cross.
+
+### 14. Graph Colouring
+
+**Graph colouring** is the assignment of labels (or colours) to the vertices of a graph such that no two adjacent vertices share the same colour. The minimum number of colours needed to colour a graph is called its **chromatic number**.
+
+**Example:**
+
+In the graph:
+
+```
+  A -- B
+  |    |
+  C -- D
+```
+
+We can colour the graph using two colours (say red and blue):
+
+- A: Red
+- B: Blue
+- C: Blue
+- D: Red### Trees
+
+A **tree** is a special type of graph that is connected and acyclic (contains no cycles). Trees are fundamental in computer science and data structures.
+
+### 1. Tree Terminologies
+
+- **Rooted Tree**: A tree with a designated root node where all other nodes can be reached by traversing downwards from the root.
+
+- **Leaf Node**: A node with no children.
+
+- **Internal Node**: A node with at least one child.
+
+- **Height of a Tree**: The length of the longest path from the root to a leaf.
+
+#### Example:
+
+```
+       A
+      / \
+     B   C
+    / \
+   D   E
+```
+
+In this tree:
+
+- A is the root.
+- B and C are internal nodes.
+- D and E are leaf nodes.
+- The height of the tree is 2 (from A to D or E).
+
+### 2. Path Length in Rooted Trees
+
+The **path length** in a rooted tree is the sum of the lengths of all paths from the root to each leaf.
+
+**Example:**
+
+For the previous tree, the path lengths are:
+
+- A to D: 2
+- A to E: 2
+- A to C: 1
+
+Total path length = 2 + 2 + 1 = 5.
+
+### 3. Prefix Codes
+
+**Prefix codes** are a type of binary code in which no code is a prefix of any other code. This property is essential in data compression and transmission.
+
+**Example:**
+
+Consider the following prefix codes:
+
+- 0
+- 10
+- 110
+- 111
+
+In this case, no code is a prefix of another, making it a valid prefix code.
+
+### 4. Spanning Trees
+
+A **spanning tree** of a graph is a subgraph that connects all the vertices together without any cycles. A spanning tree has exactly n-1 edges if there are $n$ vertices.
+
+**Example:**
+
+For the graph:
+
+```
+  A -- B
+   |   |
+   C -- D
+```
+
+One possible spanning tree could be:
+
+```
+  A -- B
+   |
+   C
+```
+
+### 5. Fundamental Cut Sets and Circuits
+
+**Cut sets** are sets of edges whose removal disconnects the graph. A **fundamental cut set** is associated with a particular spanning tree and consists of edges not in the tree but connecting two vertices in the tree.
+
+**Example:**
+
+For the spanning tree above, the cut set could be B-D, as its removal would disconnect B from the rest of the graph.
+
+### 6. Max Flow – Min Cut Theorem (Transport Network)
+
+The **Max Flow – Min Cut Theorem** states that in a flow network, the maximum flow from the source to the sink is equal to the capacity of the minimum cut separating the source and sink.
+
+**Example:**
+
+Consider a network where the maximum flow from source S to sink T can be represented as follows:
+
+```
+      10
+   A ----- B
+  /|\      |\
+ S | \     | \
+  \|  \    |  \
+   C---D---E---T
+      5   10
+```
+
+The maximum flow from S to T is 10, which equals the capacity of the minimum cut.
+
+### Applications of Graph Theory
+
+Graph theory has widespread applications across various fields, including:
+
+1. **Computer Networks**: Used to model and analyze networks, ensuring efficient data transfer and connectivity.
+
+2. **Social Networks**: Helps analyze relationships and interactions among individuals or groups.
+
+3. **Operations Research**: Used in optimization problems like routing, scheduling, and resource allocation.
+
+4. **Biology**: Assists in modeling biological networks, such as food chains and ecological systems.
+
+5. **Transportation**: Essential for designing efficient transport systems and logistics management.
+
+### Conclusion
+
+In this unit, we have explored the essential concepts of graph theory, including basic terminologies, various types of graphs, and their applications. Additionally, we delved into trees, spanning trees, and critical theorems such as the Max Flow – Min Cut Theorem. Graph theory's real-world applications demonstrate its significance across diverse fields, highlighting the importance of understanding these principles for future studies and practical implementations.
+
+### Practice Exercises
+
+1. Create a multi-graph representing the friendship connections among five individuals, with at least two pairs of friends having multiple connections.
+
+2. Determine whether the following graphs are isomorphic:
+
+   - Graph 1: A -- B -- C
+   - Graph 2: X -- Y -- Z
+
+3. Calculate the degree of each vertex in the following graph:
+
+```
+  A -- B
+   |   |
+   C -- D
+```
+
+4. Find a Hamiltonian cycle in the following graph:
+
+```
+  A -- B
+  |    |
+  D -- C
+```
+
+5. Given a weighted graph, use Dijkstra's algorithm to find the shortest path from the starting vertex to all other vertices.
+
+6. Draw a planar graph with at least six vertices and demonstrate that it can be drawn without edge crossings.
+
+7. Construct a binary tree and calculate its height, path length, and the total number of leaf nodes.
+
+8. Formulate a prefix code for the words "cat", "bat", "rat", ensuring it adheres to the prefix condition.

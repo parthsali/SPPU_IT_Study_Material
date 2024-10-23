@@ -1,0 +1,252 @@
+# Unit 2: Combinatorics and Discrete Probability
+
+## Combinatorics
+
+Combinatorics is the mathematical study of counting, arrangement, and combination of objects. It is widely used in various fields such as computer science, statistics, and game theory. In this section, we will explore the key concepts of combinatorics, including the **Rules of Sum and Product**, **Permutations**, and **Combinations**.
+
+### 1. Rules of Sum and Product
+
+#### Rule of Sum
+
+The **Rule of Sum** states that if there are $n$ ways to do one thing and $m$ ways to do another thing, and these two actions cannot happen at the same time, then there are $n + m$ ways to choose one of the actions.
+
+**Example:**
+Suppose you have 3 types of fruit: apples, oranges, and bananas. If you can either choose one apple or one orange, the total ways to choose one fruit would be:
+
+$$
+\text{Total Ways} = 3 \text{ (for apples)} + 2 \text{ (for oranges)} = 5 \text{ ways}
+$$
+
+#### Rule of Product
+
+The **Rule of Product** states that if there are $n$ ways to perform one action and $m$ ways to perform another action, then the total number of ways to perform both actions is $n \times m$.
+
+**Example:**
+Consider a menu with 3 types of sandwiches and 2 types of drinks. The total combinations of ordering one sandwich and one drink would be:
+
+$$
+\text{Total Combinations} = 3 \text{ (sandwiches)} \times 2 \text{ (drinks)} = 6 \text{ combinations}
+$$
+
+### 2. Permutations
+
+A **permutation** is an arrangement of objects in a specific order. The number of permutations of $n$ distinct objects is given by $n!$ (n factorial), where:
+
+$$
+n! = n \times (n-1) \times (n-2) \times \ldots \times 1
+$$
+
+#### Example:
+
+To find the number of ways to arrange 3 books on a shelf, we calculate:
+
+$$
+3! = 3 \times 2 \times 1 = 6
+$$
+
+The arrangements are:
+
+1. Book A, Book B, Book C
+2. Book A, Book C, Book B
+3. Book B, Book A, Book C
+4. Book B, Book C, Book A
+5. Book C, Book A, Book B
+6. Book C, Book B, Book A
+
+### 3. Combinations
+
+A **combination** is a selection of objects without regard to the order. The number of combinations of $n$ objects taken $r$ at a time is given by the formula:
+
+$$
+C(n, r) = \frac{n!}{r!(n-r)!}
+$$
+
+#### Example:
+
+If you want to choose 2 fruits from a basket of 5 fruits, the number of ways to choose the fruits is:
+
+$$
+C(5, 2) = \frac{5!}{2!(5-2)!} = \frac{5 \times 4}{2 \times 1} = 10
+$$
+
+The combinations are:
+
+1. Apple, Orange
+2. Apple, Banana
+3. Apple, Grape
+4. Apple, Mango
+5. Orange, Banana
+6. Orange, Grape
+7. Orange, Mango
+8. Banana, Grape
+9. Banana, Mango
+10. Grape, Mango
+
+## Discrete Probability
+
+Discrete probability deals with events that have distinct outcomes. This section will cover fundamental concepts of **Discrete Probability**, including **Conditional Probability**, **Bayes Theorem**, and the applications of combinatorics in probability calculations.
+
+### 1. Discrete Probability
+
+The probability of an event is defined as the number of favorable outcomes divided by the total number of possible outcomes. The probability $P$ of an event $A$ is given by:
+
+$$
+P(A) = \frac{\text{Number of Favorable Outcomes}}{\text{Total Number of Outcomes}}
+$$
+
+#### Example:
+
+If a six-sided die is rolled, the probability of rolling a 4 is:
+
+$$
+P(4) = \frac{1}{6}
+$$
+
+since there is one favorable outcome (rolling a 4) and six possible outcomes (1 through 6).
+
+### 2. Conditional Probability
+
+**Conditional Probability** is the probability of an event occurring given that another event has already occurred. It is denoted by $P(A | B)$, which reads as "the probability of $A$ given $B$".
+
+The formula for conditional probability is:
+
+$$
+P(A | B) = \frac{P(A \cap B)}{P(B)}
+$$
+
+#### Example:
+
+Suppose we have a deck of 52 playing cards. If we want to find the probability of drawing an Ace given that we have drawn a card from the hearts suit, we can calculate:
+
+- The probability of drawing an Ace from hearts (which is 1).
+- The total number of hearts is 13.
+
+Thus, the conditional probability is:
+
+$$
+P(Ace | Hearts) = \frac{1}{13}
+$$
+
+### 3. Bayes Theorem
+
+**Bayes Theorem** relates the conditional probabilities of events and allows us to update our beliefs based on new evidence. It is expressed as:
+
+$$
+P(A | B) = \frac{P(B | A) \cdot P(A)}{P(B)}
+$$
+
+#### Example:
+
+Consider a medical test for a disease that is 90% accurate. If 1% of the population has the disease, and the test result is positive, we can calculate the probability that a person has the disease given a positive test result using Bayes Theorem.
+
+Let:
+
+- $A$: The event that the person has the disease.
+- $B$: The event that the test is positive.
+
+Given:
+
+- $P(A) = 0.01$ (the probability that a person has the disease)
+- $P(B | A) = 0.90$ (the probability of testing positive if the person has the disease)
+- $P(B)$: The total probability of testing positive, which includes both true positives and false positives.
+
+We need to find $P(B)$:
+
+$$
+P(B) = P(B | A) \cdot P(A) + P(B | \neg A) \cdot P(\neg A)
+$$
+
+Assuming the test has a 5% false positive rate:
+
+- $P(B | \neg A) = 0.05$
+- $P(\neg A) = 0.99$
+
+Now, substituting the values:
+
+$$
+P(B) = (0.90 \cdot 0.01) + (0.05 \cdot 0.99) = 0.009 + 0.0495 = 0.0585
+$$
+
+Finally, we can calculate $P(A | B)$:
+
+$$
+P(A | B) = \frac{P(B | A) \cdot P(A)}{P(B)} = \frac{0.90 \cdot 0.01}{0.0585} \approx 0.154
+$$
+
+Thus, there is approximately a 15.4% chance that a person has the disease given a positive test result.
+
+### 4. Information and Mutual Information
+
+Information theory quantifies the amount of uncertainty associated with random variables. The **Information** of an event is given by:
+
+$$
+I(A) = -\log_2(P(A))
+$$
+
+#### Example:
+
+If the probability of an event is $P(A) = 0.25$, the information content is:
+
+$$
+I(A) = -\log_2(0.25) = 2 \text{ bits}
+$$
+
+**Mutual Information** measures the amount of information obtained about one random variable through another random variable. It is defined as:
+
+$$
+I(X; Y) = H(X) + H(Y) - H(X, Y)
+$$
+
+where $H(X)$ and $H(Y)$ are the entropy of $X$ and $Y$, respectively.
+
+#### Example:
+
+Let’s consider two random variables, $X$ and $Y$, with respective entropies:
+
+- $H(X) = 1.5$ bits
+- $H(Y) = 2.0$ bits
+- The joint entropy $H(X, Y) = 2.5$ bits
+
+Calculating mutual information:
+
+$$
+I(X; Y) = 1.5 + 2.0 - 2.5 = 1.0 \text{ bits}
+$$
+
+This indicates that knowing $Y$ provides 1 bit of information about $X$.
+
+## Applications of Combinatorics and Discrete Probability
+
+The principles of combinatorics and discrete probability find applications in various fields:
+
+1. **Computer Science**: Algorithms for data structures, search algorithms, and optimization problems often rely on combinatorial techniques.
+
+2. **Cryptography**: The security of cryptographic systems is based on the difficulty of
+
+solving certain combinatorial problems, such as factorization.
+
+3. **Game Theory**: In competitive situations, players often utilize combinatorial strategies to maximize their chances of winning.
+
+4. **Genetics**: Combinatorial methods help in understanding genetic variations and inheritance patterns.
+
+5. **Network Theory**: Combinatorial optimization plays a crucial role in analyzing network flows and connectivity.
+
+### Conclusion
+
+In this unit, we explored the fundamental concepts of combinatorics and discrete probability. From the basic rules of counting to complex applications of probability theory, we have established a foundation for further studies in these vital areas of mathematics. The practical applications highlight the importance of these concepts in real-world scenarios, making them essential for students and professionals alike. By mastering these principles, you will be well-equipped to tackle problems in various fields effectively.
+
+### Practice Exercises
+
+1. Calculate the number of ways to arrange the letters of the word "COMBINATORICS".
+
+2. If you roll two six-sided dice, what is the probability of rolling a total of 7?
+
+3. A box contains 5 red, 3 blue, and 2 green balls. If you randomly select 3 balls, what is the probability that you get 2 red and 1 blue?
+
+4. Use Bayes’ theorem to find the probability that a person has a certain disease if a test indicates a positive result, given that the disease has a prevalence of 2% and the test is 85% accurate.
+
+5. Calculate the mutual information between two random variables $X$ and $Y$ with the following distributions:
+   - $P(X=0) = 0.6, P(X=1) = 0.4$
+   - $P(Y=0|X=0) = 0.5, P(Y=0|X=1) = 0.9$
+
+These exercises are designed to reinforce your understanding of the concepts covered in this unit.
