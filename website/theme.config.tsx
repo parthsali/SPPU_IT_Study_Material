@@ -65,6 +65,20 @@ const config: DocsThemeConfig = {
   sidebar: {
     toggleButton: true,
   },
+  banner: {
+    key: "whatsapp-community",
+    dismissible: false,
+    text: (
+      <>
+        <a
+          href="https://chat.whatsapp.com/HDIaRQ0JcT9AbQAbUinKif"
+          target="_blank"
+        >
+          📢 Join our SPPU IT WhatsApp Community!
+        </a>
+      </>
+    ),
+  },
 };
 
 export default config;
