@@ -21,6 +21,12 @@ const Footer: React.FC = () => {
           <li style={listItemStyle}>
             <Link href="/terms">Terms of Service</Link>
           </li>
+          <li style={listItemStyle}>
+            <Link href="/support">Support</Link>
+          </li>
+          <li style={listItemStyle}>
+            <Link href="/faqs">FAQs</Link>
+          </li>
         </ul>
       </nav>
       <p style={copyStyle}>

@@ -12,7 +12,7 @@ const config: DocsThemeConfig = {
         flexDirection: "row",
       }}
     >
-      <img src="/Logo.jpeg" alt="LearnVerse Logo" width="30" height="30" />
+      <img src="/logo.png" alt="LearnVerse Logo" width="30" height="30" />
       <span style={{ marginLeft: "10px", fontSize: "20px" }}>LearnVerse</span>
     </div>
   ),
@@ -50,7 +50,7 @@ const config: DocsThemeConfig = {
       <meta property="og:url" content="https://learnverse.live" />
 
       <meta name="author" content="Parth Sali" />
-      <link rel="icon" href="./Logo.jpeg" />
+      <link rel="icon" href="./logo.png" />
       <link rel="canonical" href="https://learnverse.live" />
       <meta property="og:title" content="LearnVerse" />
       {/* Add your actual website URL */}
