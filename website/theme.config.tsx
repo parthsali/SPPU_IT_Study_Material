@@ -66,8 +66,8 @@ const config: DocsThemeConfig = {
     toggleButton: true,
   },
   banner: {
-    key: "whatsapp-community",
-    dismissible: false,
+    key: "whatsapp-community-banner",
+    dismissible: true,
     text: (
       <>
         <a
