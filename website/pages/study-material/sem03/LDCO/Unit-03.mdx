@@ -38,6 +38,15 @@ Flip-flops are essential building blocks in sequential circuits, used to store a
 | 1   | 0   | 1        |
 | 1   | 1   | Invalid  |
 
+- **Excitation Table**:
+
+| Q (Current) | Q (Next) | S   | R   |
+| ----------- | -------- | --- | --- |
+| 0           | 0        | 0   | x   |
+| 0           | 1        | x   | 1   |
+| 1           | 0        | 1   | x   |
+| 1           | 1        | x   | 0   |
+
 #### JK Flip-Flop
 
 - **Logic Diagram**: Similar to SR but includes feedback mechanisms to eliminate the undefined state.
@@ -50,6 +59,15 @@ Flip-flops are essential building blocks in sequential circuits, used to store a
 | 1   | 0   | 1           |
 | 1   | 1   | Q' (Toggle) |
 
+- **Excitation Table**:
+
+| Q (Current) | Q (Next)  | J     | K     |
+|-------------|-----------|-------|-------|
+| 0           | 0         | 0     | x     |
+| 0           | 1         | 1     | x     |
+| 1           | 0         | x     | 1     |
+| 1           | 1         | x     | 0     |
+
 #### D Flip-Flop
 
 - **Logic Diagram**: Derived from the SR flip-flop, with the inputs modified to eliminate the indeterminate state.
@@ -59,6 +77,15 @@ Flip-flops are essential building blocks in sequential circuits, used to store a
 | --- | -------- |
 | 0   | 0        |
 | 1   | 1        |
+
+- **Excitation Table**:
+
+| Q (Current) | Q (Next)  | D      |
+|-------------|-----------|--------|
+| 0           | 0         | 0      |
+| 0           | 1         | 1      |
+| 1           | 0         | 0      |
+| 1           | 1         | 1      |
 
 #### T Flip-Flop
 
@@ -70,12 +97,22 @@ Flip-flops are essential building blocks in sequential circuits, used to store a
 | 0   | Q           |
 | 1   | Q' (Toggle) |
 
+- **Excitation Table**:
+
+| Q (Current) | Q (Next)  | T      |
+|-------------|-----------|--------|
+| 0           | 0         | 0      |
+| 0           | 1         | 1      |
+| 1           | 0         | 1      |
+| 1           | 1         | 0      |
+
 ### 2.2 Flip-Flop Conversion
 
 Flip-flops can be converted from one type to another by altering the input logic. For example:
 
-- **D Flip-Flop from JK**: By tying the J and K inputs together and using appropriate gating logic.
-- **T Flip-Flop from JK**: By using logic to control the inputs of the JK flip-flop.
+- **JK Flip-Flop from SR**: Take output Q of SR F/F and connect it as a 3rd input to the NAND gate with S input. Similarly, connect Q' as a 3rd input to the NAND gate with R input.
+- **D Flip-Flop from JK**: Connect D to J and *compliment* of D to K input of the JK Flip-Flop.
+- **T Flip-Flop from JK**: Connect T to both J and K inputs of the JK Flip-Flop.
 
 ### 2.3 Asynchronous vs. Synchronous Flip-Flops
 
@@ -106,10 +143,12 @@ Flip-flops serve as the foundation for various applications in digital electroni
 
 ### 3.2 Modulus-n Counter IC (7490) and Applications
 
-- **7490 IC**: This is a 4-bit binary counter IC that can be configured to create modulo-n counters. It can be used to implement counters in various applications such as clocks, frequency dividers, and digital event counters.
+Modulo-N counder are a set of Flip Flops(registers) that counts the numbers of the clock pulses arriving at it's clock. It counts from 0 upto N-1. When it reaches N-1 it resets back to 0 on next clock cycle.
+- **7490 IC**: Also known as BCD counter or Decade counter; it is an asynchronous counter(it can count 10 digits, i.e. 0 to 9). Multiple counters can be connected together to make a counter which can count higher.
 
 ### 3.3 Registers: SISO, SIPO, PISO, and PIPO Types and Applications
 
+Registers are groups of flip-flops used to store multiple bits of data. They are used to hold data temporarily, shift data, and perform arithmetic or logic operations in digital circuits. Here are a few types of register:
 - **SISO (Serial In, Serial Out)**: Data is input serially and shifted out serially, one bit at a time.
 - **SIPO (Serial In, Parallel Out)**: Data is input serially but outputted in parallel. It is useful for converting serial data to parallel form.
 - **PISO (Parallel In, Serial Out)**: Data is input in parallel and shifted out serially, useful for transmitting data over a single line.
@@ -117,7 +156,7 @@ Flip-flops serve as the foundation for various applications in digital electroni
 
 ### Applications of Registers:
 
-- **Shift Registers**: Registers are often used in shift registers, which are fundamental in data processing, communication, and signal generation applications. Shift registers find use in serial-to-parallel conversion, delay generation, and data storage.
+- **Shift Registers**: Shift registers are versatile components in digital circuits with several practical applications such as **Data Storage, Data Transfer, Digital Delay Line, Counters and Sequence Generators**.
 
 ---
 
