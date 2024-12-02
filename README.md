@@ -1,11 +1,10 @@
 <h1 align="center">SPPU IT Study Material</h1>
 
 <p align='center'>
-  <a href="https://sppustudyhub.vercel.app">
+  <a href="https://learnverse.live">
     SPPU IT Study Hub
   </a>
 </p>
-
 
 **Join our Telegram group [here!](https://t.me/sppuinformationtechnology)**
 
@@ -18,6 +17,8 @@
 ## [Second Year Study Material](docs/SE.md)
 
 ## [Third Year Study Material](docs/TE.md)
+
+## [Final Year Study Material](docs/BE.md)
 
 <hr>
 

@@ -1,7 +1,7 @@
 <h1 align="center">BE IT Study Material</h1>
 
 <p align='center'>
-  <a href="learnverse.live">
+  <a href="https://learnverse.live">
     SPPU IT Study Hub
   </a>
 
