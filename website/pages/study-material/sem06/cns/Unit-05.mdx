@@ -1,0 +1,126 @@
+# Unit 5: Cryptographic Algorithms
+
+## Mathematical Preliminaries
+
+To understand cryptographic algorithms, it's essential to grasp a few mathematical concepts such as **Groups**, **Rings**, **Fields**, and **Prime numbers**. These structures form the foundation for the algorithms that secure digital communication.
+
+### Groups
+
+A **group** is a set of elements paired with an operation that satisfies four properties: closure, associativity, identity, and invertibility.
+
+1. **Closure**: Performing the group operation on two elements in the group produces another element within the group.
+2. **Associativity**: The group operation is associative, meaning that (a _ b) _ c = a _ (b _ c).
+3. **Identity**: There exists an element in the group (known as the identity element) that, when used in the operation with any other element, leaves that element unchanged.
+4. **Invertibility**: Each element in the group has an inverse such that when the element and its inverse are combined, they produce the identity element.
+
+### Rings
+
+A **ring** is a set equipped with two binary operations, typically called addition and multiplication, where:
+
+1. **Addition** forms an abelian (commutative) group, meaning it satisfies the properties of closure, associativity, identity, and invertibility.
+2. **Multiplication** is associative and distributive over addition. Rings are foundational in cryptographic functions and hash algorithms because they provide structure for modular arithmetic.
+
+### Fields
+
+A **field** is a ring in which every non-zero element has a multiplicative inverse. In other words, a field is a set on which addition, subtraction, multiplication, and division (except by zero) are all possible and satisfy the familiar properties of arithmetic. **Finite fields** or **Galois fields** (often used in cryptography) are essential for encryption algorithms like the Advanced Encryption Standard (AES).
+
+### Prime Numbers
+
+Prime numbers are integers greater than one that are only divisible by one and themselves. They are crucial to cryptography because many algorithms, including RSA, rely on the properties of large prime numbers. Factorization of these primes is computationally challenging, providing a secure foundation for encryption.
+
+---
+
+## Symmetric Key Algorithms
+
+**Symmetric key algorithms** use a single key for both encryption and decryption. The sender and receiver must share the key securely before communication begins. Symmetric encryption is often fast and suitable for encrypting large amounts of data, and it is commonly used in scenarios where high-speed data processing is needed.
+
+### Data Encryption Standard (DES)
+
+The **Data Encryption Standard (DES)** is a symmetric key algorithm that was one of the earliest standardized encryption methods. DES encrypts data in 64-bit blocks using a 56-bit key over 16 rounds of complex operations, including permutations and substitutions. Although DES was widely used, it has since been replaced by more secure algorithms due to its vulnerability to brute-force attacks.
+
+### Advanced Encryption Standard (AES)
+
+**AES** is a widely used symmetric encryption standard that replaced DES. It offers encryption with key sizes of 128, 192, or 256 bits, providing increased security. AES encrypts data in 128-bit blocks and operates through a series of transformations involving substitutions and permutations. Its security is based on the difficulty of breaking its key size through brute force, and its efficiency makes it ideal for both hardware and software applications.
+
+---
+
+## Public Key Encryption and Hash Functions
+
+**Public Key Encryption** is based on asymmetric cryptography, where two keys—a public key and a private key—are used. Public key encryption addresses the challenge of securely distributing encryption keys in symmetric cryptography, as only the public key is shared openly, while the private key is kept secret.
+
+### RSA (Rivest-Shamir-Adleman)
+
+The **RSA algorithm** is one of the most widely used public-key encryption methods. It relies on the computational difficulty of factoring the product of two large prime numbers. RSA generates a public and private key pair; the public key is used to encrypt data, and the private key is used to decrypt it. RSA is not only used for encryption but also for digital signatures, providing authenticity in digital communication.
+
+#### RSA Key Generation Process:
+
+1. **Generate two large prime numbers (p and q)**.
+2. **Calculate n = p × q** (n is used as the modulus in the public and private keys).
+3. **Compute the totient φ(n) = (p−1)(q−1)**.
+4. **Choose an integer e** (public key exponent) such that 1 < e < φ(n) and gcd(e, φ(n)) = 1.
+5. **Determine d**, the modular multiplicative inverse of e (the private key exponent), ensuring that (e × d) mod φ(n) = 1.
+
+### Hash Functions
+
+A **hash function** maps an input of any size to a fixed-length output, known as a hash value. Hash functions are essential in cryptography for integrity checks and digital signatures. A key property of a hash function is that it must be computationally infeasible to generate the original input from the hash output (pre-image resistance). Additionally, it should be hard to find two different inputs with the same hash output (collision resistance).
+
+---
+
+## Digital Signatures
+
+**Digital signatures** verify the authenticity and integrity of a message, file, or document in digital communications. By combining hash functions with encryption, digital signatures provide a secure way to confirm the sender's identity and ensure the message has not been altered.
+
+### How Digital Signatures Work
+
+1. **Hashing**: A hash function is applied to the original message to create a fixed-length digest.
+2. **Encryption with Private Key**: The hash digest is encrypted using the sender's private key, creating the digital signature.
+3. **Verification**: Upon receiving the message and digital signature, the receiver decrypts the signature using the sender's public key. The receiver then hashes the original message and compares it to the decrypted hash. If they match, the signature is valid.
+
+### Applications of Digital Signatures
+
+- **Authenticating Software**: Digital signatures ensure software and documents originate from a trusted source.
+- **Securing Transactions**: Digital signatures are used to secure online transactions, contracts, and financial exchanges.
+
+---
+
+## Digital Certificates and Public Key Infrastructure (PKI)
+
+**Digital Certificates** are digital documents that associate a public key with an individual or organization, validated by a trusted entity known as a Certificate Authority (CA). The **Public Key Infrastructure (PKI)** is a system for creating, managing, and distributing digital certificates and public-private key pairs. PKI establishes trust in digital communication through authentication and encryption.
+
+### Private Key Management
+
+Private key management is critical to maintaining the security of public-key cryptography. Organizations must secure their private keys against unauthorized access and loss, as they are used for decrypting data and creating digital signatures. **Hardware Security Modules (HSMs)** and secure key storage practices are commonly used to safeguard private keys.
+
+### Diffie-Hellman Key Exchange
+
+The **Diffie-Hellman key exchange** protocol is used to securely exchange cryptographic keys over a public channel. Unlike RSA, it does not involve encryption or decryption but rather generates a shared secret that can be used for symmetric encryption between two parties.
+
+#### Diffie-Hellman Key Exchange Process:
+
+1. Two parties agree on a large prime number (p) and a base (g).
+2. Each party selects a private key (a and b) and computes their public key by raising g to their private key (mod p).
+3. The public keys are exchanged, and each party computes the shared secret by raising the other’s public key to their private key (mod p).
+
+The shared secret is now identical for both parties but remains hidden from any eavesdroppers.
+
+---
+
+## The PKIX Model
+
+The **PKIX (Public Key Infrastructure X.509)** model is a standardized framework for creating, distributing, and managing public-key certificates. Developed by the Internet Engineering Task Force (IETF), PKIX defines a hierarchy of trust with a central **Certificate Authority (CA)**, responsible for issuing and managing certificates for individuals, devices, and organizations.
+
+### PKIX Components
+
+1. **Certificate Authority (CA)**: The CA is the root of trust and issues certificates after verifying the identity of certificate applicants.
+2. **Registration Authority (RA)**: The RA acts as an intermediary, accepting requests for digital certificates and verifying identities before the CA issues certificates.
+3. **Certificate Revocation List (CRL)**: CRLs are maintained to list certificates that have been revoked before their expiration dates due to compromise or other security concerns.
+
+### PKIX Certificate Lifecycle
+
+1. **Certificate Issuance**: Applicants submit identity verification to the RA, and the CA issues a certificate if verification is successful.
+2. **Certificate Renewal**: Certificates have an expiration date and must be renewed periodically.
+3. **Certificate Revocation**: If a certificate is compromised or no longer needed, the CA revokes it and adds it to the CRL, ensuring it can no longer be trusted.
+
+### PKIX Applications
+
+PKIX is widely used in web browsers, email security, and virtual private networks (VPNs), as it provides a robust and secure framework for verifying identities and protecting data.

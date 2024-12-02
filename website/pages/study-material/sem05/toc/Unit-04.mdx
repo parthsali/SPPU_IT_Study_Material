@@ -1,0 +1,149 @@
+# Unit 4: Pushdown Automata and Post Machines
+
+## Introduction to Pushdown Automata
+
+Pushdown Automata (PDA) are an extension of finite automata that provide the capability to use a stack as additional memory. This enables PDAs to recognize context-free languages, which are essential in various applications, such as programming language parsers and natural language processing. In this unit, we delve into the formal definitions of PDAs, their construction, properties, and the equivalence of different acceptance criteria. Additionally, we explore the relationship between context-free grammars (CFGs) and PDAs, and conclude with an overview of Post Machines.
+
+### Basic Concepts: Pushdown Automata
+
+A **Pushdown Automaton (PDA)** is defined as a 7-tuple:
+
+$$
+P = (Q, \Sigma, \Gamma, \delta, q_0, z_0, F)
+$$
+
+Where:
+
+- $Q$ is a finite set of states.
+- $\Sigma$ is a finite set of input symbols (alphabet).
+- $\Gamma$ is a finite set of stack symbols.
+- $\delta: Q \times \Sigma \times \Gamma \rightarrow \mathcal{P}(Q \times \Gamma^\*)$ is the transition function, which maps a state, an input symbol, and a stack symbol to a set of pairs of states and stack strings.
+- $q_0 \in Q$ is the start state.
+- $z_0 \in \Gamma$ is the initial stack symbol.
+- $F \subseteq Q$ is the set of accepting states.
+
+### Transition Diagram and Transition Table for PDA
+
+#### Transition Diagram
+
+A **transition diagram** for a PDA visually represents its states and transitions. Each transition is labeled with the input symbol that triggers it, the symbol that is popped from the stack, and the symbols that are pushed onto the stack.
+
+For instance, consider a PDA that recognizes the language $L = \{ a^n b^n \mid n \geq 0 \}$. The transition diagram may look like:
+
+- From state $q_0$ on input `a`, push `A` onto the stack.
+- From state $q_0$ on input `b`, pop `A` from the stack.
+- Transition to an accepting state when the stack is empty.
+
+#### Transition Table
+
+The **transition table** provides a tabular representation of the PDA's transition function. It lists the current state, input symbol, stack symbol, and the resulting state and stack actions.
+
+| Current State | Input Symbol | Stack Symbol | Next State | Stack Action |
+| ------------- | ------------ | ------------ | ---------- | ------------ |
+| $q_0$         | `a`          | $z_0$        | $q_0$      | Push $A$     |
+| $q_0$         | `b`          | $A$          | $q_0$      | Pop $A$      |
+| $q_0$         | $\epsilon$   | $z_0$        | $q_f$      | -            |
+
+### Instantaneous Description of PDA
+
+An **instantaneous description (ID)** of a PDA is a snapshot of the current configuration of the PDA, comprising its current state, the remaining input string, and the current contents of the stack. It is typically represented as a tuple:
+
+$$
+ID = (q, w, \gamma)
+$$
+
+Where:
+
+- $q$ is the current state.
+- $w$ is the remaining input string.
+- $\gamma$ is the current stack contents.
+
+For example, if the PDA is in state $q_0$, with the input string `ab`, and the stack contains `A`, the instantaneous description would be:
+
+$$
+ID = (q_0, ab, A)
+$$
+
+### Equivalence of Acceptance by Final State and Empty Stack
+
+PDAs can accept input strings in two ways: by **final state** and by **empty stack**.
+
+1. **Acceptance by Final State**: A PDA accepts a string if it processes the entire input and transitions to a state in the set of accepting states $F$.
+
+2. **Acceptance by Empty Stack**: A PDA accepts a string if, after processing the entire input, the stack is empty, regardless of the current state.
+
+#### Equivalence
+
+It is important to note that for any PDA that accepts by final state, there exists an equivalent PDA that accepts by empty stack, and vice versa. This means that both acceptance criteria recognize the same class of context-free languages.
+
+### Deterministic PDA (DPDA) and Nondeterministic PDA (NPDA)
+
+#### Deterministic PDA
+
+A **Deterministic Pushdown Automaton (DPDA)** is a type of PDA where, for each state and input symbol (along with the stack symbol), there is at most one possible action. This restriction makes DPDAs less powerful than NPDAs, as there are context-free languages that cannot be recognized by DPDAs.
+
+##### Formal Definition of DPDA
+
+A DPDA can be defined similarly to a PDA, with the restriction that the transition function is deterministic:
+
+$$
+\delta: Q \times \Sigma \times \Gamma \rightarrow Q \times \Gamma^*
+$$
+
+This means that for each combination of state, input symbol, and stack symbol, there is at most one resulting state and stack operation.
+
+#### Nondeterministic PDA
+
+A **Nondeterministic Pushdown Automaton (NPDA)** allows for multiple transitions for the same input symbol and stack symbol. This flexibility enables NPDAs to recognize a broader class of languages compared to DPDAs.
+
+### Context-Free Language and PDA
+
+A **Context-Free Language (CFL)** is a language that can be generated by a context-free grammar (CFG) or recognized by a PDA. PDAs play a crucial role in parsing and understanding structured data, such as programming languages.
+
+#### Conversion of CFG to PDA
+
+The conversion from a context-free grammar to a PDA involves constructing a PDA that simulates the leftmost derivation of the grammar. The PDA uses its stack to store non-terminal symbols and processes input by replacing non-terminals with their corresponding productions.
+
+**Steps for Conversion**:
+
+1. For each production $A \rightarrow \alpha$ in the CFG, create a transition in the PDA that, when in state $q$ with the stack containing $A$, replaces $A$ with $\alpha$.
+2. Initialize the PDA in the start state with the start symbol of the CFG on the stack.
+
+#### Conversion of PDA to CFG
+
+The conversion from a PDA to a CFG involves creating grammar rules that correspond to the transitions of the PDA. Each transition in the PDA can be represented as a production in the CFG.
+
+**Steps for Conversion**:
+
+1. For each transition $\delta(q, a, X) = (p, \beta)$ in the PDA, create a production $A \rightarrow aB$ where $B$ represents the stack contents after processing $X$.
+2. Ensure that the CFG generates strings that correspond to the accepted languages of the PDA.
+
+### Post Machine (PM)
+
+A **Post Machine** is a theoretical model of computation introduced by Emil Post. It is a type of rewriting machine and serves as a precursor to modern computation concepts. Post Machines are used to explore the limits of computability and define recursively enumerable languages.
+
+#### Definition of Post Machine
+
+A Post Machine can be defined as a tuple:
+
+$$
+PM = (Q, \Sigma, \Gamma, \delta, q_0, F)
+$$
+
+Where:
+
+- $Q$ is a finite set of states.
+- $\Sigma$ is a finite input alphabet.
+- $\Gamma$ is a finite tape alphabet (which may include blank symbols).
+- $\delta: Q \times \Gamma \rightarrow Q \times \Gamma^\*$ is the transition function, mapping a state and tape symbol to the next state and new tape symbols.
+- $q_0$ is the start state.
+- $F$ is the set of halting states.
+
+#### Construction of Post Machine
+
+To construct a Post Machine, follow these steps:
+
+1. Identify the set of states $Q$.
+2. Define the input alphabet $\Sigma$ and tape alphabet $\Gamma$.
+3. Specify the transition function $\delta$, detailing how the machine transitions between states based on the current tape symbol.
+4. Define the start state $q_0$ and the set of halting states $F$.

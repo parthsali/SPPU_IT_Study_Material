@@ -12,10 +12,12 @@
     "title": "Support",
     "type": "page"
   },
+  "privacy-policy": {
+    "title": "Privacy Policy",
+    "type": "page"
+  },
   "study-material": "Study Material",
-  "practicals": "Practicals",
-  "faq": "FAQs",
+  "faqs": "FAQs",
   "disclaimer": "Disclaimer",
-  "privacy-policy": "Privacy Policy",
   "terms": "Terms of Service"
 }

@@ -1,0 +1,183 @@
+# Unit 1: Linear Differential Equations (LDE)
+
+## Introduction to Linear Differential Equations
+
+Linear Differential Equations (LDEs) play a crucial role in various fields such as physics, engineering, economics, and more. They help in modeling systems where change happens in a linear manner, for instance, in circuits, heat transfer, and population dynamics. In this unit, we will explore the LDEs of nth order with constant coefficients, delve into methods for finding their solutions, and examine special types of differential equations like Cauchy’s and Legendre’s. The goal is to develop a clear understanding of how to solve LDEs and apply these methods to real-world problems.
+
+---
+
+## LDE of nth Order with Constant Coefficients
+
+### Definition of LDE
+
+A **Linear Differential Equation of order n** is of the form:
+
+$$ a*n \frac{d^n y}{dx^n} + a*{n-1} \frac{d^{n-1} y}{dx^{n-1}} + \dots + a_1 \frac{dy}{dx} + a_0 y = f(x) $$
+
+where $y$ is the dependent variable, $x$ is the independent variable, $a_n, a_{n-1}, \dots, a_0$ are constants, and $f(x)$ is a function of $x$. The term $f(x)$ is called the **non-homogeneous term**, and when $f(x) = 0$, the equation is **homogeneous**.
+
+For example:
+
+$$ \frac{d^2 y}{dx^2} - 3 \frac{dy}{dx} + 2y = e^x $$
+
+is a second-order non-homogeneous linear differential equation with constant coefficients.
+
+### General Solution
+
+The general solution of a linear differential equation consists of two parts:
+
+1. **Complementary Function (CF)**: The solution to the homogeneous equation (when $f(x) = 0$).
+2. **Particular Integral (PI)**: A specific solution to the non-homogeneous equation.
+
+Thus, the general solution is given by:
+
+$$ y = CF + PI $$
+
+---
+
+## Complementary Function (CF)
+
+The **complementary function** is the solution to the homogeneous equation:
+
+$$ a*n \frac{d^n y}{dx^n} + a*{n-1} \frac{d^{n-1} y}{dx^{n-1}} + \dots + a_1 \frac{dy}{dx} + a_0 y = 0 $$
+
+### Solving the Homogeneous Equation
+
+To find the complementary function, we start by solving the **auxiliary equation** (also known as the characteristic equation), which is obtained by replacing $\frac{d^n y}{dx^n}$ with $m^n$:
+
+$$ a*n m^n + a*{n-1} m^{n-1} + \dots + a_1 m + a_0 = 0 $$
+
+#### Example:
+
+For the equation:
+
+$$ \frac{d^2 y}{dx^2} - 3 \frac{dy}{dx} + 2y = 0 $$
+
+The auxiliary equation is:
+
+$$ m^2 - 3m + 2 = 0 $$
+
+Solving this quadratic equation:
+
+$$ m = 1, 2 $$
+
+Thus, the complementary function is:
+
+$$ y_c = C_1 e^{x} + C_2 e^{2x} $$
+
+where $C_1$ and $C_2$ are arbitrary constants.
+
+### Cases for the Auxiliary Equation
+
+1. **Distinct Real Roots**: If the auxiliary equation has distinct real roots $m_1, m_2, \dots, m_n$, the complementary function is:
+
+   $$ y_c = C_1 e^{m_1 x} + C_2 e^{m_2 x} + \dots + C_n e^{m_n x} $$
+
+2. **Repeated Real Roots**: If there are repeated roots, say $m_1$ with multiplicity $r$, the complementary function is of the form:
+
+   $$ y_c = (C_1 + C_2 x + \dots + C_r x^{r-1}) e^{m_1 x} $$
+
+3. **Complex Roots**: If the roots are complex, say $m = \alpha \pm i\beta$, the complementary function takes the form:
+
+   $$ y_c = e^{\alpha x} (C_1 \cos \beta x + C_2 \sin \beta x) $$
+
+---
+
+## Particular Integral (PI)
+
+The **particular integral** (PI) is a specific solution to the non-homogeneous equation:
+
+$$ a*n \frac{d^n y}{dx^n} + a*{n-1} \frac{d^{n-1} y}{dx^{n-1}} + \dots + a_1 \frac{dy}{dx} + a_0 y = f(x) $$
+
+There are different methods to find the PI based on the form of $f(x)$.
+
+### General Method
+
+The general method involves assuming a trial solution for $y$ based on the form of $f(x)$. We then substitute this trial solution into the given equation to determine the unknown constants.
+
+#### Example:
+
+For the equation:
+
+$$ \frac{d^2 y}{dx^2} - 3 \frac{dy}{dx} + 2y = e^x $$
+
+We assume a particular integral of the form:
+
+$$ y_p = A e^x $$
+
+Substituting $y_p$ into the original equation:
+
+$$ A e^x - 3 A e^x + 2 A e^x = e^x $$
+
+Solving for $A$:
+
+$$ A = 1 $$
+
+Thus, the particular integral is:
+
+$$ y_p = e^x $$
+
+### Short Methods for PI
+
+In certain cases, specific short methods can be applied to quickly find the PI.
+
+1. **When $f(x)$ is a polynomial**: Assume a polynomial of the same degree as $f(x)$.
+
+   Example: For $f(x) = 5x^2$, assume $y_p = Ax^2 + Bx + C$.
+
+2. **When $f(x)$ is an exponential function**: Assume $y_p = A e^{kx}$, where $k$ is the exponent in $f(x)$.
+
+3. **When $f(x)$ is a sine or cosine function**: Assume $y_p = A \cos kx + B \sin kx$.
+
+### Method of Variation of Parameters
+
+The **method of variation of parameters** is a more general method used when the standard forms of the PI don’t apply. It involves assuming that the constants in the complementary function are not constant but functions of $x$. The solution is then derived by solving the resulting equations.
+
+---
+
+## Special Differential Equations
+
+### Cauchy’s Differential Equation
+
+Cauchy’s differential equation has the form:
+
+$$ x^n \frac{d^n y}{dx^n} + a\_{n-1} x^{n-1} \frac{d^{n-1} y}{dx^{n-1}} + \dots + a_1 x \frac{dy}{dx} + a_0 y = f(x) $$
+
+This type of equation can be transformed into a linear differential equation with constant coefficients by using the substitution $x = e^t$.
+
+#### Example:
+
+Solve the equation:
+
+$$ x^2 \frac{d^2 y}{dx^2} + x \frac{dy}{dx} - y = 0 $$
+
+By letting $x = e^t$, we can transform the equation into a second-order linear differential equation with constant coefficients and solve it using standard methods.
+
+### Legendre’s Differential Equation
+
+Legendre’s differential equation is of the form:
+
+$$ (1 - x^2) \frac{d^2 y}{dx^2} - 2x \frac{dy}{dx} + n(n+1)y = 0 $$
+
+This equation arises in problems involving spherical coordinates, such as in the study of gravitational fields and electrostatics. The solutions to Legendre’s equation are known as **Legendre polynomials**, which are important in physics.
+
+---
+
+## Simultaneous and Symmetric Simultaneous Differential Equations
+
+### Simultaneous Differential Equations
+
+Simultaneous differential equations involve two or more dependent variables and their derivatives with respect to a common independent variable. For example:
+
+$$ \frac{dx}{dt} = 2x + 3y $$
+$$ \frac{dy}{dt} = 4x + y $$
+
+To solve such equations, methods like elimination or substitution can be used to reduce them to a single differential equation.
+
+### Symmetric Simultaneous Differential Equations
+
+Symmetric simultaneous differential equations have a certain symmetry between the equations. For instance:
+
+$$ \frac{dx}{dt} = f(x, y), \quad \frac{dy}{dt} = f(y, x) $$
+
+These equations can sometimes be solved by introducing new variables that simplify the system.

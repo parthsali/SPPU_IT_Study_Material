@@ -1,0 +1,230 @@
+# Unit 5: Introduction to Number Theory
+
+## Introduction to Number Theory
+
+Number theory is a branch of mathematics focused on the study of integers and the relationships between them. It has a rich history and finds applications in cryptography, coding theory, and algorithms. In this unit, we will explore key concepts such as divisibility, greatest common divisor (GCD), Euclidean algorithms, prime factorization, modular arithmetic, and key theorems like Fermat’s Little Theorem, Euler’s Theorem, and the Chinese Remainder Theorem. The primary objective of this unit is to build a strong understanding of integers and their properties through the study of divisibility, primes, and modular arithmetic.
+
+---
+
+## Divisibility of Integers
+
+### Properties of Divisibility
+
+Divisibility refers to one integer being divisible by another without leaving a remainder. Formally, for two integers $a$ and $b$, we say that $a$ divides $b$ (written as $a | b$) if there exists an integer $k$ such that $b = ak$. The properties of divisibility include:
+
+- **Reflexive Property**: Any integer divides itself, i.e., $a | a$.
+- **Transitive Property**: If $a | b$ and $b | c$, then $a | c$.
+- **Antisymmetric Property**: If $a | b$ and $b | a$, then $a = \pm b$.
+
+These properties are fundamental in understanding the structure of integers and are used throughout number theory.
+
+### Division Algorithm
+
+The **division algorithm** states that for any two integers $a$ and $b$ (with $b > 0$), there exist unique integers $q$ and $r$ such that:
+
+$$
+a = bq + r, \quad 0 \leq r < b
+$$
+
+Here, $q$ is called the quotient, and $r$ is the remainder. This is the foundation of many number-theoretic algorithms, including the Euclidean algorithm for finding the greatest common divisor (GCD).
+
+---
+
+## Greatest Common Divisor (GCD) and its Properties
+
+### Definition of GCD
+
+The greatest common divisor (GCD) of two integers $a$ and $b$ is the largest integer $d$ that divides both $a$ and $b$. It is denoted as $\gcd(a, b)$. For example:
+
+$$
+\gcd(12, 15) = 3
+$$
+
+### Properties of GCD
+
+- **Commutative Property**: $\gcd(a, b) = \gcd(b, a)$
+- **Associative Property**: $\gcd(a, \gcd(b, c)) = \gcd(\gcd(a, b), c)$
+- **Distributive Property**: $\gcd(a, bc) = \gcd(a, b) \cdot \gcd(a, c)$
+
+The GCD plays a critical role in solving problems related to divisibility, fractions, and modular arithmetic.
+
+---
+
+## Euclidean Algorithm
+
+The **Euclidean algorithm** is an efficient method for finding the greatest common divisor (GCD) of two integers. It is based on the principle that:
+
+$$
+\gcd(a, b) = \gcd(b, r)
+$$
+
+Where $r$ is the remainder when $a$ is divided by $b$. The algorithm proceeds by repeatedly applying this rule until the remainder is zero. The last non-zero remainder is the GCD.
+
+**Example**: To find $\gcd(252, 105)$ using the Euclidean algorithm:
+
+- $252 = 105 \cdot 2 + 42$
+- $105 = 42 \cdot 2 + 21$
+- $42 = 21 \cdot 2 + 0$
+
+Thus, $\gcd(252, 105) = 21$.
+
+---
+
+## Extended Euclidean Algorithm
+
+The **extended Euclidean algorithm** not only computes the GCD of two integers $a$ and $b$ but also expresses the GCD as a linear combination of $a$ and $b$. Specifically, it finds integers $x$ and $y$ such that:
+
+$$
+\gcd(a, b) = ax + by
+$$
+
+This is useful in solving Diophantine equations and finding modular inverses.
+
+**Example**: For $a = 252$ and $b = 105$, the extended Euclidean algorithm gives:
+
+$$
+21 = 252 \cdot (-1) + 105 \cdot 3
+$$
+
+Thus, $x = -1$ and $y = 3$.
+
+---
+
+## Prime Factorization Theorem
+
+The **prime factorization theorem**, also known as the **fundamental theorem of arithmetic**, states that every integer greater than 1 can be uniquely factored into prime numbers, up to the order of the factors. For example:
+
+$$
+60 = 2^2 \cdot 3 \cdot 5
+$$
+
+This theorem underpins much of number theory, including the study of divisibility, GCD, and LCM (least common multiple).
+
+### Importance of Prime Factorization
+
+Prime numbers are the building blocks of integers, and their unique factorization property is essential in various algorithms, including cryptographic algorithms like RSA.
+
+---
+
+## Congruence Relation
+
+### Definition of Congruence
+
+For integers $a$, $b$, and $n$ (with $n > 0$), we say that $a$ is congruent to $b$ modulo $n$, written as:
+
+$$
+a \equiv b \pmod{n}
+$$
+
+If $n$ divides $a - b$. In other words, $a$ and $b$ leave the same remainder when divided by $n$.
+
+### Properties of Congruences
+
+- **Reflexive Property**: $a \equiv a \pmod{n}$
+- **Symmetric Property**: If $a \equiv b \pmod{n}$, then $b \equiv a \pmod{n}$
+- **Transitive Property**: If $a \equiv b \pmod{n}$ and $b \equiv c \pmod{n}$, then $a \equiv c \pmod{n}$
+
+Congruence relations are essential in modular arithmetic and number-theoretic algorithms.
+
+---
+
+## Modular Arithmetic
+
+**Modular arithmetic** is a system of arithmetic for integers, where numbers "wrap around" after reaching a certain value called the modulus. It is often described as "clock arithmetic."
+
+### Basic Operations
+
+- **Addition**: $(a + b) \mod n$
+- **Subtraction**: $(a - b) \mod n$
+- **Multiplication**: $(a \cdot b) \mod n$
+- **Exponentiation**: $(a^k) \mod n$
+
+These operations obey many of the same rules as regular arithmetic but are constrained by the modulus. Modular arithmetic is widely used in cryptography, particularly in algorithms like RSA.
+
+---
+
+## Euler Phi Function
+
+The **Euler Phi function** $\phi(n)$ counts the number of integers less than or equal to $n$ that are relatively prime to $n$. If $n$ is a prime number $p$, then:
+
+$$
+\phi(p) = p - 1
+$$
+
+For example, $\phi(5) = 4$, since the numbers 1, 2, 3, and 4 are all relatively prime to 5.
+
+If $n$ is a product of two distinct primes $p$ and $q$, then:
+
+$$
+\phi(pq) = (p-1)(q-1)
+$$
+
+The Euler Phi function is used in Euler’s Theorem and many other applications in number theory.
+
+---
+
+## Euler’s Theorem
+
+**Euler’s Theorem** states that if $a$ is an integer coprime to $n$, then:
+
+$$
+a^{\phi(n)} \equiv 1 \pmod{n}
+$$
+
+This theorem is a generalization of Fermat’s Little Theorem and is crucial in modular arithmetic and cryptography.
+
+---
+
+## Fermat's Little Theorem
+
+**Fermat’s Little Theorem** states that if $p$ is a prime number and $a$ is an integer not divisible by $p$, then:
+
+$$
+a^{p-1} \equiv 1 \pmod{p}
+$$
+
+This theorem is widely used in number theory, especially in primality testing and cryptographic algorithms.
+
+---
+
+## Additive and Multiplicative Inverses
+
+### Additive Inverse
+
+For any integer $a$, the additive inverse is the integer that, when added to $a$, results in zero. In modular arithmetic, the additive inverse of $a \mod n$ is $n - a$.
+
+### Multiplicative Inverse
+
+The multiplicative inverse of an integer $a$ modulo $n$ is an integer $x$ such that:
+
+$$
+a \cdot x \equiv 1 \pmod{n}
+$$
+
+The multiplicative inverse exists if and only if $a$ and $n$ are coprime ($\gcd(a, n) = 1$).
+
+---
+
+## Chinese Remainder Theorem
+
+The \*\*Chinese Remainder
+
+Theorem\*\* provides a way to solve systems of simultaneous congruences with different moduli. It states that if $n_1, n_2, \dots, n_k$ are pairwise coprime, then the system:
+
+$$
+x \equiv a_1 \pmod{n_1}
+$$
+
+$$
+x \equiv a_2 \pmod{n_2}
+$$
+
+$$
+\vdots
+$$
+
+$$
+x \equiv a_k \pmod{n_k}
+$$
+
+has a unique solution modulo $n_1 n_2 \dots n_k$.

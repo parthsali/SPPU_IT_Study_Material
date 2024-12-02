@@ -1,0 +1,211 @@
+# Unit 6: Numerical Methods
+
+## Interpolation
+
+Interpolation is a technique used to estimate unknown values by utilizing known data points. This is particularly useful in various fields, including engineering, computer graphics, and data analysis. Two common forms of interpolation are **Newton’s Interpolation** and **Lagrange’s Interpolation**.
+
+### 1. Finite Differences
+
+Finite differences are used to approximate derivatives and can be instrumental in interpolation. The main idea is to replace derivatives with differences in function values. There are three primary types of finite differences:
+
+- **Forward Difference**: This measures the change in the function values at subsequent points.
+
+  $$ \Delta f(x) = f(x+h) - f(x) $$
+
+- **Backward Difference**: This measures the change in function values at preceding points.
+
+  $$ \nabla f(x) = f(x) - f(x-h) $$
+
+- **Central Difference**: This averages the forward and backward differences, providing a better approximation for the derivative.
+
+  $$ \Delta^2 f(x) = f(x+h) - 2f(x) + f(x-h) $$
+
+These differences are the foundation of various interpolation formulas.
+
+### 2. Newton’s Interpolation Formula
+
+Newton’s interpolation uses the concept of divided differences to construct a polynomial that passes through a set of known points. The formula is expressed as:
+
+$$
+P(x) = f(x_0) + (x - x_0) \cdot \Delta f(x_0) + \frac{(x - x_0)(x - x_1)}{2!} \cdot \Delta^2 f(x_0) + \ldots
+$$
+
+Where $P(x)$ is the interpolating polynomial, $x_0, x_1, \ldots$ are known data points, and $\Delta^n f(x_0)$ represents the nth divided difference at point $x_0$.
+
+#### Example:
+
+Given points $(1, 1), (2, 4), (3, 9)$, we can use Newton's interpolation formula to find the polynomial that fits these points.
+
+1. Calculate the divided differences.
+2. Construct the polynomial using the formula.
+
+### 3. Lagrange’s Interpolation Formula
+
+Lagrange’s interpolation provides another way to construct a polynomial through known data points. The formula is given by:
+
+$$
+P(x) = \sum_{i=0}^{n} f(x_i) L_i(x)
+$$
+
+where
+
+$$
+L_i(x) = \prod_{\substack{0 \leq j \leq n \\ j \neq i}} \frac{x - x_j}{x_i - x_j}
+$$
+
+Here, $L_i(x)$ are the Lagrange basis polynomials that ensure $P(x)$ passes through all the given points.
+
+#### Example:
+
+For the points $(1, 1), (2, 4), (3, 9)$, the Lagrange polynomial can be constructed similarly to Newton's method, using the above formula to find the basis polynomials and summing them up.
+
+## Numerical Differentiation
+
+Numerical differentiation is the process of estimating the derivative of a function based on discrete data points. It is particularly useful when dealing with experimental or observational data.
+
+### 1. Forward Difference Method
+
+The forward difference method estimates the derivative at a point using values from that point and subsequent points:
+
+$$
+f'(x) \approx \frac{f(x+h) - f(x)}{h}
+$$
+
+### 2. Backward Difference Method
+
+The backward difference method estimates the derivative using previous points:
+
+$$
+f'(x) \approx \frac{f(x) - f(x-h)}{h}
+$$
+
+### 3. Central Difference Method
+
+The central difference method provides a more accurate estimate by averaging the forward and backward differences:
+
+$$
+f'(x) \approx \frac{f(x+h) - f(x-h)}{2h}
+$$
+
+#### Example:
+
+Given values $f(1) = 1$, $f(1.1) = 1.1$, and $f(0.9) = 0.9$:
+
+1. **Forward Difference**: $f'(1) \approx \frac{1.1 - 1}{0.1} = 1$
+2. **Backward Difference**: $f'(1) \approx \frac{1 - 0.9}{0.1} = 1$
+3. **Central Difference**: $f'(1) \approx \frac{1.1 - 0.9}{0.2} = 1$
+
+## Numerical Integration
+
+Numerical integration is essential for estimating the value of definite integrals when analytical solutions are challenging to obtain. Two commonly used methods are the **Trapezoidal Rule** and **Simpson’s Rule**.
+
+### 1. Trapezoidal Rule
+
+The Trapezoidal Rule approximates the area under a curve by dividing it into trapezoids. The formula for numerical integration using the trapezoidal rule is:
+
+$$
+\int_a^b f(x) \, dx \approx \frac{h}{2} \left( f(a) + f(b) \right)
+$$
+
+where $h = b - a$.
+
+#### Example:
+
+For $f(x) = x^2$ from $x=1$ to $x=3$:
+
+1. Calculate $f(1)$ and $f(3)$:
+   - $f(1) = 1^2 = 1$
+   - $f(3) = 3^2 = 9$
+2. Apply the Trapezoidal Rule:
+
+$$
+\int_1^3 x^2 \, dx \approx \frac{2}{2} (1 + 9) = 10
+$$
+
+### 2. Simpson’s Rule
+
+Simpson’s Rule is a more accurate method that uses parabolic segments to approximate the area under the curve. The formula is:
+
+$$
+\int_a^b f(x) \, dx \approx \frac{h}{3} \left( f(a) + 4f\left(\frac{a+b}{2}\right) + f(b) \right)
+$$
+
+where $h = b - a$.
+
+#### Example:
+
+For $f(x) = x^2$ from $x=1$ to $x=3$:
+
+1. Calculate $f(1)$, $f(3)$, and $f(2)$:
+   - $f(2) = 2^2 = 4$
+2. Apply Simpson’s Rule:
+
+$$
+\int_1^3 x^2 \, dx \approx \frac{2}{3} (1 + 4 \times 4 + 9) = \frac{2}{3} (1 + 16 + 9) = \frac{2}{3} \cdot 26 = \frac{52}{3} \approx 17.33
+$$
+
+### 3. Bound of Truncation Error
+
+The truncation error in numerical integration measures how much the approximation differs from the exact value. For the Trapezoidal Rule, the truncation error $E_T$ can be expressed as:
+
+$$
+E_T \leq \frac{(b-a)^3}{12n^2} \max |f''(x)|
+$$
+
+For Simpson’s Rule, the error $E_S$ is given by:
+
+$$
+E_S \leq \frac{(b-a)^5}{180n^4} \max |f^{(4)}(x)|
+$$
+
+Where $n$ is the number of subintervals, and $f^{(k)}$ denotes the k-th derivative of $f$.
+
+## Solution of Ordinary Differential Equations
+
+Ordinary differential equations (ODEs) describe the relationship between functions and their derivatives. Numerical methods are often employed to find approximate solutions when analytical solutions are not feasible.
+
+### 1. Euler’s Method
+
+Euler’s method is the simplest numerical technique for solving first-order ODEs. It uses the formula:
+
+$$
+y_{n+1} = y_n + hf(x_n, y_n)
+$$
+
+Where $h$ is the step size, $y_n$ is the current value, and $f(x_n, y_n)$ is the function defining the differential equation.
+
+#### Example:
+
+Given $\frac{dy}{dx} = y$ with initial condition $y(0) = 1$ and $h = 0.1$:
+
+1. $y_0 = 1$
+2. $y_1 = y_0 + h \cdot y_0 = 1 + 0.1 \cdot 1 = 1.1$
+3. Repeat for subsequent steps.
+
+### 2. Modified Euler’s Method
+
+The Modified Euler’s Method (also known as the Heun’s Method) improves upon the basic Euler method by averaging the slopes. The formula is:
+
+1. Predict:
+   $$ y\_{n+1}^{\*} = y_n + hf(x_n, y_n) $$
+2. Correct:
+   $$ y*{n+1} = y_n + \frac{h}{2} \left( f(x_n, y_n) + f(x*{n+1}, y\_{n+1}^{\*}) \right) $$
+
+### 3. Runge-Kutta 4th Order Method
+
+The Runge-Kutta 4th Order Method is a more sophisticated approach that provides greater
+
+accuracy. The formula is:
+
+$$
+y_{n+1} = y_n + \frac{h}{6} \left( k_1 + 2k_2 + 2k_3 + k_4 \right)
+$$
+
+Where:
+
+- $k_1 = f(x_n, y_n)$
+- $k_2 = f\left(x_n + \frac{h}{2}, y_n + \frac{h}{2} k_1\right)$
+- $k_3 = f\left(x_n + \frac{h}{2}, y_n + \frac{h}{2} k_2\right)$
+- $k_4 = f(x_n + h, y_n + hk_3)$
+
+This method provides a more accurate solution over a larger range of $x$ values compared to previous methods.

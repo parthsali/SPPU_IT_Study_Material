@@ -1,0 +1,161 @@
+# Unit 2: Transforms
+
+## Introduction to Fourier and Z-Transforms
+
+Transforms are mathematical tools used to convert a function from one domain to another. In this unit, we will cover two important transforms: the **Fourier Transform (FT)** and the **Z-Transform (ZT)**. These transforms have wide applications in signal processing, control systems, image processing, and more.
+
+---
+
+## Fourier Transform (FT)
+
+The **Fourier Transform** helps in analyzing functions by decomposing them into sine and cosine waves. It is particularly useful in studying signals and systems in the frequency domain.
+
+### Complex Exponential Form of Fourier Series
+
+The Fourier series represents a periodic function as a sum of sines and cosines. When expressed in complex exponential form, the series becomes:
+
+$$ f(x) = \sum\_{n=-\infty}^{\infty} C_n e^{i n \omega_0 x} $$
+
+where $C_n$ are the Fourier coefficients, and $\omega_0$ is the fundamental frequency.
+
+#### Example:
+
+For a square wave with period $2\pi$, the Fourier series is:
+
+$$ f(x) = \frac{4}{\pi} \sum\_{n=1,3,5...}^{\infty} \frac{1}{n} \sin(nx) $$
+
+### Fourier Integral Theorem
+
+The **Fourier Integral Theorem** states that a function can be represented by an integral of sinusoidal components if it is not periodic but decays to zero at infinity.
+
+#### Example:
+
+For a function $f(t)$ that decays at infinity, its Fourier integral is:
+
+$$ f(t) = \int\_{-\infty}^{\infty} F(\omega) e^{i \omega t} d\omega $$
+
+where $F(\omega)$ is the Fourier transform of $f(t)$.
+
+### Fourier Sine and Cosine Integrals
+
+The **Fourier Sine and Cosine Integrals** decompose a function into only sine or cosine terms. These are useful when dealing with odd or even functions.
+
+#### Example:
+
+For an odd function $f(t)$, the Fourier sine integral is:
+
+$$ f(t) = \int_0^{\infty} F_s(\omega) \sin(\omega t) d\omega $$
+
+### Fourier Transform (FT)
+
+The **Fourier Transform** converts a time-domain signal into its frequency-domain representation:
+
+$$ F(\omega) = \int\_{-\infty}^{\infty} f(t) e^{-i \omega t} dt $$
+
+#### Example:
+
+The Fourier transform of a Gaussian function $f(t) = e^{-t^2}$ is:
+
+$$ F(\omega) = \sqrt{\pi} e^{-\frac{\omega^2}{4}} $$
+
+### Fourier Sine and Cosine Transforms
+
+These transforms use sine and cosine functions rather than exponentials.
+
+- **Fourier Sine Transform (FST):**
+
+$$ F_s(\omega) = \int_0^{\infty} f(t) \sin(\omega t) dt $$
+
+- **Fourier Cosine Transform (FCT):**
+
+$$ F_c(\omega) = \int_0^{\infty} f(t) \cos(\omega t) dt $$
+
+#### Example:
+
+For $f(t) = e^{-t}$, the Fourier sine transform is:
+
+$$ F_s(\omega) = \frac{\omega}{1 + \omega^2} $$
+
+### Inverse Fourier Transform
+
+To recover the time-domain signal from its frequency-domain form, the inverse Fourier transform is used:
+
+$$ f(t) = \frac{1}{2\pi} \int\_{-\infty}^{\infty} F(\omega) e^{i \omega t} d\omega $$
+
+---
+
+## Discrete Fourier Transform (DFT)
+
+The **Discrete Fourier Transform (DFT)** is used when dealing with discrete data points. It converts a sequence of values into components of different frequencies.
+
+### Definition
+
+For a sequence $x[n]$ of length $N$, the DFT is given by:
+
+$$ X[k] = \sum\_{n=0}^{N-1} x[n] e^{-i \frac{2\pi}{N} kn} $$
+
+#### Example:
+
+For a sequence $x[n] = [1, 2, 3, 4]$, the DFT computes the frequency components of this sequence.
+
+---
+
+## Z-Transform (ZT)
+
+The **Z-Transform** is a powerful tool for analyzing discrete-time systems. It is the discrete counterpart of the Laplace transform and is widely used in digital signal processing.
+
+### Introduction and Definition
+
+The Z-transform of a discrete sequence $x[n]$ is defined as:
+
+$$ X(z) = \sum\_{n=0}^{\infty} x[n] z^{-n} $$
+
+where $z$ is a complex number.
+
+### Standard Properties of Z-Transform
+
+1. **Linearity:** If $X(z)$ and $Y(z)$ are the Z-transforms of $x[n]$ and $y[n]$, respectively, then:
+
+   $$ aX(z) + bY(z) \text{ is the Z-transform of } ax[n] + by[n] $$
+
+2. **Time Shifting:** If $X(z)$ is the Z-transform of $x[n]$, then the Z-transform of $x[n-k]$ is:
+
+   $$ z^{-k} X(z) $$
+
+### Z-Transform of Standard Sequences
+
+1. **Unit Step Function:** The Z-transform of $u[n] = 1$ for $n \geq 0$ is:
+
+   $$ X(z) = \frac{1}{1 - z^{-1}}, \quad |z| > 1 $$
+
+2. **Exponential Sequence:** The Z-transform of $x[n] = a^n u[n]$ is:
+
+   $$ X(z) = \frac{1}{1 - az^{-1}}, \quad |z| > |a| $$
+
+#### Example:
+
+For $x[n] = 2^n u[n]$, the Z-transform is:
+
+$$ X(z) = \frac{1}{1 - 2z^{-1}}, \quad |z| > 2 $$
+
+### Inverse Z-Transform
+
+The **Inverse Z-Transform** is used to recover the original sequence from its Z-transform:
+
+$$ x[n] = \frac{1}{2\pi i} \oint X(z) z^{n-1} dz $$
+
+Alternatively, partial fraction decomposition or power series expansion methods can be used.
+
+---
+
+## Solving Difference Equations Using Z-Transform
+
+The Z-transform can be applied to solve linear difference equations. Consider the equation:
+
+$$ x[n+2] - 3x[n+1] + 2x[n] = 0 $$
+
+Taking the Z-transform:
+
+$$ z^2 X(z) - 3zX(z) + 2X(z) = 0 $$
+
+Solving for $X(z)$, we can use the inverse Z-transform to find the solution in the time domain.

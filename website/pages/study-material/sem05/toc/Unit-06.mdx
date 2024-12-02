@@ -1,0 +1,116 @@
+# Unit 6: Computational Complexity
+
+## Introduction to Computational Complexity
+
+Computational complexity is a branch of computer science that studies the resources required to solve computational problems. The primary focus is on understanding how the complexity of an algorithm scales with the size of the input. This unit delves into the concept of decidability, discussing decidable and undecidable problems related to formal languages, particularly regular and context-free languages. Furthermore, it explores computational complexity by defining complexity classes such as P and NP, providing examples of problems within these classes, discussing reducibility, and examining concepts like NP-completeness and the satisfiability problem.
+
+## Decidability
+
+Decidability refers to the ability to determine, via an algorithm, whether a given problem can be solved in a finite amount of time. In formal language theory, this concept plays a crucial role as it classifies problems based on whether they can be algorithmically decided. The most common problems studied in terms of decidability concern regular and context-free languages.
+
+### Decidable Problems Concerning Regular Languages
+
+A language is considered regular if it can be recognized by a finite automaton or expressed using a regular expression. The following problems regarding regular languages are decidable:
+
+1. **Emptiness Problem**: Given a regular language represented by a finite automaton, determine if the language is empty. This can be decided by checking if there are any reachable accepting states in the automaton.
+
+2. **Finiteness Problem**: Determine whether a given regular language is finite. This can be resolved by examining the automaton for cycles; if a cycle is reachable from an initial state and leads to an accepting state, the language is infinite.
+
+3. **Equivalence Problem**: Given two regular languages, determine if they are equivalent (i.e., they accept the same set of strings). This is decidable through the construction of a product automaton and checking for the emptiness of the resulting language.
+
+4. **Membership Problem**: For a regular language and a string, determine if the string belongs to the language. This is easily decidable using the finite automaton that recognizes the language.
+
+### Decidable Problems Concerning Context-Free Languages
+
+Context-free languages (CFLs) are more complex than regular languages and can be recognized by pushdown automata. Despite their complexity, several problems concerning CFLs remain decidable:
+
+1. **Emptiness Problem**: Given a context-free grammar (CFG), determine if it generates any strings. This can be checked by constructing the corresponding pushdown automaton and checking for reachable accepting states.
+
+2. **Finiteness Problem**: Determine whether a context-free language is finite. This can be determined using algorithms that analyze the grammar for cycles and ensure that no infinite derivations exist.
+
+3. **Membership Problem**: For a context-free language represented by a CFG and a string, determine if the string belongs to the language. This can be resolved using the CYK algorithm or other parsing techniques.
+
+4. **Equivalence Problem**: Unfortunately, the equivalence problem for context-free languages is undecidable. However, one can check for certain subclasses of context-free languages where equivalence is decidable.
+
+### Undecidability
+
+Undecidability refers to problems for which no algorithm can determine the answer in finite time for all possible inputs. The following problems are classic examples of undecidable problems:
+
+1. **Halting Problem**: Given a Turing machine and an input, determine if the machine halts on that input. Alan Turing proved that there is no algorithm that can solve this problem for all possible machine-input pairs.
+
+2. **Post Correspondence Problem**: Given two lists of strings, the task is to find a sequence of indices such that the concatenation of the strings from both lists produces the same string. This problem is undecidable.
+
+3. **Equivalence of Context-Free Grammars**: While it is decidable to check if a single context-free grammar generates an empty language, determining if two context-free grammars are equivalent is undecidable.
+
+## Computational Complexity
+
+Computational complexity studies the inherent difficulty of computational problems and classifies them based on the resources they require, typically time and space. This unit focuses on two primary complexity classes: P and NP.
+
+### Measuring Complexity
+
+Complexity is measured by analyzing the time and space resources required by an algorithm to solve a problem. The time complexity of an algorithm indicates the amount of time it takes to execute as a function of the input size, usually denoted using Big O notation (e.g., O(n), O(n²)). Space complexity, on the other hand, describes the amount of memory required by the algorithm as a function of the input size.
+
+### The Class P
+
+The class **P** consists of problems that can be solved in polynomial time by a deterministic Turing machine. In simple terms, if a problem is in P, there exists an algorithm that can solve it in a time proportional to a polynomial function of the input size.
+
+#### Examples of Problems in P
+
+1. **Sorting**: Sorting algorithms like quicksort and mergesort operate in O(n log n) time, placing sorting within class P.
+
+2. **Graph Traversal**: Algorithms such as breadth-first search (BFS) and depth-first search (DFS) for traversing graphs run in O(V + E) time, where V is the number of vertices and E is the number of edges.
+
+3. **Finding the Shortest Path**: Dijkstra's algorithm for finding the shortest path in a weighted graph operates in polynomial time.
+
+4. **Matrix Multiplication**: The naive algorithm for multiplying two matrices runs in O(n³) time, making it a polynomial-time problem.
+
+### The Class NP
+
+The class **NP** (nondeterministic polynomial time) consists of problems for which a proposed solution can be verified in polynomial time. It is essential to note that while all problems in P are in NP, not all problems in NP are in P.
+
+#### Examples of Problems in NP
+
+1. **Satisfiability Problem (SAT)**: Given a Boolean formula, determine if there exists an assignment of truth values that makes the formula true. Verifying a given assignment can be done in polynomial time.
+
+2. **Hamiltonian Cycle**: Given a graph, determine if there exists a cycle that visits every vertex exactly once. Verifying a proposed cycle can be done in polynomial time.
+
+3. **Knapsack Problem**: Given a set of items, each with a weight and value, determine if there is a subset of items that fits within a weight limit and has a value greater than or equal to a target value. Verification of a subset can be done in polynomial time.
+
+4. **Vertex Cover Problem**: Given a graph, determine if there is a subset of vertices such that every edge in the graph is incident to at least one vertex in the subset. The verification of a proposed vertex cover can be done in polynomial time.
+
+### Reducibility
+
+Reducibility is a fundamental concept in computational complexity, allowing one problem to be transformed into another. If a problem A can be transformed into a problem B in polynomial time, we say that A is reducible to B, denoted as \( A \leq_p B \).
+
+### Mapping Reducibility
+
+Mapping reducibility, or polynomial-time reducibility, is a specific type of reducibility where the transformation from problem A to problem B is computable in polynomial time. This concept is crucial in classifying problems within complexity classes.
+
+### Polynomial Time Reduction
+
+Polynomial time reduction is a technique that helps to prove the NP-completeness of problems. If a known NP-complete problem can be reduced to a new problem in polynomial time, the new problem is also NP-complete.
+
+### NP Completeness
+
+A problem is deemed **NP-complete** if it satisfies two conditions:
+
+1. It belongs to NP.
+2. Every problem in NP can be reduced to it in polynomial time.
+
+The significance of NP-completeness lies in the implication that if a polynomial-time solution is found for any NP-complete problem, all problems in NP can be solved in polynomial time, thus proving P = NP.
+
+#### The Satisfiability Problem (SAT)
+
+The satisfiability problem is the first problem proven to be NP-complete. The **Cook's theorem** established that SAT is NP-complete by demonstrating that any NP problem can be polynomially reduced to SAT. This theorem forms the basis of the theory of NP-completeness.
+
+### Normal Forms for Boolean Expressions
+
+To analyze the satisfiability of Boolean expressions effectively, it is often useful to convert them into **normal forms**, such as conjunctive normal form (CNF) or disjunctive normal form (DNF). A CNF is a conjunction of clauses, where each clause is a disjunction of literals. A DNF is a disjunction of terms, where each term is a conjunction of literals.
+
+### Cook’s Theorem
+
+**Cook’s theorem** states that the satisfiability problem (SAT) is NP-complete. It serves as a pivotal result in computational complexity theory, establishing a foundation for proving the NP-completeness of numerous other problems by reducing SAT to those problems.
+
+### Node-Cover Problem
+
+The **node-cover problem** involves finding the smallest subset of vertices in a graph such that every edge has at least one endpoint in the subset. This problem is known to be NP-complete. By proving that the node-cover problem can be reduced from the vertex cover problem, one can establish the NP-completeness of various related problems.

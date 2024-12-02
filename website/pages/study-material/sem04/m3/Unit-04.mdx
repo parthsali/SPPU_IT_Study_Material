@@ -1,0 +1,310 @@
+# Unit 4: Probability and Probability Distributions
+
+## Introduction to Probability
+
+Probability is a branch of mathematics that deals with uncertainty and randomness. It provides a framework for understanding how likely events are to occur. In daily life, we often encounter situations where we have to make decisions based on incomplete information. Probability helps us quantify our uncertainty and make informed choices.
+
+In this unit, we will explore the foundational concepts of probability, including key theorems, random variables, mathematical expectations, and various probability distributions such as the binomial, Poisson, normal, and hypergeometric distributions. We will also delve into sampling distributions and hypothesis testing techniques, including the chi-square test and t-test.
+
+---
+
+## Basics of Probability
+
+### Definition of Probability
+
+The **probability** of an event is a measure of the likelihood that the event will occur. It ranges from 0 to 1, where 0 indicates that the event will not occur, and 1 indicates certainty that the event will occur. The probability $P(A)$ of an event $A$ can be defined as:
+
+$$
+P(A) = \frac{\text{Number of favorable outcomes}}{\text{Total number of possible outcomes}}
+$$
+
+For example, if we roll a six-sided die, the probability of rolling a 3 is:
+
+$$
+P(3) = \frac{1}{6}
+$$
+
+### Types of Events
+
+Events can be classified into different categories:
+
+1. **Independent Events**: Two events are independent if the occurrence of one does not affect the occurrence of the other. For instance, flipping a coin and rolling a die are independent events.
+
+2. **Dependent Events**: Two events are dependent if the occurrence of one affects the occurrence of the other. For example, drawing two cards from a deck without replacement makes the second draw dependent on the first.
+
+3. **Mutually Exclusive Events**: Two events are mutually exclusive if they cannot occur at the same time. For example, when flipping a coin, it can either land on heads or tails, but not both.
+
+4. **Complementary Events**: The complement of an event $A$ is the event that $A$ does not occur, denoted as $A'$. The sum of the probabilities of an event and its complement is 1:
+
+$$
+P(A) + P(A') = 1
+$$
+
+---
+
+## Theorems on Probability
+
+### Addition Theorem
+
+The **addition theorem** of probability states that for two events $A$ and $B$:
+
+$$
+P(A \cup B) = P(A) + P(B) - P(A \cap B)
+$$
+
+where $P(A \cup B)$ is the probability that either event $A$ or event $B$ occurs, and $P(A \cap B)$ is the probability that both events occur.
+
+#### Example:
+
+If $P(A) = 0.5$ and $P(B) = 0.3$, and $P(A \cap B) = 0.1$:
+
+$$
+P(A \cup B) = 0.5 + 0.3 - 0.1 = 0.7
+$$
+
+### Multiplication Theorem
+
+The **multiplication theorem** states that for two independent events $A$ and $B$:
+
+$$
+P(A \cap B) = P(A) \times P(B)
+$$
+
+This theorem allows us to calculate the probability of both events occurring together.
+
+#### Example:
+
+If $P(A) = 0.4$ and $P(B) = 0.5$:
+
+$$
+P(A \cap B) = 0.4 \times 0.5 = 0.2
+$$
+
+For dependent events, the formula is adjusted to:
+
+$$
+P(A \cap B) = P(A) \times P(B|A)
+$$
+
+where $P(B|A)$ is the conditional probability of event $B$ given that event $A$ has occurred.
+
+### Bayes’ Theorem
+
+**Bayes’ theorem** relates the conditional and marginal probabilities of random events. It provides a way to update our beliefs based on new evidence. The theorem is expressed as:
+
+$$
+P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}
+$$
+
+where:
+
+- $P(A|B)$ is the probability of event $A$ given event $B$.
+- $P(B|A)$ is the probability of event $B$ given event $A$.
+- $P(A)$ and $P(B)$ are the probabilities of events $A$ and $B$, respectively.
+
+#### Example:
+
+If $P(A) = 0.6$, $P(B|A) = 0.7$, and $P(B) = 0.5$:
+
+$$
+P(A|B) = \frac{0.7 \times 0.6}{0.5} = 0.84
+$$
+
+---
+
+## Random Variables and Mathematical Expectation
+
+### Random Variables
+
+A **random variable** is a numerical outcome of a random phenomenon. It can be classified into two types:
+
+1. **Discrete Random Variables**: These take on a countable number of distinct values. For example, the number of heads in three flips of a coin can be 0, 1, 2, or 3.
+
+2. **Continuous Random Variables**: These can take on an infinite number of values within a given range. For example, the height of students in a class is a continuous random variable.
+
+### Mathematical Expectation
+
+The **mathematical expectation** or **expected value** of a random variable $X$ is the long-term average value of the variable. It is denoted as $E(X)$ and can be calculated differently for discrete and continuous random variables.
+
+#### Discrete Random Variable
+
+For a discrete random variable, the expected value is calculated as:
+
+$$
+E(X) = \sum_{i=1}^{n} x_i \cdot P(x_i)
+$$
+
+where $x_i$ is the value of the random variable and $P(x_i)$ is the probability of that value.
+
+#### Example:
+
+If a discrete random variable $X$ takes values 1, 2, and 3 with probabilities $P(1) = 0.2$, $P(2) = 0.5$, and $P(3) = 0.3$:
+
+$$
+E(X) = 1 \cdot 0.2 + 2 \cdot 0.5 + 3 \cdot 0.3 = 0.2 + 1 + 0.9 = 2.1
+$$
+
+#### Continuous Random Variable
+
+For a continuous random variable, the expected value is calculated using the probability density function $f(x)$:
+
+$$
+E(X) = \int_{-\infty}^{\infty} x f(x) dx
+$$
+
+---
+
+## Probability Distributions
+
+Probability distributions describe how probabilities are distributed over values of a random variable. The main types of probability distributions are the binomial, Poisson, normal, and hypergeometric distributions.
+
+### 1. Binomial Distribution
+
+The **binomial distribution** models the number of successes in a fixed number of independent Bernoulli trials, each with the same probability of success $p$. It is characterized by two parameters: $n$ (the number of trials) and $p$ (the probability of success).
+
+The probability mass function (PMF) for a binomial distribution is given by:
+
+$$
+P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}
+$$
+
+where $k$ is the number of successes.
+
+#### Example:
+
+If we flip a coin 10 times (n = 10) and want to find the probability of getting exactly 5 heads (k = 5) with $p = 0.5$:
+
+$$
+P(X = 5) = \binom{10}{5} (0.5)^5 (0.5)^{10-5} = 252 \cdot (0.5)^{10} = 0.246
+$$
+
+### 2. Poisson Distribution
+
+The **Poisson distribution** models the number of events occurring in a fixed interval of time or space when these events happen with a known constant mean rate $\lambda$ and independently of the time since the last event. The probability mass function is:
+
+$$
+P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}
+$$
+
+where $k$ is the number of events.
+
+#### Example:
+
+If a call center receives an average of 3 calls per hour, the probability of receiving exactly 5 calls in an hour is:
+
+$$
+P(X = 5) = \frac{3^5 e^{-3}}{5!} = \frac{243 e^{-3}}{120} \approx 0.10082
+$$
+
+### 3. Normal Distribution
+
+The **normal distribution** is a continuous probability distribution that is symmetric about the mean, depicting that data near the mean are more frequent in occurrence than data far from the mean. It is characterized by its mean $\mu$ and standard deviation $\sigma$.
+
+The probability density function (PDF) is given by:
+
+$$
+f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+$$
+
+#### Example:
+
+For a normal distribution with $\mu =
+
+0$ and $\sigma = 1$ (standard normal distribution), we can find probabilities using the z-score formula:
+
+$$
+z = \frac{x - \mu}{\sigma}
+$$
+
+### 4. Hypergeometric Distribution
+
+The **hypergeometric distribution** models the number of successes in a sequence of draws from a finite population without replacement. It is characterized by the population size $N$, the number of successes in the population $K$, and the number of draws $n$.
+
+The probability mass function is given by:
+
+$$
+P(X = k) = \frac{\binom{K}{k} \binom{N-K}{n-k}}{\binom{N}{n}}
+$$
+
+#### Example:
+
+If a box contains 10 red balls and 20 blue balls, and we draw 5 balls without replacement, the probability of drawing exactly 3 red balls is:
+
+$$
+P(X = 3) = \frac{\binom{10}{3} \binom{20}{2}}{\binom{30}{5}} \approx 0.210
+$$
+
+---
+
+## Sampling Distributions
+
+### Definition
+
+A **sampling distribution** is the probability distribution of a statistic (such as the mean or variance) obtained from a large number of samples drawn from a specific population. The central limit theorem states that the sampling distribution of the sample mean approaches a normal distribution as the sample size $n$ increases, regardless of the shape of the population distribution.
+
+### Central Limit Theorem
+
+The **central limit theorem** (CLT) is a fundamental theorem in probability theory that states:
+
+1. If you take a sufficiently large sample $n$ from a population with a finite mean $\mu$ and finite variance $\sigma^2$, the distribution of the sample means will be approximately normally distributed.
+2. The mean of the sampling distribution will equal the population mean $\mu$.
+3. The standard deviation of the sampling distribution (standard error) is given by:
+
+$$
+\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}
+$$
+
+### Example:
+
+If we have a population with a mean of 50 and a standard deviation of 10, and we take samples of size 30, the sampling distribution of the sample mean will have a mean of 50 and a standard error of:
+
+$$
+\sigma_{\bar{x}} = \frac{10}{\sqrt{30}} \approx 1.83
+$$
+
+---
+
+## Hypothesis Testing
+
+### Introduction
+
+**Hypothesis testing** is a statistical method used to make decisions based on the analysis of sample data. It involves formulating a null hypothesis $H_0$ and an alternative hypothesis $H_a$, then determining whether there is enough evidence to reject $H_0$.
+
+### Steps in Hypothesis Testing
+
+1. **State the Hypotheses**:
+
+   - Null hypothesis $H_0$: Assumes no effect or difference.
+   - Alternative hypothesis $H_a$: Assumes some effect or difference.
+
+2. **Select a Significance Level ($\alpha$)**: Common choices are 0.05, 0.01, and 0.10.
+
+3. **Choose the Appropriate Test**: Based on data characteristics, choose a test (e.g., t-test, chi-square test).
+
+4. **Calculate the Test Statistic**: Use sample data to compute the test statistic.
+
+5. **Determine the Critical Value**: Based on the significance level and the chosen test, find the critical value(s).
+
+6. **Make a Decision**: Compare the test statistic to the critical value(s):
+   - If the test statistic falls in the critical region, reject $H_0$.
+   - If not, fail to reject $H_0$.
+
+### Example: t-Test
+
+The **t-test** is used to determine whether there is a significant difference between the means of two groups. The test statistic is calculated as:
+
+$$
+t = \frac{\bar{x_1} - \bar{x_2}}{s_{\bar{x}}}
+$$
+
+where $\bar{x*1}$ and $\bar{x_2}$ are sample means, and $s*{\bar{x}}$ is the standard error.
+
+### Example: Chi-Square Test
+
+The **chi-square test** is used to determine if there is a significant association between categorical variables. The test statistic is calculated as:
+
+$$
+\chi^2 = \sum \frac{(O - E)^2}{E}
+$$
+
+where $O$ is the observed frequency, and $E$ is the expected frequency.
