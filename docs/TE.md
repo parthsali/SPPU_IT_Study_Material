@@ -1,7 +1,7 @@
 <h1 id="teit" align="center">TE IT Study Material</h1>
 
 <p align='center'>
-  <a href="https://sppustudyhub.vercel.app/">
+  <a href="https://learnverse.live">
     SPPU IT Study Hub
   </a>
 </p>
